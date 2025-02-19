@@ -1,0 +1,60 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "SFDA | PSY HSE"
+  subtitle: "Statistics for Data Analysis"
+  author: "Anton Angelgardt"
+  date: today
+  chapters:
+    - index.qmd
+    - part: part-intro.qmd
+      chapters: 
+        - intro-intro.qmd
+        - intro-randvals.qmd
+    - part: part-desc.qmd
+      chapters: 
+        - desc-centraltend.qmd
+        - desc-variation.qmd
+        - desc-normdist.qmd
+        - desc-ci.qmd
+    - part: part-infer.qmd
+      chapters: 
+        - infer-stattesting.qmd
+        - infer-categorical.qmd
+        - infer-correlation.qmd
+        - infer-anovaI.qmd
+        - infer-anovaII.qmd
+        - infer-posthoc.qmd
+        - infer-simplelinear.qmd
+        - infer-multiplelinear.qmd
+        - infer-ancova.qmd
+        - infer-logreg.qmd
+        - infer-cluster.qmd
+        - infer-efa.qmd
+        - infer-cfa.qmd
+    - part: part-r.qmd
+      chapters: 
+        - r-intro.qmd
+        - r-preproc.qmd
+        - r-vis.qmd
+        - r-lm.qmd
+        - r-anova.qmd
+        - r-glm.qmd
+        - r-cluster.qmd
+        - r-efa.qmd
+        - r-cfa.qmd
+    - outro.qmd
+    # - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+
