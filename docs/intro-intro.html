@@ -55,16 +55,16 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
+    "search-no-results-text": "Ничего не найдено",
     "search-matching-documents-text": "matching documents",
     "search-copy-link-title": "Copy link to search",
     "search-hide-matches-text": "Hide additional matches",
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-clear-button-title": "Очистить",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
+    "search-detached-cancel-button-title": "Отмена",
+    "search-submit-button-title": "Отправить",
     "search-label": "Search"
   }
 }</script>
@@ -366,7 +366,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">Содержание</h2>
    
   <ul>
   <li><a href="#выборка-и-генеральная-совокупность" id="toc-выборка-и-генеральная-совокупность" class="nav-link active" data-scroll-target="#выборка-и-генеральная-совокупность"><span class="header-section-number">1.1</span> Выборка и&nbsp;генеральная совокупность</a></li>
@@ -411,8 +411,13 @@ window.Quarto = {
 <p><strong>Генеральная совокупность (population)</strong>&nbsp;— множество всех [существующих] исследуемых объектов, а&nbsp;также сведения о&nbsp;них.</p>
 <p><strong>Объем совокупности</strong> (<span class="math inline">\(N\)</span>)&nbsp;— число единиц, образующих совокупность.</p>
 <p>Короче, надо исследовать много людей, а&nbsp;времени и&nbsp;денег нет. Приходится из&nbsp;генеральной совокупности извлекать <strong>выборку (sample)</strong>&nbsp;— некоторую часть нашей генеральной совокупности (объемом <span class="math inline">\(n\)</span>). При этом <span class="math inline">\(n \ll N\)</span> (много меньше).</p>
-<p>Нас, конечно&nbsp;же, интересуют какие-то признаки, которыми обладают объекты нашей генеральной совокупности. Эти признаки могут быть выражены количественно в&nbsp;определенных показателях.</p>
-<p>Например,</p>
+<p>Нас, конечно&nbsp;же, интересуют какие-то признаки, которыми обладают объекты нашей генеральной совокупности. Эти признаки могут быть выражены количественно в&nbsp;определенных показателях (<a href="#tbl-param-exmpl" class="quarto-xref">Таблица&nbsp;<span>1.1</span></a>).</p>
+<div id="tbl-param-exmpl" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-param-exmpl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Таблица&nbsp;1.1: Примеры признаков и&nbsp;показателей
+</figcaption>
+<div aria-describedby="tbl-param-exmpl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -451,6 +456,9 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 <p>Признаки могут быть очень разными, как и&nbsp;показатели, которыми мы их пытаемся измерить. Не&nbsp;будем сильно в&nbsp;это углубляться, ибо этим занимается теория измерений, а&nbsp;мы тут статистикой пришли заниматься.</p>
 <p>Что нам важно сейчас: генеральная совокупность характеризуется параметром.</p>
 <p><strong>Параметр</strong> (<span class="math inline">\(\theta\)</span>)&nbsp;— относительно постоянная [от одной совокупности к другой] величина, характеризующая генеральную совокупность по некоторому показателю.</p>
@@ -467,8 +475,17 @@ window.Quarto = {
 <p>Мы в&nbsp;какой-то малоприятной ситуации… Мы пытаемся измерить то, что&nbsp;в&nbsp;определенном смысле невозможно измерить, при&nbsp;этом достаточно точно, чтобы&nbsp;потом это можно было сравнивать или&nbsp;строить какие-то модели. Задача выглядит заведомо провальной…</p>
 <p>Однако именно в&nbsp;этот момент на&nbsp;помощь нам приходит статистика. Не&nbsp;в&nbsp;гордом одиночестве, конечно. Она приводит с&nbsp;собой теорию измерений, психометрику, теорию обнаружения сигнала и&nbsp;др. Всё это работает в&nbsp;нашей психологической науке в&nbsp;комплексе. Мы&nbsp;же в&nbsp;данном курсе сосредотачиваемся на&nbsp;статистической части этого салата.</p>
 <p>Статистика даёт нам теоретический и&nbsp;математический инструментарий, чтобы&nbsp;мы могли делать какие-либо выводы о&nbsp;генеральной совокупности по&nbsp; собранным на&nbsp;выборке данным. К&nbsp;сожалению, как&nbsp;бы нам не&nbsp;хотелось, мы <em>не&nbsp;можем делать выводы по&nbsp;сырым данным</em>, потому&nbsp;что измерения по&nbsp;выборке не&nbsp;отражают вот прям ровно то, что&nbsp;есть в&nbsp;генеральной совокупности. Нам их надо определенным образом обсчитать, чтобы&nbsp;наши выводы были корректными. Этим и&nbsp;занимается статистика.</p>
-<p>Если&nbsp;мы попытаемся нарисовать какую-то концептуальную схему, что&nbsp;мы [технически] делаем в&nbsp;ходе исследования, то&nbsp;получится нечто такое:</p>
-<p><img src="img/intro/sampling-inference.png" class="img-fluid"></p>
+<p>Если&nbsp;мы попытаемся нарисовать какую-то концептуальную схему работы с&nbsp;выборкой в&nbsp;ходе исследования, то&nbsp;получится нечто такое (<a href="#fig-sampling-inference" class="quarto-xref">Рисунок&nbsp;<span>1.1</span></a>).</p>
+<div id="fig-sampling-inference" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sampling-inference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/intro/sampling-inference.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sampling-inference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;1.1: Схема работы с&nbsp;выборкой в&nbsp;ходе исследования
+</figcaption>
+</figure>
+</div>
 <p>Мы желаем изучить некую <strong>генеральную совокупность (population)</strong>, которая недоступна нам в&nbsp;полном объёме. По&nbsp;этой причине мы извлекаем (sampling) из&nbsp;неё <strong>выборку (sample)</strong>. На&nbsp;выборке мы собираем <strong>данные (data)</strong>, по&nbsp;которым хотим делать <strong>вывод (inference)</strong> о&nbsp;генеральной совокупности. Как&nbsp;именно нам сделать такой вывод и&nbsp;рассказывает статистика.</p>
 <p>Вероятно, сейчас это звучит достаточно абстрактно, но&nbsp;на&nbsp;данном этапе будет достаточно некоторого интуитивного понимания того, зачем нужна статистика. Далее интуиция обрастёт содержанием и&nbsp;уложится, хотелось&nbsp;бы надеяться, в&nbsp;достаточно стройную систему.</p>
 <p>Итог&nbsp;— <strong>статистика помогает нам делать выводы об&nbsp;изучаемой генеральной совокупности по&nbsp;выборке.</strong></p>
@@ -668,12 +685,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Скопировано!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Скопировано!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

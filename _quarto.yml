@@ -2,6 +2,9 @@ project:
   type: book
   output-dir: docs
 
+metadata-files:
+  - _metadata.yml
+
 book:
   title: "SFDA | PSY HSE"
   subtitle: "Statistics for Data Analysis"
