@@ -1,1 +1,47 @@
 # Корреляция и регрессия
+
+library(tidyverse)
+theme_set(theme_bw())
+
+managers <- read_csv("https://raw.githubusercontent.com/angelgardt/wlm2023/refs/heads/master/data/pr10/managers_reg.csv")
+str(managers)
+
+plot(x = managers$experience, y = managers$fot)
+plot(y = managers$fot, x = managers$experience)
+plot(managers$experience, managers$fot)
+
+hist(managers$fot)
+boxplot(managers$fot)
+hist(managers$experience)
+boxplot(managers$experience)
+
+cor(managers$fot, managers$experience)
+cor(managers$fot, managers$experience, method = "sp")
+
+cor.test(managers$fot, managers$experience)
+cor.test(managers$fot, managers$experience, method = "sp")
+cor.test(managers$fot, managers$experience, alternative = "less")
+
+cor.test(managers$fot, managers$grade_score)
+
+managers %>% 
+  ggplot(aes(grade_score, fot, color = region)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+
+model1 <- lm(fot ~ grade_score, managers)
+summary(model1)
+
+model2 <- lm(fot ~ grade_score + experience, managers)
+summary(model2)
+
+model3 <- lm(fot ~ grade_score + region, managers)
+summary(model3)
+
+model4 <- lm(fot ~ grade_score * region, managers)
+summary(model4)
+
+
+plot(model4)
+anova(model3, model4)

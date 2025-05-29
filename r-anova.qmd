@@ -1,1 +1,77 @@
 # Дисперсионный анализ
+
+# install.packages("ez")
+# install.packages("moments")
+
+library(tidyverse)
+theme_set(theme_bw())
+library(ez)
+
+# share <- read_csv("https://raw.githubusercontent.com/angelgardt/wlm2023/master/data/hw5/share.csv")
+# share <- read_csv2("https://raw.githubusercontent.com/angelgardt/wlm2023/master/data/hw5/share.csv")
+
+share <- read_delim("https://raw.githubusercontent.com/angelgardt/wlm2023/master/data/hw5/share.csv", 
+                    delim = " ", 
+                    locale = locale(decimal_mark = ","))
+str(share)
+
+
+share %>% 
+  summarise(mean = mean(time1),
+            median = median(time1),
+            sd = sd(time1),
+            min = min(time1),
+            max = max(time1),
+            skew = moments::skewness(time1),
+            kurt = moments::kurtosis(time1),
+            .by = c(platform, trialtype, setsize))
+
+
+share %>% sapply(is.na) %>% apply(2, sum)
+unique(share$id)
+unique(share$trialtype)
+
+# quantile(share$time1, .75)
+
+share %>% # nrow()
+  filter(trialtype != "both" & correct1) %>% # nrow()
+  group_by(id, setsize, platform, trialtype) %>% 
+  mutate(is_outlier = ifelse(
+    time1 > quantile(time1, .75) + 1.5 * IQR(time1) |
+      time1 < quantile(time1, .25) - 1.5 * IQR(time1),
+    TRUE, FALSE
+    )
+    ) %>% 
+  filter(!is_outlier) %>% 
+  mutate(setsize = as_factor(setsize)) -> share2
+
+# unique(share2$platform)
+
+t.test(share2$time1 ~ share2$platform)
+
+fit1 <- aov(time1 ~ platform, share2)
+summary(fit1)
+
+fit1.1 <- lm(time1 ~ platform, share2)
+summary(fit1.1)
+anova(fit1.1)
+
+ezANOVA(data = share2,
+        dv = time1,
+        wid = id,
+        within = .(setsize, trialtype),
+        between = platform)
+
+pairwise.t.test(x = share2$time1,
+                g = interaction(share2$setsize, share2$trialtype),
+                p.adjust.method = "bonf")
+
+
+share2 %>% 
+  ggplot(aes(setsize, time1, color = platform, shape = trialtype,
+             group = interaction(trialtype, platform))) +
+  stat_summary(fun.data = mean_cl_boot, geom = "pointrange",
+               position = position_dodge(.3)) +
+  stat_summary(fun.data = mean_cl_boot, geom = "line", linetype = "dashed",
+               position = position_dodge(.3)) +
+  theme(legend.position = "bottom")

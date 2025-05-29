@@ -1,1 +1,32 @@
 # Логистическая регрессия
+
+library(tidyverse)
+
+managers <- read_csv("data/managers_log.csv")
+
+
+str(managers)
+unique(managers$lvl)
+
+managers %>% 
+  mutate(lvl = ifelse(lvl == "Менеджер", 1, 0)) %>% 
+  select(-...1, -id) -> managers
+managers$lvl %>% unique()
+
+model1 <- glm(lvl ~ ., data = managers, family = binomial)
+model0 <- glm(lvl ~ 1, data = managers, family = binomial)
+anova(model0, model1, test = "Chi")
+summary(model1)
+
+# summary(model0)
+# anova(model1, model0, test = "Chi")
+
+
+model2 <- update(model1, .~. -subdiv_regulations -autonomy -company_regulations -error_cost)
+summary(model2)
+exp(1.605)
+
+AIC(model1, model0)
+BIC(model1, model0)
+AIC(model1, model2)
+BIC(model1, model2)
