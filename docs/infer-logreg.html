@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.36">
+<meta name="generator" content="quarto-1.7.31">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,15 +32,16 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <link href="./infer-cluster.html" rel="next">
 <link href="./infer-ancova.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-01c78b5cd655e4cd89133cf59d535862.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7580570a2e354cd56757c689413fca0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -55,16 +56,16 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
+    "search-no-results-text": "Ничего не найдено",
     "search-matching-documents-text": "matching documents",
     "search-copy-link-title": "Copy link to search",
     "search-hide-matches-text": "Hide additional matches",
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-clear-button-title": "Очистить",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
+    "search-detached-cancel-button-title": "Отмена",
+    "search-submit-button-title": "Отправить",
     "search-label": "Search"
   }
 }</script>
@@ -72,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -335,8 +336,132 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#y" id="toc-y" class="nav-link active" data-scroll-target="#y"><span class="header-section-number">17</span> y</a>
+  <ul class="collapse">
+  <li><a href="#a-tibble-6-10" id="toc-a-tibble-6-10" class="nav-link" data-scroll-target="#a-tibble-6-10"><span class="header-section-number">17.1</span> # A tibble: 6 × 10</a></li>
+  <li><a href="#id-lvl-quali¹-auton²-subdi³-compa⁴-direc⁵-func_⁶-incom⁷-error⁸" id="toc-id-lvl-quali¹-auton²-subdi³-compa⁴-direc⁵-func_⁶-incom⁷-error⁸" class="nav-link" data-scroll-target="#id-lvl-quali¹-auton²-subdi³-compa⁴-direc⁵-func_⁶-incom⁷-error⁸"><span class="header-section-number">17.2</span> id lvl quali…¹ auton…² subdi…³ compa…⁴ direc…⁵ func_…⁶ incom…⁷ error…⁸</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">17.3</span> <chr> <chr> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></chr></chr></a></li>
+  <li><a href="#таб_154-сотр-5-2-1-1-1-1-1-1" id="toc-таб_154-сотр-5-2-1-1-1-1-1-1" class="nav-link" data-scroll-target="#таб_154-сотр-5-2-1-1-1-1-1-1"><span class="header-section-number">17.4</span> 1 таб_154… Сотр… 5 2 1 1 1 1 1 1</a></li>
+  <li><a href="#таб_139-сотр-4-2-1-1-1-1-1-2" id="toc-таб_139-сотр-4-2-1-1-1-1-1-2" class="nav-link" data-scroll-target="#таб_139-сотр-4-2-1-1-1-1-1-2"><span class="header-section-number">17.5</span> 2 таб_139… Сотр… 4 2 1 1 1 1 1 2</a></li>
+  <li><a href="#таб_407-сотр-2-2-1-1-1-1-1-1" id="toc-таб_407-сотр-2-2-1-1-1-1-1-1" class="nav-link" data-scroll-target="#таб_407-сотр-2-2-1-1-1-1-1-1"><span class="header-section-number">17.6</span> 3 таб_407… Сотр… 2 2 1 1 1 1 1 1</a></li>
+  <li><a href="#таб_417-сотр-4-3-1-1-1-1-1-1" id="toc-таб_417-сотр-4-3-1-1-1-1-1-1" class="nav-link" data-scroll-target="#таб_417-сотр-4-3-1-1-1-1-1-1"><span class="header-section-number">17.7</span> 4 таб_417… Сотр… 4 3 1 1 1 1 1 1</a></li>
+  <li><a href="#таб_633-мене-5-3-2-3-2-1-3-5" id="toc-таб_633-мене-5-3-2-3-2-1-3-5" class="nav-link" data-scroll-target="#таб_633-мене-5-3-2-3-2-1-3-5"><span class="header-section-number">17.8</span> 5 таб_633… Мене… 5 3 2 3 2 1 3 5</a></li>
+  <li><a href="#таб_162-сотр-2-2-1-1-1-1-2-2" id="toc-таб_162-сотр-2-2-1-1-1-1-2-2" class="nav-link" data-scroll-target="#таб_162-сотр-2-2-1-1-1-1-2-2"><span class="header-section-number">17.9</span> 6 таб_162… Сотр… 2 2 1 1 1 1 2 2</a></li>
+  <li><a href="#with-abbreviated-variable-names-¹qualification-²autonomy" id="toc-with-abbreviated-variable-names-¹qualification-²autonomy" class="nav-link" data-scroll-target="#with-abbreviated-variable-names-¹qualification-²autonomy"><span class="header-section-number">17.10</span> # … with abbreviated variable names ¹​qualification, ²​autonomy,</a></li>
+  <li><a href="#subdiv_regulations-⁴company_regulations-⁵direct_juniors-⁶func_juniors" id="toc-subdiv_regulations-⁴company_regulations-⁵direct_juniors-⁶func_juniors" class="nav-link" data-scroll-target="#subdiv_regulations-⁴company_regulations-⁵direct_juniors-⁶func_juniors"><span class="header-section-number">17.11</span> # ³​subdiv_regulations, ⁴​company_regulations, ⁵​direct_juniors, ⁶​func_juniors,</a></li>
+  <li><a href="#income_influence-⁸error_cost" id="toc-income_influence-⁸error_cost" class="nav-link" data-scroll-target="#income_influence-⁸error_cost"><span class="header-section-number">17.12</span> # ⁷​income_influence, ⁸​error_cost</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">17.13</span> </a></li>
+  <li><a href="#менеджер-сотрудник" id="toc-менеджер-сотрудник" class="nav-link" data-scroll-target="#менеджер-сотрудник"><span class="header-section-number">17.14</span> Менеджер Сотрудник</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">17.15</span> 810 2400</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">17.16</span> </a></li>
+  <li><a href="#call" id="toc-call" class="nav-link" data-scroll-target="#call"><span class="header-section-number">17.17</span> Call:</a></li>
+  <li><a href="#lmformula-lvl-.-data-managers" id="toc-lmformula-lvl-.-data-managers" class="nav-link" data-scroll-target="#lmformula-lvl-.-data-managers"><span class="header-section-number">17.18</span> lm(formula = lvl ~ ., data = managers)</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">17.19</span> </a></li>
+  <li><a href="#residuals" id="toc-residuals" class="nav-link" data-scroll-target="#residuals"><span class="header-section-number">17.20</span> Residuals:</a></li>
+  <li><a href="#min-1q-median-3q-max" id="toc-min-1q-median-3q-max" class="nav-link" data-scroll-target="#min-1q-median-3q-max"><span class="header-section-number">17.21</span> Min 1Q Median 3Q Max</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">17.22</span> -1.47532 -0.07671 -0.04250 0.06891 1.02042</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">17.23</span> </a></li>
+  <li><a href="#coefficients" id="toc-coefficients" class="nav-link" data-scroll-target="#coefficients"><span class="header-section-number">17.24</span> Coefficients:</a></li>
+  <li><a href="#estimate-std.-error-t-value-prt" id="toc-estimate-std.-error-t-value-prt" class="nav-link" data-scroll-target="#estimate-std.-error-t-value-prt"><span class="header-section-number">17.25</span> Estimate Std. Error t value Pr(&gt;|t|)</a></li>
+  <li><a href="#intercept--0.869056-0.015520--55.994-2e-16" id="toc-intercept--0.869056-0.015520--55.994-2e-16" class="nav-link" data-scroll-target="#intercept--0.869056-0.015520--55.994-2e-16"><span class="header-section-number">17.26</span> (Intercept) -0.869056 0.015520 -55.994 &lt; 2e-16 ***</a></li>
+  <li><a href="#qualification-0.048487-0.004420-10.969-2e-16" id="toc-qualification-0.048487-0.004420-10.969-2e-16" class="nav-link" data-scroll-target="#qualification-0.048487-0.004420-10.969-2e-16"><span class="header-section-number">17.27</span> qualification 0.048487 0.004420 10.969 &lt; 2e-16 ***</a></li>
+  <li><a href="#autonomy-0.016780-0.008309-2.019-0.043527" id="toc-autonomy-0.016780-0.008309-2.019-0.043527" class="nav-link" data-scroll-target="#autonomy-0.016780-0.008309-2.019-0.043527"><span class="header-section-number">17.28</span> autonomy 0.016780 0.008309 2.019 0.043527 *</a></li>
+  <li><a href="#subdiv_regulations-0.281009-0.014017-20.048-2e-16" id="toc-subdiv_regulations-0.281009-0.014017-20.048-2e-16" class="nav-link" data-scroll-target="#subdiv_regulations-0.281009-0.014017-20.048-2e-16"><span class="header-section-number">17.29</span> subdiv_regulations 0.281009 0.014017 20.048 &lt; 2e-16 ***</a></li>
+  <li><a href="#company_regulations--0.068712-0.011403--6.026-1.88e-09" id="toc-company_regulations--0.068712-0.011403--6.026-1.88e-09" class="nav-link" data-scroll-target="#company_regulations--0.068712-0.011403--6.026-1.88e-09"><span class="header-section-number">17.30</span> company_regulations -0.068712 0.011403 -6.026 1.88e-09 ***</a></li>
+  <li><a href="#direct_juniors-0.369140-0.012549-29.416-2e-16" id="toc-direct_juniors-0.369140-0.012549-29.416-2e-16" class="nav-link" data-scroll-target="#direct_juniors-0.369140-0.012549-29.416-2e-16"><span class="header-section-number">17.31</span> direct_juniors 0.369140 0.012549 29.416 &lt; 2e-16 ***</a></li>
+  <li><a href="#func_juniors-0.107304-0.008069-13.298-2e-16" id="toc-func_juniors-0.107304-0.008069-13.298-2e-16" class="nav-link" data-scroll-target="#func_juniors-0.107304-0.008069-13.298-2e-16"><span class="header-section-number">17.32</span> func_juniors 0.107304 0.008069 13.298 &lt; 2e-16 ***</a></li>
+  <li><a href="#income_influence-0.072478-0.007434-9.749-2e-16" id="toc-income_influence-0.072478-0.007434-9.749-2e-16" class="nav-link" data-scroll-target="#income_influence-0.072478-0.007434-9.749-2e-16"><span class="header-section-number">17.33</span> income_influence 0.072478 0.007434 9.749 &lt; 2e-16 ***</a></li>
+  <li><a href="#error_cost--0.026336-0.007985--3.298-0.000984" id="toc-error_cost--0.026336-0.007985--3.298-0.000984" class="nav-link" data-scroll-target="#error_cost--0.026336-0.007985--3.298-0.000984"><span class="header-section-number">17.34</span> error_cost -0.026336 0.007985 -3.298 0.000984 ***</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">17.35</span> —</a></li>
+  <li><a href="#signif.-codes-0-0.001-0.01-0.05-.-0.1-1" id="toc-signif.-codes-0-0.001-0.01-0.05-.-0.1-1" class="nav-link" data-scroll-target="#signif.-codes-0-0.001-0.01-0.05-.-0.1-1"><span class="header-section-number">17.36</span> Signif. codes: 0 ‘<em><strong>’ 0.001 ’</strong>’ 0.01 ’</em>’ 0.05 ‘.’ 0.1 ’ ’ 1</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">17.37</span> </a></li>
+  <li><a href="#residual-standard-error-0.2235-on-3201-degrees-of-freedom" id="toc-residual-standard-error-0.2235-on-3201-degrees-of-freedom" class="nav-link" data-scroll-target="#residual-standard-error-0.2235-on-3201-degrees-of-freedom"><span class="header-section-number">17.38</span> Residual standard error: 0.2235 on 3201 degrees of freedom</a></li>
+  <li><a href="#multiple-r-squared-0.7361-adjusted-r-squared-0.7354" id="toc-multiple-r-squared-0.7361-adjusted-r-squared-0.7354" class="nav-link" data-scroll-target="#multiple-r-squared-0.7361-adjusted-r-squared-0.7354"><span class="header-section-number">17.39</span> Multiple R-squared: 0.7361, Adjusted R-squared: 0.7354</a></li>
+  <li><a href="#f-statistic-1116-on-8-and-3201-df-p-value-2.2e-16" id="toc-f-statistic-1116-on-8-and-3201-df-p-value-2.2e-16" class="nav-link" data-scroll-target="#f-statistic-1116-on-8-and-3201-df-p-value-2.2e-16"><span class="header-section-number">17.40</span> F-statistic: 1116 on 8 and 3201 DF, p-value: &lt; 2.2e-16</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><span class="header-section-number">17.41</span> </a></li>
+  <li><a href="#call-1" id="toc-call-1" class="nav-link" data-scroll-target="#call-1"><span class="header-section-number">17.42</span> Call:</a></li>
+  <li><a href="#glmformula-lvl-.-family-binomiallink-logit-data-managers" id="toc-glmformula-lvl-.-family-binomiallink-logit-data-managers" class="nav-link" data-scroll-target="#glmformula-lvl-.-family-binomiallink-logit-data-managers"><span class="header-section-number">17.43</span> glm(formula = lvl ~ ., family = binomial(link = “logit”), data = managers)</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><span class="header-section-number">17.44</span> </a></li>
+  <li><a href="#deviance-residuals" id="toc-deviance-residuals" class="nav-link" data-scroll-target="#deviance-residuals"><span class="header-section-number">17.45</span> Deviance Residuals:</a></li>
+  <li><a href="#min-1q-median-3q-max-1" id="toc-min-1q-median-3q-max-1" class="nav-link" data-scroll-target="#min-1q-median-3q-max-1"><span class="header-section-number">17.46</span> Min 1Q Median 3Q Max</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"><span class="header-section-number">17.47</span> -3.8626 -0.0897 -0.0800 0.0000 3.5607</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"><span class="header-section-number">17.48</span> </a></li>
+  <li><a href="#coefficients-1" id="toc-coefficients-1" class="nav-link" data-scroll-target="#coefficients-1"><span class="header-section-number">17.49</span> Coefficients:</a></li>
+  <li><a href="#estimate-std.-error-z-value-prz" id="toc-estimate-std.-error-z-value-prz" class="nav-link" data-scroll-target="#estimate-std.-error-z-value-prz"><span class="header-section-number">17.50</span> Estimate Std. Error z value Pr(&gt;|z|)</a></li>
+  <li><a href="#intercept--22.08642-1.13159--19.518-2e-16" id="toc-intercept--22.08642-1.13159--19.518-2e-16" class="nav-link" data-scroll-target="#intercept--22.08642-1.13159--19.518-2e-16"><span class="header-section-number">17.51</span> (Intercept) -22.08642 1.13159 -19.518 &lt; 2e-16 ***</a></li>
+  <li><a href="#qualification-1.55224-0.14058-11.042-2e-16" id="toc-qualification-1.55224-0.14058-11.042-2e-16" class="nav-link" data-scroll-target="#qualification-1.55224-0.14058-11.042-2e-16"><span class="header-section-number">17.52</span> qualification 1.55224 0.14058 11.042 &lt; 2e-16 ***</a></li>
+  <li><a href="#autonomy-0.18304-0.24017-0.762-0.446" id="toc-autonomy-0.18304-0.24017-0.762-0.446" class="nav-link" data-scroll-target="#autonomy-0.18304-0.24017-0.762-0.446"><span class="header-section-number">17.53</span> autonomy 0.18304 0.24017 0.762 0.446</a></li>
+  <li><a href="#subdiv_regulations--0.08816-0.27523--0.320-0.749" id="toc-subdiv_regulations--0.08816-0.27523--0.320-0.749" class="nav-link" data-scroll-target="#subdiv_regulations--0.08816-0.27523--0.320-0.749"><span class="header-section-number">17.54</span> subdiv_regulations -0.08816 0.27523 -0.320 0.749</a></li>
+  <li><a href="#company_regulations-0.10685-0.21973-0.486-0.627" id="toc-company_regulations-0.10685-0.21973-0.486-0.627" class="nav-link" data-scroll-target="#company_regulations-0.10685-0.21973-0.486-0.627"><span class="header-section-number">17.55</span> company_regulations 0.10685 0.21973 0.486 0.627</a></li>
+  <li><a href="#direct_juniors-8.86211-0.70679-12.539-2e-16" id="toc-direct_juniors-8.86211-0.70679-12.539-2e-16" class="nav-link" data-scroll-target="#direct_juniors-8.86211-0.70679-12.539-2e-16"><span class="header-section-number">17.56</span> direct_juniors 8.86211 0.70679 12.539 &lt; 2e-16 ***</a></li>
+  <li><a href="#func_juniors-2.98508-0.26324-11.340-2e-16" id="toc-func_juniors-2.98508-0.26324-11.340-2e-16" class="nav-link" data-scroll-target="#func_juniors-2.98508-0.26324-11.340-2e-16"><span class="header-section-number">17.57</span> func_juniors 2.98508 0.26324 11.340 &lt; 2e-16 ***</a></li>
+  <li><a href="#income_influence-0.63992-0.16049-3.987-6.68e-05" id="toc-income_influence-0.63992-0.16049-3.987-6.68e-05" class="nav-link" data-scroll-target="#income_influence-0.63992-0.16049-3.987-6.68e-05"><span class="header-section-number">17.58</span> income_influence 0.63992 0.16049 3.987 6.68e-05 ***</a></li>
+  <li><a href="#error_cost--0.04441-0.15745--0.282-0.778" id="toc-error_cost--0.04441-0.15745--0.282-0.778" class="nav-link" data-scroll-target="#error_cost--0.04441-0.15745--0.282-0.778"><span class="header-section-number">17.59</span> error_cost -0.04441 0.15745 -0.282 0.778</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13"><span class="header-section-number">17.60</span> —</a></li>
+  <li><a href="#signif.-codes-0-0.001-0.01-0.05-.-0.1-1-1" id="toc-signif.-codes-0-0.001-0.01-0.05-.-0.1-1-1" class="nav-link" data-scroll-target="#signif.-codes-0-0.001-0.01-0.05-.-0.1-1-1"><span class="header-section-number">17.61</span> Signif. codes: 0 ‘<em><strong>’ 0.001 ’</strong>’ 0.01 ’</em>’ 0.05 ‘.’ 0.1 ’ ’ 1</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14"><span class="header-section-number">17.62</span> </a></li>
+  <li><a href="#dispersion-parameter-for-binomial-family-taken-to-be-1" id="toc-dispersion-parameter-for-binomial-family-taken-to-be-1" class="nav-link" data-scroll-target="#dispersion-parameter-for-binomial-family-taken-to-be-1"><span class="header-section-number">17.63</span> (Dispersion parameter for binomial family taken to be 1)</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15"><span class="header-section-number">17.64</span> </a></li>
+  <li><a href="#null-deviance-3626.58-on-3209-degrees-of-freedom" id="toc-null-deviance-3626.58-on-3209-degrees-of-freedom" class="nav-link" data-scroll-target="#null-deviance-3626.58-on-3209-degrees-of-freedom"><span class="header-section-number">17.65</span> Null deviance: 3626.58 on 3209 degrees of freedom</a></li>
+  <li><a href="#residual-deviance-640.79-on-3201-degrees-of-freedom" id="toc-residual-deviance-640.79-on-3201-degrees-of-freedom" class="nav-link" data-scroll-target="#residual-deviance-640.79-on-3201-degrees-of-freedom"><span class="header-section-number">17.66</span> Residual deviance: 640.79 on 3201 degrees of freedom</a></li>
+  <li><a href="#aic-658.79" id="toc-aic-658.79" class="nav-link" data-scroll-target="#aic-658.79"><span class="header-section-number">17.67</span> AIC: 658.79</a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16"><span class="header-section-number">17.68</span> </a></li>
+  <li><a href="#number-of-fisher-scoring-iterations-8" id="toc-number-of-fisher-scoring-iterations-8" class="nav-link" data-scroll-target="#number-of-fisher-scoring-iterations-8"><span class="header-section-number">17.69</span> Number of Fisher Scoring iterations: 8</a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17"><span class="header-section-number">17.70</span> </a></li>
+  <li><a href="#call-2" id="toc-call-2" class="nav-link" data-scroll-target="#call-2"><span class="header-section-number">17.71</span> Call:</a></li>
+  <li><a href="#glmformula-lvl-.-family-binomiallink-logit-data-managers-1" id="toc-glmformula-lvl-.-family-binomiallink-logit-data-managers-1" class="nav-link" data-scroll-target="#glmformula-lvl-.-family-binomiallink-logit-data-managers-1"><span class="header-section-number">17.72</span> glm(formula = lvl ~ ., family = binomial(link = “logit”), data = managers)</a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18"><span class="header-section-number">17.73</span> </a></li>
+  <li><a href="#deviance-residuals-1" id="toc-deviance-residuals-1" class="nav-link" data-scroll-target="#deviance-residuals-1"><span class="header-section-number">17.74</span> Deviance Residuals:</a></li>
+  <li><a href="#min-1q-median-3q-max-2" id="toc-min-1q-median-3q-max-2" class="nav-link" data-scroll-target="#min-1q-median-3q-max-2"><span class="header-section-number">17.75</span> Min 1Q Median 3Q Max</a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19"><span class="header-section-number">17.76</span> -3.8626 -0.0897 -0.0800 0.0000 3.5607</a></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20"><span class="header-section-number">17.77</span> </a></li>
+  <li><a href="#coefficients-2" id="toc-coefficients-2" class="nav-link" data-scroll-target="#coefficients-2"><span class="header-section-number">17.78</span> Coefficients:</a></li>
+  <li><a href="#estimate-std.-error-z-value-prz-1" id="toc-estimate-std.-error-z-value-prz-1" class="nav-link" data-scroll-target="#estimate-std.-error-z-value-prz-1"><span class="header-section-number">17.79</span> Estimate Std. Error z value Pr(&gt;|z|)</a></li>
+  <li><a href="#intercept--22.08642-1.13159--19.518-2e-16-1" id="toc-intercept--22.08642-1.13159--19.518-2e-16-1" class="nav-link" data-scroll-target="#intercept--22.08642-1.13159--19.518-2e-16-1"><span class="header-section-number">17.80</span> (Intercept) -22.08642 1.13159 -19.518 &lt; 2e-16 ***</a></li>
+  <li><a href="#qualification-1.55224-0.14058-11.042-2e-16-1" id="toc-qualification-1.55224-0.14058-11.042-2e-16-1" class="nav-link" data-scroll-target="#qualification-1.55224-0.14058-11.042-2e-16-1"><span class="header-section-number">17.81</span> qualification 1.55224 0.14058 11.042 &lt; 2e-16 ***</a></li>
+  <li><a href="#autonomy-0.18304-0.24017-0.762-0.446-1" id="toc-autonomy-0.18304-0.24017-0.762-0.446-1" class="nav-link" data-scroll-target="#autonomy-0.18304-0.24017-0.762-0.446-1"><span class="header-section-number">17.82</span> autonomy 0.18304 0.24017 0.762 0.446</a></li>
+  <li><a href="#subdiv_regulations--0.08816-0.27523--0.320-0.749-1" id="toc-subdiv_regulations--0.08816-0.27523--0.320-0.749-1" class="nav-link" data-scroll-target="#subdiv_regulations--0.08816-0.27523--0.320-0.749-1"><span class="header-section-number">17.83</span> subdiv_regulations -0.08816 0.27523 -0.320 0.749</a></li>
+  <li><a href="#company_regulations-0.10685-0.21973-0.486-0.627-1" id="toc-company_regulations-0.10685-0.21973-0.486-0.627-1" class="nav-link" data-scroll-target="#company_regulations-0.10685-0.21973-0.486-0.627-1"><span class="header-section-number">17.84</span> company_regulations 0.10685 0.21973 0.486 0.627</a></li>
+  <li><a href="#direct_juniors-8.86211-0.70679-12.539-2e-16-1" id="toc-direct_juniors-8.86211-0.70679-12.539-2e-16-1" class="nav-link" data-scroll-target="#direct_juniors-8.86211-0.70679-12.539-2e-16-1"><span class="header-section-number">17.85</span> direct_juniors 8.86211 0.70679 12.539 &lt; 2e-16 ***</a></li>
+  <li><a href="#func_juniors-2.98508-0.26324-11.340-2e-16-1" id="toc-func_juniors-2.98508-0.26324-11.340-2e-16-1" class="nav-link" data-scroll-target="#func_juniors-2.98508-0.26324-11.340-2e-16-1"><span class="header-section-number">17.86</span> func_juniors 2.98508 0.26324 11.340 &lt; 2e-16 ***</a></li>
+  <li><a href="#income_influence-0.63992-0.16049-3.987-6.68e-05-1" id="toc-income_influence-0.63992-0.16049-3.987-6.68e-05-1" class="nav-link" data-scroll-target="#income_influence-0.63992-0.16049-3.987-6.68e-05-1"><span class="header-section-number">17.87</span> income_influence 0.63992 0.16049 3.987 6.68e-05 ***</a></li>
+  <li><a href="#error_cost--0.04441-0.15745--0.282-0.778-1" id="toc-error_cost--0.04441-0.15745--0.282-0.778-1" class="nav-link" data-scroll-target="#error_cost--0.04441-0.15745--0.282-0.778-1"><span class="header-section-number">17.88</span> error_cost -0.04441 0.15745 -0.282 0.778</a></li>
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21"><span class="header-section-number">17.89</span> —</a></li>
+  <li><a href="#signif.-codes-0-0.001-0.01-0.05-.-0.1-1-2" id="toc-signif.-codes-0-0.001-0.01-0.05-.-0.1-1-2" class="nav-link" data-scroll-target="#signif.-codes-0-0.001-0.01-0.05-.-0.1-1-2"><span class="header-section-number">17.90</span> Signif. codes: 0 ‘<em><strong>’ 0.001 ’</strong>’ 0.01 ’</em>’ 0.05 ‘.’ 0.1 ’ ’ 1</a></li>
+  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22"><span class="header-section-number">17.91</span> </a></li>
+  <li><a href="#dispersion-parameter-for-binomial-family-taken-to-be-1-1" id="toc-dispersion-parameter-for-binomial-family-taken-to-be-1-1" class="nav-link" data-scroll-target="#dispersion-parameter-for-binomial-family-taken-to-be-1-1"><span class="header-section-number">17.92</span> (Dispersion parameter for binomial family taken to be 1)</a></li>
+  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23"><span class="header-section-number">17.93</span> </a></li>
+  <li><a href="#null-deviance-3626.58-on-3209-degrees-of-freedom-1" id="toc-null-deviance-3626.58-on-3209-degrees-of-freedom-1" class="nav-link" data-scroll-target="#null-deviance-3626.58-on-3209-degrees-of-freedom-1"><span class="header-section-number">17.94</span> Null deviance: 3626.58 on 3209 degrees of freedom</a></li>
+  <li><a href="#residual-deviance-640.79-on-3201-degrees-of-freedom-1" id="toc-residual-deviance-640.79-on-3201-degrees-of-freedom-1" class="nav-link" data-scroll-target="#residual-deviance-640.79-on-3201-degrees-of-freedom-1"><span class="header-section-number">17.95</span> Residual deviance: 640.79 on 3201 degrees of freedom</a></li>
+  <li><a href="#aic-658.79-1" id="toc-aic-658.79-1" class="nav-link" data-scroll-target="#aic-658.79-1"><span class="header-section-number">17.96</span> AIC: 658.79</a></li>
+  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24"><span class="header-section-number">17.97</span> </a></li>
+  <li><a href="#number-of-fisher-scoring-iterations-8-1" id="toc-number-of-fisher-scoring-iterations-8-1" class="nav-link" data-scroll-target="#number-of-fisher-scoring-iterations-8-1"><span class="header-section-number">17.98</span> Number of Fisher Scoring iterations: 8</a></li>
+  <li><a href="#analysis-of-deviance-table" id="toc-analysis-of-deviance-table" class="nav-link" data-scroll-target="#analysis-of-deviance-table"><span class="header-section-number">17.99</span> Analysis of Deviance Table</a></li>
+  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25"><span class="header-section-number">17.100</span> </a></li>
+  <li><a href="#model-1-lvl-1" id="toc-model-1-lvl-1" class="nav-link" data-scroll-target="#model-1-lvl-1"><span class="header-section-number">17.101</span> Model 1: lvl ~ 1</a></li>
+  <li><a href="#model-2-lvl-qualification-autonomy-subdiv_regulations-company_regulations" id="toc-model-2-lvl-qualification-autonomy-subdiv_regulations-company_regulations" class="nav-link" data-scroll-target="#model-2-lvl-qualification-autonomy-subdiv_regulations-company_regulations"><span class="header-section-number">17.102</span> Model 2: lvl ~ qualification + autonomy + subdiv_regulations + company_regulations +</a></li>
+  <li><a href="#direct_juniors-func_juniors-income_influence-error_cost" id="toc-direct_juniors-func_juniors-income_influence-error_cost" class="nav-link" data-scroll-target="#direct_juniors-func_juniors-income_influence-error_cost"><span class="header-section-number">17.103</span> direct_juniors + func_juniors + income_influence + error_cost</a></li>
+  <li><a href="#resid.-df-resid.-dev-df-deviance-prchi" id="toc-resid.-df-resid.-dev-df-deviance-prchi" class="nav-link" data-scroll-target="#resid.-df-resid.-dev-df-deviance-prchi"><span class="header-section-number">17.104</span> Resid. Df Resid. Dev Df Deviance Pr(&gt;Chi)</a></li>
+  <li><a href="#section-26" id="toc-section-26" class="nav-link" data-scroll-target="#section-26"><span class="header-section-number">17.105</span> 1 3209 3626.6</a></li>
+  <li><a href="#e-16" id="toc-e-16" class="nav-link" data-scroll-target="#e-16"><span class="header-section-number">17.106</span> 2 3201 640.8 8 2985.8 &lt; 2.2e-16 ***</a></li>
+  <li><a href="#section-27" id="toc-section-27" class="nav-link" data-scroll-target="#section-27"><span class="header-section-number">17.107</span> —</a></li>
+  <li><a href="#signif.-codes-0-0.001-0.01-0.05-.-0.1-1-3" id="toc-signif.-codes-0-0.001-0.01-0.05-.-0.1-1-3" class="nav-link" data-scroll-target="#signif.-codes-0-0.001-0.01-0.05-.-0.1-1-3"><span class="header-section-number">17.108</span> Signif. codes: 0 ‘<em><strong>’ 0.001 ’</strong>’ 0.01 ’</em>’ 0.05 ‘.’ 0.1 ’ ’ 1</a></li>
+  <li><a href="#df-aic" id="toc-df-aic" class="nav-link" data-scroll-target="#df-aic"><span class="header-section-number">17.109</span> df AIC</a></li>
+  <li><a href="#model_null-1-3628.5775" id="toc-model_null-1-3628.5775" class="nav-link" data-scroll-target="#model_null-1-3628.5775"><span class="header-section-number">17.110</span> model_null 1 3628.5775</a></li>
+  <li><a href="#model-9-658.7949" id="toc-model-9-658.7949" class="nav-link" data-scroll-target="#model-9-658.7949"><span class="header-section-number">17.111</span> model 9 658.7949</a></li>
+  <li><a href="#df-bic" id="toc-df-bic" class="nav-link" data-scroll-target="#df-bic"><span class="header-section-number">17.112</span> df BIC</a></li>
+  <li><a href="#model_null-1-3634.6516" id="toc-model_null-1-3634.6516" class="nav-link" data-scroll-target="#model_null-1-3634.6516"><span class="header-section-number">17.113</span> model_null 1 3634.6516</a></li>
+  <li><a href="#model-9-713.4611" id="toc-model-9-713.4611" class="nav-link" data-scroll-target="#model-9-713.4611"><span class="header-section-number">17.114</span> model 9 713.4611</a></li>
+  </ul></li>
+  <li><a href="#η" id="toc-η" class="nav-link" data-scroll-target="#η"><span class="header-section-number">18</span> η</a></li>
+  <li><a href="#η-1" id="toc-η-1" class="nav-link" data-scroll-target="#η-1"><span class="header-section-number">19</span> η</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -360,241 +485,713 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>17.1 Ограничения общих линейных моделей Модели, которые мы изучали на предыдущих занятиях носят название общих линейных моделей (general linear models). Они достаточно просты и удобны в большинстве случаев, однако имеют ряд важных ограничений.</p>
+<p>Вспомним, как выглядит уравнение такой модели:</p>
+<section id="y" class="level1" data-number="17">
+<h1 data-number="17"><span class="header-section-number">17</span> y</h1>
+<p>β 0 + β 1 x 1 + ⋯ + β p x p + ε</p>
+<p>Предикторы в такой модели могут быть как дискретными, так и непрерывными.</p>
+<p>Важнейшим допущением и требованием этой модели является распределение ошибки:</p>
+<p>ε ∼ N ( 0 , σ )</p>
+<p>Поскольку ошибка модели должна быть распределена нормально, а моделируется среднее значение, то можно сформулировать более общее допущение / требование:</p>
+<p>y i ∼ N ( μ i , σ )</p>
+<p>Таким образом, общие линейные модели позволяют моделировать зависимости только для нормальнораспределенных величин. Если же наша целевая переменная подчиняется другому распределению, эти модели не годятся.</p>
+<p>Однако нам на помощь приходят обобщенные линейные модели (generalized linear models), которые позволяют моделировать зависимости величин, подчиняющихся не только нормальному распределению, но и многим другим.</p>
+<p>Мы познакомимся с общей логикой построения GLM, подробно рассмотрев один из вариантов таких моделей, а именно биномиальную регрессию.</p>
+<p>17.2 Бинарные переменные Эти переменные достаточно широко распространены как повседневности, так и в науке. Блюдо вкусное или невкусное, команда выиграла или проиграла, пациент в результате медицинских манипуляций выжил или умер, в ходе эксперимента была выбрана какая-то опция или нет, сдал студент экзамен или не сдал — и т.д.</p>
+<p>Эти события могут быть связаны с раздичными предикторами, и такую взаимосвязь можно описать с помощью регрессионных моделей.</p>
+<p>17.3 Данные Снова начнем с данных — на этот раз про менеджеров. Это часть данных большого датасета, собранного в рамках одного из HR-исследований.</p>
+<section id="a-tibble-6-10" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="a-tibble-6-10"><span class="header-section-number">17.1</span> # A tibble: 6 × 10</h2>
+</section>
+<section id="id-lvl-quali¹-auton²-subdi³-compa⁴-direc⁵-func_⁶-incom⁷-error⁸" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="id-lvl-quali¹-auton²-subdi³-compa⁴-direc⁵-func_⁶-incom⁷-error⁸"><span class="header-section-number">17.2</span> id lvl quali…¹ auton…² subdi…³ compa…⁴ direc…⁵ func_…⁶ incom…⁷ error…⁸</h2>
+</section>
+<section id="section" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="section"><span class="header-section-number">17.3</span> <chr> <chr> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></chr></chr></h2>
+</section>
+<section id="таб_154-сотр-5-2-1-1-1-1-1-1" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="таб_154-сотр-5-2-1-1-1-1-1-1"><span class="header-section-number">17.4</span> 1 таб_154… Сотр… 5 2 1 1 1 1 1 1</h2>
+</section>
+<section id="таб_139-сотр-4-2-1-1-1-1-1-2" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="таб_139-сотр-4-2-1-1-1-1-1-2"><span class="header-section-number">17.5</span> 2 таб_139… Сотр… 4 2 1 1 1 1 1 2</h2>
+</section>
+<section id="таб_407-сотр-2-2-1-1-1-1-1-1" class="level2" data-number="17.6">
+<h2 data-number="17.6" class="anchored" data-anchor-id="таб_407-сотр-2-2-1-1-1-1-1-1"><span class="header-section-number">17.6</span> 3 таб_407… Сотр… 2 2 1 1 1 1 1 1</h2>
+</section>
+<section id="таб_417-сотр-4-3-1-1-1-1-1-1" class="level2" data-number="17.7">
+<h2 data-number="17.7" class="anchored" data-anchor-id="таб_417-сотр-4-3-1-1-1-1-1-1"><span class="header-section-number">17.7</span> 4 таб_417… Сотр… 4 3 1 1 1 1 1 1</h2>
+</section>
+<section id="таб_633-мене-5-3-2-3-2-1-3-5" class="level2" data-number="17.8">
+<h2 data-number="17.8" class="anchored" data-anchor-id="таб_633-мене-5-3-2-3-2-1-3-5"><span class="header-section-number">17.8</span> 5 таб_633… Мене… 5 3 2 3 2 1 3 5</h2>
+</section>
+<section id="таб_162-сотр-2-2-1-1-1-1-2-2" class="level2" data-number="17.9">
+<h2 data-number="17.9" class="anchored" data-anchor-id="таб_162-сотр-2-2-1-1-1-1-2-2"><span class="header-section-number">17.9</span> 6 таб_162… Сотр… 2 2 1 1 1 1 2 2</h2>
+</section>
+<section id="with-abbreviated-variable-names-¹qualification-²autonomy" class="level2" data-number="17.10">
+<h2 data-number="17.10" class="anchored" data-anchor-id="with-abbreviated-variable-names-¹qualification-²autonomy"><span class="header-section-number">17.10</span> # … with abbreviated variable names ¹​qualification, ²​autonomy,</h2>
+</section>
+<section id="subdiv_regulations-⁴company_regulations-⁵direct_juniors-⁶func_juniors" class="level2" data-number="17.11">
+<h2 data-number="17.11" class="anchored" data-anchor-id="subdiv_regulations-⁴company_regulations-⁵direct_juniors-⁶func_juniors"><span class="header-section-number">17.11</span> # ³​subdiv_regulations, ⁴​company_regulations, ⁵​direct_juniors, ⁶​func_juniors,</h2>
+</section>
+<section id="income_influence-⁸error_cost" class="level2" data-number="17.12">
+<h2 data-number="17.12" class="anchored" data-anchor-id="income_influence-⁸error_cost"><span class="header-section-number">17.12</span> # ⁷​income_influence, ⁸​error_cost</h2>
+<p>У нас есть следуюшие переменные:</p>
+<p>id — табельный номер сотрудника lvl — уровень (Сотрудник или Менеджер) qualification — профессиональная квалификация autonomy — автономия в принятии решений subdiv_regulations — участие в формировании регламентов подразделения company_regulations — участие в формировании регламентов Компании direct_juniors — количество прямых подчинённых func_juniors — количество функциональных подчинённых income_influence — влияние на доход Компании error_cost — стоимость ошибки 17.4 Задача построения линейной модели В наших данных есть бинарная переменная lvl — она содержит две градации: Сотрудник и Менеджер. Вопрос, на который нам необходимо ответить: по каким параметрам различаются менеджеры и сотрудники?</p>
+</section>
+<section id="section-1" class="level2" data-number="17.13">
+<h2 data-number="17.13" class="anchored" data-anchor-id="section-1"><span class="header-section-number">17.13</span> </h2>
+</section>
+<section id="менеджер-сотрудник" class="level2" data-number="17.14">
+<h2 data-number="17.14" class="anchored" data-anchor-id="менеджер-сотрудник"><span class="header-section-number">17.14</span> Менеджер Сотрудник</h2>
+</section>
+<section id="section-2" class="level2" data-number="17.15">
+<h2 data-number="17.15" class="anchored" data-anchor-id="section-2"><span class="header-section-number">17.15</span> 810 2400</h2>
+<p>Прежде всего надо вспомнить, что мы работаем с математической моделью, которой необходимы числа, поэтому придётся перекодировать нашу целевую переменную. Пусть 1 обозначает менеджеров, а 0 — сотрудников.</p>
+<p>Теперь мы можем построить модель, описывающую связь lvl с имеющимися предикторами.</p>
+<p>Попробуем обычную линейную регрессию.</p>
+</section>
+<section id="section-3" class="level2" data-number="17.16">
+<h2 data-number="17.16" class="anchored" data-anchor-id="section-3"><span class="header-section-number">17.16</span> </h2>
+</section>
+<section id="call" class="level2" data-number="17.17">
+<h2 data-number="17.17" class="anchored" data-anchor-id="call"><span class="header-section-number">17.17</span> Call:</h2>
+</section>
+<section id="lmformula-lvl-.-data-managers" class="level2" data-number="17.18">
+<h2 data-number="17.18" class="anchored" data-anchor-id="lmformula-lvl-.-data-managers"><span class="header-section-number">17.18</span> lm(formula = lvl ~ ., data = managers)</h2>
+</section>
+<section id="section-4" class="level2" data-number="17.19">
+<h2 data-number="17.19" class="anchored" data-anchor-id="section-4"><span class="header-section-number">17.19</span> </h2>
+</section>
+<section id="residuals" class="level2" data-number="17.20">
+<h2 data-number="17.20" class="anchored" data-anchor-id="residuals"><span class="header-section-number">17.20</span> Residuals:</h2>
+</section>
+<section id="min-1q-median-3q-max" class="level2" data-number="17.21">
+<h2 data-number="17.21" class="anchored" data-anchor-id="min-1q-median-3q-max"><span class="header-section-number">17.21</span> Min 1Q Median 3Q Max</h2>
+</section>
+<section id="section-5" class="level2" data-number="17.22">
+<h2 data-number="17.22" class="anchored" data-anchor-id="section-5"><span class="header-section-number">17.22</span> -1.47532 -0.07671 -0.04250 0.06891 1.02042</h2>
+</section>
+<section id="section-6" class="level2" data-number="17.23">
+<h2 data-number="17.23" class="anchored" data-anchor-id="section-6"><span class="header-section-number">17.23</span> </h2>
+</section>
+<section id="coefficients" class="level2" data-number="17.24">
+<h2 data-number="17.24" class="anchored" data-anchor-id="coefficients"><span class="header-section-number">17.24</span> Coefficients:</h2>
+</section>
+<section id="estimate-std.-error-t-value-prt" class="level2" data-number="17.25">
+<h2 data-number="17.25" class="anchored" data-anchor-id="estimate-std.-error-t-value-prt"><span class="header-section-number">17.25</span> Estimate Std. Error t value Pr(&gt;|t|)</h2>
+</section>
+<section id="intercept--0.869056-0.015520--55.994-2e-16" class="level2" data-number="17.26">
+<h2 data-number="17.26" class="anchored" data-anchor-id="intercept--0.869056-0.015520--55.994-2e-16"><span class="header-section-number">17.26</span> (Intercept) -0.869056 0.015520 -55.994 &lt; 2e-16 ***</h2>
+</section>
+<section id="qualification-0.048487-0.004420-10.969-2e-16" class="level2" data-number="17.27">
+<h2 data-number="17.27" class="anchored" data-anchor-id="qualification-0.048487-0.004420-10.969-2e-16"><span class="header-section-number">17.27</span> qualification 0.048487 0.004420 10.969 &lt; 2e-16 ***</h2>
+</section>
+<section id="autonomy-0.016780-0.008309-2.019-0.043527" class="level2" data-number="17.28">
+<h2 data-number="17.28" class="anchored" data-anchor-id="autonomy-0.016780-0.008309-2.019-0.043527"><span class="header-section-number">17.28</span> autonomy 0.016780 0.008309 2.019 0.043527 *</h2>
+</section>
+<section id="subdiv_regulations-0.281009-0.014017-20.048-2e-16" class="level2" data-number="17.29">
+<h2 data-number="17.29" class="anchored" data-anchor-id="subdiv_regulations-0.281009-0.014017-20.048-2e-16"><span class="header-section-number">17.29</span> subdiv_regulations 0.281009 0.014017 20.048 &lt; 2e-16 ***</h2>
+</section>
+<section id="company_regulations--0.068712-0.011403--6.026-1.88e-09" class="level2" data-number="17.30">
+<h2 data-number="17.30" class="anchored" data-anchor-id="company_regulations--0.068712-0.011403--6.026-1.88e-09"><span class="header-section-number">17.30</span> company_regulations -0.068712 0.011403 -6.026 1.88e-09 ***</h2>
+</section>
+<section id="direct_juniors-0.369140-0.012549-29.416-2e-16" class="level2" data-number="17.31">
+<h2 data-number="17.31" class="anchored" data-anchor-id="direct_juniors-0.369140-0.012549-29.416-2e-16"><span class="header-section-number">17.31</span> direct_juniors 0.369140 0.012549 29.416 &lt; 2e-16 ***</h2>
+</section>
+<section id="func_juniors-0.107304-0.008069-13.298-2e-16" class="level2" data-number="17.32">
+<h2 data-number="17.32" class="anchored" data-anchor-id="func_juniors-0.107304-0.008069-13.298-2e-16"><span class="header-section-number">17.32</span> func_juniors 0.107304 0.008069 13.298 &lt; 2e-16 ***</h2>
+</section>
+<section id="income_influence-0.072478-0.007434-9.749-2e-16" class="level2" data-number="17.33">
+<h2 data-number="17.33" class="anchored" data-anchor-id="income_influence-0.072478-0.007434-9.749-2e-16"><span class="header-section-number">17.33</span> income_influence 0.072478 0.007434 9.749 &lt; 2e-16 ***</h2>
+</section>
+<section id="error_cost--0.026336-0.007985--3.298-0.000984" class="level2" data-number="17.34">
+<h2 data-number="17.34" class="anchored" data-anchor-id="error_cost--0.026336-0.007985--3.298-0.000984"><span class="header-section-number">17.34</span> error_cost -0.026336 0.007985 -3.298 0.000984 ***</h2>
+</section>
+<section id="section-7" class="level2" data-number="17.35">
+<h2 data-number="17.35" class="anchored" data-anchor-id="section-7"><span class="header-section-number">17.35</span> —</h2>
+</section>
+<section id="signif.-codes-0-0.001-0.01-0.05-.-0.1-1" class="level2" data-number="17.36">
+<h2 data-number="17.36" class="anchored" data-anchor-id="signif.-codes-0-0.001-0.01-0.05-.-0.1-1"><span class="header-section-number">17.36</span> Signif. codes: 0 ‘<em><strong>’ 0.001 ’</strong>’ 0.01 ’</em>’ 0.05 ‘.’ 0.1 ’ ’ 1</h2>
+</section>
+<section id="section-8" class="level2" data-number="17.37">
+<h2 data-number="17.37" class="anchored" data-anchor-id="section-8"><span class="header-section-number">17.37</span> </h2>
+</section>
+<section id="residual-standard-error-0.2235-on-3201-degrees-of-freedom" class="level2" data-number="17.38">
+<h2 data-number="17.38" class="anchored" data-anchor-id="residual-standard-error-0.2235-on-3201-degrees-of-freedom"><span class="header-section-number">17.38</span> Residual standard error: 0.2235 on 3201 degrees of freedom</h2>
+</section>
+<section id="multiple-r-squared-0.7361-adjusted-r-squared-0.7354" class="level2" data-number="17.39">
+<h2 data-number="17.39" class="anchored" data-anchor-id="multiple-r-squared-0.7361-adjusted-r-squared-0.7354"><span class="header-section-number">17.39</span> Multiple R-squared: 0.7361, Adjusted R-squared: 0.7354</h2>
+</section>
+<section id="f-statistic-1116-on-8-and-3201-df-p-value-2.2e-16" class="level2" data-number="17.40">
+<h2 data-number="17.40" class="anchored" data-anchor-id="f-statistic-1116-on-8-and-3201-df-p-value-2.2e-16"><span class="header-section-number">17.40</span> F-statistic: 1116 on 8 and 3201 DF, p-value: &lt; 2.2e-16</h2>
+<p>Модель построилась, всё суперклассно.</p>
+<p>Попробуем визуализировать, что получилось.</p>
+<p>Но получается что-то странное…</p>
+<p>Во-первых, непонятно, какая величина отложена на оси<br>
+y . Во-вторых, предсказания модели выходят за границы допустимых значений (модель предсказывает отрицательные и большие единицы значения). Поэтому простая линейная модель нам не подходит. Надо искать что-то еще.</p>
+<p>17.5 Переход от дискретной величины к непрерывной 17.5.1 Логистическая кривая Собственно бинарные переменные неудобны для работы, поэтому надо найти способ превратить такую дискретную бинарную шкалу в «безграничную» и непрерывную. При моделировании нулей и единиц переходят к моделированию вероятности получения единиц.</p>
+<p>Сама зависимая переменная в зависимости от предиктора распределена примерно так:</p>
+<p>Введем новые обозначения:</p>
+<p>p i — вероятность события<br>
+y i = 1 при данных значениях предиктора, 1 − p i — вероятность альтернативного события<br>
+y i = 0 . Получается непрерывная величина<br>
+0 ≤ p i ≤ 1 .</p>
+<p>И вроде бы как ее можно уже моделировать. Но нужно помнить, что вероятность изменяется в пределах от нуля до единицы, а прямая ничем не ограничена. Поэтому прямая — не лучший вариант.</p>
+<p>Такая закономерность моделируется логистической кривой.</p>
+<p>Она лежит как раз в пределах от 0 до 1. Наша логистическая кривая задается уравнением</p>
+<p>p i = e β 0 + β 1 x i 1 + e β 0 + β 1 x i</p>
+<p>Логистическую кривую мы больше никогда не увидим — печаль :( — но она используется внутри функций, которыми мы строим модель.</p>
+<p>17.5.2 Шансы и логиты Теперь нам надо побороться с ограниченностью логистической кривой. Для этого можно перейти от вероятностей к шансам.</p>
+<p>Шанс (отношение шансов, odds, odds ratio) — это отношение вероятности успеха к вероятности неудачи. Их величина варьируется от<br>
+0 до<br>
++ ∞ .</p>
+<p>Уже лучше, но все еще не самый лучший вариант… Последний шаг, необходимый нам, чтобы все было хорошо, юзануть логарифм, который преобразуем шансы в логиты.</p>
+<p>l o g i t ( p ) = ln ( p i 1 − p i )</p>
+<p>Значения логитов — трансформированные оценки вероятностей события. Они варьируют от<br>
+− ∞ до<br>
++ ∞ , симметричны относительно нуля, и их удобно брать в качестве зависимой переменной для построения модели. Кроме того, logit-преобразование еще и линеаризует логистическую кривую, то есть превращает её в прямую.</p>
+<p>И далет это примерно так Функция, используемая для линеаризации связи между предиктором и зависимой переменной, называется функцией связи (linked function). Функция logit-преобразоввания — одна из нескольких связывающих функций, применяемых для анализа бинарных переменных отклика.</p>
+<p>Итак, summary от всего, что было выше:</p>
+<p>От дискретной оценки событий (0 и 1) переходим к оценке вероятностей. Связь вероятностей с предиктором описывается логистической кривой. Если при помощи функции связи перейти от вероятностей к логитам, то связь будет описываться прямой линией. Параметры линейной модели для такой прямой можно оценить с помощью регрессионного анализа. 17.6 Математическая модель p i = e β 0 + β 1 x 1 + ⋯ + β p x p 1 + e β 0 + β 1 x 1 + ⋯ + β p x p</p>
+<p>Функция связи (linked function):</p>
+<p>ln ( p i 1 − p i ) = η i η i = β 0 + β 1 x 1 i + ⋯ + β p x p i</p>
+<p>Для перехода от логитов к вероятностям используется функция, обратная функции связи. В данном случае, логистическое преобразование:</p>
+<p>p i = e η i 1 + e η i</p>
+<p>17.7 Результаты логистической регрессии В общем таблица достаточно похожа на обычную линейную регрессию:</p>
+</section>
+<section id="section-9" class="level2" data-number="17.41">
+<h2 data-number="17.41" class="anchored" data-anchor-id="section-9"><span class="header-section-number">17.41</span> </h2>
+</section>
+<section id="call-1" class="level2" data-number="17.42">
+<h2 data-number="17.42" class="anchored" data-anchor-id="call-1"><span class="header-section-number">17.42</span> Call:</h2>
+</section>
+<section id="glmformula-lvl-.-family-binomiallink-logit-data-managers" class="level2" data-number="17.43">
+<h2 data-number="17.43" class="anchored" data-anchor-id="glmformula-lvl-.-family-binomiallink-logit-data-managers"><span class="header-section-number">17.43</span> glm(formula = lvl ~ ., family = binomial(link = “logit”), data = managers)</h2>
+</section>
+<section id="section-10" class="level2" data-number="17.44">
+<h2 data-number="17.44" class="anchored" data-anchor-id="section-10"><span class="header-section-number">17.44</span> </h2>
+</section>
+<section id="deviance-residuals" class="level2" data-number="17.45">
+<h2 data-number="17.45" class="anchored" data-anchor-id="deviance-residuals"><span class="header-section-number">17.45</span> Deviance Residuals:</h2>
+</section>
+<section id="min-1q-median-3q-max-1" class="level2" data-number="17.46">
+<h2 data-number="17.46" class="anchored" data-anchor-id="min-1q-median-3q-max-1"><span class="header-section-number">17.46</span> Min 1Q Median 3Q Max</h2>
+</section>
+<section id="section-11" class="level2" data-number="17.47">
+<h2 data-number="17.47" class="anchored" data-anchor-id="section-11"><span class="header-section-number">17.47</span> -3.8626 -0.0897 -0.0800 0.0000 3.5607</h2>
+</section>
+<section id="section-12" class="level2" data-number="17.48">
+<h2 data-number="17.48" class="anchored" data-anchor-id="section-12"><span class="header-section-number">17.48</span> </h2>
+</section>
+<section id="coefficients-1" class="level2" data-number="17.49">
+<h2 data-number="17.49" class="anchored" data-anchor-id="coefficients-1"><span class="header-section-number">17.49</span> Coefficients:</h2>
+</section>
+<section id="estimate-std.-error-z-value-prz" class="level2" data-number="17.50">
+<h2 data-number="17.50" class="anchored" data-anchor-id="estimate-std.-error-z-value-prz"><span class="header-section-number">17.50</span> Estimate Std. Error z value Pr(&gt;|z|)</h2>
+</section>
+<section id="intercept--22.08642-1.13159--19.518-2e-16" class="level2" data-number="17.51">
+<h2 data-number="17.51" class="anchored" data-anchor-id="intercept--22.08642-1.13159--19.518-2e-16"><span class="header-section-number">17.51</span> (Intercept) -22.08642 1.13159 -19.518 &lt; 2e-16 ***</h2>
+</section>
+<section id="qualification-1.55224-0.14058-11.042-2e-16" class="level2" data-number="17.52">
+<h2 data-number="17.52" class="anchored" data-anchor-id="qualification-1.55224-0.14058-11.042-2e-16"><span class="header-section-number">17.52</span> qualification 1.55224 0.14058 11.042 &lt; 2e-16 ***</h2>
+</section>
+<section id="autonomy-0.18304-0.24017-0.762-0.446" class="level2" data-number="17.53">
+<h2 data-number="17.53" class="anchored" data-anchor-id="autonomy-0.18304-0.24017-0.762-0.446"><span class="header-section-number">17.53</span> autonomy 0.18304 0.24017 0.762 0.446</h2>
+</section>
+<section id="subdiv_regulations--0.08816-0.27523--0.320-0.749" class="level2" data-number="17.54">
+<h2 data-number="17.54" class="anchored" data-anchor-id="subdiv_regulations--0.08816-0.27523--0.320-0.749"><span class="header-section-number">17.54</span> subdiv_regulations -0.08816 0.27523 -0.320 0.749</h2>
+</section>
+<section id="company_regulations-0.10685-0.21973-0.486-0.627" class="level2" data-number="17.55">
+<h2 data-number="17.55" class="anchored" data-anchor-id="company_regulations-0.10685-0.21973-0.486-0.627"><span class="header-section-number">17.55</span> company_regulations 0.10685 0.21973 0.486 0.627</h2>
+</section>
+<section id="direct_juniors-8.86211-0.70679-12.539-2e-16" class="level2" data-number="17.56">
+<h2 data-number="17.56" class="anchored" data-anchor-id="direct_juniors-8.86211-0.70679-12.539-2e-16"><span class="header-section-number">17.56</span> direct_juniors 8.86211 0.70679 12.539 &lt; 2e-16 ***</h2>
+</section>
+<section id="func_juniors-2.98508-0.26324-11.340-2e-16" class="level2" data-number="17.57">
+<h2 data-number="17.57" class="anchored" data-anchor-id="func_juniors-2.98508-0.26324-11.340-2e-16"><span class="header-section-number">17.57</span> func_juniors 2.98508 0.26324 11.340 &lt; 2e-16 ***</h2>
+</section>
+<section id="income_influence-0.63992-0.16049-3.987-6.68e-05" class="level2" data-number="17.58">
+<h2 data-number="17.58" class="anchored" data-anchor-id="income_influence-0.63992-0.16049-3.987-6.68e-05"><span class="header-section-number">17.58</span> income_influence 0.63992 0.16049 3.987 6.68e-05 ***</h2>
+</section>
+<section id="error_cost--0.04441-0.15745--0.282-0.778" class="level2" data-number="17.59">
+<h2 data-number="17.59" class="anchored" data-anchor-id="error_cost--0.04441-0.15745--0.282-0.778"><span class="header-section-number">17.59</span> error_cost -0.04441 0.15745 -0.282 0.778</h2>
+</section>
+<section id="section-13" class="level2" data-number="17.60">
+<h2 data-number="17.60" class="anchored" data-anchor-id="section-13"><span class="header-section-number">17.60</span> —</h2>
+</section>
+<section id="signif.-codes-0-0.001-0.01-0.05-.-0.1-1-1" class="level2" data-number="17.61">
+<h2 data-number="17.61" class="anchored" data-anchor-id="signif.-codes-0-0.001-0.01-0.05-.-0.1-1-1"><span class="header-section-number">17.61</span> Signif. codes: 0 ‘<em><strong>’ 0.001 ’</strong>’ 0.01 ’</em>’ 0.05 ‘.’ 0.1 ’ ’ 1</h2>
+</section>
+<section id="section-14" class="level2" data-number="17.62">
+<h2 data-number="17.62" class="anchored" data-anchor-id="section-14"><span class="header-section-number">17.62</span> </h2>
+</section>
+<section id="dispersion-parameter-for-binomial-family-taken-to-be-1" class="level2" data-number="17.63">
+<h2 data-number="17.63" class="anchored" data-anchor-id="dispersion-parameter-for-binomial-family-taken-to-be-1"><span class="header-section-number">17.63</span> (Dispersion parameter for binomial family taken to be 1)</h2>
+</section>
+<section id="section-15" class="level2" data-number="17.64">
+<h2 data-number="17.64" class="anchored" data-anchor-id="section-15"><span class="header-section-number">17.64</span> </h2>
+</section>
+<section id="null-deviance-3626.58-on-3209-degrees-of-freedom" class="level2" data-number="17.65">
+<h2 data-number="17.65" class="anchored" data-anchor-id="null-deviance-3626.58-on-3209-degrees-of-freedom"><span class="header-section-number">17.65</span> Null deviance: 3626.58 on 3209 degrees of freedom</h2>
+</section>
+<section id="residual-deviance-640.79-on-3201-degrees-of-freedom" class="level2" data-number="17.66">
+<h2 data-number="17.66" class="anchored" data-anchor-id="residual-deviance-640.79-on-3201-degrees-of-freedom"><span class="header-section-number">17.66</span> Residual deviance: 640.79 on 3201 degrees of freedom</h2>
+</section>
+<section id="aic-658.79" class="level2" data-number="17.67">
+<h2 data-number="17.67" class="anchored" data-anchor-id="aic-658.79"><span class="header-section-number">17.67</span> AIC: 658.79</h2>
+</section>
+<section id="section-16" class="level2" data-number="17.68">
+<h2 data-number="17.68" class="anchored" data-anchor-id="section-16"><span class="header-section-number">17.68</span> </h2>
+</section>
+<section id="number-of-fisher-scoring-iterations-8" class="level2" data-number="17.69">
+<h2 data-number="17.69" class="anchored" data-anchor-id="number-of-fisher-scoring-iterations-8"><span class="header-section-number">17.69</span> Number of Fisher Scoring iterations: 8</h2>
+<p>Однако есть некоторые отличия.</p>
+<p>Во-первых, нет F-статистики. Во-вторых, нет<br>
+R 2 .</p>
+<p>Это связано с тем, что алгоритм GLM не работает с дисперсией и суммой квадратов, так как задача подбора коэффициентов модели логистической регрессии не имеет аналитического решения, как было в случае линейной регрессии. Поэтому модель подбирается методом максимального правдоподобия.</p>
+<p>Чё за метод такой? 17.8 Анализ модели Итак, продолжим изучать аутпут логистической регрессии.</p>
+</section>
+<section id="section-17" class="level2" data-number="17.70">
+<h2 data-number="17.70" class="anchored" data-anchor-id="section-17"><span class="header-section-number">17.70</span> </h2>
+</section>
+<section id="call-2" class="level2" data-number="17.71">
+<h2 data-number="17.71" class="anchored" data-anchor-id="call-2"><span class="header-section-number">17.71</span> Call:</h2>
+</section>
+<section id="glmformula-lvl-.-family-binomiallink-logit-data-managers-1" class="level2" data-number="17.72">
+<h2 data-number="17.72" class="anchored" data-anchor-id="glmformula-lvl-.-family-binomiallink-logit-data-managers-1"><span class="header-section-number">17.72</span> glm(formula = lvl ~ ., family = binomial(link = “logit”), data = managers)</h2>
+</section>
+<section id="section-18" class="level2" data-number="17.73">
+<h2 data-number="17.73" class="anchored" data-anchor-id="section-18"><span class="header-section-number">17.73</span> </h2>
+</section>
+<section id="deviance-residuals-1" class="level2" data-number="17.74">
+<h2 data-number="17.74" class="anchored" data-anchor-id="deviance-residuals-1"><span class="header-section-number">17.74</span> Deviance Residuals:</h2>
+</section>
+<section id="min-1q-median-3q-max-2" class="level2" data-number="17.75">
+<h2 data-number="17.75" class="anchored" data-anchor-id="min-1q-median-3q-max-2"><span class="header-section-number">17.75</span> Min 1Q Median 3Q Max</h2>
+</section>
+<section id="section-19" class="level2" data-number="17.76">
+<h2 data-number="17.76" class="anchored" data-anchor-id="section-19"><span class="header-section-number">17.76</span> -3.8626 -0.0897 -0.0800 0.0000 3.5607</h2>
+</section>
+<section id="section-20" class="level2" data-number="17.77">
+<h2 data-number="17.77" class="anchored" data-anchor-id="section-20"><span class="header-section-number">17.77</span> </h2>
+</section>
+<section id="coefficients-2" class="level2" data-number="17.78">
+<h2 data-number="17.78" class="anchored" data-anchor-id="coefficients-2"><span class="header-section-number">17.78</span> Coefficients:</h2>
+</section>
+<section id="estimate-std.-error-z-value-prz-1" class="level2" data-number="17.79">
+<h2 data-number="17.79" class="anchored" data-anchor-id="estimate-std.-error-z-value-prz-1"><span class="header-section-number">17.79</span> Estimate Std. Error z value Pr(&gt;|z|)</h2>
+</section>
+<section id="intercept--22.08642-1.13159--19.518-2e-16-1" class="level2" data-number="17.80">
+<h2 data-number="17.80" class="anchored" data-anchor-id="intercept--22.08642-1.13159--19.518-2e-16-1"><span class="header-section-number">17.80</span> (Intercept) -22.08642 1.13159 -19.518 &lt; 2e-16 ***</h2>
+</section>
+<section id="qualification-1.55224-0.14058-11.042-2e-16-1" class="level2" data-number="17.81">
+<h2 data-number="17.81" class="anchored" data-anchor-id="qualification-1.55224-0.14058-11.042-2e-16-1"><span class="header-section-number">17.81</span> qualification 1.55224 0.14058 11.042 &lt; 2e-16 ***</h2>
+</section>
+<section id="autonomy-0.18304-0.24017-0.762-0.446-1" class="level2" data-number="17.82">
+<h2 data-number="17.82" class="anchored" data-anchor-id="autonomy-0.18304-0.24017-0.762-0.446-1"><span class="header-section-number">17.82</span> autonomy 0.18304 0.24017 0.762 0.446</h2>
+</section>
+<section id="subdiv_regulations--0.08816-0.27523--0.320-0.749-1" class="level2" data-number="17.83">
+<h2 data-number="17.83" class="anchored" data-anchor-id="subdiv_regulations--0.08816-0.27523--0.320-0.749-1"><span class="header-section-number">17.83</span> subdiv_regulations -0.08816 0.27523 -0.320 0.749</h2>
+</section>
+<section id="company_regulations-0.10685-0.21973-0.486-0.627-1" class="level2" data-number="17.84">
+<h2 data-number="17.84" class="anchored" data-anchor-id="company_regulations-0.10685-0.21973-0.486-0.627-1"><span class="header-section-number">17.84</span> company_regulations 0.10685 0.21973 0.486 0.627</h2>
+</section>
+<section id="direct_juniors-8.86211-0.70679-12.539-2e-16-1" class="level2" data-number="17.85">
+<h2 data-number="17.85" class="anchored" data-anchor-id="direct_juniors-8.86211-0.70679-12.539-2e-16-1"><span class="header-section-number">17.85</span> direct_juniors 8.86211 0.70679 12.539 &lt; 2e-16 ***</h2>
+</section>
+<section id="func_juniors-2.98508-0.26324-11.340-2e-16-1" class="level2" data-number="17.86">
+<h2 data-number="17.86" class="anchored" data-anchor-id="func_juniors-2.98508-0.26324-11.340-2e-16-1"><span class="header-section-number">17.86</span> func_juniors 2.98508 0.26324 11.340 &lt; 2e-16 ***</h2>
+</section>
+<section id="income_influence-0.63992-0.16049-3.987-6.68e-05-1" class="level2" data-number="17.87">
+<h2 data-number="17.87" class="anchored" data-anchor-id="income_influence-0.63992-0.16049-3.987-6.68e-05-1"><span class="header-section-number">17.87</span> income_influence 0.63992 0.16049 3.987 6.68e-05 ***</h2>
+</section>
+<section id="error_cost--0.04441-0.15745--0.282-0.778-1" class="level2" data-number="17.88">
+<h2 data-number="17.88" class="anchored" data-anchor-id="error_cost--0.04441-0.15745--0.282-0.778-1"><span class="header-section-number">17.88</span> error_cost -0.04441 0.15745 -0.282 0.778</h2>
+</section>
+<section id="section-21" class="level2" data-number="17.89">
+<h2 data-number="17.89" class="anchored" data-anchor-id="section-21"><span class="header-section-number">17.89</span> —</h2>
+</section>
+<section id="signif.-codes-0-0.001-0.01-0.05-.-0.1-1-2" class="level2" data-number="17.90">
+<h2 data-number="17.90" class="anchored" data-anchor-id="signif.-codes-0-0.001-0.01-0.05-.-0.1-1-2"><span class="header-section-number">17.90</span> Signif. codes: 0 ‘<em><strong>’ 0.001 ’</strong>’ 0.01 ’</em>’ 0.05 ‘.’ 0.1 ’ ’ 1</h2>
+</section>
+<section id="section-22" class="level2" data-number="17.91">
+<h2 data-number="17.91" class="anchored" data-anchor-id="section-22"><span class="header-section-number">17.91</span> </h2>
+</section>
+<section id="dispersion-parameter-for-binomial-family-taken-to-be-1-1" class="level2" data-number="17.92">
+<h2 data-number="17.92" class="anchored" data-anchor-id="dispersion-parameter-for-binomial-family-taken-to-be-1-1"><span class="header-section-number">17.92</span> (Dispersion parameter for binomial family taken to be 1)</h2>
+</section>
+<section id="section-23" class="level2" data-number="17.93">
+<h2 data-number="17.93" class="anchored" data-anchor-id="section-23"><span class="header-section-number">17.93</span> </h2>
+</section>
+<section id="null-deviance-3626.58-on-3209-degrees-of-freedom-1" class="level2" data-number="17.94">
+<h2 data-number="17.94" class="anchored" data-anchor-id="null-deviance-3626.58-on-3209-degrees-of-freedom-1"><span class="header-section-number">17.94</span> Null deviance: 3626.58 on 3209 degrees of freedom</h2>
+</section>
+<section id="residual-deviance-640.79-on-3201-degrees-of-freedom-1" class="level2" data-number="17.95">
+<h2 data-number="17.95" class="anchored" data-anchor-id="residual-deviance-640.79-on-3201-degrees-of-freedom-1"><span class="header-section-number">17.95</span> Residual deviance: 640.79 on 3201 degrees of freedom</h2>
+</section>
+<section id="aic-658.79-1" class="level2" data-number="17.96">
+<h2 data-number="17.96" class="anchored" data-anchor-id="aic-658.79-1"><span class="header-section-number">17.96</span> AIC: 658.79</h2>
+</section>
+<section id="section-24" class="level2" data-number="17.97">
+<h2 data-number="17.97" class="anchored" data-anchor-id="section-24"><span class="header-section-number">17.97</span> </h2>
+</section>
+<section id="number-of-fisher-scoring-iterations-8-1" class="level2" data-number="17.98">
+<h2 data-number="17.98" class="anchored" data-anchor-id="number-of-fisher-scoring-iterations-8-1"><span class="header-section-number">17.98</span> Number of Fisher Scoring iterations: 8</h2>
+<p>Мы видим знакомую нам табличку с оценками коэффициентов. У каждого предиктора есть информация о значении коэффициента при нем (Estimate), значение стандартной ошибки, z-value и p-value, рассчитанный для последнего.</p>
+<p>Судя по аутпуту, значимыми являются следующие предикторы: профессиональная квалификация, количество прямых и функциональных подчинённых и влияние на доход компании. Заметьте, что в этой модели значимых предикторов меньше, чем в модели обычной линейной регрессии. Но так ли это?</p>
+<p>Внимательно посмотрим на эту табличку. Раньше у нас были значения t-статистики — теперь z-статистики. К чему это может приводить?</p>
+<p>Чтобы ответить на этот вопрос, надо разобраться, что такое этот z-тест.</p>
+<p>17.8.1 Тест Вальда</p>
+<p>Значение z-value является результатом подсчета теста Вальда и позволяет оценить значимость коэффициента модели. Расчет статистики похож на подсчет t-теста, только распределение данной статистики ассимптотически стремиться к нормальному (отсюда и z). Ассимптотика приводит к тому, что опеределение значимости коэффициентов на маленьких выборках будет неточным.</p>
+<p>H 0 : β k = 0 H 1 : β k ≠ 0 z = b k − β k S E b k = b k S E b k ∼ N ( 0 , 1 )</p>
+<p>17.8.2 Анализ девиансы и статистическая значимость модели Для получения более точных оценок необходимо поработать c логарифмами правдоподобий. Вообще логарифмы правдоподобий используются в GLM много для чего:</p>
+<p>для описания качества подгонки модели; для тестирования значимости подобранной модели в целом; для тестирования значимости отдельных предикторов; для отбора моделей. Дла понимания механики анализа нам потребуется несколько полезных абстракций:</p>
+<p>Насыщенная модель (saturated model) — каждое уникальное наблюдение (сочетание предикторов) описывается одним из<br>
+n параметров. ln L s a t = 0 d f s a t = n − p s a t = n − n = 0</p>
+<p>Нулевая модель (null model) — все наблюдения описываются одним параметром (средним значением). ^ y i = β 0 ln L n u l l ≠ 0 → − ∞ d f n u l l = n − p n u l l = n − 1</p>
+<p>Наша реальная (предложенная) модель, которую мы подбираем, будет находится где-то между насыщенной и нулевой моделью (вернее, не сама модель, а значение логарифма её правдоподобия).</p>
+<p>^ y i = β 0 + β 1 x 1 i + ⋯ + β p x p i ln L m o d e l ≠ 0 d f m o d e l = n − p m o d e l</p>
+<p>Девианса является мерой различия правдоподобий двух моделей (оценка разницы логарифмов правдоподобий). [см. рисунок выше]</p>
+<p>Остаточная девианса d r e s i d = 2 ( ln L s a t − ln L m o d e l ) = − 2 ln ( L m o d e l )</p>
+<p>Нулевая девианса d n u l l = 2 ( ln L s a t − ln L n u l l ) = − 2 ln ( L n u l l )</p>
+<p>Сравнение нулевой и остаточной девианс позволяет судить о статистической значимости модели в целом. Такое сравнение проводится с помощью теста отношения правдоподобий (likelihood ratio test, LRT).</p>
+<p>d n u l l − d r e s i d = − 2 ( ln L n u l l − ln L m o d e l ) = 2 ( ln L m o d e l − ln L n u l l ) = 2 ln ( L m o d e l L n u l l ) L R T = 2 ln ( L M 1 L M 2 ) = 2 ( ln L M 1 − ln L M 2 ) , где<br>
+M 1 , M 2 — вложенные модели ( M 1 — более полная,<br>
+M 2 — уменьшенная),<br>
+L M 1 , L M 2 — правдоподобия.</p>
+<p>Распределение разницы логарифмов правдоподобий аппроксиммируется распределением<br>
+χ 2 с числом степеней свободы<br>
+d f = d f M 2 − d f M 1 .</p>
+<p>LRT для тестирования значимости модели в целом:</p>
+<p>L R T = 2 ln ( L m o d e l L n u l l ) = 2 ( ln L m o d e l − ln L n u l l ) = d n u l l − d r e s i d d f = p m o d e l − 1</p>
+<p>В конечном счете результаты анализа девиансы выглядят так:</p>
+</section>
+<section id="analysis-of-deviance-table" class="level2" data-number="17.99">
+<h2 data-number="17.99" class="anchored" data-anchor-id="analysis-of-deviance-table"><span class="header-section-number">17.99</span> Analysis of Deviance Table</h2>
+</section>
+<section id="section-25" class="level2" data-number="17.100">
+<h2 data-number="17.100" class="anchored" data-anchor-id="section-25"><span class="header-section-number">17.100</span> </h2>
+</section>
+<section id="model-1-lvl-1" class="level2" data-number="17.101">
+<h2 data-number="17.101" class="anchored" data-anchor-id="model-1-lvl-1"><span class="header-section-number">17.101</span> Model 1: lvl ~ 1</h2>
+</section>
+<section id="model-2-lvl-qualification-autonomy-subdiv_regulations-company_regulations" class="level2" data-number="17.102">
+<h2 data-number="17.102" class="anchored" data-anchor-id="model-2-lvl-qualification-autonomy-subdiv_regulations-company_regulations"><span class="header-section-number">17.102</span> Model 2: lvl ~ qualification + autonomy + subdiv_regulations + company_regulations +</h2>
+</section>
+<section id="direct_juniors-func_juniors-income_influence-error_cost" class="level2" data-number="17.103">
+<h2 data-number="17.103" class="anchored" data-anchor-id="direct_juniors-func_juniors-income_influence-error_cost"><span class="header-section-number">17.103</span> direct_juniors + func_juniors + income_influence + error_cost</h2>
+</section>
+<section id="resid.-df-resid.-dev-df-deviance-prchi" class="level2" data-number="17.104">
+<h2 data-number="17.104" class="anchored" data-anchor-id="resid.-df-resid.-dev-df-deviance-prchi"><span class="header-section-number">17.104</span> Resid. Df Resid. Dev Df Deviance Pr(&gt;Chi)</h2>
+</section>
+<section id="section-26" class="level2" data-number="17.105">
+<h2 data-number="17.105" class="anchored" data-anchor-id="section-26"><span class="header-section-number">17.105</span> 1 3209 3626.6</h2>
+</section>
+<section id="e-16" class="level2" data-number="17.106">
+<h2 data-number="17.106" class="anchored" data-anchor-id="e-16"><span class="header-section-number">17.106</span> 2 3201 640.8 8 2985.8 &lt; 2.2e-16 ***</h2>
+</section>
+<section id="section-27" class="level2" data-number="17.107">
+<h2 data-number="17.107" class="anchored" data-anchor-id="section-27"><span class="header-section-number">17.107</span> —</h2>
+</section>
+<section id="signif.-codes-0-0.001-0.01-0.05-.-0.1-1-3" class="level2" data-number="17.108">
+<h2 data-number="17.108" class="anchored" data-anchor-id="signif.-codes-0-0.001-0.01-0.05-.-0.1-1-3"><span class="header-section-number">17.108</span> Signif. codes: 0 ‘<em><strong>’ 0.001 ’</strong>’ 0.01 ’</em>’ 0.05 ‘.’ 0.1 ’ ’ 1</h2>
+<p>Как можно увидеть, наша модель получилась статистически значима. Ура!</p>
+<p>Кроме статистических тестов для сравнения моделей можно использовать информационные критерии, как мы делали в случае обычной линейной регрессии.</p>
+<p>AIC (Akaike information criterion):</p>
+</section>
+<section id="df-aic" class="level2" data-number="17.109">
+<h2 data-number="17.109" class="anchored" data-anchor-id="df-aic"><span class="header-section-number">17.109</span> df AIC</h2>
+</section>
+<section id="model_null-1-3628.5775" class="level2" data-number="17.110">
+<h2 data-number="17.110" class="anchored" data-anchor-id="model_null-1-3628.5775"><span class="header-section-number">17.110</span> model_null 1 3628.5775</h2>
+</section>
+<section id="model-9-658.7949" class="level2" data-number="17.111">
+<h2 data-number="17.111" class="anchored" data-anchor-id="model-9-658.7949"><span class="header-section-number">17.111</span> model 9 658.7949</h2>
+<p>BIC (Bayesian information criterion):</p>
+</section>
+<section id="df-bic" class="level2" data-number="17.112">
+<h2 data-number="17.112" class="anchored" data-anchor-id="df-bic"><span class="header-section-number">17.112</span> df BIC</h2>
+</section>
+<section id="model_null-1-3634.6516" class="level2" data-number="17.113">
+<h2 data-number="17.113" class="anchored" data-anchor-id="model_null-1-3634.6516"><span class="header-section-number">17.113</span> model_null 1 3634.6516</h2>
+</section>
+<section id="model-9-713.4611" class="level2" data-number="17.114">
+<h2 data-number="17.114" class="anchored" data-anchor-id="model-9-713.4611"><span class="header-section-number">17.114</span> model 9 713.4611</h2>
+<p>17.9 Интерпретация коэффициентов модели Чтобы было проще интерпретировать результаты, удалим из модели незначимые предикторы. Останется приемлемый аутпут:</p>
+<p>model_new &lt;- update(model, .~. -autonomy -subdiv_regulations -company_regulations -error_cost) ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred summary(model_new) ## ## Call: ## glm(formula = lvl ~ qualification + direct_juniors + func_juniors + ## income_influence, family = binomial(link = “logit”), data = managers) ## ## Deviance Residuals: ## Min 1Q Median 3Q Max<br>
+## -3.8408 -0.0852 -0.0852 0.0000 3.5391<br>
+## ## Coefficients: ## Estimate Std. Error z value Pr(&gt;|z|)<br>
+## (Intercept) -22.0070 1.1112 -19.804 &lt; 2e-16 <strong><em> ## qualification 1.6056 0.1112 14.441 &lt; 2e-16 </em></strong> ## direct_juniors 8.8192 0.6459 13.653 &lt; 2e-16 <strong><em> ## func_juniors 3.0718 0.2423 12.680 &lt; 2e-16 </em></strong> ## income_influence 0.6440 0.1458 4.418 9.97e-06 *** ## — ## Signif. codes: 0 ‘<em><strong>’ 0.001 ’</strong>’ 0.01 ’</em>’ 0.05 ‘.’ 0.1 ’ ’ 1 ## ## (Dispersion parameter for binomial family taken to be 1) ## ## Null deviance: 3626.58 on 3209 degrees of freedom ## Residual deviance: 641.78 on 3205 degrees of freedom ## AIC: 651.78 ## ## Number of Fisher Scoring iterations: 9 Что значат эти непонятные коэффициенты при предикторах? В общих линейных моделях все ясно как белый день, а тут какая-то дичь…</p>
+<p>Вспомним, что наша зависимая переменная — логарифм отношения шансов. От этого и будем толкаться.</p>
+<p>ln ( p i 1 − p i ) = η i η i = − 22.0 + 1.6 qualification i + 8.8 direct_juniors i + 3.1 func_juniors i + 0.6 income_influence i</p>
+<p>Тогда,</p>
+<p>b 0 , интерсепт, показывает логарифм отношения шансов для случая, когда все остальные предикторы равны нулю — в данном примере он сложноинетерпретабелен; b j показывает, на сколько единиц изменяется логарифм отношения шансов при изменении значения предиктора на единицу. Корректно, но непонятно… Чтобы разобраться лучше, немного потупим в алгебру.</p>
+<p>17.9.1 Немного алгебры для понимания сути коэффициентов Пусть у нас есть модель с одним непрервным предиктором. Тогда она будет записываться так:</p>
+</section>
+</section>
+<section id="η" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> η</h1>
+<p>b 0 + b 1 x</p>
+<p>В терминах логитов её можно записать следующим образом:</p>
+</section>
+<section id="η-1" class="level1" data-number="19">
+<h1 data-number="19"><span class="header-section-number">19</span> η</h1>
+<p>ln ( p 1 − p ) = ln ( o d d s )</p>
+<p>Как изменится предсказание модели при изменении предиктора на единицу?</p>
+<p>η x + 1 − η x = ln ( o d d s x + 1 ) − ln ( o d d s x ) = ln ( o d d s x + 1 o d d s x )</p>
+<p>η x + 1 − η x = b 0 + b 1 ( x + 1 ) − b 0 − b 1 x = b 1</p>
+<p>ln ( o d d s x + 1 o d d s x ) = b 1</p>
+<p>o d d s x + 1 o d d s x = e b 1</p>
+<p>Таким образом,<br>
+e b 1 показывает, во сколько раз изменится отношение шансов при увеличении предиктора на единицу. Для дискретных предикторов<br>
+e b 1 покажет, во сколько раз различается отношение шансов для данного уровня предиктора по сравнению с базовым.</p>
+<p>Теперь мы можем трактовать полученные коэффициенты нормальным языком.</p>
+<p>η i = − 22.0 + 1.6 qualification i + 8.8 direct_juniors i + 3.1 func_juniors i + 0.6 income_influence i</p>
+<p>При увеличении оценки профессиональной квалификации на 1 отношение шансов принадлежать к уровню менеджеров увеличится в<br>
+e 1.6 = 4.95 раза. То есть работник, имеющий более высокую оценку профессиональной квалификации, имеет больше шансов быть менеджером.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопировано!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопировано!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-        return container.innerHTML
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -602,185 +1199,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./infer-ancova.html" class="pagination-link" aria-label="Ковариационный анализ">
