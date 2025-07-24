@@ -12,17 +12,17 @@ book:
   date: today
   chapters:
     - index.qmd
-    - part: part-intro.qmd
+    - part: "Введение в статистику"
       chapters: 
         - intro-intro.qmd
         - intro-randvals.qmd
-    - part: part-desc.qmd
+    - part: "Описательная статистика"
       chapters: 
         - desc-centraltend.qmd
         - desc-variation.qmd
         - desc-normdist.qmd
         - desc-ci.qmd
-    - part: part-infer.qmd
+    - part: "Статистика вывода"
       chapters: 
         - infer-stattesting.qmd
         - infer-categorical.qmd
@@ -37,7 +37,7 @@ book:
         - infer-cluster.qmd
         - infer-efa.qmd
         - infer-cfa.qmd
-    - part: part-r.qmd
+    - part: "Анализ данных в R"
       chapters: 
         - r-intro.qmd
         - r-preproc.qmd
