@@ -533,6 +533,9 @@ window.Quarto = {
 <p><span class="math display">\[
 \text{mode}(X) = \arg \max \big( \text{PMF}(X) \big)
 \]</span></p>
+<div id="fig-mode-discrete" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mode-discrete-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -542,7 +545,13 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Мода — 7.</p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mode-discrete-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;3.1: Определение моды для&nbsp;дискретной случайной величины по&nbsp;функции вероятности
+</figcaption>
+</figure>
+</div>
+<p>Мода&nbsp;— 7.</p>
 </section>
 <section id="медиана" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="медиана"><span class="header-section-number">3.2.2</span> Медиана</h3>
@@ -777,7 +786,15 @@ H(X) = \frac{n}{\displaystyle \sum_{i=1}^n \frac{1}{x_i}}
 <section id="меры-центральной-тенденции-и-форма-распределения" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="меры-центральной-тенденции-и-форма-распределения"><span class="header-section-number">3.3.2</span> Меры центральной тенденции и&nbsp;форма распределения</h3>
 <p>Помимо того, что&nbsp;среднее, мода и&nbsp;медиана информативны сами по&nbsp;себе, полезно смотреть на&nbsp;их взаимное расположение.</p>
-<p>На&nbsp;симметричном распределении мода, медиана и&nbsp;среднее совпадают [или, по&nbsp;крайней мере, находятся очень близко друг к&nbsp;другу]. Здесь и далее: красная линия — среднее, синяя — медиана, зелёная — мода.</p>
+<ul>
+<li>На&nbsp;<strong>симметричном распределении</strong> мода, медиана и&nbsp;среднее <strong>совпадают</strong> [или, по&nbsp;крайней мере, находятся очень близко друг к&nbsp;другу].</li>
+</ul>
+<blockquote class="blockquote">
+<p>Здесь и далее: красная (сплошная) линия&nbsp;— среднее, синяя (короткопунктирная)&nbsp;— медиана, зелёная (длиннопунктирная)&nbsp;— мода.</p>
+</blockquote>
+<div id="fig-centraltend-symm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-centraltend-symm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -787,7 +804,19 @@ H(X) = \frac{n}{\displaystyle \sum_{i=1}^n \frac{1}{x_i}}
 </div>
 </div>
 </div>
-<p>На асимметричном распределении мода [практически] в пике. Практически, потому что функция плотности вероятности [черная линия на графике] на всегда точно аппроксимирует (в данном случае то же, что и сглаживает) эмпирическое распределение. На картинке ниже мы видим, что на гистограмме мода — самый высокий столбик, что и показывает нам зелёная линия, которой обозначена мода. Однако при сглаживании гистограммы пик немного съехал, и мода оказалась не совсем в вершине графика функции плотности вероятности.</p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-centraltend-symm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;3.2: Взаимное расположение моды, медианы и&nbsp;среднего на&nbsp;симметричном распределении
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>На&nbsp;<strong>асимметричном</strong> распределении <strong>мода</strong> [практически] <strong>в&nbsp;пи́ке</strong></li>
+</ul>
+<p>.Практически, потому что&nbsp;мода для&nbsp;непрерывной переменной определена по&nbsp;функции плотности вероятности [черная линия на графике], которая не&nbsp;всегда точно аппроксимирует (в&nbsp;данном случае то&nbsp;же, что и&nbsp;сглаживает) эмпирическое распределение. На&nbsp;картинке ниже мы видим, что по&nbsp;гистограмме мода должна была&nbsp;бы быть в районе самого высокго столбика, однако при&nbsp;сглаживании гистограммы пик немного съехал, и&nbsp;мода оказалась в&nbsp;вершине графика функции плотности вероятности.</p>
+<div id="fig-centraltend-asymm-right" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-centraltend-asymm-right-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -797,6 +826,15 @@ H(X) = \frac{n}{\displaystyle \sum_{i=1}^n \frac{1}{x_i}}
 </div>
 </div>
 </div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-centraltend-asymm-right-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;3.3: Взаимное расположение моды, медианы и&nbsp;среднего на&nbsp;распределении с&nbsp;правосторонней асимметрией
+</figcaption>
+</figure>
+</div>
+<div id="fig-centraltend-asymm-left" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-centraltend-asymm-left-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -806,9 +844,16 @@ H(X) = \frac{n}{\displaystyle \sum_{i=1}^n \frac{1}{x_i}}
 </div>
 </div>
 </div>
-<p>Вообще-то это нормально, потому что мода для непрерывной величины, которую мы и визуализируем с помощью графика плотности, либо не может быть посчитана вовсе, либо — если так получилось, и у нас все же есть повторяющиеся значения — не слишком хорошая мера центральной тенденции. В целом, и на симметричном распределении мода тоже может находиться немного в стороне от пика.</p>
-<p>На асимметричном распределении медиана и среднее смещены в сторону хвоста. Среднее смещено сильнее медианы. Это связано с тем, что медиана зависит только от количества наблюдений, а среднее ещё и от самих значений. На картинке ниже пример для распределения с правосторонней асимметрии (потому что хвост справа) — среднее (красная линия) правее медианы (синяя линия).</p>
-<p>А это пример для распределения с левосторонней асимметрией (так как хвост слева) — среднее (красная линия) левее медианы (синяя линия).</p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-centraltend-asymm-left-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;3.4: Взаимное расположение моды, медианы и&nbsp;среднего на&nbsp;распределении с&nbsp;левосторонней асимметрией
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>На <strong>асимметричном</strong> распределении <strong>медиана и&nbsp;среднее</strong> смещены в&nbsp;сторону хвоста. <strong>Среднее смещено сильнее медианы</strong>.</li>
+</ul>
+<p>Это связано с&nbsp;тем, что&nbsp;медиана зависит только от&nbsp;количества наблюдений, а&nbsp;среднее&nbsp;— ещё и&nbsp;от&nbsp;самих значений. На&nbsp;картинках выше примеры для&nbsp;распределения <em>с&nbsp;правосторонней асимметрией</em> (потому что хвост справа)&nbsp;— среднее (красная линия) правее медианы (синяя линия)&nbsp;— и <em>левосторонней асимметрией</em> (так как хвост слева)&nbsp;— среднее (красная линия) левее медианы (синяя линия).</p>
 <p>Для того, чтобы лучше разобраться с тем, как большие и малые значения влияют на моду и медиану посмотрим такой пример. Пусть у нас есть оценки за выпускную квалификационную работу. Например, такие:</p>
 <p>marks [1] 6 7 7 8 8 Посчитаем медиану и среднее:</p>
 <p>median(marks) [1] 7 mean(marks) [1] 7.2</p>
@@ -823,6 +868,9 @@ H(X) = \frac{n}{\displaystyle \sum_{i=1}^n \frac{1}{x_i}}
 6 . Казалось бы, это немного, но в смысле оценок — это прилично, и может сильно повлиять на GPA.</p>
 <p>Итого, среднее более чувствительно к нетипичным значениям (очень большим или очень малым).</p>
 <p>Есть ещё один интересный вариант распределений — бимодальные. Значит ли, что у этого распределения две моды? Не всегда. Посмотрим пример ниже:</p>
+<div id="fig-centraltend-bimod" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-centraltend-bimod-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -832,39 +880,105 @@ H(X) = \frac{n}{\displaystyle \sum_{i=1}^n \frac{1}{x_i}}
 </div>
 </div>
 </div>
-<p>Мы видим, что на графике есть два пика, однако строго математически мода одна (зеленая линия) — и она в более высоком пике. Это логично, ибо там самые часто встречающиеся значения.</p>
-<p>И все жё содержательно мы не можем пренебречь вторым пиком. Почему нам он важен? Обычно бимодальное распределение — это повод задуматься о том, что наша выборка неоднородна. Бимодальное распределение как бы сложено из двух с центрами в двух пиках. То есть в нашей выборке как будто бы две подвыборки, которые обладают разными распределениями интересующего нам признака.</p>
-<p>Что с этим делать? Хорошо всегда иметь в данным какие-либо дополнительные переменные — как минимум соцдем — чтобы мы могли по данным попытаться предположить, какую группировку мы могли забыть учесть при планировании исследования.</p>
-<p>Со средним и медианой происходит примерно то же, что и в случае асимметричного распределения. Второй пик смещает к себе обе меры центральной тенденции, причем среднее вновь сильнее, чем медиану.</p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-centraltend-bimod-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;3.5: Взаимное расположение моды, медианы и&nbsp;среднего на&nbsp;бимодальном распределении
+</figcaption>
+</figure>
+</div>
+<p>Мы видим, что&nbsp;на&nbsp;графике есть два пика, однако строго математически мода всё&nbsp;же одна (зелёная пунктирная линия)&nbsp;— и&nbsp;она в&nbsp;более высоком пике. Это логично, ибо&nbsp;там самые часто встречающиеся (самые вероятные) значения.</p>
+<p>И&nbsp;все&nbsp;жё содержательно мы не&nbsp;можем пренебречь вторым пиком (зелёная точечная линия). Почему он нам важен? Обычно бимодальное распределение&nbsp;— это&nbsp;повод задуматься о&nbsp;том, что&nbsp;наша выборка неоднородна. Бимодальное распределение как&nbsp;бы сложено из&nbsp;двух с&nbsp;центрами в&nbsp;двух пиках. Иначе говоря, в&nbsp;нашей выборке как&nbsp;будто&nbsp;бы две подвыборки, которые обладают разными распределениями интересующего нам признака.</p>
+<p>Что с этим делать? Хорошо всегда иметь в&nbsp;данных какие-либо дополнительные переменные&nbsp;— как минимум соцдем&nbsp;— чтобы мы могли по&nbsp;данным попытаться предположить, какую группировку мы могли забыть учесть при&nbsp;планировании исследования.</p>
+<p>Со&nbsp;средним и&nbsp;медианой в&nbsp;случае бимодального распределения происходит примерно то&nbsp;же, что&nbsp;и&nbsp;в&nbsp;случае асимметричного распределения&nbsp;— второй пик смещает к&nbsp;себе обе меры центральной тенденции, причем среднее вновь сильнее, чем&nbsp;медиану.</p>
 </section>
 </section>
 <section id="свойства-среднего-арифметического" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="свойства-среднего-арифметического"><span class="header-section-number">3.4</span> Свойства среднего арифметического</h2>
-<p>Если к каждому значению распределения прибавить некоторое число (константу), то среднее увеличится на это же константу. M x + c = M x + c</p>
-<p>Вот почему:</p>
-<p>M x + c = ∑ n i = 1 ( x i + c ) n = ∑ n i = 1 x i + n c n = ∑ n i = 1 x i n + c = M x + c</p>
-<p>Иначе говоря, распределение просто сдвинется. Например, если к каждому значению синего распределения прибавить<br>
-2 , получится красное:</p>
-<p>Если каждое значение распределение умножить на некоторое число (константу), то среднее увеличится во столько же раз. M x × c = M x × c</p>
-<p>Вот почему:</p>
-<p>M x × c = ∑ n i = 1 ( x i × c ) n = c × ∑ n i = 1 x i n = ∑ n i = 1 x i n × c = M x × c</p>
-<p>Например, здесь каждое значение синего распределения умножили на<br>
-3 и получили красное:</p>
-<p>Тут, правда, явно что-то ещё произошло, но мы пока этого не знаем. Однако, отметит этот факт.</p>
-<p>Сумма отклонений от среднего значения равна нулю. n ∑ i = 1</p>
-<p>( x i − M x ) = 0</p>
-<p>Элегантное доказательство:</p>
-<p>n ∑ i = 1</p>
-<p>( x i − M x ) = n ∑ i = 1</p>
-<p>x i − n ∑ i = 1</p>
-<p>M x = n ∑ i = 1</p>
-<p>x i − n M x = = n ∑ i = 1</p>
-<p>x i − n × 1 n n ∑ i = 1</p>
-<p>x i = n ∑ i = 1</p>
-<p>x i − n ∑ i = 1</p>
-<p>x i = 0</p>
-<p>Но можно это осмыслить и более просто графически.</p>
-<p>Отклонение — это разность между средним и конкретным значением переменной. И, действительно, так как среднее находится в центре распределения, то часть значений лежит справа, а часть слева. Значит, будут как положительные, так и отрицательные отклонения — и их сумма в итоге будет равна нулю.</p>
+<p>Мы упомянем три основных свойства, к&nbsp;которым будем обращаться в&nbsp;последующих темах.</p>
+<div id="prp-mean1" class="theorem proposition">
+<p><span class="theorem-title"><strong>Утверждение 3.1</strong></span> Если к&nbsp;каждому значению распределения прибавить некоторое число (константу), то&nbsp;среднее увеличится на&nbsp;ту&nbsp;же константу.</p>
+<p><span class="math display">\[
+M_{X+c} = M_X + c
+\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Доказательство</em>. </span><span class="math display">\[
+\begin{split}
+M_{X+c} &amp;= \frac{\sum_{i=1}^n (x_i + c)}{n} = \\
+&amp;= \frac{\sum_{i=1}^n x_i + nc}{n} = \\
+&amp;= \frac{\sum_{i=1}^n x_i}{n} + c = M_X + c
+\end{split}
+\]</span></p>
+</div>
+<p>Иначе говоря, распределение просто сдвинется. Например, если к&nbsp;каждому значению синего распределения прибавить <span class="math inline">\(2\)</span>, получится красное:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-centraltend_files/figure-html/mean_feature_1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="prp-mean2" class="theorem proposition">
+<p><span class="theorem-title"><strong>Утверждение 3.2</strong></span> Если каждое значение распределение умножить на&nbsp;некоторое число (константу), то&nbsp;среднее увеличится во&nbsp;столько&nbsp;же раз.</p>
+<p><span class="math display">\[
+M_{X \times c} = M_X \times c
+\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Доказательство</em>. </span><span class="math display">\[
+\begin{split}
+M_{X \times c} &amp;= \frac{\sum_{i=1}^n (x_i \times c)}{n} = \\
+&amp;= \frac{c \times \sum_{i=1}^n x_i}{n} = \\
+&amp;= \frac{\sum_{i=1}^n x_i}{n} \times c = M_X \times c
+\end{split}
+\]</span></p>
+</div>
+<p>Например, здесь каждое значение синего распределения умножили на&nbsp;<span class="math inline">\(3\)</span> и&nbsp;получили красное:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-centraltend_files/figure-html/mean_feature_2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Тут, правда, явно что-то ещё произошло, но мы пока этого не знаем.</p>
+<div id="prp-mean3" class="theorem proposition">
+<p><span class="theorem-title"><strong>Утверждение 3.3</strong></span> Сумма отклонений от среднего значения равна нулю.</p>
+<p><span class="math display">\[
+\sum_{i=1}^n(x_i - M_X) = 0
+\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Доказательство</em>. </span><span class="math display">\[
+\begin{split}
+\sum_{i=1}^n(x_i - M_X) &amp;= \sum_{i=1}^n x_i - \sum_{i=1}^n M_X = \\
+&amp; = \sum_{i=1}^n x_i - nM_X = \\
+&amp; = \sum_{i=1}^n x_i - n \times \frac{1}{n} \sum_{i=1}^n x_i = \\
+&amp;= \sum_{i=1}^n x_i - \sum_{i=1}^n x_i = 0
+\end{split}
+\]</span></p>
+</div>
+<p>Но&nbsp;можно это осмыслить и&nbsp;более просто графически.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-centraltend_files/figure-html/zero_deviation_sum-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="def-deviation" class="theorem definition">
+<p><span class="theorem-title"><strong>Определение 3.5</strong></span> <strong>Отклонение</strong>&nbsp;— это разность между конкретным значением переменной и&nbsp;средним по&nbsp;этой переменной.</p>
+<p><span class="math display">\[
+d_i = \overline X - x_i
+\]</span></p>
+</div>
+<p>И, действительно, так как среднее находится в&nbsp;центре распределения, то&nbsp;часть значений лежит справа, а&nbsp;часть слева. Значит, будут как&nbsp;положительные, так&nbsp;и&nbsp;отрицательные отклонения&nbsp;— и&nbsp;их сумма в&nbsp;итоге будет равна нулю.</p>
 
 
 </section>
