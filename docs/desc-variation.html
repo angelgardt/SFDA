@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-bd1857aa17bea7e4e4b424b4ddf2d210.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -82,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part-desc.html">Описательная статистика</a></li><li class="breadcrumb-item"><a href="./desc-variation.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Меры разброса</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./desc-centraltend.html">Описательная статистика</a></li><li class="breadcrumb-item"><a href="./desc-variation.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Меры разброса</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -115,8 +144,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./part-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Введение в статистику</span></a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Введение в&nbsp;статистику</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -138,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./part-desc.html" class="sidebar-item-text sidebar-link">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Описательная статистика</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -173,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./part-infer.html" class="sidebar-item-text sidebar-link">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Статистика вывода</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -262,8 +291,8 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./part-r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Анализ данных в R</span></a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Анализ данных в&nbsp;R</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -341,15 +370,38 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#σ" id="toc-σ" class="nav-link active" data-scroll-target="#σ"><span class="header-section-number">5</span> σ</a></li>
-  <li><a href="#s" id="toc-s" class="nav-link" data-scroll-target="#s"><span class="header-section-number">6</span> s</a></li>
+  <li><a href="#зачем-нужны-меры-разброса" id="toc-зачем-нужны-меры-разброса" class="nav-link active" data-scroll-target="#зачем-нужны-меры-разброса"><span class="header-section-number">4.1</span> Зачем нужны меры разброса</a></li>
+  <li><a href="#основные-характеристики-статистических-данных" id="toc-основные-характеристики-статистических-данных" class="nav-link" data-scroll-target="#основные-характеристики-статистических-данных"><span class="header-section-number">4.2</span> Основные характеристики статистических данных</a></li>
+  <li><a href="#минимум-максимум-размах" id="toc-минимум-максимум-размах" class="nav-link" data-scroll-target="#минимум-максимум-размах"><span class="header-section-number">4.3</span> Минимум, максимум, размах</a></li>
+  <li><a href="#квантили" id="toc-квантили" class="nav-link" data-scroll-target="#квантили"><span class="header-section-number">4.4</span> Квантили</a>
+  <ul class="collapse">
+  <li><a href="#квартили" id="toc-квартили" class="nav-link" data-scroll-target="#квартили"><span class="header-section-number">4.4.1</span> Квартили</a></li>
+  <li><a href="#децили" id="toc-децили" class="nav-link" data-scroll-target="#децили"><span class="header-section-number">4.4.2</span> Децили</a></li>
+  <li><a href="#перцентили" id="toc-перцентили" class="nav-link" data-scroll-target="#перцентили"><span class="header-section-number">4.4.3</span> Перцентили</a></li>
+  </ul></li>
+  <li><a href="#интерквартильный-размах" id="toc-интерквартильный-размах" class="nav-link" data-scroll-target="#интерквартильный-размах"><span class="header-section-number">4.5</span> Интерквартильный размах</a>
+  <ul class="collapse">
+  <li><a href="#визуализация-квартилей.-боксплот" id="toc-визуализация-квартилей.-боксплот" class="nav-link" data-scroll-target="#визуализация-квартилей.-боксплот"><span class="header-section-number">4.5.1</span> Визуализация квартилей. Боксплот</a></li>
+  <li><a href="#выбросы" id="toc-выбросы" class="nav-link" data-scroll-target="#выбросы"><span class="header-section-number">4.5.2</span> Выбросы</a></li>
+  </ul></li>
+  <li><a href="#дисперсия" id="toc-дисперсия" class="nav-link" data-scroll-target="#дисперсия"><span class="header-section-number">4.6</span> Дисперсия</a>
+  <ul class="collapse">
+  <li><a href="#степени-свободы" id="toc-степени-свободы" class="nav-link" data-scroll-target="#степени-свободы"><span class="header-section-number">4.6.1</span> Степени свободы</a></li>
+  </ul></li>
+  <li><a href="#стандартное-отклонение" id="toc-стандартное-отклонение" class="nav-link" data-scroll-target="#стандартное-отклонение"><span class="header-section-number">4.7</span> Стандартное отклонение</a></li>
+  <li><a href="#σ" id="toc-σ" class="nav-link" data-scroll-target="#σ"><span class="header-section-number">5</span> σ</a></li>
+  <li><a href="#s" id="toc-s" class="nav-link" data-scroll-target="#s"><span class="header-section-number">6</span> s</a>
+  <ul class="collapse">
+  <li><a href="#сравнение-мер-разброса" id="toc-сравнение-мер-разброса" class="nav-link" data-scroll-target="#сравнение-мер-разброса"><span class="header-section-number">6.1</span> Сравнение мер разброса</a></li>
+  <li><a href="#свойства-дисперсии-и-стандартного-отклонения" id="toc-свойства-дисперсии-и-стандартного-отклонения" class="nav-link" data-scroll-target="#свойства-дисперсии-и-стандартного-отклонения"><span class="header-section-number">6.2</span> Свойства дисперсии и стандартного отклонения</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part-desc.html">Описательная статистика</a></li><li class="breadcrumb-item"><a href="./desc-variation.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Меры разброса</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./desc-centraltend.html">Описательная статистика</a></li><li class="breadcrumb-item"><a href="./desc-variation.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Меры разброса</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Меры разброса</span></h1>
 </div>
@@ -368,63 +420,188 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Итак, мы разобрались с мерами центральной тенденции. Однако для описания распределения их оказвается недостаточно. Почему?</p>
-<p>4.1 Зачем нужны меры разброса Посмотрим на несколько распределений:</p>
-<p>Методом пристального взгляда можно установить, что у всех распределений одинаковые средние:</p>
-<p>Однако мы видим, что значения по-разному группируются вокруг среднего. Как они группируются — плотно, как на третьем рисунке, или не особо, как на втором — можно описать с помощью мер разброса, или мер вариативности.</p>
-<p>4.1.1 Основные характеристики статистических данных Вообще если посмотреть на это более свысока, то необходимость описания разброса определяется тем, что статистические данные обладают двумя ключевыми особенностями — неопределенностью и вариативностью.</p>
-<p>Неопределённость нам говорит о том, что мы не знаем, что именно мы получим в результате наших измерений для конкретной выборки. В том числе потому, что мы работаем на просторах случайных величин. Вариативность означает, что наши данные будут различатся ещё и от респондента к респонденту. И между выборками тоже. Здесь и ошибка измерения, и различные смешения и ещё куча всего. Более того, вариативность настолько важна, что она входит в расчёт любого статистического критерия. Именно вариативность — а не центральная тенденция — позволяет нам сделать вывод о том, что наши выборки различаются (или нет).</p>
-<p>4.2 Минимум, максимум, размах Начнем с самого простого. Как наиболее просто описать вариативность? Мы работаем с выборкой, а в выборке, как известно, ограниченное число наблюдений. А если оно ограниченое, значит среди них точно есть наибольшее — максимальное — и наименьшее — минимальное.</p>
-<p>Допустим, мы открыли ведомость по «Анатомии и физиологии ЦНС» некоторой академической группы и пронаблюли следующее:</p>
-<p>anat_marks ## [1] 7 4 6 9 10 5 6 9 6 6 3 6 8 8 5 10 7 5 7 3 9 4 8 3 8 ## [26] 4 6 8 7 5 Мы можем посчитать минимальное и максимальне значение по этому ряду наблюдений:</p>
-<p>min(anat_marks) ## [1] 3 max(anat_marks) ## [1] 10 Получается, что оценки варьируются от<br>
-3 до<br>
-10 . Ну, приемлемо. Разница между максимальным и минимальным значением называется размах (range):</p>
-<p>r a n g e ( X ) = max ( X ) − min ( X )</p>
-<p>Правда вот функция range в R вернёт не само значение размаха, а минимальное и максимальное значение. Ну, ладно.</p>
-<p>range(anat_marks) ## [1] 3 10 И вот мы преисполнившиеся идёт описывать вариативность переменной с помощью размаха, но обнаруживаем в другой ведомости этой же группы (по «Введению в психологию») вот что:</p>
-<p>intro_psy_marks ## [1] 6 8 4 6 7 5 7 10 4 6 7 8 7 6 8 10 8 7 7 6 8 7 6 8 6 ## [26] 3 8 6 6 4 Размах вроде как такой же:</p>
-<p>range(intro_psy_marks) ## [1] 3 10 Значит ли это, что вариативность одинаковая?</p>
-<p>Нарисуем.</p>
-<p>Кажется, что вариативность различна. Распределение оценок по «Анатомии и физиологии ЦНС» более равномерное, в то время как оценки по «Введению в психологию» активнее группируются где-то в середине.</p>
-<p>Штош, размах хоть и дает нам некоторую информацию о вариативности, нам этого маловато. Будем искать другие меры разброса.</p>
-<p>4.3 Квантили Возьмем распределение суммарного балла по шкале «Доверие к техническим интеллектуальным системам». Выглядит оно как-то так:</p>
+<p>Итак, мы разобрались с&nbsp;мерами центральной тенденции. Однако для&nbsp;описания распределения их&nbsp;оказывается недостаточно. Почему?</p>
+<section id="зачем-нужны-меры-разброса" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="зачем-нужны-меры-разброса"><span class="header-section-number">4.1</span> Зачем нужны меры разброса</h2>
+<p>Посмотрим на&nbsp;несколько распределений:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-variation_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Методом пристального взгляда можно установить, что&nbsp;у&nbsp;всех распределений одинаковые средние:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-variation_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Однако мы видим, что&nbsp;значения по-разному группируются вокруг среднего. Как они группируются&nbsp;— плотно, как на&nbsp;втором рисунке, или&nbsp;не&nbsp;особо, как на&nbsp;третьем&nbsp;— можно описать с&nbsp;помощью мер разброса, или&nbsp;мер вариативности.</p>
+</section>
+<section id="основные-характеристики-статистических-данных" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="основные-характеристики-статистических-данных"><span class="header-section-number">4.2</span> Основные характеристики статистических данных</h2>
+<p>Вообще если посмотреть на&nbsp;это более свысока, то&nbsp;необходимость описания разброса определяется тем, что&nbsp;статистические данные обладают <strong>двумя ключевыми особенностями&nbsp;— неопределенностью и&nbsp;вариативностью</strong>.</p>
+<ul>
+<li><strong>Неопределённость</strong> нам говорит о&nbsp;том, что&nbsp;мы не&nbsp;знаем, что&nbsp;именно мы получим в&nbsp;результате наших измерений для&nbsp;конкретной выборки. В&nbsp;том числе потому, что&nbsp;мы работаем на&nbsp;просторах случайных величин.</li>
+<li><strong>Вариативность</strong> означает, что наши данные будут различаться ещё и&nbsp;от&nbsp;респондента к&nbsp;респонденту. И&nbsp;между выборками тоже. Здесь и&nbsp;ошибка измерения, и&nbsp;различные смешения и&nbsp;ещё куча всего.</li>
+</ul>
+<p>Более того, вариативность есть главное условие применения статики, поскольку&nbsp;она входит в&nbsp;расчёт любого статистического критерия. Если у&nbsp;переменной отсутствует вариативность, статистика на&nbsp;ней работать не&nbsp;будет.</p>
+</section>
+<section id="минимум-максимум-размах" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="минимум-максимум-размах"><span class="header-section-number">4.3</span> Минимум, максимум, размах</h2>
+<p>Начнем с&nbsp;самого простого. Как наиболее просто описать вариативность? Мы работаем с&nbsp;выборкой, а&nbsp;в&nbsp;выборке, как&nbsp;известно, ограниченное число наблюдений. А&nbsp;если оно ограниченное, значит среди них точно есть наибольшее&nbsp;— <strong>максимум (max)</strong>&nbsp;— и&nbsp;наименьшее&nbsp;— <strong>минимум (min)</strong>.</p>
+<p>Допустим, мы открыли ведомость по&nbsp;«Анатомии и&nbsp;физиологии ЦНС» некоторой академической группы и пронаблюдали следующее:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  7  4  6  9 10  5  6  9  6  6  3  6  8  8  5 10  7  5  7  3  9  4  8  3  8
+[26]  4  6  8  7  5</code></pre>
+</div>
+</div>
+<p>Мы можем посчитать минимальное и&nbsp;максимальное значение по&nbsp;этому ряду наблюдений&nbsp;— они окажутся равны соответственно 3 и&nbsp;10. То есть оценки по&nbsp;этой дисциплине варьируются от&nbsp;3 до&nbsp;10. Ну, чу́дно.</p>
+<p>Разница между максимальным и минимальным значением называется <strong>размах (range)</strong>:</p>
+<p><span class="math display">\[
+\text{range}(X) = \max(X) - \min(X)
+\]</span></p>
+<p>В&nbsp;примере выше он будет равен 7.</p>
+<p>И&nbsp;вот мы преисполнившиеся сим знанием идёт описывать вариативность переменной с&nbsp;помощью размаха, но&nbsp;обнаруживаем в&nbsp;другой ведомости этой же&nbsp;группы (по&nbsp;«Введению в&nbsp;психологию») вот что:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  6  8  4  6  7  5  7 10  4  6  7  8  7  6  8 10  8  7  7  6  8  7  6  8  6
+[26]  3  8  6  6  4</code></pre>
+</div>
+</div>
+<p>Минимум, максимум и&nbsp;размах вроде как такие&nbsp;же: 3, 10 и&nbsp;7 соответственно.</p>
+<p>Значит&nbsp;ли это, что&nbsp;вариативность одинаковая? Нарисуем.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-variation_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Кажется, что вариативность различна. Распределение оценок по «Анатомии и физиологии ЦНС» более равномерное, в&nbsp;то время как оценки по&nbsp;«Введению в&nbsp;психологию» активнее группируются где-то в&nbsp;середине.</p>
+<p>Штош, размах хоть и&nbsp;дает нам некоторую информацию о&nbsp;вариативности, нам этого маловато. Будем искать другие меры разброса.</p>
+</section>
+<section id="квантили" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="квантили"><span class="header-section-number">4.4</span> Квантили</h2>
+<p>Возьмем распределение суммарного балла по&nbsp;шкале толерантности к&nbsp;неопределенности. Выглядит оно как-то так:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-variation_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>Теперь нам понадобится определение квантиля распределения.</p>
-<p>Квантиль — это значение переменной, которое не превышается с определенной вероятностью (обозначим её<br>
-p ). Иначе говоря, слева от значения квантиля лежит<br>
-p % наблюдений.</p>
+<div id="def-quantile" class="theorem definition">
+<p><span class="theorem-title"><strong>Определение 4.1</strong></span> <strong>Квантиль (quantile)</strong>&nbsp;— это значение переменной, которое не&nbsp;превышается с&nbsp;определенной вероятностью.</p>
+</div>
+<p>Обозначим эту вероятность <span class="math inline">\(p\)</span>. Тогда можно сказать, что&nbsp;квантиль уровня <span class="math inline">\(p\)</span>&nbsp;— это такое значение переменной, слева от&nbsp;которого лежит <span class="math inline">\(p\%\)</span> наблюдений.</p>
 <p>Посмотрим на картинки.</p>
-<p>Слева относительно квантиля-0.05 ( x 0.05 ) лежит 5% наблюдений:</p>
-<p>Слева относительно квантиля-0.68 ( x 0.68 ) лежит 68% наблюдений:</p>
-<p>Слева относительно квантиля-0.99 ( x 0.99 ) лежит 99% наблюдений:</p>
-<p>Итак, мы поняли, а также приняли и осознали, что такое квантиль. Неясно только, как он нам поможет описать вариативность данных.</p>
-<p>4.3.1 Квартили Для этого нам пригодятся специально обученные квантили. Оказалось достаточно удобно поделить все наблюдение на четыре равные части — вот так:</p>
-<p>Значения переменной, которые делят выборку на четыре равные части называются квартили. Получается, что</p>
-<p>слева от первого (нижнего) квартиля ( Q 1 ,<br>
-x 0.25 ) лежит 25% наблюдений слева от второго (среднего) квартиля ( Q 2 ,<br>
-x 0.50 ) лежит 50% наблюдений а значит и справа 50% — получается второй квартиль делит выборку пополам — это медиана слева от третьего (верхнего) квартиля ( Q 3 ,<br>
-x 0.75 ) лежит 75% наблюдений Четвертый квартиль не используется, потому что это максимальное значение — слева от него лежит 100% наблюдений.</p>
-<p>Кстати, можно также отметить, что первый квартиль — это медиана нижней (меньшей) половины наблюдений, а третий — медиана верней (большей) половины наблюдений.</p>
+<p>Слева относительно квантиля-0.05 (<span class="math inline">\(x_{0.05}\)</span>) лежит 5% наблюдений:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-variation_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Слева относительно квантиля-0.68 (<span class="math inline">\(x_{0.68}\)</span>) лежит 68% наблюдений:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-variation_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Слева относительно квантиля-0.99 (<span class="math inline">\(x_{0.99}\)</span>) лежит 99% наблюдений:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-variation_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Итак, мы поняли, а&nbsp;также приняли и&nbsp;осознали, что&nbsp;такое квантиль. Неясно только, как&nbsp;он нам поможет описать вариативность данных.</p>
+<section id="квартили" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="квартили"><span class="header-section-number">4.4.1</span> Квартили</h3>
+<p>Для этого нам пригодятся специально обученные квантили. Оказалось достаточно удобно поделить все наблюдение на&nbsp;<em>четыре равные части</em>&nbsp;— вот так:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-variation_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Значения переменной, которые делят выборку на четыре равные части называются <strong>квартили (quartile)</strong>. Получается, что</p>
+<ul>
+<li>слева от&nbsp;первого (нижнего) квартиля (<span class="math inline">\(\text{Q1}, x_{0.25}\)</span>) лежит 25% наблюдений</li>
+<li>слева от&nbsp;второго (среднего) квартиля (<span class="math inline">\(\text{Q2}, x_{0.50}\)</span>) лежит 50% наблюдений
+<ul>
+<li>а&nbsp;значит и&nbsp;справа 50%: получается второй квартиль делит выборку пополам&nbsp;— это медиана</li>
+</ul></li>
+<li>слева от&nbsp;третьего (верхнего) квартиля (<span class="math inline">\(\text{Q3}, x_{0.75}\)</span>) лежит 75% наблюдений</li>
+</ul>
+<p>Четвертый квартиль не&nbsp;используется, потому что является максимальным значением&nbsp;— слева от&nbsp;него лежит 100% наблюдений.</p>
+<p>Кстати, можно также отметить, что&nbsp;первый квартиль&nbsp;— это медиана нижней (меньшей) половины наблюдений, а&nbsp;третий&nbsp;— медиана верней (большей) половины наблюдений.</p>
 <p>Вот такая вот прикольная история.</p>
-<p>4.3.2 Децили К слову, делить выборку можно не только на четверти — можно поделить, скажем, на 10 частей и получить децили. Так, слева от первого дециля ( x 0.10 ) лежит 10% наблюдений, а слева от третьего ( x 0.30 ) — 30%.</p>
-<p>Децили встречаются редко (в основном в психометрике), но знать о них полезно.</p>
-<p>4.3.3 Перцентили Гораздо чаще встречаются перцентили — значения переменной, которые делят выборку на 100 равных частей. Например, так устроен ваш рейтинг. Только стоит помнить, что в рейтинге отсчет ведется от максимального среднего балла, поэтому если у вас нулевой перцентиль ( x 0.00 ) по программе, значит выше вас в рейтинге никого нет. А если ваш перцентиль, скажем, 36-ой ( x 0.36 ), то выше вас в рейтинге 36% ваших однокурсников, то есть вы все ещё в первой половине рейтинга, что очень неплохо!</p>
-<p>4.3.4 Интерквартильный размах И — о, ура! — мы наконец-то добрались до того, ради чего тут собрались! Зная первый и третий квартили распределения, можно рассчитать интерквартильный (межквартильный) размах (interquartile range, IQR).</p>
-<p>I Q R ( X ) = Q 3 ( X ) − Q 1 ( X )</p>
-<p>Интерквартильный размах — это разница между третьим и первым квартилем распределения. Эта величина описывает интервал значений признака, в котором лежит 50% наблюдений.</p>
-<p>В данном случае он равен 40:</p>
-<p>IQR(taia$DT) ## [1] 40 То есть 50% наблюдений лежит в пределах 40 единиц шкалы.</p>
-<p>4.3.5 Визуализация квартилей. Боксплот Отображать квартили на гистограмме, во-первых, совершенно неудобно, а во-вторых, не то чтобы график получается информативный. Для визуализации квартилей придумали специальный тип графика — ящик с усами, или боксплот (boxplot).</p>
+</section>
+<section id="децили" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="децили"><span class="header-section-number">4.4.2</span> Децили</h3>
+<p>К&nbsp;слову, делить выборку можно не&nbsp;только на&nbsp;четверти&nbsp;— можно поделить, скажем, на&nbsp;10 частей и&nbsp;получить <strong>децили</strong>. Так, слева от&nbsp;первого дециля (<span class="math inline">\(x_{0.10}\)</span>) лежит 10% наблюдений, а слева от третьего (<span class="math inline">\(x_{0.30}\)</span>)&nbsp;— 30%.</p>
+<p>Децили встречаются редко (в&nbsp;основном в&nbsp;психометрике), но&nbsp;знать о&nbsp;них полезно.</p>
+</section>
+<section id="перцентили" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="перцентили"><span class="header-section-number">4.4.3</span> Перцентили</h3>
+<p>Гораздо чаще встречаются <strong>перцентили</strong>&nbsp;— значения переменной, которые делят выборку на&nbsp;100 равных частей. Например, так устроен ваш рейтинг. Только стоит помнить, что в&nbsp;рейтинге отсчет ведется от&nbsp;максимального GPA, поэтому если у&nbsp;вас нулевой перцентиль (<span class="math inline">\(x_{0.00}\)</span>) по&nbsp;программе, значит выше вас в&nbsp;рейтинге никого нет. А&nbsp;если ваш перцентиль, скажем, 36-ой (<span class="math inline">\(x_{0.36}\)</span>), то&nbsp;выше вас в&nbsp;рейтинге 36% ваших однокурсников, то&nbsp;есть вы все ещё в&nbsp;первой половине рейтинга, что&nbsp;очень неплохо!</p>
+</section>
+</section>
+<section id="интерквартильный-размах" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="интерквартильный-размах"><span class="header-section-number">4.5</span> Интерквартильный размах</h2>
+<p>И&nbsp;— о,&nbsp;ура!&nbsp;— мы наконец-то добрались до&nbsp;того, ради чего тут собрались! Зная первый и&nbsp;третий квартили распределения, можно рассчитать <strong>интерквартильный (межквартильный) размах (interquartile range, IQR)</strong> как разницу между третьим и&nbsp;первым квартилями.</p>
+<p><span class="math display">\[
+\text{IQR}(X) = \text{Q3}(X) - \text{Q1}(X)
+\]</span></p>
+<p>Эта величина описывает интервал значений признака, в&nbsp;котором лежит 50% наблюдений. В случае с&nbsp;баллами по&nbsp;шкале толерантности к&nbsp;неопределенности он равен 24, то есть 50% срединных наблюдений лежит в&nbsp;пределах 24 единиц шкалы.</p>
+<section id="визуализация-квартилей.-боксплот" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="визуализация-квартилей.-боксплот"><span class="header-section-number">4.5.1</span> Визуализация квартилей. Боксплот</h3>
+<p>Отображать квартили на гистограмме, во-первых, совершенно неудобно, а во-вторых, не то чтобы график получается информативный. Для визуализации квартилей придумали специальный тип графика — ящик с усами, или боксплот (boxplot).</p>
 <p>Прикольная ерунда. Научимся его читать.</p>
 <p>Значения переменной идут по вертикальной оси (оси ординат). По горизонтальной оси (оси абсцисс) здесь ничего не идет1. Жирная линия по середине ящика — медиана (второй квартиль). Нижняя граница ящика — первый квартиль, верхняя — третий. Получается, что границы ящика показывают нам значения, в пределах которых лежит половина наблюдений.</p>
 <p>Нижний ус — первый квартиль минус полтора межквартильных размаха. Верхний ус — третий квартиль плюс полтора мехквартильных размаха.</p>
 <p>Замечание Ну, допустим. А что тогда точки?</p>
-<p>4.3.5.1 Выбросы Вообще справедливо было бы задаться вопросом, а зачем нам вообще усы на этом графике? И почему мы прибавляем полтора межквартильных размаха?</p>
+</section>
+<section id="выбросы" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="выбросы"><span class="header-section-number">4.5.2</span> Выбросы</h3>
+<p>Вообще справедливо было бы задаться вопросом, а зачем нам вообще усы на этом графике? И почему мы прибавляем полтора межквартильных размаха?</p>
 <p>Это один из подходов к определению нехарактерных значений — выбросов. При исследовании данных мы часто задаемся вопросом, если ли в наших данных такие значения, которые сильно отличаются от распределения той или иной переменной. Но как определить это самое «сильно»?</p>
 <p>Вот один из подходов. Будем считать, что значения, которые укладываются в интервал<br>
 ( Q 1 − 1.5 × I Q R , Q 3 + 1.5 × I Q R ) , нас устраивают. Все что попадает в этот интервал — это «нормальные», типичные значения нашей переменной. Те же, которые будут находиться за пределами этого интервала, мы назовем нетипичными, аномальными значениями, или выбросами. Эти значения и будут отмечены точками на графике boxplot.</p>
 <p>Что с ними делать? Во-первых, содержательной анализировать. Выбросы могут возникнуть по разным причинам. Может быть испытуемый отвлекся на прилетевшего в окно голубя, и у нас в данных появилось время реакции 200 секунд. Такие выбросы мы можем исключить из данных. А возможно в нашу выборку попали какие-то люди, которые, скажем, очень сильно или очень слабо доверяют искусственному интеллекту (как в примере на рисунке). Эти наблюдения необходимо дополнительно проанализировать — возможно, это представители специфических групп нашей генеральной совокупности (например, программисты-разработчики или люди пенсионного возраста). Анализ принесет нам дополнительную информацию, которую мы могли не учесть при планировании исследования. Крч, думать надо. И собирать побольше данных, чтобы можно было найти содержательную интерпретацию происходящему.</p>
-<p>4.4 Дисперсия Хотя описание разброса переменных с помощью квантилей (в частности, квартилей) может дать нам много полезной информации, все же у них есть существенный недостаток: они никак не взаимодействуют с самими значениями нашей переменной.</p>
+</section>
+</section>
+<section id="дисперсия" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="дисперсия"><span class="header-section-number">4.6</span> Дисперсия</h2>
+<p>Хотя описание разброса переменных с помощью квантилей (в частности, квартилей) может дать нам много полезной информации, все же у них есть существенный недостаток: они никак не взаимодействуют с самими значениями нашей переменной.</p>
 <p>Действительно, мы делим нашу сортированную выборку на равные части, и смотрим, что в эти части попало. Но хотелось бы как-то учесть ещё и сами значения переменной в некотрой числовой мере разброса.</p>
 <p>Ну, хорошо. Поступим следующим образом. Мы все ещё хотим узнать, как наши значения группируются вокруг среднего. В предыдущей главе мы уже видели, что наши наблюдения отклоняются от среднего значения — значит мы можем посчитать отклонение для каждого наблюдения:</p>
 <p>¯ x − x i</p>
@@ -445,7 +622,9 @@ n − 1 :</p>
 <p>s 2 = 1 n − 1 n ∑ i = 1</p>
 <p>( ¯ x − x i ) 2</p>
 <p>Но почему?</p>
-<p>4.4.1 Степени свободы Во всём виновата выборка.</p>
+<section id="степени-свободы" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="степени-свободы"><span class="header-section-number">4.6.1</span> Степени свободы</h3>
+<p>Во всём виновата выборка.</p>
 <p>Взглянем на формулу дисперсии: в неё входит среднее арифметическое. То есть для того, чтобы рассчитать дисперсию на выборке, сначала нам необходимо на этой же выборке рассчитать среднее. Тем самым, мы как бы «фиксируем» нашу выборку этим средним значением — у значений нашего распределения становится меньше свободы для варьирования. Теперь свободно варьироваться могут<br>
 n − 1 наблюдение, так как последнее всегда будет возможно высчитать, исходя из среднего значения. По этой причине нам необходимо корректировать исходную формулу расчета дисперсии.</p>
 <p>А что если не корректировать?</p>
@@ -453,10 +632,15 @@ n − 1 наблюдение, так как последнее всегда бу
 <p>К концепту степеней свободы мы ещё неоднократно вернемся. Сейчас хотелось бы, чтобы сформировалось какое-то минимальное более-менее освязаемое понимание того, почему они вообще нам нужны. Если на основе предыдущих абзацев раздела этого сделать не получилось, то давайте попробуеи воспользоваться следующим рассуждением.</p>
 <p>На выборке происходят некоторые статистические преколы, которые несколько портят нам жизнь, и нам их неободимо учесть, чтобы адекватно оценивать то, что происходит в генеральной совокупности. В частности, нам необходимо учитывать количество степеней свободы, которое есть в нашей выборке. Для расчета выборочной дисперсии оно равно<br>
 n − 1 , так как мы для того, чтобы рассчитать дисперсию по выборке, нам сначала по той же самой выборке надо рассчитать ещё одну оценку — среднее арифметическое. Этот расчет заберет одну степень свободы у нашей выборки.</p>
-<p>4.5 Стандартное отклонение И вот мы получили невероятное! У нас есть формула расчета меры разброса, которая позволяет учесть сами значения переменной! Ну не чудо ли!</p>
+</section>
+</section>
+<section id="стандартное-отклонение" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="стандартное-отклонение"><span class="header-section-number">4.7</span> Стандартное отклонение</h2>
+<p>И вот мы получили невероятное! У нас есть формула расчета меры разброса, которая позволяет учесть сами значения переменной! Ну не чудо ли!</p>
 <p>Чудо, конечно, однако есть некоторая проблема. Мы возводили отклонения в квадрат. Представим, что мы хотим посчитатить дисперсию роста студентов психфака. Пусть мы измеряли рост в метрах. Отклонения тоже будут в метрах (потому что среднее — это тоже метры, а если из метров вычитать метры, то мы получим метры). А при возведении метров в квадрат получаются метры в квадрате. Очевидно, что если мы модели квадратные метры на некоторое число ( n ), они все еще останутся метрами в квадрате.</p>
 <p>О, нет! А счастье было так близко, так возможно! Получается, мы не можем интерпретировать эту меру разброса? Не сможем даже нарисовать?</p>
 <p>Да, но это не очень большая беда. Для того, чтобы вернуться обратно к единицам измерения нашей переменной, нам всего лишь нужно извлечь корень из дисперсии:</p>
+</section>
 <section id="σ" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> σ</h1>
 <p>√ σ 2 =    ⎷ 1 n n ∑ i = 1</p>
@@ -469,10 +653,15 @@ n − 1 , так как мы для того, чтобы рассчитать д
 <h1 data-number="6"><span class="header-section-number">6</span> s</h1>
 <p>√ s 2 =    ⎷ 1 n − 1 n ∑ i = 1</p>
 <p>( ¯ x − x i ) 2</p>
-<p>4.6 Сравнение мер разброса Как и разные меры центральной тенденции, разные меры разброса по-своему хороши. Более того, они дружат с мерами центральной тенденции. Так, с медианой используется мехквартильных размах, а со средним арифметическим — стандартное отклонение.</p>
+<section id="сравнение-мер-разброса" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="сравнение-мер-разброса"><span class="header-section-number">6.1</span> Сравнение мер разброса</h2>
+<p>Как и разные меры центральной тенденции, разные меры разброса по-своему хороши. Более того, они дружат с мерами центральной тенденции. Так, с медианой используется мехквартильных размах, а со средним арифметическим — стандартное отклонение.</p>
 <p>Размах подходит для всего сразу. Его стоит рассчитать, чтобы составить самое первое представление в разбросе, о границах измерения изучаемого признака [на нашей выборке].</p>
 <p>Стоит также отметить, что все, что мы тут обсуждали, совершенно не годиться для номинативных переменных. Однако у них тоже есть вариативность. Согласитель, что выборка из Питера, Москвы, и Казани более вариативна, чем выборка из Москвы. Аналогом меры разброса для номинальной переменной можно назвать количество уникальных значений этой переменной.</p>
-<p>4.7 Свойства дисперсии и стандартного отклонения Если к каждому значению распределения прибавить некоторое число (константу), то дисперсия не изменится. D x + c = D x</p>
+</section>
+<section id="свойства-дисперсии-и-стандартного-отклонения" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="свойства-дисперсии-и-стандартного-отклонения"><span class="header-section-number">6.2</span> Свойства дисперсии и стандартного отклонения</h2>
+<p>Если к каждому значению распределения прибавить некоторое число (константу), то дисперсия не изменится. D x + c = D x</p>
 <p>Вот почему:</p>
 <p>D x + c = ∑ n i = 1 ( ( ¯ x + c ) − ( x i + c ) ) 2 n − 1 = ∑ n i = 1 ( ¯ x + c − x i − c ) 2 n − 1 = ∑ n i = 1 ( ¯ x − x i ) 2 n − 1 = D x</p>
 <p>Если каждое значение распределение умножить на некоторое число (константу), то дисперсия увеличится в<br>
@@ -491,6 +680,7 @@ c 2 раз. D x × c = D x × c 2</p>
 3 и получили красное — разброс также увеличился в три раза, поэтому распределение более плоское:</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
