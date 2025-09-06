@@ -198,21 +198,21 @@ window.Quarto = {
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#виды-статистики" id="toc-виды-статистики" class="nav-link active" data-scroll-target="#виды-статистики"><span class="header-section-number">3.1</span> Виды статистики</a></li>
-  <li><a href="#меры-центральной-тенденции" id="toc-меры-центральной-тенденции" class="nav-link" data-scroll-target="#меры-центральной-тенденции"><span class="header-section-number">3.2</span> Меры центральной тенденции</a>
+  <li><a href="#centraltend-stats" id="toc-centraltend-stats" class="nav-link active" data-scroll-target="#centraltend-stats"><span class="header-section-number">3.1</span> Виды статистики</a></li>
+  <li><a href="#centraltend-centraltend" id="toc-centraltend-centraltend" class="nav-link" data-scroll-target="#centraltend-centraltend"><span class="header-section-number">3.2</span> Меры центральной тенденции</a>
   <ul class="collapse">
-  <li><a href="#мода" id="toc-мода" class="nav-link" data-scroll-target="#мода"><span class="header-section-number">3.2.1</span> Мода</a></li>
-  <li><a href="#медиана" id="toc-медиана" class="nav-link" data-scroll-target="#медиана"><span class="header-section-number">3.2.2</span> Медиана</a></li>
-  <li><a href="#среднее-арифметическое" id="toc-среднее-арифметическое" class="nav-link" data-scroll-target="#среднее-арифметическое"><span class="header-section-number">3.2.3</span> Среднее арифметическое</a></li>
-  <li><a href="#среднее-взвешенное" id="toc-среднее-взвешенное" class="nav-link" data-scroll-target="#среднее-взвешенное"><span class="header-section-number">3.2.4</span> Среднее взвешенное</a></li>
-  <li><a href="#другие-средние" id="toc-другие-средние" class="nav-link" data-scroll-target="#другие-средние"><span class="header-section-number">3.2.5</span> Другие средние</a></li>
+  <li><a href="#centraltend-mode" id="toc-centraltend-mode" class="nav-link" data-scroll-target="#centraltend-mode"><span class="header-section-number">3.2.1</span> Мода</a></li>
+  <li><a href="#centraltend-median" id="toc-centraltend-median" class="nav-link" data-scroll-target="#centraltend-median"><span class="header-section-number">3.2.2</span> Медиана</a></li>
+  <li><a href="#centraltend-mean" id="toc-centraltend-mean" class="nav-link" data-scroll-target="#centraltend-mean"><span class="header-section-number">3.2.3</span> Среднее арифметическое</a></li>
+  <li><a href="#centraltend-weighted-mean" id="toc-centraltend-weighted-mean" class="nav-link" data-scroll-target="#centraltend-weighted-mean"><span class="header-section-number">3.2.4</span> Среднее взвешенное</a></li>
+  <li><a href="#centraltend-other" id="toc-centraltend-other" class="nav-link" data-scroll-target="#centraltend-other"><span class="header-section-number">3.2.5</span> Другие средние</a></li>
   </ul></li>
-  <li><a href="#сравнение-мер-центральной-тенденции" id="toc-сравнение-мер-центральной-тенденции" class="nav-link" data-scroll-target="#сравнение-мер-центральной-тенденции"><span class="header-section-number">3.3</span> Сравнение мер центральной тенденции</a>
+  <li><a href="#centraltend-comparison" id="toc-centraltend-comparison" class="nav-link" data-scroll-target="#centraltend-comparison"><span class="header-section-number">3.3</span> Сравнение мер центральной тенденции</a>
   <ul class="collapse">
-  <li><a href="#меры-центральной-тенденции-и-типы-переменных" id="toc-меры-центральной-тенденции-и-типы-переменных" class="nav-link" data-scroll-target="#меры-центральной-тенденции-и-типы-переменных"><span class="header-section-number">3.3.1</span> Меры центральной тенденции и&nbsp;типы переменных</a></li>
-  <li><a href="#меры-центральной-тенденции-и-форма-распределения" id="toc-меры-центральной-тенденции-и-форма-распределения" class="nav-link" data-scroll-target="#меры-центральной-тенденции-и-форма-распределения"><span class="header-section-number">3.3.2</span> Меры центральной тенденции и&nbsp;форма распределения</a></li>
+  <li><a href="#centraltend-comparison-vars" id="toc-centraltend-comparison-vars" class="nav-link" data-scroll-target="#centraltend-comparison-vars"><span class="header-section-number">3.3.1</span> Меры центральной тенденции и&nbsp;типы переменных</a></li>
+  <li><a href="#centraltend-comparison-shape" id="toc-centraltend-comparison-shape" class="nav-link" data-scroll-target="#centraltend-comparison-shape"><span class="header-section-number">3.3.2</span> Меры центральной тенденции и&nbsp;форма распределения</a></li>
   </ul></li>
-  <li><a href="#mean-features" id="toc-mean-features" class="nav-link" data-scroll-target="#mean-features"><span class="header-section-number">3.4</span> Свойства среднего арифметического</a></li>
+  <li><a href="#centraltend-mean-features" id="toc-centraltend-mean-features" class="nav-link" data-scroll-target="#centraltend-mean-features"><span class="header-section-number">3.4</span> Свойства среднего арифметического</a></li>
   </ul>
 </nav>
     </div>
@@ -240,8 +240,8 @@ window.Quarto = {
 
 <p>Мы знаем, что&nbsp;наши переменные-признаки могут быть некоторым образом распределены&nbsp;— как в&nbsp;генеральной совокупности, так и&nbsp;в&nbsp;выборке. Как именно они распределены, описывается распределением случайной величины.</p>
 <p>Вот мы собрали некоторые данные и&nbsp;получили какое-то эмпирическое распределение наших переменных. Нам бы, конечно, хотелось понять, что&nbsp;там такое за&nbsp;распределение. И&nbsp;первым шагом к&nbsp;пониманию этого будет <em>описание</em> распределения.</p>
-<section id="виды-статистики" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="виды-статистики"><span class="header-section-number">3.1</span> Виды статистики</h2>
+<section id="centraltend-stats" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="centraltend-stats"><span class="header-section-number">3.1</span> Виды статистики</h2>
 <p>Вообще статистика [как набор методов и инструментов] делится на два вида:</p>
 <ul>
 <li><strong>Описательная статистика (descriptive statistics<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>)</strong> занимается обработкой статистических данных, их наглядным представлением, и&nbsp;собственно описанием через некоторые характеристики.
@@ -276,8 +276,8 @@ window.Quarto = {
 </div>
 <p>Мы начнем знакомиться со&nbsp;статистикой с&nbsp;описательной статистики, а&nbsp;именно с&nbsp;мер центральной тенденции.</p>
 </section>
-<section id="меры-центральной-тенденции" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="меры-центральной-тенденции"><span class="header-section-number">3.2</span> Меры центральной тенденции</h2>
+<section id="centraltend-centraltend" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="centraltend-centraltend"><span class="header-section-number">3.2</span> Меры центральной тенденции</h2>
 <p>Итак, мы хотим описать наши данные. Точнее, распределения переменных, которые у&nbsp;нас в&nbsp;данных есть. Хотим мы сделать это просто и&nbsp;ёмко. Насколько просто и&nbsp;ёмко? Ну, допустим максимально&nbsp;— одним числом. Кажется, значение переменной, которое лежит в&nbsp;центре распределения, неплохо для&nbsp;этого подойдет.</p>
 <p>Как мы будем искать, что там в&nbsp;центре распределения? Зависит от&nbsp;шкалы, в&nbsp;которой измерена конкретная переменная.</p>
 <table class="caption-top table">
@@ -307,8 +307,8 @@ window.Quarto = {
 </tbody>
 </table>
 <p>Однако есть некоторые нюансы.</p>
-<section id="мода" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="мода"><span class="header-section-number">3.2.1</span> Мода</h3>
+<section id="centraltend-mode" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="centraltend-mode"><span class="header-section-number">3.2.1</span> Мода</h3>
 <div id="def-mode" class="theorem definition">
 <p><span class="theorem-title"><strong>Определение 3.1</strong></span> <strong>Мода (mode)</strong>&nbsp;— наиболее часто встречающееся значение данной переменной.</p>
 </div>
@@ -381,8 +381,8 @@ window.Quarto = {
 </div>
 <p>Мода&nbsp;— 7.</p>
 </section>
-<section id="медиана" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="медиана"><span class="header-section-number">3.2.2</span> Медиана</h3>
+<section id="centraltend-median" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="centraltend-median"><span class="header-section-number">3.2.2</span> Медиана</h3>
 <div id="def-median" class="theorem definition">
 <p><span class="theorem-title"><strong>Определение 3.2</strong></span> Медиана (median)&nbsp;— значение переменной, которые располагается на&nbsp;середине отсортированного ряда значений.</p>
 </div>
@@ -433,8 +433,8 @@ X_{\frac{n+1}{2}}, \quad \text{if} \, n \, \text{is odd} \\
 \]</span></p>
 <p>где <span class="math inline">\(X\)</span>&nbsp;— ряд наблюдений данной переменной, <span class="math inline">\(n\)</span>&nbsp;— число наблюдений, <span class="math inline">\(X_i\)</span>&nbsp;— наблюдение с&nbsp;индексом <span class="math inline">\(i\)</span> в&nbsp;сортированном векторе <span class="math inline">\(X\)</span>.</p>
 </section>
-<section id="среднее-арифметическое" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="среднее-арифметическое"><span class="header-section-number">3.2.3</span> Среднее арифметическое</h3>
+<section id="centraltend-mean" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="centraltend-mean"><span class="header-section-number">3.2.3</span> Среднее арифметическое</h3>
 <p>С&nbsp;этим существом все знакомы еще со&nbsp;школы.</p>
 <div id="def-mean" class="theorem definition">
 <p><span class="theorem-title"><strong>Определение 3.3</strong></span> <strong>Арифметическое среднее (arithmetic mean, mean, average)</strong>&nbsp;— сумма всех значений переменной, делёная на&nbsp;их количество.</p>
@@ -463,8 +463,8 @@ M(X) = \overline{X} = \frac{1}{n} \sum_{i=1}^n x_i
 </div>
 </div>
 </section>
-<section id="среднее-взвешенное" class="level3" data-number="3.2.4">
-<h3 data-number="3.2.4" class="anchored" data-anchor-id="среднее-взвешенное"><span class="header-section-number">3.2.4</span> Среднее взвешенное</h3>
+<section id="centraltend-weighted-mean" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="centraltend-weighted-mean"><span class="header-section-number">3.2.4</span> Среднее взвешенное</h3>
 <p>Часто возникает такая ситуация, когда&nbsp;нам нужно посчитать среднее по&nbsp;каким-либо имеющимся характеристикам, но&nbsp;одни характеристики для&nbsp;нас важнее, чем другие. Например, мы хотим вычислить суммарный балл обучающегося за&nbsp;курс на&nbsp;основе ряда работ, выполненных в&nbsp;течение курса. Мы могли&nbsp;бы взять оценки за&nbsp;все работы и&nbsp;усреднить их. Однако мы понимаем, что, скажем, тест из&nbsp;десяти вопросов с&nbsp;множественным выбором явно менее показателен, чем, например, аналитическое эссе или&nbsp;экзаменационная оценка. Что делать? Взвесить параметры!</p>
 <p>Что значит <em>взвесить</em>? Умножить на&nbsp;некоторое число. На&nbsp;самом деле, любое. Пусть мы посчитали, что&nbsp;написать эссе в&nbsp;три абстрактных раза тяжелее, чем&nbsp;написать тест, а&nbsp;сдать экзамен в&nbsp;два раза тяжелее, чем&nbsp;написать эссе. Тогда мы можем присвоить баллу за&nbsp;тест вес <span class="math inline">\(1\)</span>, баллу за&nbsp;аналитическое эссе вес <span class="math inline">\(3\)</span>, а&nbsp;экзамену&nbsp;— вес <span class="math inline">\(6\)</span>. Тогда итоговая оценка за&nbsp;курс будет рассчитываться следующим образом:</p>
 <p><span class="math display">\[
@@ -483,8 +483,8 @@ M(X) = \overline{X} = \frac{1}{n} \sum_{i=1}^n x_i
 <p>где <span class="math inline">\(x_i\)</span>&nbsp;— значения переменной, <span class="math inline">\(w_i\)</span>&nbsp;— веса для&nbsp;этих значений.</p>
 <p>Взвешенное среднее часто применяется именно во&nbsp;всякого рода ассессментах, и&nbsp;не&nbsp;только образовательных. Например, вы HR-аналитик и&nbsp;оцениваете персонал. Вы аналитически вычисляете веса коэффициентов (допустим, с&nbsp;помощью линейной регрессии), а&nbsp;далее на&nbsp;их основе высчитываете интегральный балл, по&nbsp;которому будете оценивать сотрудников. Это как один из&nbsp;индустриальных примеров.</p>
 </section>
-<section id="другие-средние" class="level3" data-number="3.2.5">
-<h3 data-number="3.2.5" class="anchored" data-anchor-id="другие-средние"><span class="header-section-number">3.2.5</span> Другие средние</h3>
+<section id="centraltend-other" class="level3" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="centraltend-other"><span class="header-section-number">3.2.5</span> Другие средние</h3>
 <p>Среднее бывает не&nbsp;только арифметическое. Правда встретятся вам другие его виды примерно нигде&nbsp;— то&nbsp;есть о-о-о-очень редко&nbsp;и, скорее всего, в&nbsp;каких-то узкоспециализированных статьях. Но упомянуть их, пожалуй, стоит как минимум ради того, чтобы&nbsp;вы не перепугались излишне, ежели вдруг с&nbsp;ними столкнётесь.</p>
 <section id="centraltend-rms" class="level4" data-number="3.2.5.1">
 <h4 data-number="3.2.5.1" class="anchored" data-anchor-id="centraltend-rms"><span class="header-section-number">3.2.5.1</span> Квадратичное среднее</h4>
@@ -508,15 +508,15 @@ M(X) = \overline{X} = \frac{1}{n} \sum_{i=1}^n x_i
 \]</span></p>
 <p>Per se<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> мы его вряд ли ещё когда-то увидим, но пару раз оно внезапно всплывет.</p>
 </section>
-<section id="геометрическое-среднее" class="level4" data-number="3.2.5.2">
-<h4 data-number="3.2.5.2" class="anchored" data-anchor-id="геометрическое-среднее"><span class="header-section-number">3.2.5.2</span> Геометрическое среднее</h4>
+<section id="centraltend-geom" class="level4" data-number="3.2.5.2">
+<h4 data-number="3.2.5.2" class="anchored" data-anchor-id="centraltend-geom"><span class="header-section-number">3.2.5.2</span> Геометрическое среднее</h4>
 <p>В&nbsp;психологии и&nbsp;социальных науках встречается редко. Применяется там, где необходимо изучать средние скорости изменения&nbsp;— например, в&nbsp;экономике и&nbsp;финансах при&nbsp;изучении доходности, прибыли и выручки; в&nbsp;демографии при&nbsp;расчете индекса человеческого потенциала и&nbsp;др.</p>
 <p><span class="math display">\[
 G(X) = \sqrt[n]{\prod_{i=1}^n x_i}
 \]</span></p>
 </section>
-<section id="гармоническое" class="level4" data-number="3.2.5.3">
-<h4 data-number="3.2.5.3" class="anchored" data-anchor-id="гармоническое"><span class="header-section-number">3.2.5.3</span> Гармоническое</h4>
+<section id="centraltend-harm" class="level4" data-number="3.2.5.3">
+<h4 data-number="3.2.5.3" class="anchored" data-anchor-id="centraltend-harm"><span class="header-section-number">3.2.5.3</span> Гармоническое</h4>
 <p>Весьма экзотическая конструкция, используемая при&nbsp;работе с&nbsp;величинами, заданными через обратные значения. Встречается в&nbsp;финансах и&nbsp;экономике, страховании, физике.</p>
 <p><span class="math display">\[
 H(X) = \frac{n}{\displaystyle \sum_{i=1}^n \frac{1}{x_i}}
@@ -524,12 +524,12 @@ H(X) = \frac{n}{\displaystyle \sum_{i=1}^n \frac{1}{x_i}}
 </section>
 </section>
 </section>
-<section id="сравнение-мер-центральной-тенденции" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="сравнение-мер-центральной-тенденции"><span class="header-section-number">3.3</span> Сравнение мер центральной тенденции</h2>
+<section id="centraltend-comparison" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="centraltend-comparison"><span class="header-section-number">3.3</span> Сравнение мер центральной тенденции</h2>
 <p>Сравнивать будем моду, медиану и среднее [арифметическое].</p>
 <p>Все три статистики&nbsp;— мода, медиана и&nbsp;среднее&nbsp;— описывают <strong>центральную тенденцию</strong>&nbsp;— значение изучаемой нами переменной, вокруг которого собираются другие значения. Но&nbsp;если их&nbsp;три и&nbsp;все они используются, значит между ними должны быть какие-то различия. Посмотрим, какие.</p>
-<section id="меры-центральной-тенденции-и-типы-переменных" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="меры-центральной-тенденции-и-типы-переменных"><span class="header-section-number">3.3.1</span> Меры центральной тенденции и&nbsp;типы переменных</h3>
+<section id="centraltend-comparison-vars" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="centraltend-comparison-vars"><span class="header-section-number">3.3.1</span> Меры центральной тенденции и&nbsp;типы переменных</h3>
 <ul>
 <li>Во-первых, очевидно, что <strong>моду невозможно посчитать для непрерывной переменной</strong>.</li>
 </ul>
@@ -611,8 +611,8 @@ H(X) = \frac{n}{\displaystyle \sum_{i=1}^n \frac{1}{x_i}}
 </div>
 </div>
 </section>
-<section id="меры-центральной-тенденции-и-форма-распределения" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="меры-центральной-тенденции-и-форма-распределения"><span class="header-section-number">3.3.2</span> Меры центральной тенденции и&nbsp;форма распределения</h3>
+<section id="centraltend-comparison-shape" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="centraltend-comparison-shape"><span class="header-section-number">3.3.2</span> Меры центральной тенденции и&nbsp;форма распределения</h3>
 <p>Помимо того, что&nbsp;среднее, мода и&nbsp;медиана информативны сами по&nbsp;себе, полезно смотреть на&nbsp;их взаимное расположение.</p>
 <ul>
 <li>На&nbsp;<strong>симметричном распределении</strong> мода, медиана и&nbsp;среднее <strong>совпадают</strong> [или, по&nbsp;крайней мере, находятся очень близко друг к&nbsp;другу].</li>
@@ -722,8 +722,8 @@ H(X) = \frac{n}{\displaystyle \sum_{i=1}^n \frac{1}{x_i}}
 <p>Со&nbsp;средним и&nbsp;медианой в&nbsp;случае бимодального распределения происходит примерно то&nbsp;же, что&nbsp;и&nbsp;в&nbsp;случае асимметричного распределения&nbsp;— второй пик смещает к&nbsp;себе обе меры центральной тенденции, причем среднее вновь сильнее, чем&nbsp;медиану.</p>
 </section>
 </section>
-<section id="mean-features" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="mean-features"><span class="header-section-number">3.4</span> Свойства среднего арифметического</h2>
+<section id="centraltend-mean-features" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="centraltend-mean-features"><span class="header-section-number">3.4</span> Свойства среднего арифметического</h2>
 <p>Мы упомянем три основных свойства, к&nbsp;которым будем обращаться в&nbsp;последующих темах.</p>
 <div id="prp-mean1" class="theorem proposition">
 <p><span class="theorem-title"><strong>Утверждение 3.1</strong></span> Если к&nbsp;каждому значению распределения прибавить некоторое число (константу), то&nbsp;среднее изменится на&nbsp;ту&nbsp;же константу.</p>
