@@ -20,8 +20,8 @@ book:
       chapters: 
         - desc-centraltend.qmd
         - desc-variation.qmd
-        - desc-normdist.qmd
-        - desc-ci.qmd
+        # - desc-normdist.qmd
+        # - desc-ci.qmd
     # - part: "Статистика вывода"
     #   chapters: 
     #     - infer-stattesting.qmd
