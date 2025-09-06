@@ -391,7 +391,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#стандартное-отклонение" id="toc-стандартное-отклонение" class="nav-link" data-scroll-target="#стандартное-отклонение"><span class="header-section-number">4.7</span> Стандартное отклонение</a></li>
   <li><a href="#сравнение-мер-разброса" id="toc-сравнение-мер-разброса" class="nav-link" data-scroll-target="#сравнение-мер-разброса"><span class="header-section-number">4.8</span> Сравнение мер разброса</a></li>
-  <li><a href="#свойства-дисперсии-и-стандартного-отклонения" id="toc-свойства-дисперсии-и-стандартного-отклонения" class="nav-link" data-scroll-target="#свойства-дисперсии-и-стандартного-отклонения"><span class="header-section-number">4.9</span> Свойства дисперсии и стандартного отклонения</a></li>
+  <li><a href="#свойства-дисперсии-и-стандартного-отклонения" id="toc-свойства-дисперсии-и-стандартного-отклонения" class="nav-link" data-scroll-target="#свойства-дисперсии-и-стандартного-отклонения"><span class="header-section-number">4.9</span> Свойства дисперсии и&nbsp;стандартного отклонения</a></li>
   </ul>
 </nav>
     </div>
@@ -772,10 +772,28 @@ s^2_X = \hat \sigma^2_X =
 </div>
 <section id="свойства-выборочных-оценок" class="level3" data-number="4.6.1">
 <h3 data-number="4.6.1" class="anchored" data-anchor-id="свойства-выборочных-оценок"><span class="header-section-number">4.6.1</span> Свойства выборочных оценок</h3>
+<p>Во всём виновата выборка.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-variation_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-variation_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="степени-свободы" class="level3" data-number="4.6.2">
 <h3 data-number="4.6.2" class="anchored" data-anchor-id="степени-свободы"><span class="header-section-number">4.6.2</span> Степени свободы</h3>
-<p>Во всём виновата выборка.</p>
 <p>Взглянем на формулу дисперсии: в неё входит среднее арифметическое. То есть для того, чтобы рассчитать дисперсию на выборке, сначала нам необходимо на этой же выборке рассчитать среднее. Тем самым, мы как бы «фиксируем» нашу выборку этим средним значением — у значений нашего распределения становится меньше свободы для варьирования. Теперь свободно варьироваться могут<br>
 n − 1 наблюдение, так как последнее всегда будет возможно высчитать, исходя из среднего значения. По этой причине нам необходимо корректировать исходную формулу расчета дисперсии.</p>
 <p>А что если не корректировать?</p>
@@ -799,8 +817,9 @@ n − 1 , так как мы для того, чтобы рассчитать д
 <p>Мы получили величину, называемую стандартным отклонением (standard deviation). Чем она хороша? Тем, что её размерность совпадает с размерностью нашей переменной. Стандартное отклонение уже может быть достаточно интерпретабельно и хорошо визуализируемо.</p>
 <p>Кстати, формула выше, которая что-то очень напоминает, — это стандартное отклонение генеральной совокупности, потому что под корнем стоит дисперсия генеральной совокупности.</p>
 <p>Чтобы посчитать стандартное отклонение по выборке, нам надо извлечь корень из выборочной дисперсии:</p>
-<p>$$ s_X = = d^2 = </p>
-<p>$$</p>
+<p><span class="math display">\[
+s_X = \sqrt{s^2_X} = \sqrt{\frac{1}{n-1} \sum_{i=1}^n} d^2 = \sqrt{\frac{1}{n-1} \sum_{i=1}^n(\overline X - x_i)^2}
+\]</span></p>
 </section>
 <section id="сравнение-мер-разброса" class="level2" data-number="4.8">
 <h2 data-number="4.8" class="anchored" data-anchor-id="сравнение-мер-разброса"><span class="header-section-number">4.8</span> Сравнение мер разброса</h2>
@@ -809,24 +828,84 @@ n − 1 , так как мы для того, чтобы рассчитать д
 <p>Стоит также отметить, что все, что мы тут обсуждали, совершенно не годиться для номинативных переменных. Однако у них тоже есть вариативность. Согласитель, что выборка из Питера, Москвы, и Казани более вариативна, чем выборка из Москвы. Аналогом меры разброса для номинальной переменной можно назвать количество уникальных значений этой переменной.</p>
 </section>
 <section id="свойства-дисперсии-и-стандартного-отклонения" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="свойства-дисперсии-и-стандартного-отклонения"><span class="header-section-number">4.9</span> Свойства дисперсии и стандартного отклонения</h2>
-<p>Если к каждому значению распределения прибавить некоторое число (константу), то дисперсия не изменится. D x + c = D x</p>
-<p>Вот почему:</p>
-<p>D x + c = ∑ n i = 1 ( ( ¯ x + c ) − ( x i + c ) ) 2 n − 1 = ∑ n i = 1 ( ¯ x + c − x i − c ) 2 n − 1 = ∑ n i = 1 ( ¯ x − x i ) 2 n − 1 = D x</p>
-<p>Если каждое значение распределение умножить на некоторое число (константу), то дисперсия увеличится в<br>
-c 2 раз. D x × c = D x × c 2</p>
-<p>Вот почему:</p>
-<p>D x × c = ∑ n i = 1 ( c ¯ x − c x i ) 2 n − 1 = ∑ n i = 1 c 2 ( ¯ x − x i ) 2 n − 1 = c 2 ∑ n i = 1 ( ¯ x − x i ) 2 n − 1 = D x × c 2</p>
-<p>Если к каждому значению распределения прибавить некоторое число (константу), то стандартное отклонение не изменится. s x + c = s x</p>
-<p>Это следует из свойства дисперсии:</p>
-<p>s x + c = √ D x + c = √ D x = s x</p>
-<p>Как мы уже видели, распределение просто сдвигается на константу. Например, если к каждому значению синего распределения прибавить<br>
-2 , получится красное — разброс у обоих распределений одинаковый:</p>
-<p>Если каждое значение распределение умножить на некоторое число (константу), то стандартное отклонение увеличится во столько же раз. s x × c = s x × c</p>
-<p>Это также следует из свойства дисперсии:</p>
-<p>s x × c = √ D x × c = √ D x × c 2 = s x × c</p>
-<p>Например, здесь каждое значение синего распределения умножили на<br>
-3 и получили красное — разброс также увеличился в три раза, поэтому распределение более плоское:</p>
+<h2 data-number="4.9" class="anchored" data-anchor-id="свойства-дисперсии-и-стандартного-отклонения"><span class="header-section-number">4.9</span> Свойства дисперсии и&nbsp;стандартного отклонения</h2>
+<p>Мы рассмотрим два свойства дисперсии и&nbsp;два свойства стандартного отклонения, непосредственно следующих из&nbsp;свойств дисперсии.</p>
+<div id="prp-var1" class="theorem proposition">
+<p><span class="theorem-title"><strong>Утверждение 4.1</strong></span> Если к&nbsp;каждому значению распределения прибавить некоторое число (константу), то&nbsp;дисперсия распределения не&nbsp;изменится.</p>
+<p><span class="math display">\[
+D_{X+c} = D_X
+\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Доказательство</em>. </span><span class="math display">\[
+\begin{split}
+D_{X+c} &amp;=\frac{1}{n} \sum_{i=1}^n \big( (\overline X + c) - (x_i + c) \big)^2 = \\
+&amp;= \frac{1}{n} \sum_{i=1}^n (\overline X + c - x_i - c)^2 = \\
+&amp;= \frac{1}{n} \sum_{i=1}^n (\overline X - x_i)^2 = D_X
+\end{split}
+\]</span></p>
+</div>
+<div id="cor-sd1" class="theorem corollary">
+<p><span class="theorem-title"><strong>Следствие 4.1</strong></span> Если к&nbsp;каждому значению распределения прибавить некоторое число (константу), то&nbsp;стандартное отклонение не&nbsp;изменится.</p>
+<p><span class="math display">\[
+\sigma_{X+c} = \sigma_X
+\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Доказательство</em>. </span><span class="math display">\[
+\sigma_{X+c} = \sqrt{\sigma^2_{X+c}} = \sqrt{D_{X+c}} = \sqrt{D_X} = \sqrt{\sigma^2_X} = \sigma_X
+\]</span></p>
+</div>
+<div id="prp-var2" class="theorem proposition">
+<p><span class="theorem-title"><strong>Утверждение 4.2</strong></span> Если каждое значение распределения умножить на&nbsp;некоторое число (константу), то&nbsp;дисперсия изменится в&nbsp;<span class="math inline">\(c^2\)</span> раз.</p>
+<p><span class="math display">\[
+D_{X \times c} = D_X \times c^2
+\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Доказательство</em>. </span><span class="math display">\[
+\begin{split}
+D_{X \times c} &amp;=\frac{1}{n} \sum_{i=1}^n \big( (\overline X \times c) - (x_i \times c) \big)^2 = \\
+&amp;= \frac{1}{n} \sum_{i=1}^n c^2 \times (\overline X - x_i)^2 = \\
+&amp;= c^2 \times \frac{1}{n} \sum_{i=1}^n (\overline X - x_i)^2 = \\
+&amp;= c^2 \times D_X
+\end{split}
+\]</span></p>
+</div>
+<div id="cor-sd2" class="theorem corollary">
+<p><span class="theorem-title"><strong>Следствие 4.2</strong></span> Если каждое значение распределения умножить на&nbsp;некоторое число (константу), то&nbsp;стандартное отклонение изменится во&nbsp;столько же раз.</p>
+<p><span class="math display">\[
+\sigma_{X \times c} = \sigma_X \times c
+\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Доказательство</em>. </span><span class="math display">\[
+\sigma_{X \times c} = \sqrt{\sigma^2_{X \times c}} = \sqrt{D_{X \times c}} = \sqrt{c^2 \times D_X} = c \times \sqrt{D_X} = c \times \sqrt{\sigma^2_X} = c \times \sigma_X
+\]</span></p>
+</div>
+<p>Проиллюстрировать свойства дисперсии довольно трудно, поскольку на&nbsp;графиках её отобразить весьма проблематично, однако для&nbsp;стандартного отклонения картинки нарисовать можно. Собственно, мы их уже видели, когда обсуждали свойства среднего арифметического (см.&nbsp;<a href="desc-centraltend.html#prp-mean1" class="quarto-xref">Утверждение&nbsp;<span>3.1</span></a> и <a href="desc-centraltend.html#prp-mean2" class="quarto-xref">Утверждение&nbsp;<span>3.2</span></a>).</p>
+<p>Для&nbsp;следствия <a href="#cor-sd1" class="quarto-xref"><span>4.1</span></a> визуализация будет такой:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-variation_files/figure-html/sd_feature_1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Как мы уже видели, распределение просто сдвигается на&nbsp;константу. Если к&nbsp;каждому значению синего распределения прибавить <span class="math inline">\(2\)</span>, получится красное — разброс у&nbsp;обоих распределений одинаковый.</p>
+<p>Для следствия <a href="#cor-sd2" class="quarto-xref"><span>4.2</span></a> визуализация выглядит так:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-variation_files/figure-html/sd_feature_2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Здесь каждое значение синего распределения умножили на&nbsp;<span class="math inline">\(3\)</span> и получили красное&nbsp;— разброс также увеличился в&nbsp;три раза, поэтому распределение более плоское.</p>
 
 
 </section>
