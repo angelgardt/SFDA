@@ -22,33 +22,33 @@ book:
         - desc-variation.qmd
         - desc-normdist.qmd
         - desc-ci.qmd
-    - part: "Статистика вывода"
-      chapters: 
-        - infer-stattesting.qmd
-        - infer-categorical.qmd
-        - infer-correlation.qmd
-        - infer-anovaI.qmd
-        - infer-anovaII.qmd
-        - infer-posthoc.qmd
-        - infer-simplelinear.qmd
-        - infer-multiplelinear.qmd
-        - infer-ancova.qmd
-        - infer-logreg.qmd
-        - infer-cluster.qmd
-        - infer-efa.qmd
-        - infer-cfa.qmd
-    - part: "Анализ данных в R"
-      chapters: 
-        - r-intro.qmd
-        - r-preproc.qmd
-        - r-vis.qmd
-        - r-lm.qmd
-        - r-anova.qmd
-        - r-glm.qmd
-        - r-cluster.qmd
-        - r-efa.qmd
-        - r-cfa.qmd
-    - outro.qmd
+    # - part: "Статистика вывода"
+    #   chapters: 
+    #     - infer-stattesting.qmd
+    #     - infer-categorical.qmd
+    #     - infer-correlation.qmd
+    #     - infer-anovaI.qmd
+    #     - infer-anovaII.qmd
+    #     - infer-posthoc.qmd
+    #     - infer-simplelinear.qmd
+    #     - infer-multiplelinear.qmd
+    #     - infer-ancova.qmd
+    #     - infer-logreg.qmd
+    #     - infer-cluster.qmd
+    #     - infer-efa.qmd
+    #     - infer-cfa.qmd
+    # - part: "Анализ данных в R"
+    #   chapters: 
+    #     - r-intro.qmd
+    #     - r-preproc.qmd
+    #     - r-vis.qmd
+    #     - r-lm.qmd
+    #     - r-anova.qmd
+    #     - r-glm.qmd
+    #     - r-cluster.qmd
+    #     - r-efa.qmd
+    #     - r-cfa.qmd
+    # - outro.qmd
     # - references.qmd
 
 bibliography: references.bib
