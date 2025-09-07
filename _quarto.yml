@@ -20,7 +20,7 @@ book:
       chapters: 
         - desc-centraltend.qmd
         - desc-variation.qmd
-        # - desc-normdist.qmd
+        - desc-normdist.qmd
         # - desc-ci.qmd
     # - part: "Статистика вывода"
     #   chapters: 
