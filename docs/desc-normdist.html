@@ -415,8 +415,72 @@ z \thicksim \mathcal{N}(0, 1)
 </section>
 <section id="стандартизация-1" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="стандартизация-1"><span class="header-section-number">5.3.2</span> Стандартизация</h3>
-<p>Часто возникает следующая задача: нам нужно сравнить, например, баллы по двум шкалам опросника, при этом размах баллов на шкале различный. Более того, сами распределения баллов по этим шкалам могут быть также различны.</p>
-<p>Рассмотрим пример. Есть опросник «Trust in Artificial Intelligent Agents», который состоит из шести шкал — predictability, consistency, utility, faith, dependability и understanding. Возьмем две шкалы: predictability и understanding. Посмотрим, сколько вопросов вошло в каждую из шкал:</p>
+<p>Часто возникает следующая задача: нам нужно сравнить, например, баллы по&nbsp;шкалам двух опросников, при этом размах баллов на&nbsp;шкале различный. Более того, сами распределения баллов по этим шкалам могут быть также различны.</p>
+<p>Рассмотрим следующий пример. Мы дали респондентам два опросника на&nbsp;измерение личностных черт&nbsp;— BFI-2 (по&nbsp;модели «Большая пятерка») и&nbsp;SD3 (по&nbsp;модели «Тёмная триада»). Допустим, что&nbsp;мы хотим сравнить баллы некоторого респондента по&nbsp;шкалам Нейротизм из&nbsp;BFI-2 и Нарциссизм из&nbsp;SD3. Вопрос будет простой: <em>по&nbsp;какой из&nbsp;двух шкал респондент набрал больший балл</em>?</p>
+<p>Данные говорят, что&nbsp;этот респондент набрал</p>
+<p>Шкалы BFI-2 состоят из&nbsp;двенадцати пунктов, а&nbsp;шкалы SD3&nbsp;— из&nbsp;девяти. И&nbsp;даже учитывая, что&nbsp;отвечали респонденты в&nbsp;обоих случаях по&nbsp;пятибалльной шкале Ликерта, суммарный балл по&nbsp;шкалам опросника будет иметь разные пределы изменчивости.</p>
+<div id="fig-survey-sample" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-survey-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-normdist_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-survey-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;5.5: Распределения баллов по&nbsp;шкалам опросников. <code>BFI2_NEU</code>&nbsp;— шкала Нейротизм опросника BFI-2, <code>SD3_NAR</code>&nbsp;— шкала Нарциссизм опросника SD3.
+</figcaption>
+</figure>
+</div>
+<div id="tbl-survey-means" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-survey-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Таблица&nbsp;5.1: Описательные статистики распределений баллов по&nbsp;шкалам опросников. <code>BFI2_NEU</code>&nbsp;— шкала Нейротизм опросника BFI-2, <code>SD3_NAR</code>&nbsp;— шкала Нарциссизм опросника SD3.
+</figcaption>
+<div aria-describedby="tbl-survey-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Шкала</th>
+<th style="text-align: center;">Количество пунктов</th>
+<th style="text-align: center;">Количество респондентов</th>
+<th style="text-align: center;">Среднее</th>
+<th style="text-align: center;">Стандартное отклонение</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>BFI2_NEU</code></td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">492</td>
+<td style="text-align: center;">36.34</td>
+<td style="text-align: center;">9.41</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>SD3_NAR</code></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">492</td>
+<td style="text-align: center;">26.94</td>
+<td style="text-align: center;">6.95</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Есть опросник «Trust in Artificial Intelligent Agents», который состоит из шести шкал — predictability, consistency, utility, faith, dependability и understanding. Возьмем две шкалы: predictability и understanding. Посмотрим, сколько вопросов вошло в каждую из шкал:</p>
 <p>length(pr_items) [1] 10 length(un_items) [1] 12 Видим, что в шкале predictability 10 вопросов, а в шкале understanding 12. Понятно, что размах двух величин разный — сравнивать просто сырые баллы респондентов по двум шкалам друг с другом уже не выглядит осмысленно.</p>
 <p>Посмотрим на распределения:</p>
 <p>Видим, что разброс переменных разный, средние тоже разные — короче, все разное. Однако сравнивать каким-то образом хоцца. Для этого придумали стандартизацию.</p>
@@ -442,18 +506,18 @@ z_i = \frac{x_i - \overline X}{s_X},
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="desc-normdist_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="desc-normdist_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standartization-operations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рисунок&nbsp;5.5: Стандартизация, центрирование, нормирование. Пунктирная линия&nbsp;— стандартное нормальное распределение, точечная линия&nbsp;— исходное распределение.
+Рисунок&nbsp;5.6: Стандартизация, центрирование, нормирование. Пунктирная линия&nbsp;— стандартное нормальное распределение, точечная линия&nbsp;— исходное распределение.
 </figcaption>
 </figure>
 </div>
-<p>На&nbsp;рисунке <a href="#fig-standartization-operations" class="quarto-xref"><span>5.5</span></a> черной линией представлено исходное нормальное распределение <span class="math inline">\(\mathcal{N}(-1,0.25)\)</span> [слева сверху]. Если его центрировать, то&nbsp;оно подвинется вправо&nbsp;— <span class="math inline">\(x_i - \overline X\)</span>&nbsp;— и&nbsp;получится синее распределение <span class="math inline">\(\mathcal{N}(0, 0.25)\)</span> [справа сверху]. Если&nbsp;нормировать исходное распределение, то&nbsp;оно станет несколько шире&nbsp;— <span class="math inline">\(\frac{x_i}{s_X}\)</span>&nbsp;— как&nbsp;зелёное <span class="math inline">\(\mathcal{N}(-1,1)\)</span> [слева снизу]. А&nbsp;если осуществить обе операции вместе&nbsp;— <span class="math inline">\(\frac{x_i - \overline X}{s_X}\)</span>&nbsp;— это и&nbsp;будет стандартизация, и&nbsp;распределение совпадет сo&nbsp;стандартным нормальным распределением [справа снизу].</p>
+<p>На&nbsp;рисунке <a href="#fig-standartization-operations" class="quarto-xref"><span>5.6</span></a> черной линией представлено исходное нормальное распределение <span class="math inline">\(\mathcal{N}(-1,0.25)\)</span> [слева сверху]. Если его центрировать, то&nbsp;оно подвинется вправо&nbsp;— <span class="math inline">\(x_i - \overline X\)</span>&nbsp;— и&nbsp;получится синее распределение <span class="math inline">\(\mathcal{N}(0, 0.25)\)</span> [справа сверху]. Если&nbsp;нормировать исходное распределение, то&nbsp;оно станет несколько шире&nbsp;— <span class="math inline">\(\frac{x_i}{s_X}\)</span>&nbsp;— как&nbsp;зелёное <span class="math inline">\(\mathcal{N}(-1,1)\)</span> [слева снизу]. А&nbsp;если осуществить обе операции вместе&nbsp;— <span class="math inline">\(\frac{x_i - \overline X}{s_X}\)</span>&nbsp;— это и&nbsp;будет стандартизация, и&nbsp;распределение совпадет сo&nbsp;стандартным нормальным распределением [справа снизу].</p>
 <p>Важный момент: если распределение изначально было асимметричное, или бимодальное, или какое-либо еще «ненормальное», стандартизация не изменит его форму.</p>
 <p>Например, вот.</p>
 <p>Гистрограмма, конечно, изменилась существенно, но она имеет на это право, так как достаточно сильно чувствительна ко всяким случайным флуктуациям. А вот на графике плотности хорошо видно, что хотя распределение стало чуть шире и сдвинулось влево, форма распределения осталась прежней — есть два пика, есть хвостик справа.</p>
