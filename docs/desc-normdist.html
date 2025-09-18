@@ -210,18 +210,19 @@ window.Quarto = {
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#распределение-признаков-в-генеральной-совокупности" id="toc-распределение-признаков-в-генеральной-совокупности" class="nav-link active" data-scroll-target="#распределение-признаков-в-генеральной-совокупности"><span class="header-section-number">5.1</span> Распределение признаков в генеральной совокупности</a></li>
-  <li><a href="#нормальное-распределение" id="toc-нормальное-распределение" class="nav-link" data-scroll-target="#нормальное-распределение"><span class="header-section-number">5.2</span> Нормальное распределение</a>
+  <li><a href="#normdist-pop-dist" id="toc-normdist-pop-dist" class="nav-link active" data-scroll-target="#normdist-pop-dist"><span class="header-section-number">5.1</span> Распределение признаков в генеральной совокупности</a></li>
+  <li><a href="#normdist-normdist" id="toc-normdist-normdist" class="nav-link" data-scroll-target="#normdist-normdist"><span class="header-section-number">5.2</span> Нормальное распределение</a>
   <ul class="collapse">
-  <li><a href="#параметры-нормального-распределения" id="toc-параметры-нормального-распределения" class="nav-link" data-scroll-target="#параметры-нормального-распределения"><span class="header-section-number">5.2.1</span> Параметры нормального распределения</a></li>
-  <li><a href="#форма-нормального-распределения-и-параметры" id="toc-форма-нормального-распределения-и-параметры" class="nav-link" data-scroll-target="#форма-нормального-распределения-и-параметры"><span class="header-section-number">5.2.2</span> Форма нормального распределения и&nbsp;параметры</a></li>
-  <li><a href="#стандартные-отклонения-и-вероятности" id="toc-стандартные-отклонения-и-вероятности" class="nav-link" data-scroll-target="#стандартные-отклонения-и-вероятности"><span class="header-section-number">5.2.3</span> Стандартные отклонения и&nbsp;вероятности</a></li>
+  <li><a href="#normdist-params" id="toc-normdist-params" class="nav-link" data-scroll-target="#normdist-params"><span class="header-section-number">5.2.1</span> Параметры нормального распределения</a></li>
+  <li><a href="#normdist-shape" id="toc-normdist-shape" class="nav-link" data-scroll-target="#normdist-shape"><span class="header-section-number">5.2.2</span> Форма нормального распределения и&nbsp;параметры</a></li>
+  <li><a href="#normdist-probs" id="toc-normdist-probs" class="nav-link" data-scroll-target="#normdist-probs"><span class="header-section-number">5.2.3</span> Стандартные отклонения и&nbsp;вероятности</a></li>
   </ul></li>
-  <li><a href="#стандартизация" id="toc-стандартизация" class="nav-link" data-scroll-target="#стандартизация"><span class="header-section-number">5.3</span> Стандартизация</a>
+  <li><a href="#normdist-stand" id="toc-normdist-stand" class="nav-link" data-scroll-target="#normdist-stand"><span class="header-section-number">5.3</span> Стандартизация</a>
   <ul class="collapse">
-  <li><a href="#стандартное-нормальное-распределение" id="toc-стандартное-нормальное-распределение" class="nav-link" data-scroll-target="#стандартное-нормальное-распределение"><span class="header-section-number">5.3.1</span> Стандартное нормальное распределение</a></li>
-  <li><a href="#стандартизация-1" id="toc-стандартизация-1" class="nav-link" data-scroll-target="#стандартизация-1"><span class="header-section-number">5.3.2</span> Стандартизация</a></li>
-  <li><a href="#интерпретация-z-значений" id="toc-интерпретация-z-значений" class="nav-link" data-scroll-target="#интерпретация-z-значений"><span class="header-section-number">5.3.3</span> Интерпретация z-значений</a></li>
+  <li><a href="#normdist-stnormdist" id="toc-normdist-stnormdist" class="nav-link" data-scroll-target="#normdist-stnormdist"><span class="header-section-number">5.3.1</span> Стандартное нормальное распределение</a></li>
+  <li><a href="#normdist-standizaion" id="toc-normdist-standizaion" class="nav-link" data-scroll-target="#normdist-standizaion"><span class="header-section-number">5.3.2</span> Стандартизация</a></li>
+  <li><a href="#normdist-stand-interpret" id="toc-normdist-stand-interpret" class="nav-link" data-scroll-target="#normdist-stand-interpret"><span class="header-section-number">5.3.3</span> Интерпретация z-значений</a></li>
+  <li><a href="#normist-stand-usage" id="toc-normist-stand-usage" class="nav-link" data-scroll-target="#normist-stand-usage"><span class="header-section-number">5.3.4</span> Применение стандартизации</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -249,22 +250,22 @@ window.Quarto = {
 
 
 <p>Мы научились описывать эмпирическое распределение переменных&nbsp;— то&nbsp;есть распределение, которое получено на&nbsp;выборке. Но&nbsp;ведь в&nbsp;генеральной совокупности наши переменные тоже каким-то образом распределены. Уделим внимание и этому вопросу.</p>
-<section id="распределение-признаков-в-генеральной-совокупности" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="распределение-признаков-в-генеральной-совокупности"><span class="header-section-number">5.1</span> Распределение признаков в генеральной совокупности</h2>
+<section id="normdist-pop-dist" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="normdist-pop-dist"><span class="header-section-number">5.1</span> Распределение признаков в генеральной совокупности</h2>
 <p>Можем&nbsp;ли мы знать наверняка, как&nbsp;распределен признак в&nbsp;генеральной совокупности?</p>
 <p>Нет.</p>
 <p>Однако мы можем предполагать некоторое теоретическое распределение признака. На&nbsp;основе чего мы можем сделать такое предположение? Конечно&nbsp;же, на&nbsp;основе собранных данных, то&nbsp;есть на&nbsp;основании выборки. Большой выборки. Очень большой выборки. Большого количества очень больших выборок.</p>
 <p>Теоретических распределений существует много&nbsp;— и&nbsp;они разные по&nbsp;форме, по&nbsp;параметрам, которыми они задаются, по&nbsp;величинам, которые ими можно описывать и&nbsp;т.&nbsp;д. Однако есть одно распределение, которое стало невероятно популярным и&nbsp;крайне широко используемым&nbsp;— нормальное распределение. Его мы и будем рассматривать.</p>
 </section>
-<section id="нормальное-распределение" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="нормальное-распределение"><span class="header-section-number">5.2</span> Нормальное распределение</h2>
+<section id="normdist-normdist" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="normdist-normdist"><span class="header-section-number">5.2</span> Нормальное распределение</h2>
 <p>Тот факт, что некоторая величина распределена согласно закону <strong>нормального распределения (normal distribution)</strong>, записывается следующим образом:</p>
 <p><span class="math display">\[
 X \thicksim \mathcal{N}(\mu, \sigma^2)
 \]</span></p>
 <p>Здесь <span class="math inline">\(X\)</span>&nbsp;— некоторая случайная величина (переменная), <span class="math inline">\(\mathcal{N}\)</span>&nbsp;— обозначение нормального распределения, <span class="math inline">\(\mu\)</span> и <span class="math inline">\(\sigma^2\)</span>&nbsp;— параметры нормального распределения.</p>
-<section id="параметры-нормального-распределения" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="параметры-нормального-распределения"><span class="header-section-number">5.2.1</span> Параметры нормального распределения</h3>
+<section id="normdist-params" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="normdist-params"><span class="header-section-number">5.2.1</span> Параметры нормального распределения</h3>
 <p>Итак, в&nbsp;скобках указаны параметры распределения&nbsp;— как можно видеть, их всего два. На&nbsp;самом деле, мы их уже хорошо знаем:</p>
 <ul>
 <li><span class="math inline">\(\mu\)</span>&nbsp;— это не&nbsp;что иное, как среднее,</li>
@@ -317,8 +318,8 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e ^{- \frac{(x-\mu)^2}{2 \sigma^2}}, \quad x
 </div>
 </div>
 </section>
-<section id="форма-нормального-распределения-и-параметры" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="форма-нормального-распределения-и-параметры"><span class="header-section-number">5.2.2</span> Форма нормального распределения и&nbsp;параметры</h3>
+<section id="normdist-shape" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="normdist-shape"><span class="header-section-number">5.2.2</span> Форма нормального распределения и&nbsp;параметры</h3>
 <p>Очевидно, что&nbsp;раз у&nbsp;распределения есть какие-то параметры, значит они каким-то образом на&nbsp;него влияют. Не&nbsp;менее очевидно, что&nbsp;среднее <span class="math inline">\(\mu\)</span> будет задавать положение центра колокола на&nbsp;оси <span class="math inline">\(x\)</span>, а&nbsp;дисперсия <span class="math inline">\(\sigma^2\)</span>&nbsp;— ширину колокола. Ниже представлены несколько нормальных распределений c&nbsp;различными параметрами:</p>
 <div id="fig-normdists-params" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -339,8 +340,8 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e ^{- \frac{(x-\mu)^2}{2 \sigma^2}}, \quad x
 </figure>
 </div>
 </section>
-<section id="стандартные-отклонения-и-вероятности" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="стандартные-отклонения-и-вероятности"><span class="header-section-number">5.2.3</span> Стандартные отклонения и&nbsp;вероятности</h3>
+<section id="normdist-probs" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="normdist-probs"><span class="header-section-number">5.2.3</span> Стандартные отклонения и&nbsp;вероятности</h3>
 <p>Как уже упоминалось выше, нормальное распределение изучено вдоль и&nbsp;поперек. В&nbsp;том числе, посчитаны вероятности попадания значений в&nbsp;определенные интервалы. Вот они:</p>
 <div id="fig-normdist-probs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -390,11 +391,11 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e ^{- \frac{(x-\mu)^2}{2 \sigma^2}}, \quad x
 <p>В&nbsp;целом, это всё, что&nbsp;нам надо знать про&nbsp;нормальное распределение.</p>
 </section>
 </section>
-<section id="стандартизация" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="стандартизация"><span class="header-section-number">5.3</span> Стандартизация</h2>
+<section id="normdist-stand" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="normdist-stand"><span class="header-section-number">5.3</span> Стандартизация</h2>
 <p>Нормальных распределение существует много, и&nbsp;пример тому <a href="#fig-normdists-params" class="quarto-xref">Рисунок&nbsp;<span>5.2</span></a>. Однако среди всех нормальных распределений одно выделяется особо.</p>
-<section id="стандартное-нормальное-распределение" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="стандартное-нормальное-распределение"><span class="header-section-number">5.3.1</span> Стандартное нормальное распределение</h3>
+<section id="normdist-stnormdist" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="normdist-stnormdist"><span class="header-section-number">5.3.1</span> Стандартное нормальное распределение</h3>
 <p>Нормальное распределение со&nbsp;средним <span class="math inline">\(0\)</span> и&nbsp;дисперсией <span class="math inline">\(1\)</span> называется <strong>стандартным нормальным распределением (standard normal distribution)</strong>, или <span class="math inline">\(z\)</span>-распределением. Значения на&nbsp;шкале такого распределения называются <span class="math inline">\(z\)</span>-значениями.</p>
 <p><span class="math display">\[
 z \thicksim \mathcal{N}(0, 1)
@@ -420,8 +421,8 @@ z \thicksim \mathcal{N}(0, 1)
 </div>
 <p>Разумеется, так&nbsp;как стандартное нормальное распределение является частным случаем нормального распределения, оно сохраняет все его свойства.</p>
 </section>
-<section id="стандартизация-1" class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="стандартизация-1"><span class="header-section-number">5.3.2</span> Стандартизация</h3>
+<section id="normdist-standizaion" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="normdist-standizaion"><span class="header-section-number">5.3.2</span> Стандартизация</h3>
 <p>Часто возникает следующая задача: нам нужно сравнить, например, баллы по&nbsp;шкалам двух опросников, при этом разброс баллов на&nbsp;шкале различный. Более того, сами распределения баллов по этим шкалам могут быть также различны.</p>
 <p>Рассмотрим следующий пример. Мы дали респондентам два опросника на&nbsp;измерение личностных черт&nbsp;— BFI-2 (по&nbsp;модели «Большая пятерка») и&nbsp;SD3 (по&nbsp;модели «Тёмная триада»). Допустим, что&nbsp;мы хотим сравнить баллы некоторого респондента по&nbsp;шкалам Нейротизм из&nbsp;BFI-2 и Нарциссизм из&nbsp;SD3. Вопрос будет простой: <em>по&nbsp;какой из&nbsp;двух шкал респондент набрал больший балл</em>?</p>
 <p>Данные говорят, что&nbsp;этот респондент набрал <span class="math inline">\(31\)</span> балл по&nbsp;обеим шкалам. Собственно, а&nbsp;в&nbsp;чём тогда вопрос? Ясно&nbsp;же, что&nbsp;баллов набрано по&nbsp;обеим шкалам одинаково. Или&nbsp;всё&nbsp;же нет…</p>
@@ -582,37 +583,37 @@ z_\text{SD3_NAR} &amp;= \frac{31 - 29.94}{6.95} \approx 0.58
 \]</span></p>
 <p>Таким образом, мы можем сказать, что&nbsp;наш респондент набрал более высокий балл по&nbsp;шкале нарциссизма.</p>
 </section>
-<section id="интерпретация-z-значений" class="level3" data-number="5.3.3">
-<h3 data-number="5.3.3" class="anchored" data-anchor-id="интерпретация-z-значений"><span class="header-section-number">5.3.3</span> Интерпретация z-значений</h3>
-<p>могут быть более типичны или&nbsp;же менее типичны.</p>
-<p>Ну, хорошо, стандартизацию мы сделали — это не то чтобы очень сложно. Но как с этими числами дальше работать?</p>
-<p>Здесь надо понять всего одну вещь: единица z-шкалы — это стандартное отклонение исходной переменной.</p>
-<p>Конечно, z-шкала безразмерная, то есть не имеет единиц измерения (метры, секунды, года и др.). Однако единица — в смысле<br>
-1 — на этой шкале небессмысленна. Это мера типичности.</p>
-<p>Посмотрим еще раз на картинку:</p>
-<p>Обратим внимание вот на что:<br>
-1 ,<br>
-2 ,<br>
-3 и<br>
-− 1 ,<br>
-− 2 ,<br>
-− 3 находятся в тех самых точках, где у нас в другом нормальной распределении стандартные отклонения ( σ ,<br>
-2 σ ,<br>
-3 σ ). А мы помним вот что:</p>
-<p>P ( X ∈ ( μ − σ , μ + σ ) ) = 68.2 %</p>
-<p>P ( X ∈ ( μ − 2 σ , μ + 2 σ ) ) = 95.6 %</p>
-<p>P ( X ∈ ( μ − 3 σ , μ + 3 σ ) ) = 99.8 %</p>
-<p>То есть z-значения в интервале<br>
-( − 1 , 1 ) — очень типичные, в интервалах<br>
-( − 2 , − 1 ) и<br>
-( 1 , 2 ) — тоже достаточно типичные, в интервалах<br>
-( − 3 , − 2 ) и<br>
-( 2 , 3 ) — менее типичные, но еще «нормальные», меньше<br>
-− 3 и больше<br>
-3 — очень нетипичные. Это и есть мера типичности.</p>
-<p>Таким образом, с помощью z-значений мы можем понять, где находится наш испытуемый / респондент на нашем распределении.</p>
-<p>Можно ли это понять без перевода значений в z-шкалу? Можно. Но неудобно. Надо держать в голове среднее, стандартное отклонение конкретного распределения, а если сравниваем респондентов по нескольким шкалам, то по две характеристики для каждой шкалы — в общем, много инфы. Трудно. А по z-значениям все сразу понятно.</p>
-<p>Есть еще одно применение z-значений. От них можно перейти к значениям любой стандартной шкалы. Стандартных шкал существует много — Sten, Stanine, T-score, IQ-score… С ними вы познакомитесь в курсе психометрики. Они очень удобны для представления результатов тестов конечным пользователям. Однако для того, чтобы перейти к этим шкалам, сначала необходимо будет все равно перейти к z-значениям.</p>
+<section id="normdist-stand-interpret" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="normdist-stand-interpret"><span class="header-section-number">5.3.3</span> Интерпретация z-значений</h3>
+<p>Хорошо, мы сделали стандартизацию&nbsp;— довольно простая процедура. Но&nbsp;как с&nbsp;этими числами дальше работать? Можно&nbsp;ли из&nbsp;них выжать больше смысла, чем&nbsp;просто сравнение?</p>
+<p>Здесь надо понять всего одну вещь:</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>единица <span class="math inline">\(z\)</span>-шкалы&nbsp;— это стандартное отклонение исходной переменной</p>
+</div>
+</div>
+</div>
+<p>Конечно, <span class="math inline">\(z\)</span>-шкала безразмерная, то есть не&nbsp;имеет единиц измерения (метры, секунды, года и&nbsp;др.). Однако единица&nbsp;— в смысле <span class="math inline">\(1\)</span>&nbsp;— на этой шкале небессмысленна. Это мера типичности.</p>
+<p>Взглянем ещё раз на&nbsp;рисунок <a href="#fig-stnormdist" class="quarto-xref"><span>5.4</span></a>. Обратим внимание вот на что: <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span> <span class="math inline">\(3\)</span> и&nbsp;<span class="math inline">\(-1\)</span>, <span class="math inline">\(-2\)</span>, <span class="math inline">\(-3\)</span> находятся в&nbsp;тех самых точках, где в&nbsp;другом нормальном распределении находятся стандартные отклонения (<span class="math inline">\(\mu \pm \sigma\)</span>, <span class="math inline">\(\mu \pm 2\sigma\)</span>, <span class="math inline">\(\mu \pm 3\sigma\)</span>). Мы также знаем, что этим диапазонам соответствуют вероятности, с&nbsp;которыми значения случайных величин оказываются в&nbsp;этих диапазонах (<a href="#eq-normdist-probs" class="quarto-xref">Уравнение&nbsp;<span>5.1</span></a>).</p>
+<p>То&nbsp;есть мы можем говорить, что&nbsp;<span class="math inline">\(z\)</span>-значения</p>
+<ul>
+<li>в&nbsp;интервале <span class="math inline">\((-1,1)\)</span>&nbsp;— очень типичные, поскольку лежат в&nbsp;пределах одного стандартного отклонения от&nbsp;среднего,</li>
+<li>в&nbsp;интервалах <span class="math inline">\((-2, -1)\)</span> и&nbsp;<span class="math inline">\((1,2)\)</span>&nbsp;— тоже достаточно типичные, поскольку лежат в&nbsp;пределах двух стандартных отклонений от&nbsp;среднего,</li>
+<li>в&nbsp;интервалах <span class="math inline">\((-3, -2)\)</span> и&nbsp;<span class="math inline">\((2,3)\)</span>&nbsp;— менее типичные, но еще «нормальные», так как лежат в&nbsp;пределах трёх стандартных отклонений от среднего,</li>
+<li>меньшие <span class="math inline">\(-3\)</span> и&nbsp;большие <span class="math inline">\(3\)</span>&nbsp;— очень нетипичные, так как выходят за&nbsp;пределы трёх стандартных отклонений от среднего.</li>
+</ul>
+<p>Это и&nbsp;есть мера типичности.</p>
+<p>Таким образом, с&nbsp;помощью <span class="math inline">\(z\)</span>-значений мы можем быстро понять, где находится испытуемый или респондент на&nbsp;имеющемся распределении.</p>
+<p>Можно&nbsp;ли это понять без&nbsp;перевода значений в&nbsp;<span class="math inline">\(z\)</span>-шкалу? Можно. Но&nbsp;неудобно. Надо держать в&nbsp;голове среднее и&nbsp;стандартное отклонение конкретного распределения, а&nbsp;если сравниваем респондентов по&nbsp;нескольким шкалам, то по&nbsp;две характеристики для&nbsp;каждой шкалы, постоянно пересчитывая диапазоны&nbsp;— в&nbsp;общем, слишком много инфы. Трудно.</p>
+</section>
+<section id="normist-stand-usage" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="normist-stand-usage"><span class="header-section-number">5.3.4</span> Применение стандартизации</h3>
+<p>Помимо обсужденного выше, есть ещё одно применение <span class="math inline">\(z\)</span>-значений. От&nbsp;них можно перейти к&nbsp;значениям любой другой стандартной шкалы, выполнив преобразование, обратное <a href="#eq-standartization" class="quarto-xref"><span>5.2</span></a>. Стандартных шкал существует много&nbsp;— Sten, Stanine, T-score, IQ-score… С&nbsp;ними вы познакомитесь в&nbsp;курсе психометрики. Они оказываются очень удобными для&nbsp;представления результатов тестов конечным пользователям. Однако для&nbsp;того, чтобы перейти к&nbsp;этим шкалам, сначала все равно будет необходимо перейти к&nbsp;<span class="math inline">\(z\)</span>-значениям.</p>
+<p>Кроме того, стандартизация также используется в&nbsp;некоторых статистических методах, когда нам необходимо уравнять дисперсии переменных. Поскольку после стандартизации дисперсия переменной всегда будет равна единице, такая процедура отлично подходит для&nbsp;этой задачи.</p>
 
 
 </section>
