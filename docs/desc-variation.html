@@ -404,7 +404,7 @@ window.Quarto = {
 </section>
 <section id="variation-decile" class="level3" data-number="4.4.2">
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="variation-decile"><span class="header-section-number">4.4.2</span> Децили</h3>
-<p>К&nbsp;слову, делить выборку можно не&nbsp;только на&nbsp;четверти&nbsp;— можно поделить, скажем, на&nbsp;10 частей и&nbsp;получить <strong>децили</strong>. Так, слева от&nbsp;первого дециля (<span class="math inline">\(x_{0.10}\)</span>) лежит 10% наблюдений, а слева от третьего (<span class="math inline">\(x_{0.30}\)</span>)&nbsp;— 30%.</p>
+<p>К&nbsp;слову, делить выборку можно не&nbsp;только на&nbsp;четверти&nbsp;— можно поделить, скажем, на&nbsp;10 частей и&nbsp;получить <strong>децили</strong>. Так, слева от&nbsp;первого дециля (<span class="math inline">\(x_{0.10}\)</span>) лежит 10% наблюдений, а&nbsp;слева от&nbsp;третьего (<span class="math inline">\(x_{0.30}\)</span>)&nbsp;— 30%.</p>
 <p>Децили встречаются редко (в&nbsp;основном в&nbsp;психометрике), но&nbsp;знать о&nbsp;них полезно.</p>
 </section>
 <section id="variation-percentile" class="level3" data-number="4.4.3">
@@ -505,7 +505,7 @@ d_i = \overline X - x_i
 <p>Хорошо. Но&nbsp;отрицательные значения ведь можно победить! Есть два пути:</p>
 <ul>
 <li><strong>Модуль.</strong> Преимущество первого в&nbsp;том, что&nbsp;размерность величины разброса остается той&nbsp;же, что&nbsp;и&nbsp;у&nbsp;измеряемой переменной.</li>
-<li><strong>Квадрат.</strong> Преимущество второго в&nbsp;том, что&nbsp;квадрат обладает более хорошими аналитическими свойствами, чем модуль, а&nbsp;ещё сильные отклонения будут оказывать более сильное влияние на&nbsp;окончательное значение статистики (см. заметку <a href="#nte-abs-sq" class="quarto-xref"><span>4.1</span></a>).</li>
+<li><strong>Квадрат.</strong> Преимущество второго в&nbsp;том, что&nbsp;квадрат обладает более хорошими аналитическими свойствами, чем модуль, а&nbsp;ещё сильные отклонения будут оказывать более сильное влияние на&nbsp;окончательное значение статистики (см. заметку <span class="quarto-unresolved-ref">?nte-abs-sq</span>).</li>
 </ul>
 <p>Второй путь на&nbsp;практике оказывается полезнее, так&nbsp;как мы хотим, чтобы&nbsp;сильно отличающиеся наблюдения вносили больший вклад в&nbsp;меру разброса.</p>
 <p>Возведя отклонения в&nbsp;квадрат, получим формулу <strong>дисперсии (вариации, variation)</strong>:</p>
@@ -515,13 +515,13 @@ D(X) = \text{var}(X) = \sigma^2_X =
 \frac{1}{n} \sum_{i=1}^n (\overline X - x_i)^2
 \tag{4.1}\]</span></span></p>
 <p>Гениально.</p>
-<div id="nte-abs-sq" class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Заметка&nbsp;4.1: Почему квадрат лучше модуля?
+Почему квадрат лучше модуля?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>

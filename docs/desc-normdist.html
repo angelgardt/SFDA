@@ -521,16 +521,70 @@ z_i = \frac{x_i - \overline X}{s_X},
 </figure>
 </div>
 <p>На&nbsp;рисунке <a href="#fig-standartization-operations" class="quarto-xref"><span>5.6</span></a> черной линией представлено исходное нормальное распределение <span class="math inline">\(\mathcal{N}(-1,0.25)\)</span> [слева сверху]. Если его центрировать, то&nbsp;оно подвинется вправо&nbsp;— <span class="math inline">\(x_i - \overline X\)</span>&nbsp;— и&nbsp;получится синее распределение <span class="math inline">\(\mathcal{N}(0, 0.25)\)</span> [справа сверху]. Если&nbsp;нормировать исходное распределение, то&nbsp;оно станет несколько шире&nbsp;— <span class="math inline">\(\frac{x_i}{s_X}\)</span>&nbsp;— как&nbsp;зелёное <span class="math inline">\(\mathcal{N}(-1,1)\)</span> [слева снизу]. А&nbsp;если осуществить обе операции вместе&nbsp;— <span class="math inline">\(\frac{x_i - \overline X}{s_X}\)</span>&nbsp;— это и&nbsp;будет стандартизация, и&nbsp;распределение совпадет сo&nbsp;стандартным нормальным распределением [справа снизу].</p>
-<p>Важный момент: если распределение изначально было асимметричное, или бимодальное, или какое-либо еще «ненормальное», стандартизация не изменит его форму.</p>
-<p>Например, вот.</p>
-<p>Гистрограмма, конечно, изменилась существенно, но она имеет на это право, так как достаточно сильно чувствительна ко всяким случайным флуктуациям. А вот на графике плотности хорошо видно, что хотя распределение стало чуть шире и сдвинулось влево, форма распределения осталась прежней — есть два пика, есть хвостик справа.</p>
-<p>могут быть более типичны или&nbsp;же менее типичны.</p>
-<p>А что же со шкалами опросника? Давайте стандартизируем:</p>
-<p>Первое, что бросается в глаза — форма распределения, ну, прямо идентична [между стандартизированными и нестандартизированными величинами]. Шкалы исходных величин были различны [левые графики], шкалы стандартизированных величин — одинаковые [правые графики]. Обратите внимание на ось<br>
-x .</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Стандартизация не&nbsp;меняет форму распределения!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>В&nbsp;реальной ситуации никто не&nbsp;может нам гарантировать, что&nbsp;выборочное распределение обязательно будет нормальным. Вообще-то на&nbsp;выборке может случится всё, что угодно.</p>
+<p>Иногда можно услышать такое утверждение: <em>«стандартизация приводит произвольное распределение к&nbsp;стандартному нормальному»</em>&nbsp;— что совершеннейшая неправда. Вернитесь к&nbsp;определению <a href="#def-standartization" class="quarto-xref"><span>5.1</span></a> и&nbsp;убедить, что&nbsp;там нет ни&nbsp;слова про нормальность распределений.</p>
+<p>Рассмотрим пару примеров. Пусть исходное распределение асимметрично (<a href="#fig-asym-stand" class="quarto-xref">Рисунок&nbsp;<span>5.7</span></a>). Стандартизировав его, мы получим распределение со&nbsp;средним <span class="math inline">\(0\)</span> и&nbsp;стандартным отклонением <span class="math inline">\(1\)</span>, однако его форма совершенно не&nbsp;изменилась.</p>
+<div id="fig-asym-stand" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-asym-stand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-normdist_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-asym-stand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;5.7: Стандартизация асимметричного распределения
+</figcaption>
+</figure>
+</div>
+<p>Теперь возьмем бимодальное распределение, и&nbsp;пронаблюдаем ровно ту&nbsp;же ситуацию&nbsp;— форма распределения вновь не&nbsp;изменилась (<a href="#fig-bimod-stand" class="quarto-xref">Рисунок&nbsp;<span>5.8</span></a>).</p>
+<div id="fig-bimod-stand" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bimod-stand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-normdist_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bimod-stand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;5.8: Стандартизация бимодального распределения
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Вернёмся&nbsp;же, наконец, к&nbsp;нашей исходной задаче: мы собирались ответить на&nbsp;вопрос <em>по&nbsp;какой из&nbsp;двух шкал респондент набрал больший балл</em>, при&nbsp;этом данные нам говорят, что&nbsp;респондент набрал <span class="math inline">\(31\)</span> балл по&nbsp;обеим шкалам. Найдём стандартизированное значение по&nbsp;формуле <a href="#eq-standartization" class="quarto-xref"><span>5.2</span></a> взяв значения среднего и&nbsp;стандартного отклонения из&nbsp;таблицы <a href="#tbl-survey-means" class="quarto-xref"><span>5.1</span></a>. Получим</p>
+<p><span class="math display">\[
+\begin{split}
+z_\text{BFI2_NEU} &amp;= \frac{31 - 36.34}{9.41} \approx -0.57 \\
+z_\text{SD3_NAR} &amp;= \frac{31 - 29.94}{6.95} \approx 0.58
+\end{split}
+\]</span></p>
+<p>Таким образом, мы можем сказать, что&nbsp;наш респондент набрал более высокий балл по&nbsp;шкале нарциссизма.</p>
 </section>
 <section id="интерпретация-z-значений" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="интерпретация-z-значений"><span class="header-section-number">5.3.3</span> Интерпретация z-значений</h3>
+<p>могут быть более типичны или&nbsp;же менее типичны.</p>
 <p>Ну, хорошо, стандартизацию мы сделали — это не то чтобы очень сложно. Но как с этими числами дальше работать?</p>
 <p>Здесь надо понять всего одну вещь: единица z-шкалы — это стандартное отклонение исходной переменной.</p>
 <p>Конечно, z-шкала безразмерная, то есть не имеет единиц измерения (метры, секунды, года и др.). Однако единица — в смысле<br>
