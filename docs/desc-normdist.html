@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./desc-ci.html" rel="next">
 <link href="./desc-variation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -191,6 +192,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Нормальное распределение</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-ci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Доверительные интервалы</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -207,8 +214,8 @@ window.Quarto = {
   <li><a href="#нормальное-распределение" id="toc-нормальное-распределение" class="nav-link" data-scroll-target="#нормальное-распределение"><span class="header-section-number">5.2</span> Нормальное распределение</a>
   <ul class="collapse">
   <li><a href="#параметры-нормального-распределения" id="toc-параметры-нормального-распределения" class="nav-link" data-scroll-target="#параметры-нормального-распределения"><span class="header-section-number">5.2.1</span> Параметры нормального распределения</a></li>
-  <li><a href="#форма-нормального-распределения-и-параметры" id="toc-форма-нормального-распределения-и-параметры" class="nav-link" data-scroll-target="#форма-нормального-распределения-и-параметры"><span class="header-section-number">5.2.2</span> Форма нормального распределения и параметры</a></li>
-  <li><a href="#стандартные-отклонения-и-вероятности" id="toc-стандартные-отклонения-и-вероятности" class="nav-link" data-scroll-target="#стандартные-отклонения-и-вероятности"><span class="header-section-number">5.2.3</span> Стандартные отклонения и вероятности</a></li>
+  <li><a href="#форма-нормального-распределения-и-параметры" id="toc-форма-нормального-распределения-и-параметры" class="nav-link" data-scroll-target="#форма-нормального-распределения-и-параметры"><span class="header-section-number">5.2.2</span> Форма нормального распределения и&nbsp;параметры</a></li>
+  <li><a href="#стандартные-отклонения-и-вероятности" id="toc-стандартные-отклонения-и-вероятности" class="nav-link" data-scroll-target="#стандартные-отклонения-и-вероятности"><span class="header-section-number">5.2.3</span> Стандартные отклонения и&nbsp;вероятности</a></li>
   </ul></li>
   <li><a href="#стандартизация" id="toc-стандартизация" class="nav-link" data-scroll-target="#стандартизация"><span class="header-section-number">5.3</span> Стандартизация</a>
   <ul class="collapse">
@@ -265,7 +272,7 @@ X \thicksim \mathcal{N}(\mu, \sigma^2)
 </ul>
 <p>Эти два параметра входят в&nbsp;формулу, описывающую график функции плотности вероятности нормального распределения:</p>
 <p><span class="math display">\[
-f(x) = \frac{1}{\sigma \sqrt{2\pi}} e ^{- \frac{(x-\mu)^2}{2 \sigma^2}}, \quad x \in \mathbb{R}, \mu \in \mathbb{R}, \sigma \in \mathbb{R}_{+}
+f(x) = \frac{1}{\sigma \sqrt{2\pi}} e ^{- \frac{(x-\mu)^2}{2 \sigma^2}}, \quad x \in \mathbb{R}, \mu \in \mathbb{R}, \sigma \in \mathbb{R}_{&gt;0}
 \]</span></p>
 <p>А сам график выглядит вот так:</p>
 <div id="fig-normdist-general" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -311,7 +318,7 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e ^{- \frac{(x-\mu)^2}{2 \sigma^2}}, \quad x
 </div>
 </section>
 <section id="форма-нормального-распределения-и-параметры" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="форма-нормального-распределения-и-параметры"><span class="header-section-number">5.2.2</span> Форма нормального распределения и параметры</h3>
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="форма-нормального-распределения-и-параметры"><span class="header-section-number">5.2.2</span> Форма нормального распределения и&nbsp;параметры</h3>
 <p>Очевидно, что&nbsp;раз у&nbsp;распределения есть какие-то параметры, значит они каким-то образом на&nbsp;него влияют. Не&nbsp;менее очевидно, что&nbsp;среднее <span class="math inline">\(\mu\)</span> будет задавать положение центра колокола на&nbsp;оси <span class="math inline">\(x\)</span>, а&nbsp;дисперсия <span class="math inline">\(\sigma^2\)</span>&nbsp;— ширину колокола. Ниже представлены несколько нормальных распределений c&nbsp;различными параметрами:</p>
 <div id="fig-normdists-params" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -333,7 +340,7 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e ^{- \frac{(x-\mu)^2}{2 \sigma^2}}, \quad x
 </div>
 </section>
 <section id="стандартные-отклонения-и-вероятности" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="стандартные-отклонения-и-вероятности"><span class="header-section-number">5.2.3</span> Стандартные отклонения и вероятности</h3>
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="стандартные-отклонения-и-вероятности"><span class="header-section-number">5.2.3</span> Стандартные отклонения и&nbsp;вероятности</h3>
 <p>Как уже упоминалось выше, нормальное распределение изучено вдоль и&nbsp;поперек. В&nbsp;том числе, посчитаны вероятности попадания значений в&nbsp;определенные интервалы. Вот они:</p>
 <div id="fig-normdist-probs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -415,10 +422,10 @@ z \thicksim \mathcal{N}(0, 1)
 </section>
 <section id="стандартизация-1" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="стандартизация-1"><span class="header-section-number">5.3.2</span> Стандартизация</h3>
-<p>Часто возникает следующая задача: нам нужно сравнить, например, баллы по&nbsp;шкалам двух опросников, при этом размах баллов на&nbsp;шкале различный. Более того, сами распределения баллов по этим шкалам могут быть также различны.</p>
+<p>Часто возникает следующая задача: нам нужно сравнить, например, баллы по&nbsp;шкалам двух опросников, при этом разброс баллов на&nbsp;шкале различный. Более того, сами распределения баллов по этим шкалам могут быть также различны.</p>
 <p>Рассмотрим следующий пример. Мы дали респондентам два опросника на&nbsp;измерение личностных черт&nbsp;— BFI-2 (по&nbsp;модели «Большая пятерка») и&nbsp;SD3 (по&nbsp;модели «Тёмная триада»). Допустим, что&nbsp;мы хотим сравнить баллы некоторого респондента по&nbsp;шкалам Нейротизм из&nbsp;BFI-2 и Нарциссизм из&nbsp;SD3. Вопрос будет простой: <em>по&nbsp;какой из&nbsp;двух шкал респондент набрал больший балл</em>?</p>
-<p>Данные говорят, что&nbsp;этот респондент набрал</p>
-<p>Шкалы BFI-2 состоят из&nbsp;двенадцати пунктов, а&nbsp;шкалы SD3&nbsp;— из&nbsp;девяти. И&nbsp;даже учитывая, что&nbsp;отвечали респонденты в&nbsp;обоих случаях по&nbsp;пятибалльной шкале Ликерта, суммарный балл по&nbsp;шкалам опросника будет иметь разные пределы изменчивости.</p>
+<p>Данные говорят, что&nbsp;этот респондент набрал <span class="math inline">\(31\)</span> балл по&nbsp;обеим шкалам. Собственно, а&nbsp;в&nbsp;чём тогда вопрос? Ясно&nbsp;же, что&nbsp;баллов набрано по&nbsp;обеим шкалам одинаково. Или&nbsp;всё&nbsp;же нет…</p>
+<p>Шкалы BFI-2 состоят из&nbsp;двенадцати пунктов, а&nbsp;шкалы SD3&nbsp;— из&nbsp;девяти. И&nbsp;даже учитывая, что&nbsp;отвечали респонденты в&nbsp;обоих случаях по&nbsp;пятибалльной шкале Ликерта, суммарный балл по&nbsp;шкалам опросника будет иметь разные пределы изменчивости (<a href="#fig-survey-sample" class="quarto-xref">Рисунок&nbsp;<span>5.5</span></a>). Описательные статистики&nbsp;— например, среднее и&nbsp;стандартное отклонение&nbsp;— будут также различны (<a href="#tbl-survey-means" class="quarto-xref">Таблица&nbsp;<span>5.1</span></a>).</p>
 <div id="fig-survey-sample" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-survey-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -480,25 +487,21 @@ z \thicksim \mathcal{N}(0, 1)
 </div>
 </figure>
 </div>
-<p>Есть опросник «Trust in Artificial Intelligent Agents», который состоит из шести шкал — predictability, consistency, utility, faith, dependability и understanding. Возьмем две шкалы: predictability и understanding. Посмотрим, сколько вопросов вошло в каждую из шкал:</p>
-<p>length(pr_items) [1] 10 length(un_items) [1] 12 Видим, что в шкале predictability 10 вопросов, а в шкале understanding 12. Понятно, что размах двух величин разный — сравнивать просто сырые баллы респондентов по двум шкалам друг с другом уже не выглядит осмысленно.</p>
-<p>Посмотрим на распределения:</p>
-<p>Видим, что разброс переменных разный, средние тоже разные — короче, все разное. Однако сравнивать каким-то образом хоцца. Для этого придумали стандартизацию.</p>
-<p>Стандартизация — это такое преобразование исходной переменной, после которого среднее по переменной становится равно<br>
-0 , а стандартное отклонение —<br>
-1 . Таким образом, величина приводится к<br>
-z -значениям.</p>
-<p>Выполняется оно следующим образом:</p>
-<p><span class="math display">\[
+<p>В&nbsp;силу разного разброса значение одни и&nbsp;те&nbsp;же значения будут находится в&nbsp;разных частях распределений. В&nbsp;частности, внимательно присмотревшись к&nbsp;описательным статистикам (<a href="#tbl-survey-means" class="quarto-xref">Таблица&nbsp;<span>5.1</span></a>) можно заметить, что&nbsp;значение <span class="math inline">\(31\)</span> меньше среднего для&nbsp;шкалы <code>BFI2-NEU</code> и&nbsp;больше среднего для&nbsp;шкалы <code>SD3_NAR</code>. Это, безусловно, полезная информация, однако хотелось&nbsp;бы найти какой-то единый способ для&nbsp;сравнения значений из&nbsp;различных распределений. Такой способ есть&nbsp;— нам необходимо <em>стандартизировать</em> случайный величины.</p>
+<div id="def-standartization" class="theorem definition">
+<p><span class="theorem-title"><strong>Определение 5.1</strong></span> <strong>Стандартизация</strong>&nbsp;— преобразование случайной величины, в&nbsp;результате которого среднее её распределения становится равным <span class="math inline">\(0\)</span>, а&nbsp;стандартное отклонение&nbsp;— <span class="math inline">\(1\)</span>.</p>
+<p><span id="eq-standartization"><span class="math display">\[
 z_i = \frac{x_i - \overline X}{s_X},
-\]</span></p>
-<p>где <span class="math inline">\(x_i\)</span>&nbsp;— значение исходной случайное величины, <span class="math inline">\(\overline X\)</span>&nbsp;— выборочное среднее, <span class="math inline">\(s_X\)</span>&nbsp;— выборочное стандартное отклонение.</p>
-<p>Стандартизация состоит из двух операций:</p>
+\tag{5.2}\]</span></span></p>
+<p>где <span class="math inline">\(z_i\)</span>&nbsp;— значение стандартизированной случайной величины, <span class="math inline">\(x_i\)</span>&nbsp;— значение исходной случайной величины, <span class="math inline">\(\overline X\)</span>&nbsp;— среднее исходной случайной величины, <span class="math inline">\(s_X\)</span>&nbsp;— стандартное отклонение исходной случайной величины.</p>
+</div>
+<p>Полученные стандартизированные значения также часто называют <span class="math inline">\(z\)</span>-значениями. В&nbsp;этом есть довольно понятный смысл, ведь если изначально переменная была распределена нормально&nbsp;— <span class="math inline">\(X \thicksim \mathcal{N}(\mu, \sigma^2)\)</span>&nbsp;— то стандартизированная случайная величина будет подчиняться стандартному нормальному распределению&nbsp;— <span class="math inline">\(z \thicksim \mathcal{N}(0, 1)\)</span>.</p>
+<p>Посмотрим на&nbsp;процедуру стандартизации детально, благо деталей всего две&nbsp;— числитель и&nbsp;знаменатель (см. <a href="#eq-standartization" class="quarto-xref">Уравнение&nbsp;<span>5.2</span></a>). Стандартизация состоит из&nbsp;двух операций:</p>
 <ul>
-<li><em>центрирование</em>&nbsp;— то, что&nbsp;происходит в&nbsp;числителе,</li>
-<li><em>нормирование</em>&nbsp;— то, что&nbsp;происходит в&nbsp;знаменателе.</li>
+<li><em>центрирование</em>&nbsp;— то, что&nbsp;происходит в&nbsp;числителе&nbsp;— обращает среднее в&nbsp;ноль (см. <a href="desc-centraltend.html#prp-mean1" class="quarto-xref">Утверждение&nbsp;<span>3.1</span></a>),</li>
+<li><em>нормирование</em>&nbsp;— то, что&nbsp;происходит в&nbsp;знаменателе&nbsp;— обращает стандартное отклонение в&nbsp;единицу (см. <a href="desc-variation.html#cor-sd2" class="quarto-xref">Следствие&nbsp;<span>4.2</span></a>).</li>
 </ul>
-<p>Посмотрим на две операции отдельно на примере стандартизации какого-то нормального распределения.</p>
+<p>Посмотрим на&nbsp;две операции отдельно на&nbsp;примере стандартизации какого-то нормального распределения.</p>
 <div id="fig-standartization-operations" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-standartization-operations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -521,6 +524,7 @@ z_i = \frac{x_i - \overline X}{s_X},
 <p>Важный момент: если распределение изначально было асимметричное, или бимодальное, или какое-либо еще «ненормальное», стандартизация не изменит его форму.</p>
 <p>Например, вот.</p>
 <p>Гистрограмма, конечно, изменилась существенно, но она имеет на это право, так как достаточно сильно чувствительна ко всяким случайным флуктуациям. А вот на графике плотности хорошо видно, что хотя распределение стало чуть шире и сдвинулось влево, форма распределения осталась прежней — есть два пика, есть хвостик справа.</p>
+<p>могут быть более типичны или&nbsp;же менее типичны.</p>
 <p>А что же со шкалами опросника? Давайте стандартизируем:</p>
 <p>Первое, что бросается в глаза — форма распределения, ну, прямо идентична [между стандартизированными и нестандартизированными величинами]. Шкалы исходных величин были различны [левые графики], шкалы стандартизированных величин — одинаковые [правые графики]. Обратите внимание на ось<br>
 x .</p>
@@ -967,6 +971,9 @@ x .</p>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./desc-ci.html" class="pagination-link" aria-label="Доверительные интервалы">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Доверительные интервалы</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
