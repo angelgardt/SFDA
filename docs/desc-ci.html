@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -291,11 +320,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Это одна из интервальных оценок для среднего — в пределах<br>
 [ ¯¯¯ ¯ x − s e ( ¯ x ) , ¯¯¯ ¯ x + s e ( ¯ x )] 1 лежит 68.2% выборочных средних.</p>
 <p>Задумаемся. Это что же, чтобы рассчитать стандартную ошибку среднего нам каждый раз придется собирать 100500 выборок??7? Нет. Рассчитать стандартную ошибку среднего можно и по одной выборке вот так:</p>
-<p>s e ( x ) = s d ( x ) √ n ,</p>
-<p>где<br>
-s d ( x ) — это выборочное стандартное отклонение, а<br>
-n — количество наблюдений в данной выборке.</p>
-<p>Формула, прямо скажем, не то чтобы очень интуитивна, однако вам придется мне поверить, что она верна.</p>
+<p><span class="math display">\[
+\text{se}_X = \frac{s_X}{\sqrt{n}},
+\]</span></p>
+<p>где&nbsp;<span class="math inline">\(s_X\)</span>&nbsp;— это выборочное стандартное отклонение, а&nbsp;<span class="math inline">\(n\)</span>&nbsp;— количество наблюдений в&nbsp;данной выборке.</p>
+<p>Формула, прямо скажем, не&nbsp;то&nbsp;чтобы очень интуитивна, однако вам придется мне поверить, что&nbsp;она верна.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -308,7 +337,26 @@ n — количество наблюдений в данной выборке.<
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>Для&nbsp;того, чтобы доказать формулу, нам понадобятся два утверждения. С&nbsp;одним мы хорошо знакомы (<a href="desc-variation.html#prp-var2" class="quarto-xref">Утверждение&nbsp;<span>4.2</span></a>):</p>
+<p><span class="math display">\[
+D_{X \times c} = D_X \times c^2
+\]</span></p>
+<p>Второе утверждение говорит нам, чему равна дисперсия суммы случайных величин&nbsp;— тут вам точно придется мне просто поверить, иначе эта глава никогда не&nbsp;закончится:</p>
+<p><span class="math display">\[
+D_{X + Y} = D_X + D_Y + 2 \text{cov}_{X,Y},
+\]</span></p>
+<p><span class="math inline">\(\text{cov}_{X,Y}\)</span>&nbsp;— это ковариация двух случайных величин, мера их&nbsp;взаимной изменчивости. Мы будем обсуждать её в&nbsp;курсе позже, сейчас она для&nbsp;нас не&nbsp;столь существенна.</p>
+<p>Так как мы предполагает, что выборки мы набирали независимо и из одной и той же генеральной совокупности, то в величины в каждой из выборок независимы и [теоретически] одинаково распределены (independent identically distributed, i.i.d.) (для упрощения жизни здесь рассмотрено нормальное распределение):</p>
+<p>X i.i.d. ∼ N ( μ , σ 2 )</p>
+<p>Поэтому дисперсия распределения выборочных средних — то есть суммы наших случайных величин — будет определяться так:</p>
+<p>v a r ( n ∑ i = 1</p>
+<p>1 n X i ) = v a r ( 1 n n ∑ i = 1</p>
+<p>X i ) = 1 n 2 n ∑ i = 1</p>
+<p>v a r ( X i ) = = 1 n 2 n ∑ i = 1</p>
+<p>σ 2 = n n 2 σ 2 = σ 2 n</p>
+<p>А значит, стандартное отклонение — оно же стандартная ошибка — будет таким:</p>
+<p>s e = √ σ 2 n = σ √ n</p>
+<p>Магия статистических допущений.</p>
 </div>
 </div>
 </div>
