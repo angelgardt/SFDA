@@ -265,10 +265,44 @@ window.Quarto = {
 </section>
 <section id="ci-clt" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="ci-clt"><span class="header-section-number">6.2</span> Центральная предельная теорема</h2>
-<p>Пожалуй, сразу бахнем формулировку, а потом будем разбираться, что она означает.</p>
+<p>Для&nbsp;построения интервальных оценок параметров используют центральную предельную теорему. Сформулировать её можно так.</p>
 <div id="thm-clt" class="theorem">
-<p><span class="theorem-title"><strong>Теорема 6.1</strong></span> Cумма достаточно большого количества слабо зависимых случайных величин, имеющих примерно одинаковые масштабы (ни одно из слагаемых не&nbsp;доминирует, не&nbsp;вносит в&nbsp;сумму определяющего вклада), имеет распределение, близкое к&nbsp;нормальному.</p>
+<p><span class="theorem-title"><strong>Теорема 6.1</strong></span> <strong>Центральная предельная теорема (ЦПТ).</strong> Cумма достаточно большого количества слабо зависимых одинаково распределенных случайных величин имеет распределение, близкое к&nbsp;нормальному.</p>
 </div>
+<p>Однако нас будет интересовать не&nbsp;столько сама теорема, сколько одно из&nbsp;её следствий.</p>
+<div id="cor-clt-mean" class="theorem corollary">
+<p><span class="theorem-title"><strong>Следствие 6.1</strong></span> Если <span class="math inline">\(X_1, \, X_2, \, \ldots, X_n\)</span>&nbsp;— независимые одинаково распределённые случайные величины со&nbsp;средним <span class="math inline">\(\mu\)</span> и&nbsp;дисперсией <span class="math inline">\(\sigma^2\)</span>, то&nbsp;при увеличении их&nbsp;числа распределение средних этих случайных величин имеет распределение, близкое к&nbsp;нормальному со&nbsp;средним <span class="math inline">\(\mu\)</span> и&nbsp;дисперсией <span class="math inline">\(\dfrac{\sigma^2}{n}\)</span> (стандартным отклонением <span class="math inline">\(\dfrac{\sigma}{\sqrt{n}}\)</span>):</p>
+<p><span class="math display">\[
+X_i \overset{\text{i.i.d}}{\thicksim} (\mu, \sigma^2) \Rightarrow \overline X_i \overset{d}{\to} \mathcal{N} \bigg( \mu, \frac{\sigma^2}{n} \bigg)
+\]</span></p>
+</div>
+<p>Формулировка следствия довольно сложна. Давайте подумаем, чем она соответствует в&nbsp;области исследовательской практики.</p>
+<ul>
+<li>Когда мы проводим исследование, мы извлекаем выборку из&nbsp;генеральной совокупности.</li>
+<li>На&nbsp;этой выборке мы измеряем какую-либо переменную <span class="math inline">\(X\)</span>.</li>
+<li>Пусть на&nbsp;этой выборке мы получили случайную величину <span class="math inline">\(X_1\)</span>, измерив интересующая нас переменную.</li>
+<li>Повторив исследование несколько раз&nbsp;— допустим, <span class="math inline">\(n\)</span>&nbsp;— на&nbsp;других выборках из&nbsp;той же генеральной совокупности, мы получим случайные величины <span class="math inline">\(X_2,\, X_3,\, \ldots X_n\)</span>.</li>
+<li>Поскольку все выборки приходили из&nbsp;одной и&nbsp;той&nbsp;же генеральной совокупности, распределения всех случайных величин будут иметь одни и&nbsp;те&nbsp;же параметры&nbsp;— то есть наши случайные величины будут одинаково распределены.</li>
+<li>Так как выборки извлекались отдельно для&nbsp;каждого исследования, получившиеся случайные величины оказываются независимы.</li>
+</ul>
+<p>Таким образом, [следствие] <strong>ЦПТ рассматривает поведение распределения выборочных средних при&nbsp;многократном повторении исследования</strong>. По&nbsp;сути, это та&nbsp;же стуация, которую мы рассматривали при&nbsp;обсуждении <a href="./desc-variation.html#variation-estim-features">несмещённости точечных оценок</a>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важность
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>Итак, пусть есть некоторая случайная величина <span class="math inline">\(X\)</span>, распределение которой в&nbsp;генеральной совокупности асимметрично. Случай асимметричного распределения удобен для&nbsp;рассмотрения, поскольку эффект, описываемый ЦПТ можно увидеть более наглядно. Допустим, выглядит это как-то так:</p>
+<div id="fig-pop-dist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pop-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -277,6 +311,41 @@ window.Quarto = {
 </figure>
 </div>
 </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pop-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;6.1: Распределение случайной величины в&nbsp;генеральной совокупности
+</figcaption>
+</figure>
+</div>
+<p>Откуда мы знаем, что&nbsp;случайная величина распределена так? Ниоткуда. В&nbsp;рамках симуляции, которой мы сейчас будем заниматься мы просто рассматриваем такой случай. Разумеется, в&nbsp;реальной ситуации мы может сделать только <em>допущение</em> о&nbsp;распределении величины генеральной совокупности&nbsp;— как она распределена на&nbsp;самом деле мы никогда не узнаем.</p>
+<p>Понятно, что&nbsp;это распределение будет обладать неким средним и&nbsp;некоторым стандартным отклонением&nbsp;— в&nbsp;нашем случае значения будут такими:</p>
+<div id="tbl-pop-params" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pop-params-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Таблица&nbsp;6.1: Параметры распределения случайной величины в&nbsp;генеральной совокупности
+</figcaption>
+<div aria-describedby="tbl-pop-params-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Параметр распределения</th>
+<th style="text-align: right;">Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Среднее</td>
+<td style="text-align: right;">0.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Стандартное отклонение</td>
+<td style="text-align: right;">0.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -296,10 +365,6 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Итак, пусть есть некоторый параметр в генеральной совокупности, который асимметрично распределён. Возьмем случай именно асимметричого распределения, чтобы более наглядно увидеть эффект. Допустим, выглядит это как-то так:</p>
-<p>Вот такая красивая штука у нас есть в генеральной совокупности. На всякий случай отмечу, то это некоторое теоретическое распределение — вообще-то мы не знаем наверняка, что там в генеральной совокупности творится. Но вот будем думать, что там что-то такое.</p>
-<p>Понятно, что наш параметр, наш параметр, наша случайная величина имеет некоторое среднее и некоторый разброс в генеральной совокупности:</p>
-<p>Value mean 0.4 sd 0.2 Ну, вот какие-то такие.</p>
 <p>Чтобы максимально точно приблизиться к оценке нашего параметра — будем оценивать среднее генеральной совокупности — нам надо извлечь много больших выборок из нашей генеральной совокупности. Ну, допустим мы извлекаем 1000 выборок по 50 наблюдений. Можно и больше, но давайте посмотрим пока, что будет на таких значениях.</p>
 <p>Посмотрим на распределения нашей переменной в нескольких из выборок:</p>
 <p>Вот распределения в первых шестнадцати выборках. На что здесь стоит обратить внимание?</p>
@@ -326,7 +391,7 @@ window.Quarto = {
 <p>где&nbsp;<span class="math inline">\(s_X\)</span>&nbsp;— это выборочное стандартное отклонение, а&nbsp;<span class="math inline">\(n\)</span>&nbsp;— количество наблюдений в&nbsp;данной выборке.</p>
 <p>Формула, прямо скажем, не&nbsp;то&nbsp;чтобы очень интуитивна, однако вам придется мне поверить, что&nbsp;она верна.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -335,7 +400,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Для&nbsp;того, чтобы доказать формулу, нам понадобятся два утверждения. С&nbsp;одним мы хорошо знакомы (<a href="desc-variation.html#prp-var2" class="quarto-xref">Утверждение&nbsp;<span>4.2</span></a>):</p>
 <p><span class="math display">\[
@@ -346,16 +411,24 @@ D_{X \times c} = D_X \times c^2
 D_{X + Y} = D_X + D_Y + 2 \text{cov}_{X,Y},
 \]</span></p>
 <p><span class="math inline">\(\text{cov}_{X,Y}\)</span>&nbsp;— это ковариация двух случайных величин, мера их&nbsp;взаимной изменчивости. Мы будем обсуждать её в&nbsp;курсе позже, сейчас она для&nbsp;нас не&nbsp;столь существенна.</p>
-<p>Так как мы предполагает, что выборки мы набирали независимо и из одной и той же генеральной совокупности, то в величины в каждой из выборок независимы и [теоретически] одинаково распределены (independent identically distributed, i.i.d.) (для упрощения жизни здесь рассмотрено нормальное распределение):</p>
-<p>X i.i.d. ∼ N ( μ , σ 2 )</p>
-<p>Поэтому дисперсия распределения выборочных средних — то есть суммы наших случайных величин — будет определяться так:</p>
-<p>v a r ( n ∑ i = 1</p>
-<p>1 n X i ) = v a r ( 1 n n ∑ i = 1</p>
-<p>X i ) = 1 n 2 n ∑ i = 1</p>
-<p>v a r ( X i ) = = 1 n 2 n ∑ i = 1</p>
-<p>σ 2 = n n 2 σ 2 = σ 2 n</p>
-<p>А значит, стандартное отклонение — оно же стандартная ошибка — будет таким:</p>
-<p>s e = √ σ 2 n = σ √ n</p>
+<p>Так как мы предполагает, что выборки мы набирали независимо и&nbsp;из&nbsp;одной и&nbsp;той&nbsp;же генеральной совокупности, то&nbsp;величины в&nbsp;каждой из&nbsp;выборок независимы и&nbsp;[теоретически] одинаково распределены (independent identically distributed, i.i.d.) (для&nbsp;упрощения жизни здесь рассмотрено нормальное распределение):</p>
+<p><span class="math display">\[
+X_i \overset{\text{i.i.d.}}{\thicksim} \mathcal{N} (\mu, \sigma^2)
+\]</span></p>
+<p>В&nbsp;частности, в&nbsp;силу независимости случайный величин их ковариация равна нулю. Поэтому дисперсия распределения выборочных средних&nbsp;— то есть суммы средних наших исходных случайных величин <span class="math inline">\(X_i\)</span>&nbsp;— будет определяться так:</p>
+<p><span class="math display">\[
+\begin{split}
+D \big( \sum_{i=1}^n \frac{1}{n} X_i \big) &amp;=
+D \big( \frac{1}{n} \sum_{i=1}^n X_i \big) = \\
+&amp;= \frac{1}{n^2} \sum_{i=1}^n D(X_i) = \\
+&amp;= \frac{1}{n^2} \sum_{i=1}^n \sigma^2 = \frac{1}{n^2} \cdot n \sigma^2 = \\
+&amp; = \frac{n}{n^2} \sigma^2 = \frac{\sigma^2}{n}
+\end{split}
+\]</span></p>
+<p>А&nbsp;значит, стандартное отклонение этого распределения&nbsp;— оно же стандартная ошибка среднего&nbsp;— будет таким:</p>
+<p><span class="math display">\[
+\text{se}_X = \sqrt{\frac{\sigma^2}{n}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
 <p>Магия статистических допущений.</p>
 </div>
 </div>
