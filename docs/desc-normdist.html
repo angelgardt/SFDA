@@ -30,7 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./desc-ci.html" rel="next">
 <link href="./desc-variation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -190,12 +189,6 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./desc-normdist.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Нормальное распределение</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./desc-ci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Доверительные интервалы</span></span></a>
   </div>
 </li>
       </ul>
@@ -576,10 +569,9 @@ z_i = \frac{x_i - \overline X}{s_X},
 </div>
 <p>Вернёмся&nbsp;же, наконец, к&nbsp;нашей исходной задаче: мы собирались ответить на&nbsp;вопрос <em>по&nbsp;какой из&nbsp;двух шкал респондент набрал больший балл</em>, при&nbsp;этом данные нам говорят, что&nbsp;респондент набрал <span class="math inline">\(31\)</span> балл по&nbsp;обеим шкалам. Найдём стандартизированное значение по&nbsp;формуле <a href="#eq-standartization" class="quarto-xref"><span>5.2</span></a> взяв значения среднего и&nbsp;стандартного отклонения из&nbsp;таблицы <a href="#tbl-survey-means" class="quarto-xref"><span>5.1</span></a>. Получим</p>
 <p><span class="math display">\[
-\begin{split}
-z_\text{BFI2_NEU} &amp;= \frac{31 - 36.34}{9.41} \approx -0.57 \\
-z_\text{SD3_NAR} &amp;= \frac{31 - 29.94}{6.95} \approx 0.58
-\end{split}
+z_\mathrm{BFI2.NEU} = \frac{31 - 36.34}{9.41} \approx -0.57
+\]</span> <span class="math display">\[
+z_\mathrm{SD3.NAR} = \frac{31 - 29.94}{6.95} \approx 0.58
 \]</span></p>
 <p>Таким образом, мы можем сказать, что&nbsp;наш респондент набрал более высокий балл по&nbsp;шкале нарциссизма.</p>
 </section>
@@ -593,17 +585,17 @@ z_\text{SD3_NAR} &amp;= \frac{31 - 29.94}{6.95} \approx 0.58
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>единица <span class="math inline">\(z\)</span>-шкалы&nbsp;— это стандартное отклонение исходной переменной</p>
+<p>единица <span class="math inline">\(z\)</span>-шкалы&nbsp;— это&nbsp;стандартное отклонение исходной переменной</p>
 </div>
 </div>
 </div>
-<p>Конечно, <span class="math inline">\(z\)</span>-шкала безразмерная, то есть не&nbsp;имеет единиц измерения (метры, секунды, года и&nbsp;др.). Однако единица&nbsp;— в смысле <span class="math inline">\(1\)</span>&nbsp;— на этой шкале небессмысленна. Это мера типичности.</p>
+<p>Конечно, <span class="math inline">\(z\)</span>-шкала безразмерная, то&nbsp;есть не&nbsp;имеет единиц измерения (метры, секунды, года и&nbsp;др.). Однако единица&nbsp;— в смысле <span class="math inline">\(1\)</span>&nbsp;— на этой шкале небессмысленна. Это мера типичности.</p>
 <p>Взглянем ещё раз на&nbsp;рисунок <a href="#fig-stnormdist" class="quarto-xref"><span>5.4</span></a>. Обратим внимание вот на что: <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span> <span class="math inline">\(3\)</span> и&nbsp;<span class="math inline">\(-1\)</span>, <span class="math inline">\(-2\)</span>, <span class="math inline">\(-3\)</span> находятся в&nbsp;тех самых точках, где в&nbsp;другом нормальном распределении находятся стандартные отклонения (<span class="math inline">\(\mu \pm \sigma\)</span>, <span class="math inline">\(\mu \pm 2\sigma\)</span>, <span class="math inline">\(\mu \pm 3\sigma\)</span>). Мы также знаем, что этим диапазонам соответствуют вероятности, с&nbsp;которыми значения случайных величин оказываются в&nbsp;этих диапазонах (<a href="#eq-normdist-probs" class="quarto-xref">Уравнение&nbsp;<span>5.1</span></a>).</p>
 <p>То&nbsp;есть мы можем говорить, что&nbsp;<span class="math inline">\(z\)</span>-значения</p>
 <ul>
 <li>в&nbsp;интервале <span class="math inline">\((-1,1)\)</span>&nbsp;— очень типичные, поскольку лежат в&nbsp;пределах одного стандартного отклонения от&nbsp;среднего,</li>
 <li>в&nbsp;интервалах <span class="math inline">\((-2, -1)\)</span> и&nbsp;<span class="math inline">\((1,2)\)</span>&nbsp;— тоже достаточно типичные, поскольку лежат в&nbsp;пределах двух стандартных отклонений от&nbsp;среднего,</li>
-<li>в&nbsp;интервалах <span class="math inline">\((-3, -2)\)</span> и&nbsp;<span class="math inline">\((2,3)\)</span>&nbsp;— менее типичные, но еще «нормальные», так как лежат в&nbsp;пределах трёх стандартных отклонений от среднего,</li>
+<li>в&nbsp;интервалах <span class="math inline">\((-3, -2)\)</span> и&nbsp;<span class="math inline">\((2,3)\)</span>&nbsp;— менее типичные, но&nbsp;еще «нормальные», так как лежат в&nbsp;пределах трёх стандартных отклонений от&nbsp;среднего,</li>
 <li>меньшие <span class="math inline">\(-3\)</span> и&nbsp;большие <span class="math inline">\(3\)</span>&nbsp;— очень нетипичные, так как выходят за&nbsp;пределы трёх стандартных отклонений от среднего.</li>
 </ul>
 <p>Это и&nbsp;есть мера типичности.</p>
@@ -1026,9 +1018,6 @@ z_\text{SD3_NAR} &amp;= \frac{31 - 29.94}{6.95} \approx 0.58
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./desc-ci.html" class="pagination-link" aria-label="Доверительные интервалы">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Доверительные интервалы</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
