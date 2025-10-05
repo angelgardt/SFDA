@@ -211,12 +211,12 @@ window.Quarto = {
   <ul>
   <li><a href="#точечные-и-интервальные-оценки" id="toc-точечные-и-интервальные-оценки" class="nav-link active" data-scroll-target="#точечные-и-интервальные-оценки"><span class="header-section-number">6.1</span> Точечные и интервальные оценки</a></li>
   <li><a href="#ci-clt" id="toc-ci-clt" class="nav-link" data-scroll-target="#ci-clt"><span class="header-section-number">6.2</span> Центральная предельная теорема</a></li>
-  <li><a href="#стандартная-ошибка-среднего" id="toc-стандартная-ошибка-среднего" class="nav-link" data-scroll-target="#стандартная-ошибка-среднего"><span class="header-section-number">6.3</span> Стандартная ошибка среднего</a></li>
-  <li><a href="#доверительные-интервалы" id="toc-доверительные-интервалы" class="nav-link" data-scroll-target="#доверительные-интервалы"><span class="header-section-number">6.4</span> Доверительные интервалы</a>
+  <li><a href="#ci-se" id="toc-ci-se" class="nav-link" data-scroll-target="#ci-se"><span class="header-section-number">6.3</span> Стандартная ошибка среднего</a></li>
+  <li><a href="#ci-ci" id="toc-ci-ci" class="nav-link" data-scroll-target="#ci-ci"><span class="header-section-number">6.4</span> Доверительные интервалы</a>
   <ul class="collapse">
-  <li><a href="#интерпретация-границ-доверительного-интервала" id="toc-интерпретация-границ-доверительного-интервала" class="nav-link" data-scroll-target="#интерпретация-границ-доверительного-интервала"><span class="header-section-number">6.4.1</span> Интерпретация границ доверительного интервала</a></li>
-  <li><a href="#доверительный-интервал-и-сравнение-средних" id="toc-доверительный-интервал-и-сравнение-средних" class="nav-link" data-scroll-target="#доверительный-интервал-и-сравнение-средних"><span class="header-section-number">6.4.2</span> Доверительный интервал и сравнение средних</a></li>
-  <li><a href="#связь-доверительного-интервала-с-разбросом-и-объемом-выборки" id="toc-связь-доверительного-интервала-с-разбросом-и-объемом-выборки" class="nav-link" data-scroll-target="#связь-доверительного-интервала-с-разбросом-и-объемом-выборки"><span class="header-section-number">6.4.3</span> Связь доверительного интервала с разбросом и объемом выборки</a></li>
+  <li><a href="#ci-interp" id="toc-ci-interp" class="nav-link" data-scroll-target="#ci-interp"><span class="header-section-number">6.4.1</span> Интерпретация границ доверительного интервала</a></li>
+  <li><a href="#ci-meancomp" id="toc-ci-meancomp" class="nav-link" data-scroll-target="#ci-meancomp"><span class="header-section-number">6.4.2</span> Доверительный интервал и сравнение средних</a></li>
+  <li><a href="#ci-sd-n" id="toc-ci-sd-n" class="nav-link" data-scroll-target="#ci-sd-n"><span class="header-section-number">6.4.3</span> Связь доверительного интервала с разбросом и объемом выборки</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -286,19 +286,6 @@ X_i \overset{\text{i.i.d}}{\thicksim} (\mu, \sigma^2) \Rightarrow \overline X_i 
 <li>Так как выборки извлекались отдельно для&nbsp;каждого исследования, получившиеся случайные величины оказываются независимы.</li>
 </ul>
 <p>Таким образом, [следствие] <strong>ЦПТ рассматривает поведение распределения выборочных средних при&nbsp;многократном повторении исследования</strong>. По&nbsp;сути, это та&nbsp;же ситуация, которую мы рассматривали при&nbsp;обсуждении <a href="./desc-variation.html#variation-estim-features">несмещённости точечных оценок</a>.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Статистика в&nbsp;отдельном исследовании
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Отметим, что&nbsp;та статистика, которую мы изучаем&nbsp;— <strong>фреквентистская статистика</strong>&nbsp;— рассматривает любые полученные в&nbsp;ходе исследования результаты с&nbsp;точки зрения <em>принципиальной возможности бесконечно повторять проведённое исследование</em>.</p>
-</div>
-</div>
 <p>Итак, пусть есть некоторая случайная величина <span class="math inline">\(X\)</span>, распределение которой в&nbsp;генеральной совокупности асимметрично. Случай асимметричного распределения удобен для&nbsp;рассмотрения, поскольку эффект, описываемый ЦПТ можно увидеть более наглядно. Допустим, выглядит это как-то так:</p>
 <div id="fig-pop-dist" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -347,8 +334,11 @@ X_i \overset{\text{i.i.d}}{\thicksim} (\mu, \sigma^2) \Rightarrow \overline X_i 
 </div>
 </figure>
 </div>
-<p>Чтобы максимально точно приблизиться к оценке нашего параметра — будем оценивать среднее генеральной совокупности — нам надо извлечь много больших выборок из нашей генеральной совокупности. Ну, допустим мы извлекаем 1000 выборок по 50 наблюдений. Можно и больше, но давайте посмотрим пока, что будет на таких значениях.</p>
-<p>Посмотрим на распределения нашей переменной в нескольких из выборок:</p>
+<p>Чтобы&nbsp;максимально точно приблизиться к&nbsp;оценке нашего параметра&nbsp;— будем оценивать среднее генеральной совокупности&nbsp;— нам надо извлечь много больших выборок из&nbsp;нашей генеральной совокупности. Ну, допустим мы извлекаем 1000 выборок по&nbsp;50 наблюдений. Можно и&nbsp;больше, но&nbsp;давайте посмотрим пока, что&nbsp;будет на&nbsp;таких значениях.</p>
+<p>Посмотрим на&nbsp;распределения нашей переменной в&nbsp;нескольких из&nbsp;выборок:</p>
+<div id="fig-pop-samples" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pop-samples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -358,24 +348,164 @@ X_i \overset{\text{i.i.d}}{\thicksim} (\mu, \sigma^2) \Rightarrow \overline X_i 
 </div>
 </div>
 </div>
-<p>Вот распределения в первых шестнадцати выборках. На что здесь стоит обратить внимание?</p>
-<p>От выборки к выборки распределения отличаются. Причем достаточно сильно — где-то распределение больше похоже на нормальное, где-то оно более асимметричное, где-то менее, где-то вообще напоминает равномерное. Это мы в живую увидели вариативность и неопределенность. Каждая из выборок характеризуется каким-то своим средним и каким-то своим разбросом. Вот таблица: Sample Mean SD 1 0.4202292 0.2044323 2 0.3892443 0.2037850 3 0.3861993 0.2224778 4 0.3774064 0.1952898 5 0.4172960 0.2081190 6 0.3616459 0.2052460 7 0.4703232 0.2111924 8 0.4075789 0.2011449 9 0.4141822 0.2018535 10 0.4245290 0.2087136 11 0.3893637 0.1911761 12 0.3778744 0.1983516 13 0.4130055 0.2144898 14 0.3661605 0.1807597 15 0.3956731 0.1963239 16 0.3860937 0.2003544</p>
-<p>Видим, что есть некоторая вариативность выборочных средних. Но раз у нас есть 1000 выборок — а значит и 1000 средних — мы можем построить распределение выборочных средних.</p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pop-samples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;6.2: Распределения случайной величины в&nbsp;первых двадцати выборках
+</figcaption>
+</figure>
+</div>
+<p>Вот распределения в&nbsp;первых двадцати выборках. На&nbsp;что здесь стоит обратить внимание?</p>
+<p>От&nbsp;выборки к&nbsp;выборки распределения, безусловно, отличаются. Причем достаточно сильно&nbsp;— где-то распределение больше похоже на&nbsp;нормальное, где-то оно более асимметричное, где-то менее, где-то вообще напоминает равномерное. Это мы в&nbsp;живую увидели вариативность и&nbsp;неопределенность.</p>
+<p>Каждая из&nbsp;выборок характеризуется каким-то своим средним и&nbsp;каким-то своим разбросом (<a href="#tbl-sample-desc" class="quarto-xref">Таблица&nbsp;<span>6.2</span></a>).</p>
+<div id="tbl-sample-desc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sample-desc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Таблица&nbsp;6.2: Выборочные средние и стандарные отклонения первых двадцати выборок
+</figcaption>
+<div aria-describedby="tbl-sample-desc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Sample</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">V1</td>
+<td style="text-align: right;">0.37</td>
+<td style="text-align: right;">0.18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V2</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">0.22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V3</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V4</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V5</td>
+<td style="text-align: right;">0.42</td>
+<td style="text-align: right;">0.22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V6</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">0.20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V7</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">0.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V8</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">0.23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V9</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">0.21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V10</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">0.20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V11</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V12</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">0.22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V13</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">0.19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V14</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">0.19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V15</td>
+<td style="text-align: right;">0.42</td>
+<td style="text-align: right;">0.22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V16</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">0.22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V17</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">0.21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V18</td>
+<td style="text-align: right;">0.43</td>
+<td style="text-align: right;">0.23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V19</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">0.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V20</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">0.20</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</figure>
+</div>
+<p>Видим, что&nbsp;есть некоторая вариативность выборочных средних. Но&nbsp;раз у&nbsp;нас есть 1000 выборок&nbsp;— а&nbsp;значит и&nbsp;1000 средних&nbsp;— мы можем построить распределение выборочных средних (<a href="#fig-samplemean-dist" class="quarto-xref">Рисунок&nbsp;<span>6.3</span></a>).</p>
+<div id="fig-samplemean-dist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-samplemean-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="desc-ci_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="desc-ci_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Мы получили распределение выборочных средних значений, которое хотя и не очень похоже на нормальное в данном конкретном случае, но как минимум стало почти симметричным! Вот об этом и говорит центральная предельная теорема.</p>
-<p>Более того, если мы посчитаем среднее и стандартное отклонение данного распределения, мы получим следующее:</p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-samplemean-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;6.3: Распределение выборочных средних
+</figcaption>
+</figure>
+</div>
+<p>Мы получили распределение выборочных средних значений, которое очень похоже на&nbsp;нормальное&nbsp;— эмпирическое распределение отображено с&nbsp;помощью гистограммы, а&nbsp;ожидаемое теоретическое с&nbsp;помощью чёрной линии. Вот об&nbsp;этом и&nbsp;говорит центральная предельная теорема.</p>
+<p>Более того, если мы посчитаем среднее и&nbsp;стандартное отклонение данного распределения, мы получим следующее (<a href="#tbl-means-params" class="quarto-xref">Таблица&nbsp;<span>6.3</span></a>).</p>
 <div id="tbl-means-params" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-means-params-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Таблица&nbsp;6.2: Параметры распределения выборочных средних
+Таблица&nbsp;6.3: Параметры распределения выборочных средних
 </figcaption>
 <div aria-describedby="tbl-means-params-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -387,38 +517,70 @@ X_i \overset{\text{i.i.d}}{\thicksim} (\mu, \sigma^2) \Rightarrow \overline X_i 
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Средних</td>
-<td style="text-align: right;">0.4001877</td>
+<td style="text-align: left;">Среднее (M)</td>
+<td style="text-align: right;">0.4</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Стандартных отклонений</td>
-<td style="text-align: right;">0.0269779</td>
+<td style="text-align: left;">Стандартное отклонение (SD)</td>
+<td style="text-align: right;">0.03</td>
 </tr>
 </tbody>
 </table>
 </div>
 </figure>
 </div>
-<p>Обратите внимание, на сколько точную оценку генерального среднего мы получили! Да еще и такой ничтожный разброс! Ну, красота!</p>
 <p>Также нужно обратить внимание еще на две важные детали:</p>
-<p>чем большее количество выборок мы наберем, тем ближе распределение будет к нормальном и тем более точную оценку среднего мы получим чем большее количество наблюдений будет в отдельной выборке, тем ближе распределение будет к нормальном и тем более точную оценку среднего мы получим Увидеть, как это работает, можно здесь.</p>
-<p>Итак, независимо от того, какое распределение переменной есть в генеральной совокупности, при извлечении достаточно большого количества выборок достаточно большого объема мы можем получить очень точную оценку среднего генеральной совокупности, а распределение выборочных средних будет стремиться к нормальному.</p>
-<p>С другими параметрами это также работает. Такие вот статистические приколы.</p>
+<ul>
+<li>чем большее количество выборок мы наберем, тем&nbsp;ближе распределение будет к&nbsp;нормальному и&nbsp;тем более точную оценку среднего мы получим</li>
+<li>чем большее количество наблюдений будет в&nbsp;отдельной выборке, тем ближе распределение будет к&nbsp;нормальному и&nbsp;тем более точную оценку среднего мы получим</li>
+</ul>
+<p><a href="https://gallery.shinyapps.io/CLT_mean/">Здесь</a> можно посмотреть динамическую симуляцию, изучить роль количества выборок и&nbsp;количества наблюдений в&nbsp;формировании итогового распределения средних.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Итак, независимо от&nbsp;того, какое распределение переменной есть в&nbsp;генеральной совокупности, при&nbsp;извлечении достаточно большого количества выборок достаточно большого объема мы можем получить очень точную оценку среднего генеральной совокупности, а&nbsp;распределение выборочных средних будет стремиться к&nbsp;нормальному.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="стандартная-ошибка-среднего" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="стандартная-ошибка-среднего"><span class="header-section-number">6.3</span> Стандартная ошибка среднего</h2>
-<p>Посмотрим на стандартное отклонение выборочных средних (пунктирная линия на графике — среднее выборочных средних, точечные линии — ± одно стандартное отклонение).</p>
-<p>Это стандартное отклонение имеет собственное название — стандартная ошибка среднего (standard error of mean).</p>
-<p>Это одна из интервальных оценок для среднего — в пределах<br>
-[ ¯¯¯ ¯ x − s e ( ¯ x ) , ¯¯¯ ¯ x + s e ( ¯ x )] 1 лежит 68.2% выборочных средних.</p>
-<p>Задумаемся. Это что же, чтобы рассчитать стандартную ошибку среднего нам каждый раз придется собирать 100500 выборок??7? Нет. Рассчитать стандартную ошибку среднего можно и по одной выборке вот так:</p>
-<p><span class="math display">\[
+<section id="ci-se" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="ci-se"><span class="header-section-number">6.3</span> Стандартная ошибка среднего</h2>
+<p>Собственно, а&nbsp;зачем нам это надо было?</p>
+<p>Посмотрим на&nbsp;стандартное отклонение выборочных средних (<a href="#fig-se" class="quarto-xref">Рисунок&nbsp;<span>6.4</span></a>).</p>
+<div id="fig-se" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-se-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-ci_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-se-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;6.4: Стандартная ошибка среднего. Точечная линия&nbsp;— среднее выборочных средних, пунктирные линии&nbsp;— плюс-минус одно стандартное отклонение.
+</figcaption>
+</figure>
+</div>
+<p>Поскольку ЦПТ обеспечила нам возможность пользоваться свойствами нормального распределения, то&nbsp;в&nbsp;пределах одного стандартного отклонения от&nbsp;среднего средних будет лежать 68.2% выборочных средних (<a href="desc-normdist.html#fig-normdist-probs" class="quarto-xref">Рисунок&nbsp;<span>5.3</span></a>&nbsp;и <a href="desc-normdist.html#eq-normdist-probs" class="quarto-xref">Уравнение&nbsp;<span>5.1</span></a>). Таким образом, мы получаем диапазон, в&nbsp;пределах которого лежат наиболее часто встречающиеся выборочные средние, а&nbsp;значит это может служить интервальной оценкой нашего параметра&nbsp;— он называется <em>стандартной ошибкой среднего</em>.</p>
+<div id="def-se" class="theorem definition">
+<p><span class="theorem-title"><strong>Определение 6.1</strong></span> <strong>Стандартная ошибка среднего</strong> (<span class="math inline">\(\text{se}\)</span>)&nbsp;— стандартное отклонение распределения выборочных средних.</p>
+</div>
+<p>Теперь задумаемся о&nbsp;следующем: чтобы получить стандартную ошибку, мы сгенерировали 1000 выборок, однако в&nbsp;рамках отдельного исследования мы работаем только с&nbsp;одной выборкой&nbsp;— значит&nbsp;ли это, что&nbsp;мы не сможем посчитать стандартную ошибку, чтобы&nbsp;получить интервальную оценку среднего?</p>
+<p>Нет. Рассчитать стандартную ошибку среднего можно и&nbsp;по&nbsp;одной выборке вот так:</p>
+<p><span id="eq-se"><span class="math display">\[
 \text{se}_X = \frac{s_X}{\sqrt{n}},
-\]</span></p>
+\tag{6.1}\]</span></span></p>
 <p>где&nbsp;<span class="math inline">\(s_X\)</span>&nbsp;— это выборочное стандартное отклонение, а&nbsp;<span class="math inline">\(n\)</span>&nbsp;— количество наблюдений в&nbsp;данной выборке.</p>
 <p>Формула, прямо скажем, не&nbsp;то&nbsp;чтобы очень интуитивна, однако вам придется мне поверить, что&nbsp;она верна.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -427,7 +589,7 @@ X_i \overset{\text{i.i.d}}{\thicksim} (\mu, \sigma^2) \Rightarrow \overline X_i 
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Для&nbsp;того, чтобы доказать формулу, нам понадобятся два утверждения. С&nbsp;одним мы хорошо знакомы (<a href="desc-variation.html#prp-var2" class="quarto-xref">Утверждение&nbsp;<span>4.2</span></a>):</p>
 <p><span class="math display">\[
@@ -460,49 +622,257 @@ D \big( \frac{1}{n} \sum_{i=1}^n X_i \big) = \\
 </div>
 </div>
 </div>
-<p>Стандартная ошибка используется и сама по себе как одна из описательных статистик. Однако также на её основе рассчитывается другая интервальная оценка.</p>
+<p>Стандартная ошибка используется и&nbsp;сама по&nbsp;себе как одна из&nbsp;описательных статистик. Однако также на&nbsp;её основе рассчитывается другая интервальная оценка.</p>
 </section>
-<section id="доверительные-интервалы" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="доверительные-интервалы"><span class="header-section-number">6.4</span> Доверительные интервалы</h2>
-<p>Еще раз вспомним о том, что стандартная ошибка — это не что иное как стандартное отклонение [выборочных средних]. Также вспомним, что главой ранее мы определяли, с какой вероятностью лежит значение нашей случайной величины в пределах скольких-либо стандартных отклонений. Это вот эта картинка (здесь z-распределение):</p>
-<p>Можем ли мы через стандартное отклонение выразить такой интервал, в котором будет лежать, скажем, 95% значений величины? Да.</p>
-<p>На стандартном нормальной распределении это будет интервал<br>
-[ − 1.96 , 1.96] . А чтобы перейти к размерности интересующей нас переменной, надо выполнить преобразование, обратное стандартизации — умножить на стандартное отклонение и прибавить/вычесть среднее. То есть, интервал, в котором с вероятностью 0.95 будут лежать значения распределения выборочных средних будет таков —<br>
-[ ¯ x − 1.96 × s e , ¯ x + 1.96 × s e] .</p>
-<p>Этот интервал называется 95%-ный доверительный интервал (95% confidence interval, 95% CI). Он является второй интервальной оценкой среднего и мерой нашей неуверенности относительно точности оценки среднего генеральной совокупности.</p>
-<p>Вообще можно рассчитать любой доверительный интервал, который вам захочется, однако самые популярные варианты — это 90%, 95% и 99%. Выражаются через стандартную ошибку они так:</p>
-<p>90 % : ¯ x ± 1.645 × s e 95 % : ¯ x ± 1.96 × s e 99 % : ¯ x ± 2.576 × s e</p>
-<p>Наиболее широко в социальных науках используется 95%-ный. Им и будем пользоваться.</p>
-<section id="интерпретация-границ-доверительного-интервала" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="интерпретация-границ-доверительного-интервала"><span class="header-section-number">6.4.1</span> Интерпретация границ доверительного интервала</h3>
-<p>Теперь еще одна непростая задача — понять, что значит этот интервал.</p>
-<p>Глядя на график распределения выборочных средних, хочется сказать, что генеральное среднее лежит в граница 95%-ного доверительного интервала (вертикальные линии) с вероятностью 0.95.</p>
-<p>Но это не верно!!!</p>
-<p>Здесь мы вплотную подошли к тестированию статистических гипотез. Неприятность в том, что мы живем во фреквентистском подходе. Подробнее мы будем говорить об этом в следующей главе, а пока же попытаемся смириться с тем, что в даннм подходе расчеты, полученные на конкретных данных, позволяют нам говорить только о том, что будет происходит далее, если мы будем извлекать новые выборки и пользоваться теми же расчетами.</p>
+<section id="ci-ci" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="ci-ci"><span class="header-section-number">6.4</span> Доверительные интервалы</h2>
+<p>Еще раз вспомним о&nbsp;том, что&nbsp;стандартная ошибка&nbsp;— это не&nbsp;что иное как стандартное отклонение [выборочных средних]. Также вспомним, что&nbsp;главой ранее мы определяли, с&nbsp;какой вероятностью лежит значение нашей случайной величины в&nbsp;пределах скольких-либо стандартных отклонений (<a href="desc-normdist.html#fig-normdist-probs" class="quarto-xref">Рисунок&nbsp;<span>5.3</span></a>).</p>
+<p>Можем&nbsp;ли мы через стандартное отклонение выразить такой интервал, в&nbsp;котором будет лежать, скажем, 95% значений величины? Для&nbsp;определенности возьмем стандартное нормальное распределение, и&nbsp;выделим на&nbsp;нём диапазон, в&nbsp;пределах которого лежит 95% значений.</p>
+<div id="fig-stnorm-95" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-stnorm-95-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-ci_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stnorm-95-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;6.5: Стандартное нормальное распределение. Диапазон, в&nbsp;пределах которого лежит 95% значений.
+</figcaption>
+</figure>
+</div>
+<p>Математически вычислимо, что&nbsp;границы этого интервала будут такими&nbsp;— <span class="math inline">\([-1.96, 1.96]\)</span>.</p>
+<p>Окей, но&nbsp;это не&nbsp;совсем то, что&nbsp;нас интересовало. Мы хотели узнать, в&nbsp;каких пределах лежит 95% выборочных средних, если мы знаем их распределение. Воспользуемся известной нам стандартизацией (<a href="desc-normdist.html#eq-standartization" class="quarto-xref">Уравнение&nbsp;<span>5.2</span></a>)&nbsp;— вернее, её обратным преобразованием&nbsp;— и&nbsp;перейдем от&nbsp;z-значений к&nbsp;значениям произвольного распределения:</p>
+<p><span class="math display">\[
+x_i = z_i \cdot s_x + \overline X,
+\]</span></p>
+<p>где <span class="math inline">\(z_i\)</span>&nbsp;— значения стандартного нормального распределения, <span class="math inline">\(x_i\)</span>&nbsp;— значение&nbsp;нового распределения, <span class="math inline">\(\overline X\)</span>&nbsp;— среднее нового распределения, <span class="math inline">\(s_x\)</span>&nbsp;— стандартное отклонение нового распределения.</p>
+<div id="fig-ci" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-ci_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;6.6: Доверительный интервал. Точечная линия&nbsp;— среднее выборочных средних, пунктирные линии&nbsp;— доверительный интервал для&nbsp;среднего.
+</figcaption>
+</figure>
+</div>
+<p>Таким образом, мы можем перевести границы <span class="math inline">\([-1.96, 1.96]\)</span> в&nbsp;границы на&nbsp;распределении выборочных средних следующим образом:</p>
+<p><span id="eq-ci"><span class="math display">\[
+[\overline X - 1.96 \cdot \text{se}_x, \, \overline X + 1.96 \cdot \text{se}_x]
+\tag{6.2}\]</span></span></p>
+<p>В&nbsp;пределах такого интервала будет лежать 95% выборочных средних.</p>
+<p>Однако на&nbsp;практике мы имеет дело только с&nbsp;одной выборкой, поэтому и&nbsp;интервал будет рассчитываться на&nbsp;основании одного выборочного среднего и&nbsp;стандартного отклонения по&nbsp;выборке. Например, если мы возьмем первую выборку из&nbsp;сгенерированных (<a href="#tbl-sample-desc" class="quarto-xref">Таблица&nbsp;<span>6.2</span></a>) и&nbsp;рассчитаем такой интервал для&nbsp;её среднего, получится:</p>
+<p><span class="math display">\[
+\begin{split}
+&amp;[\overline X - 1.96 \cdot \text{se}_X, \, \overline X + 1.96 \cdot \text{se}_X] = \Big[ \overline X - 1.96 \cdot \frac{s_X}{\sqrt{n}}, \, \overline X + 1.96 \cdot \frac{s_X}{\sqrt{n}} \Big] = \\
+&amp;= \Big[0.37 - 1.96 \cdot \frac{0.18}{\sqrt{50}}, \, 0.37 + 1.96 \cdot \frac{0.18}{\sqrt{50}} \Big] =
+[0.32, \, 0.42]
+\end{split}
+\]</span></p>
+<p>Этот интервал называется <strong>95%-ным доверительным интервалом (95% confidence interval, 95%&nbsp;CI)</strong>. Он является второй интервальной оценкой среднего и&nbsp;мерой нашей неуверенности относительно точности оценки среднего генеральной совокупности.</p>
+<p>Вообще можно рассчитать любой доверительный интервал, который вам захочется, однако самые популярные варианты&nbsp;— это 90%, 95% и&nbsp;99%. Выражаются через стандартную ошибку они так:</p>
+<p><span class="math display">\[
+\begin{split}
+90\%: &amp;\quad \overline X \pm 1.645 \cdot \text{se}_x \\
+95\%: &amp;\quad \overline X \pm 1.96 \cdot \text{se}_x \\
+99\%: &amp;\quad \overline X \pm 2.576 \cdot \text{se}_x
+\end{split}
+\]</span></p>
+<p>Наиболее широко в&nbsp;социальных науках используется 95%-ный. С&nbsp;ним и&nbsp;будем работать.</p>
+<section id="ci-interp" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="ci-interp"><span class="header-section-number">6.4.1</span> Интерпретация границ доверительного интервала</h3>
+<p>Теперь еще одна непростая задача&nbsp;— понять, что&nbsp;значит этот интервал.</p>
+<p>Глядя на&nbsp;график распределения выборочных средних (<a href="#fig-ci" class="quarto-xref">Рисунок&nbsp;<span>6.6</span></a>) и&nbsp;исходя из&nbsp;того, как интервал был получен, хочется сказать, что&nbsp;<em>генеральное среднее лежит в&nbsp;границах 95%-ного доверительного интервала с&nbsp;вероятностью 0.95.</em></p>
+<p><strong>Но&nbsp;это не&nbsp;верно!!!</strong> Вновь необходимо вспомнить, что в&nbsp;рамках отдельного исследования мы имеем дело только с&nbsp;одной выборкой, и&nbsp;доверительный интервал, рассчитанный на&nbsp;одной выборке, это совершенно не&nbsp;то, что отображает вышеупомянутый график (<a href="#fig-ci" class="quarto-xref">Рисунок&nbsp;<span>6.6</span></a>). Он показывает логику, положенную в&nbsp;механизм расчёта интервала, однако не&nbsp;пригоден для&nbsp;его интерпретации.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Статистика в&nbsp;отдельном исследовании
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Отметим, что&nbsp;та статистика, которую мы изучаем&nbsp;— <strong>фреквентистская статистика</strong>&nbsp;— рассматривает любые результаты с&nbsp;точки зрения <em>принципиальной возможности бесконечно повторять проведённое исследование</em>. Соответственно, корректная&nbsp;интерпретация получаемых статистических штук будет строиться в&nbsp;долгосрочной перспективе повторения исследований.</p>
+<p>Такое положение дел затрудняет интерпретацию результатов отдельного исследования и&nbsp;часто приводит к&nbsp;некорректным выводам, поэтому необходимо уделить вопросу интерпретации отдельное серьезное внимание.</p>
+</div>
+</div>
 <p>Давайте на примере самого доверительного интервала. Корректная статистическая интерпретация звучит так:</p>
-<p>Если мы будет бесконечно извлекать новые выборки из генеральной совокупности, рассчитывать на них средние и 95% доверительные интервалы к ним, то генеральное среднее попадёт в границы 95% таких доверительных интервалов.</p>
-<p>То есть, если мы извлечем 100 выборок, посчитаем на каждой из них среднее и построим 95% доверительный интервал к каждому из 100 средних, то 95 доверительных интервалов из 100 будут содержать генеральное среднее — а 5 интервалов содержать его не будут.</p>
-<p>Визуализацию этого можно наблюдать здесь.</p>
-<p>Корректная статистическая интерпретация, конечно, корректная, однако трудноусваемая и сложноприменяемая в жизни. Попробуем сделать её более осязаемой. Есть два путя.</p>
-<p>Самый простой, но крайне некорректный. Если, ну, прям ваще никак не получается уложить статистическую интерпретацию, то можно думать о доверительном интервале так: «генеральное среднее, скорее всего, лежит где-то в этих пределах». Однако в приличных местах об этом говорить никому не стоит. И даже когда соберетесь прибегнуть к такой интерпретации, обязательно сначала вспомните, что она некорректная! Более корректный вариант. К подобной интерпретации также есть некоторые вопросы, однако по крайней мере она обоснована симуляциями. Дело в том, что статистики задались вопросом — а какова все же вероятность, что генеральное среднее попадет вот в этот конкретный рассчитанный нами здесь и сейчас доверительный интервал. Насимулировали там всякого и пришли к выводу, что эта вероятность равна 84.3%. Эту величину назвали capture percentage — то есть отдельный 95% доверительный интервал «ловит» генеральной среднее 843 раза из 1000. Конечно, я всячески рекомендую помедитировать над статистически корректной интерпретаций доверительного интервала и попробовать её осознать, позалипав на визуализацию. Если же это пока trudnovato, постарайтесь осмыслить второй вариант с capture percentage.</p>
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Если мы будет бесконечно извлекать новые выборки из&nbsp;генеральной совокупности, рассчитывать на&nbsp;них средние и&nbsp;95% доверительные интервалы к&nbsp;ним, то&nbsp;генеральное среднее попадёт в&nbsp;границы 95% таких доверительных интервалов.</p>
+</div>
+</div>
+</div>
+<p>То&nbsp;есть, если мы извлечем 100 выборок, посчитаем на&nbsp;каждой из&nbsp;них среднее и&nbsp;построим 95% доверительный интервал к&nbsp;каждому из&nbsp;100 средних, то&nbsp;95 доверительных интервалов из&nbsp;100 будут содержать генеральное среднее, а&nbsp;5 интервалов содержать его не&nbsp;будут.</p>
+<p>В&nbsp;частности, если мы посмотрим, что происходит на&nbsp;сгенерированных ранее выборках (<a href="#fig-pop-samples" class="quarto-xref">Рисунок&nbsp;<span>6.2</span></a>), мы получим следующую картину (<a href="#fig-ci-coverage" class="quarto-xref">Рисунок&nbsp;<span>6.7</span></a>).</p>
+<div id="fig-ci-coverage" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ci-coverage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-ci_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ci-coverage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;6.7: Покрытие генерального среднего доверительными интервалами. Из&nbsp;1000 доверительных интервалов 966 содержат генеральной среднее, 34&nbsp;— не&nbsp;содержат.
+</figcaption>
+</figure>
+</div>
+<p>Динамическую визуализацию этого можно наблюдать <a href="https://rpsychologist.com/d3/ci/">здесь</a>.</p>
+<p>Корректная статистическая интерпретация, конечно, корректная, однако трудноусваемая и&nbsp;сложноприменяемая в&nbsp;практике Попробуем сделать её более осязаемой. Есть три путя.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Самый простой, но крайне некорректный
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Если, ну, прям ваще никак не&nbsp;получается уложить статистическую интерпретацию, то&nbsp;можно думать о&nbsp;доверительном интервале так: «генеральное среднее, скорее всего, лежит где-то в&nbsp;этих пределах».</p>
+<p>Однако в&nbsp;приличных местах об&nbsp;этом говорить никому не&nbsp;стоит. И&nbsp;даже когда соберетесь прибегнуть к&nbsp;такой интерпретации, <strong>обязательно сначала вспомните, что&nbsp;она некорректная!</strong></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Скорректированный вариант
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>К&nbsp;подобной интерпретации также есть некоторые вопросы, однако, по&nbsp;крайней мере, она обоснована симуляциями. Задаваться вопросом о&nbsp;вероятности попадания генерального среднего в&nbsp;конкретный рассчитанный нами здесь и&nbsp;сейчас доверительный интервал всё&nbsp;же можно. Симуляции показывают, что эта вероятность приблизительно равна <strong>84.3%</strong>. Эту величину назвали <strong>capture percentage</strong>&nbsp;— то есть отдельный 95% доверительный интервал «ловит» генеральное среднее 843 раза из&nbsp;1000.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Практически применимый вариант
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ежели мы всё&nbsp;же посмотрим на&nbsp;<a href="#fig-ci" class="quarto-xref">Рисунок&nbsp;<span>6.6</span></a> и&nbsp;попробуем вытащить практически пригодную интерпретацию, то&nbsp;мы можем заметить, что в&nbsp;границы доверительного интервала попадают наиболее частотные, типичные значения среднего. Также необходимо вспомнить, что&nbsp;мы работаем с&nbsp;конкретными данными в&nbsp;рамках одного исследования. Исходя из&nbsp;этих двух пунктов, можно сказать, что&nbsp;границы доверительного интервала задают диапазон значений, которые <em>не противоречат</em> имеющимся у&nbsp;нас данным.</p>
+<p>Эта интерпретация хорошо согласуется с&nbsp;NHST-подходом к&nbsp;тестированию статистических гипотез, о&nbsp;котором мы будем говорить далее.</p>
+</div>
+</div>
 </section>
-<section id="доверительный-интервал-и-сравнение-средних" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="доверительный-интервал-и-сравнение-средних"><span class="header-section-number">6.4.2</span> Доверительный интервал и сравнение средних</h3>
-<p>Чем нам может помочь интервальная оценка при поиске различий между группами? Посмотрим на возможные ситуации. Пусть у нас есть средние и доверительные интервалы к ним в двух группах наблюдений — например, балл по шкале депрессии HADS у жителей Москвы и Петербурга.</p>
-<p>Первоначально попробуем выяснить, справедливо ли утверждение «у жителей столиц нет клинически выраженной депрессии». Для этого необходимо, чтобы средний балл был меньше 11. Рассмотрим картинки.</p>
-<p>Мы наблюдаем, что в случае Москвы интересующее нас значение 11 не попадает в доверительный интервал, в то время как в случае Петербурга — попадает. Поскольку доверительный интервал отображает нашу неуверенность в том, что наше выборочное среднее отражает генеральное среднее, для нас все значения в пределах доверительного интервала статистически равны между собой. Таким образом, так как 11 не попадает в 95%-ный доверительный интервал для Москвы, мы можем на уровне доверия 0.95 сказать, что средний уровень депрессии жителей Москвы ниже порога клинически выраженной депрессии. Про петербуржцев такого сказать не получится, так как 11 попало в доверительный интервал для Петербурга — а значит, средний уровень депресии 8.5 статистически равен 11, хотя по абсолютному значению ниже. Такая вот статистическая магия.</p>
-<p>Еще раз:</p>
-<p>если некоторое число попадает в доверительный интервал для выборочного среднего, то мы говорим, что среднее статистически не отличается от этого числа — даже если по абсолютным значениям разница существенна; если некоторое число не попадает в доверительный интервал для выборочного среднего, то мы говорим, что среднее статистически отличается от этого числа — и больше или меньше в зависимости от абсолютных значений. Однако сравнивать выборочное среднее с некоторым числом — крайне маргинальная задача. Обычно мы сравниваем две группы между собой. Посмотрим на ситуации, которые принципиально возможны при сравнении средних в двух группах.</p>
-<p>По оси<br>
-x — группы наблюдений, по оси<br>
-y — значение интересующей нас переменной. Видим четыре возможные ситуации:</p>
-<p>А — каждое среднее попадает в доверительный интервал другого среднего B — одно среднее попадает в доверительный интервал другого среднего, а второе — не попадает в данном случае, среднее второй группы попадо в доверительный интервал среднего первой группы, в то время как среднее первой группы лежит за границами доверительного интервала среднего второй группы С — ни одно из средних не попало в доверительный интервал другого среднего но мы видим пересечение доверительных интервалов D — доверительные интервалы не пересекаются, следовательно, ни одно из средних не попало в доверительный интервал другого среднего Исходя из рассуждений выше, можно отметить, что если хотя бы одно среднее попало в доверительный интервал другого — случаи A и B — то различий между группами нет. А вот если среднии не попадают в доверительные интервал друг друга — случаи C и D — то различия между группами есть.</p>
-<p>Такие дела.</p>
+<section id="ci-meancomp" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="ci-meancomp"><span class="header-section-number">6.4.2</span> Доверительный интервал и сравнение средних</h3>
+<p>Чем нам может помочь интервальная оценка при&nbsp;поиске различий между группами? Посмотрим на&nbsp;возможные ситуации. Пусть у&nbsp;нас есть средние и&nbsp;доверительные интервалы к&nbsp;ним в&nbsp;двух группах наблюдений&nbsp;— например, балл по&nbsp;шкале депрессии HADS у&nbsp;жителей Москвы и&nbsp;Петербурга.</p>
+<p>Первоначально попробуем выяснить, справедливо&nbsp;ли утверждение «у&nbsp;жителей столиц нет клинически выраженной депрессии». Для&nbsp;этого необходимо, чтобы средний балл был меньше 11. Рассмотрим картину.</p>
+<div id="fig-ci-value" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ci-value-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-ci_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ci-value-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;6.8: Сравнение выборочного среднего с&nbsp;данным значением через доверительный интервал
+</figcaption>
+</figure>
+</div>
+<p>Мы наблюдаем, что в&nbsp;случае Москвы интересующее нас значение 11 не&nbsp;попадает в&nbsp;доверительный интервал, в&nbsp;то время как в&nbsp;случае Петербурга&nbsp;— попадает. Поскольку доверительный интервал отображает нашу неуверенность в&nbsp;том, что&nbsp;наше выборочное среднее отражает генеральное среднее, для&nbsp;нас все значения в&nbsp;пределах доверительного интервала <em>статистически равны</em> между собой. Или&nbsp;же можем сказать, что границы доверительного интервала обозначают значения, не&nbsp;противоречащие данным. Таким образом, так как 11 не&nbsp;попадает в 95%-ный доверительный интервал для Москвы, мы можем сказать, что&nbsp;средний уровень депрессии жителей Москвы ниже порога клинически выраженной депрессии. Про&nbsp;петербуржцев такого сказать не&nbsp;получится, так как 11 попало в&nbsp;доверительный интервал для&nbsp;Петербурга&nbsp;— а значит, средний уровень депрессии 8.5 статистически равен 11, хотя по&nbsp;абсолютному значению ниже. Иначе говоря, значение 11 не&nbsp;противоречит имеющимся данным, хотя выборочное среднее и&nbsp;не совпадает с&nbsp;ним.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<ul>
+<li>если некоторое число попадает в&nbsp;доверительный интервал для&nbsp;выборочного среднего, то&nbsp;мы говорим, что&nbsp;среднее статистически не&nbsp;отличается от&nbsp;этого числа&nbsp;— даже если по&nbsp;абсолютным значениям разница существенна</li>
+<li>если некоторое число не&nbsp;попадает в&nbsp;доверительный интервал для&nbsp;выборочного среднего, то&nbsp;мы говорим, что&nbsp;среднее статистически отличается от&nbsp;этого числа&nbsp;— и&nbsp;больше или&nbsp;меньше в&nbsp;зависимости от&nbsp;абсолютных значений</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Однако чаще мы сравниваем две группы между собой. Посмотрим на ситуации, которые принципиально возможны при&nbsp;сравнении средних в&nbsp;двух группах.</p>
+<div id="fig-ci-groups" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ci-groups-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="desc-ci_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ci-groups-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;6.9: Сравнение выборочных средних в&nbsp;двух группах
+</figcaption>
+</figure>
+</div>
+<p>По&nbsp;оси <span class="math inline">\(x\)</span>&nbsp;— группы наблюдений, по&nbsp;оси <span class="math inline">\(y\)</span>&nbsp;— значение интересующей нас переменной. Видим четыре возможные ситуации:</p>
+<ul>
+<li>А&nbsp;— каждое среднее попадает в&nbsp;доверительный интервал другого среднего</li>
+<li>B — одно среднее попадает в&nbsp;доверительный интервал другого среднего, а&nbsp;второе — не&nbsp;попадает
+<ul>
+<li>в&nbsp;данном случае, среднее второй группы попало в&nbsp;доверительный интервал среднего первой группы, в&nbsp;то время как&nbsp;среднее первой группы лежит за&nbsp;границами доверительного интервала среднего второй группы</li>
+</ul></li>
+<li>С&nbsp;— ни&nbsp;одно из&nbsp;средних не&nbsp;попало в&nbsp;доверительный интервал другого среднего
+<ul>
+<li>но&nbsp;есть пересечение доверительных интервалов</li>
+</ul></li>
+<li>D&nbsp;— доверительные интервалы не&nbsp;пересекаются, следовательно, ни&nbsp;одно из&nbsp;средних не&nbsp;попало в&nbsp;доверительный интервал другого среднего</li>
+</ul>
+<p>Исходя из&nbsp;рассуждений выше, можно отметить, что&nbsp;если хотя&nbsp;бы одно среднее попало в&nbsp;доверительный интервал другого&nbsp;— случаи A и&nbsp;B&nbsp;— то различий между группами нет. А&nbsp;вот если средние не&nbsp;попадают в&nbsp;доверительные интервалы друг друга&nbsp;— случаи C и&nbsp;D&nbsp;— то&nbsp;различия между группами есть.</p>
 </section>
-<section id="связь-доверительного-интервала-с-разбросом-и-объемом-выборки" class="level3" data-number="6.4.3">
-<h3 data-number="6.4.3" class="anchored" data-anchor-id="связь-доверительного-интервала-с-разбросом-и-объемом-выборки"><span class="header-section-number">6.4.3</span> Связь доверительного интервала с разбросом и объемом выборки</h3>
-<p>Так как доверительный интервал рассчитывается на основе стандартной ошибки, которая в свою очередь рассчитывается на основе стандартного отклонения и числа наблюдений, нетрудно заметить, что:</p>
-<p>Чем выше разброс в данных, тем будет шире доверительный интервал [так как больше стандартная ошибка] Чем больше наблюдений в нашей выборке, тем будет уже доверительный интервал [так как меньше стандартная ошибка] На этом — ура! — мы заканчиваем изучение описательной статистики! Впереди нас ждёт знакомство со статистическим выводом!</p>
+<section id="ci-sd-n" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="ci-sd-n"><span class="header-section-number">6.4.3</span> Связь доверительного интервала с разбросом и объемом выборки</h3>
+<p>Так&nbsp;как доверительный интервал рассчитывается на&nbsp;основе стандартной ошибки (<a href="#eq-ci" class="quarto-xref">Уравнение&nbsp;<span>6.2</span></a>), которая в&nbsp;свою очередь рассчитывается на&nbsp;основе стандартного отклонения и&nbsp;числа наблюдений (<a href="#eq-se" class="quarto-xref">Уравнение&nbsp;<span>6.1</span></a>), нетрудно заметить, что:</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<ul>
+<li>чем <strong>выше разброс</strong> в&nbsp;данных, тем будет <strong>шире доверительный интервал</strong>, так как больше стандартная ошибка</li>
+<li>чем <strong>больше наблюдений</strong> в&nbsp;нашей выборке, тем будет <strong>у́же доверительный интервал</strong>,[так как меньше стандартная ошибка</li>
+</ul>
+</div>
+</div>
+</div>
 
 
 </section>
