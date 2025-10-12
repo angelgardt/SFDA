@@ -22,9 +22,9 @@ book:
         - desc-variation.qmd
         - desc-normdist.qmd
         - desc-ci.qmd
-    # - part: "Статистика вывода"
-    #   chapters: 
-    #     - infer-stattesting.qmd
+    - part: "Статистика вывода"
+      chapters:
+        - infer-stattesting.qmd
     #     - infer-categorical.qmd
     #     - infer-correlation.qmd
     #     - infer-anovaI.qmd
