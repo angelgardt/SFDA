@@ -25,8 +25,8 @@ book:
     - part: "Статистика вывода"
       chapters:
         - infer-stattesting.qmd
-    #     - infer-categorical.qmd
     #     - infer-correlation.qmd
+    #     - infer-categorical.qmd
     #     - infer-anovaI.qmd
     #     - infer-anovaII.qmd
     #     - infer-posthoc.qmd
