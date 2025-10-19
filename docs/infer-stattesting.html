@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./infer-correlation.html" rel="next">
 <link href="./desc-ci.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -214,6 +215,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Тестирование статистических гипотез</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./infer-correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -228,8 +235,7 @@ window.Quarto = {
   <ul>
   <li><a href="#базовые-понятия" id="toc-базовые-понятия" class="nav-link active" data-scroll-target="#базовые-понятия"><span class="header-section-number">7.1</span> Базовые понятия</a></li>
   <li><a href="#возможные-результаты-проверки-гипотез" id="toc-возможные-результаты-проверки-гипотез" class="nav-link" data-scroll-target="#возможные-результаты-проверки-гипотез"><span class="header-section-number">7.2</span> Возможные результаты проверки гипотез</a></li>
-  <li><a href="#асимметрия-статистического-вывода" id="toc-асимметрия-статистического-вывода" class="nav-link" data-scroll-target="#асимметрия-статистического-вывода"><span class="header-section-number">7.3</span> Асимметрия статистического вывода</a></li>
-  <li><a href="#алгоритм-тестирования-статистических-гипотез" id="toc-алгоритм-тестирования-статистических-гипотез" class="nav-link" data-scroll-target="#алгоритм-тестирования-статистических-гипотез"><span class="header-section-number">7.4</span> Алгоритм тестирования статистических гипотез</a></li>
+  <li><a href="#алгоритм-тестирования-статистических-гипотез" id="toc-алгоритм-тестирования-статистических-гипотез" class="nav-link" data-scroll-target="#алгоритм-тестирования-статистических-гипотез"><span class="header-section-number">7.3</span> Алгоритм тестирования статистических гипотез</a></li>
   </ul>
 </nav>
     </div>
@@ -342,65 +348,224 @@ window.Quarto = {
 <li><strong>Ошибка II рода</strong> возникает, когда <em>в&nbsp;генеральной совокупности</em> искомая <em>закономерность есть</em>, <em>но мы</em> в&nbsp;силу каких-либо причин <em>её не&nbsp;нашли</em>.</li>
 </ul>
 <p>Ошибки&nbsp;— это нехорошо, они нас не&nbsp;устраивают. Надо каким-то образом их&nbsp;контролировать.</p>
-<p>Ошибка I рода контролируется достаточно просто. Так как мы нашли закономерность, которую искали, мы можем посчитать вероятность, с&nbsp;которой потенциально ошиблись. А собственно контролировать ошибку мы будем с помощью уровня значимости<br>
-α , который выбирается до начала процедуры тестирования гипотезы. Он и задает вероятность, с который мы позволяем себе ошибиться — отклонить нулевую гипотезу, при условии, что она верна.</p>
-<p>Ошибку II рода контролировать сложнее, так как мы не нашли закономерность, которую искали. Нам нужна какая-то метрика, которая позволит сказать, что мы сделали всё возможное для того, чтобы обнаружить искомую закономерность. Вероятность ошибки II рода обозначается<br>
-β — тогда вероятность того, что мы не совершили ошибку II рода будет<br>
-1 − β . Эта величина называется статистической мощностью, и она связана с размером эффекта и объемом выборки. Статистическую мощность можно рассчитать как до проведения статистического анализа — для расчета требуемого объема выборки — так и после — для определения достигнутой статистической мощности.</p>
-<p>Соберем все обозначения в единую табличку1:</p>
-<p>H 0</p>
-<p>H 1</p>
-<p>^ H 0</p>
-<p>P ( ^ H 0 | H 0 )</p>
-<p>P ( ^ H 0 | H 1 ) = β</p>
-<p>^ H 1</p>
-<p>P ( ^ H 1 | H 0 ) = α</p>
-<p>P ( ^ H 1 | H 1 ) = 1 − β</p>
-<p>Уровень значимости<br>
-α выбирается близким к нулю — всем знакомо конвенциональное значение<br>
-0.05 . Вообще<br>
-α можно выбрать сколь угодно малым, однако при выборе уровня значимости руководствуются принципом разумной достаточности, так как если устремить<br>
-α к нулю, то устремиться к нулю и вероятность отклонения нулевой гипотезы</p>
-<p>Математические руны Достаточной статистической мощностью считается<br>
-0.8 . Аналогично, устремляя мощность к единице ( ( 1 − β ) → 1 ⇒ β → 0 ), мы устремляем вероятность не отклонения нулевой гипотезы к нулю:</p>
-<p>Ещё математические руны Необходимо также помнить, что ошибки первого и второго рода связаны между собой так, что</p>
-<p>α → 0 ⇒ β → 1</p>
-<p>Опять математические руны</p>
+<ul>
+<li><strong>Ошибка I рода</strong> контролируется достаточно просто. Так как в&nbsp;ситуации ошибки I рода мы получили некий результат&nbsp;— нашли закономерность, которую искали&nbsp;— мы можем посчитать вероятность, с&nbsp;которой <em>потенциально</em> ошиблись. А&nbsp;собственно <em>контролировать</em> ошибку мы будем с&nbsp;помощью уровня значимости <span class="math inline">\(\alpha\)</span>.
+<ul>
+<li><strong>Уровень значимости</strong> <span class="math inline">\(\alpha\)</span> выбирается до&nbsp;начала процедуры тестирования гипотезы&nbsp;и задает вероятность, с&nbsp;который мы позволяем себе ошибиться&nbsp;— отклонить нулевую гипотезу, при&nbsp;условии, что она верна.</li>
+</ul></li>
+<li><strong>Ошибку II рода</strong> контролировать сложнее, так как мы не&nbsp;получили результата&nbsp;— не&nbsp;нашли закономерность, которую искали. Но ситуации ошибки II рода&nbsp;— ложноотрицательного вывода&nbsp;— «противоположна» ситуация истинно положительного вывода&nbsp;— когда мы обнаружили закономерность, при&nbsp;условии, что она есть. Соответственно, нам будет полезна какая-то метрика, которая позволит сказать, что&nbsp;мы сделали всё возможное для того, чтобы обнаружить искомую закономерность.
+<ul>
+<li>Вероятность ошибки II рода обозначается <span class="math inline">\(β\)</span>&nbsp;— тогда вероятность того, что мы <strong>не&nbsp;совершили ошибку II рода</strong> будет <span class="math inline">\(1-\beta\)</span>. Эта величина называется <strong>статистической мощностью</strong>&nbsp;— она связана с&nbsp;<em>размером эффекта</em> и&nbsp;<em>объемом выборки</em>. На&nbsp;основании статистической мощности и&nbsp;ожидаемого размера эффекта можно рассчитать требуемый объем выборки.</li>
+</ul></li>
+</ul>
+<p>Размер эффекта&nbsp;— это оценка величины, или силы, закономерности в генеральной совокупности. О&nbsp;нём мы будем говорить подробнее в&nbsp;последующих главах, так&nbsp;как на&nbsp;примере конкретных статистических методов этот концепт будет более осязаем.</p>
+<p>Соберем все обозначения в единую табличку (<a href="#tbl-stattesting-probs" class="quarto-xref">Таблица&nbsp;<span>7.2</span></a>)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<div id="tbl-stattesting-probs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-stattesting-probs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Таблица&nbsp;7.2: Вероятности ошибок I и &nbsp;II рода
+</figcaption>
+<div aria-describedby="tbl-stattesting-probs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(H_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(H_1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\hat H_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb P (\hat H_0 | H_0)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb P (\hat H_0 | H_1) = \beta\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\hat H_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb P (\hat H_0 | H_0) = \alpha\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb P (\hat H_1 | H_1) = 1 - \beta\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Уровень значимости <span class="math inline">\(\alpha\)</span> выбирается близким к&nbsp;нулю&nbsp;— конвенциональным значением для&nbsp;социальных наук считается <span class="math inline">\(0.05\)</span>. Вообще <span class="math inline">\(\alpha\)</span> можно выбрать сколь угодно малым, однако при&nbsp;выборе уровня значимости руководствуются принципом разумной достаточности, так как если устремить <span class="math inline">\(\alpha\)</span> к&nbsp;нулю, то&nbsp;устремится к&nbsp;нулю и&nbsp;вероятность отклонения нулевой гипотезы.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Математические руны
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\mathbb P (\hat H_1) = \mathbb P (\hat H_1|H_0) \cdot \mathbb P(H_0) = \alpha \cdot \mathbb P (H_0)
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Достаточной статистической мощностью (<span class="math inline">\(1-\beta\)</span>) считается <span class="math inline">\(0.8\)</span>. Аналогично, устремляя мощность к&nbsp;единице (<span class="math inline">\((1-\beta) \to 1 \Rightarrow \beta \to 0\)</span>), мы устремляем вероятность не отклонения нулевой гипотезы к нулю.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ещё математические руны
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\mathbb P (\hat H_0) = \mathbb P (\hat H_0|H_1) \cdot \mathbb P(H_1) = \beta \cdot \mathbb P (H_1)
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Необходимо также помнить, что&nbsp;ошибки первого и&nbsp;второго рода связаны между собой так, что</p>
+<p><span class="math display">\[
+\alpha \to 0 \Rightarrow \beta \to 1
+\]</span></p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Опять математические руны
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{split}
+\beta \cdot \mathbb P(H_1) &amp;= \mathbb P (\hat H_0) \\
+\beta \cdot \mathbb P(H_1) &amp;= \mathbb P (\hat H_0 | H_0) \cdot \mathbb P(H_0) \\
+\beta &amp;= \frac{1}{\mathbb P(H_1)} \cdot \mathbb P(H_0) \cdot \mathbb P (\hat H_0 | H_0) \\
+\beta &amp;= \frac{1}{\mathbb P(H_1)} \cdot \mathbb P(H_0) \cdot \big( 1 - \mathbb P (\hat H_1 | H_0) \big) \\
+\beta &amp;= \frac{1}{\mathbb P(H_1)} \cdot \mathbb P(H_0) \cdot ( 1 - \alpha) \\
+\overset{\mathbb P(H_1) \approx \mathbb P(H_0)}{\Longrightarrow}
+\beta &amp;\approx 1-\alpha
+\end{split}
+\]</span></p>
+</div>
+</div>
+</div>
+<!---
+## Асимметрия статистического вывода
+
+Выше мы сказали, что для проверки гипотезы нужны две вещи:
+
+результаты наблюдений и
+критерий.
+С результатами наблюдений более-менее очевидно.
+
+Критерий — это правило, согласно которому гипотезу либо принимают, либо отклоняют. Однако перед тем как проверять гипотезу, её так-то нужно сформулировать, и сделать это правильно, поскольку от формулировки гипотезы зависит интерпретация результатов проверки и дальнейшее использование полученной информации.
+
+Используемая статистика сама по себе является [непрерывной] случайной величиной, а значит может быть построено её распределение. Критерий будет разделять это распределение на непересекающиеся области. В результате чего возникает критическая область — область отклонения гипотезы. Дополнением к ней является область неотклонения гипотезы.
+
+Критическая область может быть односторонней (при  
+H
+1
+:
+θ
+>
+θ
+0
+  или  
+H
+1
+:
+θ
+<
+θ
+0
+ ) и двусторонней (при  
+H
+1
+:
+θ
+≠
+θ
+0
+ ). «Размер» критической области определяется уровнем значимости.
+
+Статистический вывод — заключение о том, получили ли мы подтверждение альтернативной гипотезы — по структуре представляет собой импликацию. Если вам не знаком этот термин из логики, то вот:
+
+Если значение нашей статистики, которое мы рассчитали на выборке, попало в критическую область, то мы говорим о том, что нулевая гипотеза отклоняется.
+Если значение нашей статистики, которое мы рассчитали на выборке, не попало в критическую область, то мы не получаем оснований для того, чтобы отклонить нулевую гипотезу. Однако мы также не получаем оснований, чтобы её «принять». Мы остаёмся в некотором неведении: мы не нашли различий, а есть они там или нет — хто ж их знает… Итого, мы не можем сделать никакого вывода.
+В этом и заключается асимметрия статистического вывода. Как раз для того, чтобы с ней как-то жить, мы работаем со статистической мощностью.
+
+Посмотреть, как все эти штуки друг с другом соотносятся можно тут.
+--->
 </section>
-<section id="асимметрия-статистического-вывода" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="асимметрия-статистического-вывода"><span class="header-section-number">7.3</span> Асимметрия статистического вывода</h2>
-<p>Выше мы сказали, что для проверки гипотезы нужны две вещи:</p>
-<p>результаты наблюдений и критерий. С результатами наблюдений более-менее очевидно.</p>
-<p>Критерий — это правило, согласно которому гипотезу либо принимают, либо отклоняют. Однако перед тем как проверять гипотезу, её так-то нужно сформулировать, и сделать это правильно, поскольку от формулировки гипотезы зависит интерпретация результатов проверки и дальнейшее использование полученной информации.</p>
-<p>Используемая статистика сама по себе является [непрерывной] случайной величиной, а значит может быть построено её распределение. Критерий будет разделять это распределение на непересекающиеся области. В результате чего возникает критическая область — область отклонения гипотезы. Дополнением к ней является область неотклонения гипотезы.</p>
-<p>Критическая область может быть односторонней (при<br>
-H 1 : θ &gt; θ 0 или<br>
-H 1 : θ &lt; θ 0 ) и двусторонней (при<br>
-H 1 : θ ≠ θ 0 ). «Размер» критической области определяется уровнем значимости.</p>
-<p>Статистический вывод — заключение о том, получили ли мы подтверждение альтернативной гипотезы — по структуре представляет собой импликацию. Если вам не знаком этот термин из логики, то вот:</p>
-<p>Если значение нашей статистики, которое мы рассчитали на выборке, попало в критическую область, то мы говорим о том, что нулевая гипотеза отклоняется. Если значение нашей статистики, которое мы рассчитали на выборке, не попало в критическую область, то мы не получаем оснований для того, чтобы отклонить нулевую гипотезу. Однако мы также не получаем оснований, чтобы её «принять». Мы остаёмся в некотором неведении: мы не нашли различий, а есть они там или нет — хто ж их знает… Итого, мы не можем сделать никакого вывода. В этом и заключается асимметрия статистического вывода. Как раз для того, чтобы с ней как-то жить, мы работаем со статистической мощностью.</p>
-<p>Посмотреть, как все эти штуки друг с другом соотносятся можно тут.</p>
-</section>
-<section id="алгоритм-тестирования-статистических-гипотез" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="алгоритм-тестирования-статистических-гипотез"><span class="header-section-number">7.4</span> Алгоритм тестирования статистических гипотез</h2>
-<p>Для тестирования гипотез есть два сценария: первый и тот, которым мы будем пользоваться. Первый вариант чуть более классический, второй — более гибкий.</p>
-<p>Сценарий номер раз</p>
-<p>Формулировка гипотезы Выбор статистического критерия Выбор уровня значимости<br>
-α</p>
-<p>Построение закона распредления статистики критерия при условии, что нулевая гипотеза верна Определение границ критической области Расчёт выборочной статистики Определение, попадает ли наблюдемое значение статистики в критическую область и вынесение решения Сценарий номер два</p>
-<p>Формулировка гипотезы Выбор статистического критерия Выбор уровня значимости<br>
-α</p>
-<p>Построение закона распредлеения статистики критерия при условии, что нулевая гипотеза верна Расчёт выборочной статистики Расчёт достигнутого уровня значимости p-value Сопоставление<br>
-α и p-value и вынесение решения Почему второй вариант более гибкий? Представим, что мы захотели понизить уровень значимости с<br>
-0.05 до<br>
-0.01 — такие уровни значимости всречаются, например, в медицине. Если мы идем по первому сценарию, то нам надо заново пересчитать критические значения и вновь проанализировать, попадает ли наблюдаемое значение в критическую область. Если мы адепты второго сценария, то нам надо только выполнить одно новое сравнение нашего p-value с новым уровнем значимости.</p>
+<section id="алгоритм-тестирования-статистических-гипотез" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="алгоритм-тестирования-статистических-гипотез"><span class="header-section-number">7.3</span> Алгоритм тестирования статистических гипотез</h2>
+<p>Для тестирования гипотез есть два сценария: первый и тот, которым мы будем пользоваться. Первый вариант чуть более классический, второй&nbsp;— более гибкий.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Сценарий номер раз
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Формулировка гипотезы</li>
+<li>Выбор статистического критерия</li>
+<li>Выбор уровня значимости <span class="math inline">\(\alpha\)</span></li>
+<li>Построение закона распределения статистики критерия при условии, что&nbsp;нулевая гипотеза верна</li>
+<li>Определение границ критической области</li>
+<li>Расчёт выборочной статистики</li>
+<li>Определение, попадает ли наблюдаемое значение статистики в&nbsp;критическую область и&nbsp;статистический вывод</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Сценарий номер два
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Формулировка гипотезы</li>
+<li>Выбор статистического критерия</li>
+<li>Выбор уровня значимости <span class="math inline">\(\alpha\)</span></li>
+<li>Построение закона распредлеения статистики критерия при&nbsp;условии, что&nbsp;нулевая гипотеза верна</li>
+<li>Расчёт выборочной статистики</li>
+<li>Расчёт достигнутого уровня значимости p-value</li>
+<li>Сопоставление <span class="math inline">\(\alpha\)</span> и&nbsp;p-value и&nbsp;статистический вывод</li>
+</ol>
+</div>
+</div>
+<p>Почему второй вариант более гибкий? Представим, что мы захотели понизить уровень значимости с <span class="math inline">\(0.05\)</span> до <span class="math inline">\(0.01\)</span>&nbsp;— такие уровни значимости всречаются, например, в медицине. Если мы идем по первому сценарию, то нам надо заново пересчитать критические значения и вновь проанализировать, попадает ли наблюдаемое значение в критическую область. Если мы адепты второго сценария, то нам надо только выполнить одно новое сравнение нашего p-value с новым уровнем значимости.</p>
 <p>Вероятно, пока мало что понятно. Поэтому в следующей главе разберем все это безобразие на примере.</p>
-<p>Здесь использовано обозначение условной вероятности<br>
-P ( A | B ) , то есть это вероятность того, что случилось событие<br>
-A при условии, что случилось событие<br>
-B .↩︎</p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Здесь использовано обозначение условной вероятности <span class="math inline">\(\mathbb P (A|B)\)</span>, то&nbsp;есть это вероятность того, что&nbsp;случилось событие <span class="math inline">\(A\)</span> при&nbsp;условии, что&nbsp;случилось событие <span class="math inline">\(B\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -810,6 +975,9 @@ B .↩︎</p>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./infer-correlation.html" class="pagination-link" aria-label="Корреляционный анализ">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

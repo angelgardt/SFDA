@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>8&nbsp; Корреляционный анализ – SFDA | PSY HSE</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./infer-stattesting.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-bd1857aa17bea7e4e4b424b4ddf2d210.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Ничего не найдено",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Очистить",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Отмена",
+    "search-submit-button-title": "Отправить",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./infer-stattesting.html">Статистика вывода</a></li><li class="breadcrumb-item"><a href="./infer-correlation.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">SFDA | PSY HSE</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Начало</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Введение в&nbsp;статистику</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Основания статистики</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-randvals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Шкалы и&nbsp;случайные величины</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Описательная статистика</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-centraltend.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Меры центральной тенденции</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-variation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Меры разброса</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-normdist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Нормальное распределение</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-ci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Доверительные интервалы</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Статистика вывода</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./infer-stattesting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Тестирование статистических гипотез</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./infer-correlation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#ковариация" id="toc-ковариация" class="nav-link active" data-scroll-target="#ковариация"><span class="header-section-number">8.1</span> Ковариация</a></li>
+  <li><a href="#корреляция" id="toc-корреляция" class="nav-link" data-scroll-target="#корреляция"><span class="header-section-number">8.2</span> Корреляция</a></li>
+  <li><a href="#корреляция-пирсона" id="toc-корреляция-пирсона" class="nav-link" data-scroll-target="#корреляция-пирсона"><span class="header-section-number">8.3</span> Корреляция Пирсона</a>
+  <ul class="collapse">
+  <li><a href="#тестирование-статистической-значимости-коэффициента-корреляции" id="toc-тестирование-статистической-значимости-коэффициента-корреляции" class="nav-link" data-scroll-target="#тестирование-статистической-значимости-коэффициента-корреляции"><span class="header-section-number">8.3.1</span> Тестирование статистической значимости коэффициента корреляции</a></li>
+  </ul></li>
+  <li><a href="#t" id="toc-t" class="nav-link" data-scroll-target="#t"><span class="header-section-number">9</span> t</a>
+  <ul class="collapse">
+  <li><a href="#доверительный-интервал-для-коэффициента-корреляции" id="toc-доверительный-интервал-для-коэффициента-корреляции" class="nav-link" data-scroll-target="#доверительный-интервал-для-коэффициента-корреляции"><span class="header-section-number">9.0.1</span> Доверительный интервал для коэффициента корреляции</a></li>
+  <li><a href="#размер-эффекта-для-коэффициента-корреляции" id="toc-размер-эффекта-для-коэффициента-корреляции" class="nav-link" data-scroll-target="#размер-эффекта-для-коэффициента-корреляции"><span class="header-section-number">9.0.2</span> Размер эффекта для коэффициента корреляции</a></li>
+  <li><a href="#визуализация-корреляции" id="toc-визуализация-корреляции" class="nav-link" data-scroll-target="#визуализация-корреляции"><span class="header-section-number">9.0.3</span> Визуализация корреляции</a></li>
+  <li><a href="#коэффициенты-корреляции-для-разных-шкал" id="toc-коэффициенты-корреляции-для-разных-шкал" class="nav-link" data-scroll-target="#коэффициенты-корреляции-для-разных-шкал"><span class="header-section-number">9.1</span> Коэффициенты корреляции для разных шкал</a>
+  <ul class="collapse">
+  <li><a href="#параметрические-и-непараметрические-критерии" id="toc-параметрические-и-непараметрические-критерии" class="nav-link" data-scroll-target="#параметрические-и-непараметрические-критерии"><span class="header-section-number">9.1.1</span> Параметрические и непараметрические критерии</a></li>
+  <li><a href="#непараметрические-коэффициенты-корреляции" id="toc-непараметрические-коэффициенты-корреляции" class="nav-link" data-scroll-target="#непараметрические-коэффициенты-корреляции"><span class="header-section-number">9.1.2</span> Непараметрические коэффициенты корреляции</a></li>
+  </ul></li>
+  <li><a href="#другие-корреляции" id="toc-другие-корреляции" class="nav-link" data-scroll-target="#другие-корреляции"><span class="header-section-number">9.2</span> Другие корреляции</a></li>
+  </ul></li>
+  <li><a href="#ϕ" id="toc-ϕ" class="nav-link" data-scroll-target="#ϕ"><span class="header-section-number">10</span> ϕ</a>
+  <ul class="collapse">
+  <li><a href="#бисериальный-коэффициент-корреляции" id="toc-бисериальный-коэффициент-корреляции" class="nav-link" data-scroll-target="#бисериальный-коэффициент-корреляции"><span class="header-section-number">10.0.1</span> Бисериальный коэффициент корреляции</a></li>
+  </ul></li>
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r"><span class="header-section-number">11</span> r</a>
+  <ul class="collapse">
+  <li><a href="#рангово-бисериальный-коэффициент-корреляции" id="toc-рангово-бисериальный-коэффициент-корреляции" class="nav-link" data-scroll-target="#рангово-бисериальный-коэффициент-корреляции"><span class="header-section-number">11.0.1</span> Рангово-бисериальный коэффициент корреляции</a></li>
+  </ul></li>
+  <li><a href="#r-1" id="toc-r-1" class="nav-link" data-scroll-target="#r-1"><span class="header-section-number">12</span> r</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./infer-stattesting.html">Статистика вывода</a></li><li class="breadcrumb-item"><a href="./infer-correlation.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Итак, мы переходим к&nbsp;рассмотрению конкретных статистических методов. Начнём, пожалуй, с&nbsp;наиболее интуитивного&nbsp;— тестируем гипотезу о&nbsp;связи между двумя количественными переменными.</p>
+<section id="ковариация" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="ковариация"><span class="header-section-number">8.1</span> Ковариация</h2>
+<p>Мы хотим описать имеющиеся взаимосвязи как можно проще и опираясь на то, что у нас уже есть. Мы знаем, что дисперсия, или вариация (variance), заключает в себе информацию об изменчивости признака. Если мы хотим исследовать взаимосвязь между признаками, то логично будет посмотреть, как изменяется один из признаков при изменении другого — иначе говоря, рассчитать совместную изменчивость признаков, или ко-вариацию (co-variance).</p>
+<p>Как мы её будем считать? Подумаем графически. Расположим две переменные на осях и сопоставим каждому имеющемуся наблюдению точку на плоскости.</p>
+<p>Отметим средние значения по обеим переменным.</p>
+<p>Разумеется, что у нас наблюдаются отклонения наблюдений от среднего. Заметим, что отклонения могут быть сонаправленными — одновременно по обеим переменным<br>
+x и<br>
+y в положительную или отрицательную сторону (зеленые стрелки) — или разнонаправленными — в положительную сторону по одной из переменных и в отрицательную по другой, и наоборот (рыжие стрелки).</p>
+<p>При этом обратим внимание, что точки на графике, отображающие наши наблюдения, как бы идут более-менее в направлении какой-то прямой — серой, как на картинке:</p>
+<p>И чем отклонения от средних по обеим переменным будут более согласованы, тем точнее они будут идти по этой прямой.</p>
+<p>Получается, мы можем на основании согласованности отклонений уже следать заключение о направлении связи, ведь произведение отклонений по обеим величинам будет положительно, если отклонения сонаправленны, и отрицательно, если они разнонаправленны. Остается только понять, как совместные отклонения организованы «в среднем» — это и будет ковариацией двух величин:</p>
+<p>cov ( x , y ) = 1 n − 1 n ∑ i = 1</p>
+<p>( ¯ x − x i ) ( ¯ y − y i )</p>
+<p>Кстати, а что такое ковариация переменной с самой собой?</p>
+<p>Вот что Это все, конечно, кул, однако важно отметить, что ковариация улавливает только линейную составляющую взаимосвязи между признаками — мы говорили выше, что точки идут как бы по некоторой прямой — поэтому если<br>
+cov ( x , y ) = 0 , то мы можем сказать, что между переменными нет линейной взаимосвязи, однако это не значит, что между этими переменными нет никакой другой зависимости.</p>
+<p>Если же ковариация отлична от нуля, то</p>
+<p>если её значение положительно, то мы можем заподозрить прямую связь между переменными, если же её значение отрицательно, то мы можем предположить обратную связь между переменными. У ковариации есть два важных недостатка:</p>
+<p>это размерная величина, поэтому её значение зависит от единиц измерения признаков, она зависит от дисперсий признаков, поэтому по её значению можно определить только направление связи (прямая или обратная), однако ничего нельзая сказать о силе связи. Поэтому нам нужно как-то модицифировать эту статистику, чтобы мы могли больше вытащить из её значения.</p>
+</section>
+<section id="корреляция" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="корреляция"><span class="header-section-number">8.2</span> Корреляция</h2>
+<p>Раз ковариация зависит от дисперсии, то можно сделать некоторые математические преобразования, чтобы привести эмпирические распределения к какому-то одному виду — сделать так, чтобы они имели одинакое математическое ожидание (среднее) и одинаковую дисперсию. С этой задачей прекрасно справляется стандартизация. Напоминаю формулу:</p>
+<p>z i = x i − ¯ x s</p>
+<p>После такого преобразования математическое ожидание нашего распределения будет равно нулю, а стандартное отклонение — единице. Это избавит нас от влияния дисперсии на значение ковариации. Ковариация двух стандартно нормально распределенных величин называется корреляцией (correlation).</p>
+<p>cov ( z ( x ) , z ( y ) ) = 1 n − 1 n ∑ i = 1</p>
+<p>z ( x ) z ( y ) = corr ( x , y ) ,</p>
+<p>где<br>
+z ( x ) и<br>
+z ( y ) — стандартизированные величины<br>
+x и<br>
+y соответственно.</p>
+<p>Корреляцию можно выразить через ковариацию:</p>
+<p>corr ( x , y ) = 1 n − 1 n ∑ i = 1</p>
+<p>( ¯ x − x i s x ) ( ¯ y − y i s y ) = 1 s x s y ( 1 n − 1 n ∑ i = 1</p>
+<p>( ¯ x − x i ) ( ¯ y − y i ) ) = cov(x, y) s x s y</p>
+<p>Если внимательно всмотреться в формулу, то можно обнаружить, что корреляция это не что иное, как стандартизированное значение ковариации.</p>
+<p>Коэффициент корреляции имеет четкие пределы изменения:<br>
+[ − 1 ; 1] . Крайнее левое значение говорит о том, что присутствует полная обратная линейная взаимосвязь, крайнее правое — что присутствует полная прямая линейная взаимосвязь. Как и ковариация, корреляция ловит только линейную составляющую связи, поэтому нулевое значение корреляци показывает, что между переменными отсутствует линейная взаимосвязь. Это всё еще не значит, что связи нет вовсе.</p>
+<p>Преимущество корреляции над ковариацией в том, что она отражает не только направление, но и силу связи:</p>
+<p>Значение коэффициента Интерпретация − 1.0 – − 0.9 очень сильная обратная связь − 0.9 – − 0.7 сильная обратная связь − 0.7 – − 0.5 средняя обратная связь − 0.5 – − 0.3 слабая обратная связь − 0.3 – 0.0 очень слабая обратная связь 0.0 – 0.3 очень слабая прямая связь 0.3 – 0.5 слабая прямая связь 0.5 – 0.7 средняя прямая связь 0.7 – 0.9 сильная прямая связь 0.9 – 1.0 очень сильная прямая связь Пронаблюдать можно тут.</p>
+</section>
+<section id="корреляция-пирсона" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="корреляция-пирсона"><span class="header-section-number">8.3</span> Корреляция Пирсона</h2>
+<p>То, что мы только что обсудили, называется коэффициентом корреляции Пирсона. Пирсон, как вы могли обратить внимание, много чего успел наделать на благо статистики — вот ещё и корреляцию нам придумал. Этот коэффициент применим, когда мы работаем с двумя нормально распределенными величинами или хотя бы двумя величинами, измеренями в метрических шкалах. Еще раз напомним чере его формулу:</p>
+<p>r x 1 x 2 = ∑ n i = 1 ( ¯ x 1 − x i 1 ) ( ¯ x 2 − x i 2 ) √ ∑ n i = 1 ( ¯ x 1 − x i 1 ) 2 ⋅ ∑ n i = 1 ( ¯ x 2 − x i 2 ) 2</p>
+<p>Теперь задумаемся — хоть это и неприятно — можем ли мы сказать по значению коэффициента корреляции, отличается ли он от нуля? Вспомнив, что мы занимаемся статистикой, сразу ответим — нет. Поскольку мы рассчитываем коэффициент корреляции на данных, а они содержат всякую вариативность и неопределенность, нам придется предпринять дополнительные усилия, чтобы заявить, что обнаруженная нами связь статистически значима.</p>
+<section id="тестирование-статистической-значимости-коэффициента-корреляции" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="тестирование-статистической-значимости-коэффициента-корреляции"><span class="header-section-number">8.3.1</span> Тестирование статистической значимости коэффициента корреляции</h3>
+<p>Итак, мы, как обычно, хотим ответить на вопрос, есть ли в генеральной совокупности связь между двумя изучаемыми переменными. Если в генеральной совокупности связь между признаками отсутствует, то есть<br>
+ρ x 1 x 2 = 0 , будет ли равен нулю<br>
+r x 1 x 2 ? Можно с уверенностью сказать, что не будет, так как выборочный коэффициент корреляции — случайная величина. А мы помним, что вероятность принятия случайной величиной своего конкретного значения равна нулю.</p>
+<p>Тогда необходимо протестировать статистическую гипотезу:</p>
+<p>H 0 : ρ x 1 x 2 = 0 H 1 : ρ x 1 x 2 ≠ 0</p>
+<p>Нулевая гипотеза гласит, что между признаками нет линейной взаимосвязи, альтернативная говорит — что есть. Обычно мы не закладываем в гипотезу направление связи, потому что и положительная, и отрицательная нас устроит — это мы будем потом уже содержательно интерпретировать.</p>
+<p>Гипотезу сформулировали, теперь надо подобрать статистический критерий. Он вот:</p>
+</section>
+</section>
+<section id="t" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> t</h1>
+<p>r x 1 x 2 √ 1 − r x 1 x 2 n − 2 H 0 ∼ t ( df = n − 2 )</p>
+<p>Это t-критерий, и значение его статистики подчиняется t-распределению, или распределению Стьюдента. Число степеней свободы определяется по формуле в скобках и равно<br>
+( n − 2 ) , где<br>
+n — число наблюдений.</p>
+<p>Само t-распределение выглядит так:</p>
+<p>Может показаться, что оно похоже на нормальнгое распределение — и это правда, но только с 30+ степеней свободы. А до этого можно наблюдать высокие хвосты.</p>
+<p>Собственно, далее согласно уже знакомому нам алгоритмы тестирования статистических гипотез мы рассчитываем статистику критерия, p-value для неё и делаем статистический вывод. Все так же, как и в случае с хи-квадратом.</p>
+<section id="доверительный-интервал-для-коэффициента-корреляции" class="level3" data-number="9.0.1">
+<h3 data-number="9.0.1" class="anchored" data-anchor-id="доверительный-интервал-для-коэффициента-корреляции"><span class="header-section-number">9.0.1</span> Доверительный интервал для коэффициента корреляции</h3>
+<p>Помимо того, что мы обязаны оценить статистическую значимость коэффициента корреляции, обычно мы еще строим доверительный интервал для него. С построением интервальной оценки возникают некоторые сложности. Мы не можем использовать рассмотренное выше распределение Стьюдента, так как оно строится для случая, когда верна нулевая гипотеза об отсутствии связи. Если же мы строим интервальную оценку, нас интересует случай наличия связи.</p>
+<p>Статистики долго думали и придумали</p>
+<p>вот это безобразие Впрочем, не очень важно, что именно они там придумали, потому что всё равно мы доверим построить доверительный интервал машине. Нам важно понять, как интерпретировать получившийся результат.</p>
+<p>Если в доверительный интервал коэффициента корреляции попадает<br>
+0 , значит коэффициент статистически равен нулю, то есть между изучаемыми переменными взаимосвязи нет. Если в доверительный интервал коэффициента корреляции не попадает<br>
+0 , значит коэффициент статистически отличен от нуля, то есть между изучаемыми переменными взаимосвязь есть.</p>
+</section>
+<section id="размер-эффекта-для-коэффициента-корреляции" class="level3" data-number="9.0.2">
+<h3 data-number="9.0.2" class="anchored" data-anchor-id="размер-эффекта-для-коэффициента-корреляции"><span class="header-section-number">9.0.2</span> Размер эффекта для коэффициента корреляции</h3>
+<p>Еще одна статистика, которая нам необходима — это размер эффекта. На этот моменте мы начинаем беседовать об ошибке второго рода. До этого мы говорили только об ошибке первого рода и начились её контролировать с помощью уровня значимости. Теперь вот повогорим об ошибке второго рода.</p>
+<p>В целом, размер эффекта — это численное выражение силы взаимосвязи между переменными в генеральной совокупности.</p>
+<p>Здесь нам необходимо призадуматься, и осознать, что вообще-то корреляция сама по себе выражает силу взаимосвязи между переменными. И, да, это правда — размером эффекта для коэффициента корреляции является сам коэффициент корреляции. Удобненько.</p>
+<p>Так, к сожалению, будет не всегда, но вот с корреляцией это так. Ну, и хорошо.</p>
+<p>Рекомендации по интерпретация [абсолютного значения] коэффициента корреляции с точки зрения размера эффекта для социальных наук такие:</p>
+<p>Значение коэффициента Размер эффекта 0.1 Малый (small) 0.3 Средний (medium) 0.7 Большой (large) 10.3.4 Расчет объема выборки для корреляционного анализа Размер эффекта нам требуется для расчета объема выборки, необходимой для корректного корреляционного анализа. В чем идея?</p>
+<p>Мы говорили, что ошибку второго рода мы контролирует в помощью статистической мощности, которая равна<br>
+1 − β , где<br>
+β — вероятность ошибки второго рода. Конвенционально достаточным уровнем статистической мощности считается<br>
+80 % , то есть нам надо предпринять все усилия, чтобы достичь такого уровня статистической мощности. А что мы можем предпринять? Да, в общем-то только собрать достаточное количество наблюдений. Значит, надо рассчитать, сколько нам надо наблюдений, чтобы зафиксировать эффект, если он есть.</p>
+<p>Собственно, статистическая мощность, размер эффекта и объем выборки связаны вот как:</p>
+<p>↑ объем выборки → ↑ статистическая мощность ↑ размер эффекта → ↓ требуемый объем выборки</p>
+<p>Итого, если у нас есть ожидаемый размер эффекта и требуемый уровень статистической мощности, то мы можем рассчитать необходимый объем выборки. Формул не будет — мы рассчитываем объем выборки в специально обученном ПО.</p>
+<p>Что надо запомнить?</p>
+<p>Уровень статистической мощности (power) по умолчанию выбираем<br>
+80 %</p>
+<p>Размер эффекта можем взять из предыдущих исследований, на основе которых планируем текущее — это лучше — либо из рекомендаций по интерпретации размеров эффекта Например, в психологии большие корреляции — это вообще большая редкость, поэтому берем значения для малого или среднего размеров эффекта. Вгоняем это в программу, и оно там все само магически считается.</p>
+</section>
+<section id="визуализация-корреляции" class="level3" data-number="9.0.3">
+<h3 data-number="9.0.3" class="anchored" data-anchor-id="визуализация-корреляции"><span class="header-section-number">9.0.3</span> Визуализация корреляции</h3>
+<p>Как можно отображать взаимосвязи между переменными? Один пример графика мы уже видели в самом начале — это была диаграмма рассеяния (scatterplot). Это достаточно простой и понятный график: по осям идут две количественные переменные, точки отображают наблюдения. В итоге получается облако точек. Чем более они вытянуты в линию, тем больше значение корреляции, чем более облако точек «круглое», тем значение кореляции меньше. Дополнительно обычно на таком графике отображают ещё линию тренда, чтобы более наглядно визуализировать линейный компонент взаимосвязи переменных. Построение такой линии отдельная довольно интересная задача — мы вскоре ею займемся и назовем это регрессионный анализ.</p>
+<p>Ниже примеры диаграмм рассения. Это визуализация результатов валидизации психометрической методики: на первом графике корреляция между итоговыми баллами двух опросников, а на втором — баллов по отдельным шкалам валидизируемого опросника и общим баллом другого опросника.</p>
+<p>Можно потренироваться визуально определять корреляцию по скаттерплотам.</p>
+<p>Бывает, что нас интересует связь не между двумя какими-либо отдельными переменными, а много попарных корреляций между несколькими переменными. Для этого есть визуализация, называемая корреляционная матрица (corrplot). По «осям» идут переменные, а на пересечении цветом отображается корреляция между переменными. Обычно холодные оттенки используются для положительных значений, а теплые — для отрицательных. Чем интенсивнее оттенок, тем больше значение корреляции. В данном случае на графике отображены корреляции между пунктами отдельной шкалы опросника.</p>
+</section>
+<section id="коэффициенты-корреляции-для-разных-шкал" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="коэффициенты-корреляции-для-разных-шкал"><span class="header-section-number">9.1</span> Коэффициенты корреляции для разных шкал</h2>
+<p>Выше мы подробно обсудили корреляцию Пирсона и отметили, что этот коэффициент применяется для метрических шкал да ещё и нормально распределенных величин. А что же делать, если в наших данных не так?</p>
+<section id="параметрические-и-непараметрические-критерии" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="параметрические-и-непараметрические-критерии"><span class="header-section-number">9.1.1</span> Параметрические и непараметрические критерии</h3>
+<p>Все статистические методы деляться на два типа: параметрические и непараметрические.</p>
+<p>Параметрические методы работают с непосредственно с параметрами распределения исследуемых переменных. Так, для вычисления корреляции Пирсона мы используем среднее и стандартное отклонение. Как следствие, одно из условий применимести таких методов — нормальное распределение изучаемых переменных. Если это требование не выполнено, мы не можем быть достаточно уверены в том, что статистический метод дает надежные результаты — как минимум, потому что сами среднее и стандартное отклонение в случае скошенных распределения не особо хорошо описывают данные. Непараметрические методы не используют в вычислениях собственных статистик параметры распределений. Например, изученный нам хи-квадрат относится к непараметрическим критериям. Они работают либо с частотами, либо в рангами — в зависимости от того, какие переменные мы анализируем. Поэтому если требования нормальности распределения не выполнено, используют методы этой группы. Практически каждый параметрический критерий имеет своего непараметрического собрата. Отметим, что сам статистический вывод в случае непараметрических критериев осуществляется точно так же, как и в случае параметрических.</p>
+</section>
+<section id="непараметрические-коэффициенты-корреляции" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="непараметрические-коэффициенты-корреляции"><span class="header-section-number">9.1.2</span> Непараметрические коэффициенты корреляции</h3>
+<p>Для разных шкал разработаны разные коэффициенты корреляции. Оценки коэффициентов будут рассчитываться по-разному, но логика тестирования статистических гипотез остаётся одинаковой.</p>
+<p>Переменная<br>
+X Переменная<br>
+Y Мера связи Интервальная или отношений Интервальная или отношений Корреляция Пирсона Ранговая, интервальная или отношений Ранговая, интервальная или отношений Корреляция Спирмена Ранговая Ранговая Корреляция Кенделла У непараметрических критериев формулы несколько зубодробительны, поэтому оставим их покоиться с миром. В статистическом ПО нужно будет просто выбрать подходящий критерий из предложенных.</p>
+</section>
+</section>
+<section id="другие-корреляции" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="другие-корреляции"><span class="header-section-number">9.2</span> Другие корреляции</h2>
+<p>Этот раздел для отчаянных. Вас никто об это ни на экзамене, ни, возможно, в жизни не спросит.</p>
+<p>Можно коррелировать не только количественные и ранговые шкалы между собой, но и качественные тоже:</p>
+<p>Переменная<br>
+X Переменная<br>
+Y Мера связи Дихотомическая Дихотомическая<br>
+ϕ -коэффициент Дихотомическая Ранговая Рангово-бисериальный коэффициент Дихотомическая Интервальная или отношений Бисериальный коэффициент 10.5.1<br>
+ϕ -коэффициент Этот коэффициент позволяет рассчитать корреляцию между двумы дихотомическими шкалами. Он основан на расчёте статистики<br>
+χ 2 . По двум дихотомическим переменным строится, как мы знаем, таблицу сопряженности и рассчитывается<br>
+χ 2 . Далее он нормируется следующим образом, чтобы получить значения от 0 до 1, которые можно интерпретироват аналогично коэффициенту корреляции:</p>
+</section>
+</section>
+<section id="ϕ" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> ϕ</h1>
+<p>√ χ 2 N ,</p>
+<p>N — общее количество наблюдений.</p>
+<section id="бисериальный-коэффициент-корреляции" class="level3" data-number="10.0.1">
+<h3 data-number="10.0.1" class="anchored" data-anchor-id="бисериальный-коэффициент-корреляции"><span class="header-section-number">10.0.1</span> Бисериальный коэффициент корреляции</h3>
+<p>Этот коэффициент используется для вычисления корреляции между количественной ( y ) и категориальной ( x ) шкалой и рассчитывается следующим образом:</p>
+</section>
+</section>
+<section id="r" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> r</h1>
+<p>¯ y x 1 − ¯ y x 2 s y √ n 1 n 2 N ( N − 1 ) ,</p>
+<p>где<br>
+¯ y x 1 — среднее по переменной<br>
+y по элементам группы<br>
+x 1 ,<br>
+¯ y x 2 — среднее по переменной<br>
+y по элементам группы<br>
+x 2 ,<br>
+n 1 — число элементов в группе<br>
+x 1 ,<br>
+n 2 — число элементов в группе<br>
+x 2 ,<br>
+N — общее число элементов.</p>
+<p>Важно отметить, что несмотря на то, что значение коэффициента может быть как положительным, так и отрицательным, это не влияет на интерпретацию. Это одно из исключений из общего правила.</p>
+<section id="рангово-бисериальный-коэффициент-корреляции" class="level3" data-number="11.0.1">
+<h3 data-number="11.0.1" class="anchored" data-anchor-id="рангово-бисериальный-коэффициент-корреляции"><span class="header-section-number">11.0.1</span> Рангово-бисериальный коэффициент корреляции</h3>
+<p>Если у нас не количественная, а ранговая шкала, то применяется рангово-бисериальный коэффициент:</p>
+</section>
+</section>
+<section id="r-1" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> r</h1>
+<p>2 ( ¯ x 1 − ¯ x 2 ) N ,</p>
+<p>где<br>
+¯ x 1 — средний ранг в группе<br>
+x 1 ,<br>
+¯ x 2 — средний ранг в группе<br>
+x 2 ,<br>
+N — общее количество наблюдений.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопировано!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопировано!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./infer-stattesting.html" class="pagination-link" aria-label="Тестирование статистических гипотез">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Тестирование статистических гипотез</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
