@@ -235,7 +235,16 @@ window.Quarto = {
   <ul>
   <li><a href="#базовые-понятия" id="toc-базовые-понятия" class="nav-link active" data-scroll-target="#базовые-понятия"><span class="header-section-number">7.1</span> Базовые понятия</a></li>
   <li><a href="#возможные-результаты-проверки-гипотез" id="toc-возможные-результаты-проверки-гипотез" class="nav-link" data-scroll-target="#возможные-результаты-проверки-гипотез"><span class="header-section-number">7.2</span> Возможные результаты проверки гипотез</a></li>
-  <li><a href="#алгоритм-тестирования-статистических-гипотез" id="toc-алгоритм-тестирования-статистических-гипотез" class="nav-link" data-scroll-target="#алгоритм-тестирования-статистических-гипотез"><span class="header-section-number">7.3</span> Алгоритм тестирования статистических гипотез</a></li>
+  <li><a href="#алгоритм-тестирования-статистических-гипотез" id="toc-алгоритм-тестирования-статистических-гипотез" class="nav-link" data-scroll-target="#алгоритм-тестирования-статистических-гипотез"><span class="header-section-number">7.3</span> Алгоритм тестирования статистических гипотез</a>
+  <ul class="collapse">
+  <li><a href="#формулировка-гипотезы" id="toc-формулировка-гипотезы" class="nav-link" data-scroll-target="#формулировка-гипотезы"><span class="header-section-number">7.3.1</span> Формулировка гипотезы</a></li>
+  <li><a href="#выбор-статистического-критерия" id="toc-выбор-статистического-критерия" class="nav-link" data-scroll-target="#выбор-статистического-критерия"><span class="header-section-number">7.3.2</span> Выбор статистического критерия</a></li>
+  <li><a href="#выбор-уровня-значимости" id="toc-выбор-уровня-значимости" class="nav-link" data-scroll-target="#выбор-уровня-значимости"><span class="header-section-number">7.3.3</span> Выбор уровня значимости</a></li>
+  <li><a href="#расчёт-выборочной-статистики" id="toc-расчёт-выборочной-статистики" class="nav-link" data-scroll-target="#расчёт-выборочной-статистики"><span class="header-section-number">7.3.4</span> Расчёт выборочной статистики</a></li>
+  <li><a href="#распределение-статистики" id="toc-распределение-статистики" class="nav-link" data-scroll-target="#распределение-статистики"><span class="header-section-number">7.3.5</span> Распределение статистики</a></li>
+  <li><a href="#критическая-область-vs-p-value" id="toc-критическая-область-vs-p-value" class="nav-link" data-scroll-target="#критическая-область-vs-p-value"><span class="header-section-number">7.3.6</span> Критическая область vs p-value</a></li>
+  <li><a href="#статистический-вывод" id="toc-статистический-вывод" class="nav-link" data-scroll-target="#статистический-вывод"><span class="header-section-number">7.3.7</span> Статистический вывод</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -395,7 +404,7 @@ window.Quarto = {
 </div>
 </figure>
 </div>
-<p>Уровень значимости <span class="math inline">\(\alpha\)</span> выбирается близким к&nbsp;нулю&nbsp;— конвенциональным значением для&nbsp;социальных наук считается <span class="math inline">\(0.05\)</span>. Вообще <span class="math inline">\(\alpha\)</span> можно выбрать сколь угодно малым, однако при&nbsp;выборе уровня значимости руководствуются принципом разумной достаточности, так как если устремить <span class="math inline">\(\alpha\)</span> к&nbsp;нулю, то&nbsp;устремится к&nbsp;нулю и&nbsp;вероятность отклонения нулевой гипотезы.</p>
+<p>Уровень значимости <span class="math inline">\(\alpha\)</span> выбирается близким к&nbsp;нулю&nbsp;— конвенциональным значением для&nbsp;социальных наук считается <span class="math inline">\(0.05\)</span>. Вообще <span class="math inline">\(\alpha\)</span> можно выбрать сколь угодно малым, однако при&nbsp;выборе уровня значимости руководствуются принципом разумной достаточности, так как <strong>если устремить <span class="math inline">\(\alpha\)</span> к&nbsp;нулю, то&nbsp;устремится к&nbsp;нулю и&nbsp;вероятность отклонения нулевой гипотезы</strong>.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -414,7 +423,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Достаточной статистической мощностью (<span class="math inline">\(1-\beta\)</span>) считается <span class="math inline">\(0.8\)</span>. Аналогично, устремляя мощность к&nbsp;единице (<span class="math inline">\((1-\beta) \to 1 \Rightarrow \beta \to 0\)</span>), мы устремляем вероятность не отклонения нулевой гипотезы к нулю.</p>
+<p>Достаточной статистической мощностью (<span class="math inline">\(1-\beta\)</span>) считается <span class="math inline">\(0.8\)</span>. Аналогично, <strong>устремляя мощность к&nbsp;единице (<span class="math inline">\((1-\beta) \to 1 \Rightarrow \beta \to 0\)</span>), мы устремляем вероятность не отклонения нулевой гипотезы к нулю</strong>.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -528,9 +537,9 @@ H
 <li>Формулировка гипотезы</li>
 <li>Выбор статистического критерия</li>
 <li>Выбор уровня значимости <span class="math inline">\(\alpha\)</span></li>
+<li>Расчёт выборочной статистики</li>
 <li>Построение закона распределения статистики критерия при условии, что&nbsp;нулевая гипотеза верна</li>
 <li>Определение границ критической области</li>
-<li>Расчёт выборочной статистики</li>
 <li>Определение, попадает ли наблюдаемое значение статистики в&nbsp;критическую область и&nbsp;статистический вывод</li>
 </ol>
 </div>
@@ -549,22 +558,176 @@ H
 <li>Формулировка гипотезы</li>
 <li>Выбор статистического критерия</li>
 <li>Выбор уровня значимости <span class="math inline">\(\alpha\)</span></li>
-<li>Построение закона распредлеения статистики критерия при&nbsp;условии, что&nbsp;нулевая гипотеза верна</li>
 <li>Расчёт выборочной статистики</li>
-<li>Расчёт достигнутого уровня значимости p-value</li>
+<li>Построение закона распределения статистики критерия при&nbsp;условии, что&nbsp;нулевая гипотеза верна</li>
+<li>Расчёт p-значения (p-value)</li>
 <li>Сопоставление <span class="math inline">\(\alpha\)</span> и&nbsp;p-value и&nbsp;статистический вывод</li>
 </ol>
 </div>
 </div>
-<p>Почему второй вариант более гибкий? Представим, что мы захотели понизить уровень значимости с <span class="math inline">\(0.05\)</span> до <span class="math inline">\(0.01\)</span>&nbsp;— такие уровни значимости всречаются, например, в медицине. Если мы идем по первому сценарию, то нам надо заново пересчитать критические значения и вновь проанализировать, попадает ли наблюдаемое значение в критическую область. Если мы адепты второго сценария, то нам надо только выполнить одно новое сравнение нашего p-value с новым уровнем значимости.</p>
-<p>Вероятно, пока мало что понятно. Поэтому в следующей главе разберем все это безобразие на примере.</p>
+<p>Разберёмся на&nbsp;примере, что&nbsp;значит каждый из&nbsp;обозначенных шагов в&nbsp;обоих алгоритмах.</p>
+<p>Пусть у&nbsp;нас есть следующая ситуация: мы изучаем студентов трёх неких факультетов психологии и&nbsp;хотим выяснить, каков их&nbsp;уровень открытости к&nbsp;опыту [как личностной черты]. Пусть также у&nbsp;нас есть результаты по&nbsp;опроснику Большой пятерки в&nbsp;T-шкале<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Опираясь на&nbsp;теорию черт, мы воспользуемся допущением, что&nbsp;в&nbsp;генеральной совокупности личностные черты распределены нормально, а&nbsp;исходя из&nbsp;устройства T-шкалы, мы можем сказать, что&nbsp;интересующая нас переменная «открытость к&nbsp;опыту» имеет в генеральной совокупности нормальное распределение со&nbsp;средним 50 и&nbsp;стандартным отклонением 10, то&nbsp;есть <span class="math inline">\(X \thicksim \mathcal N (50, 100)\)</span>.</p>
+<p>Для&nbsp;проверки гипотезы мы имеем следующие данные:</p>
+<div id="tbl-z-means" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-z-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Таблица&nbsp;7.3: Количество респондентов и&nbsp;средние баллы по&nbsp;шкале в&nbsp;выборках
+</figcaption>
+<div aria-describedby="tbl-z-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 35%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Факультет</th>
+<th style="text-align: center;">Количество респондентов</th>
+<th style="text-align: center;">Средний балл по&nbsp;шкале «Открытость к&nbsp;опыту»</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">51</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">53</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">47</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">47</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Итак, сформулируем гипотезы. Рассмотрим сначала такой случай:</p>
+<ul>
+<li><strong>Теоретическая</strong>: уровень открытости к&nbsp;опыту у&nbsp;студентов отличается от&nbsp;среднего уровня.</li>
+<li><strong>Эмпирическая</strong>: балл по шкале «Открытость к&nbsp;опыту» отличается от&nbsp;среднего значения по&nbsp;данной шкале.</li>
+</ul>
+<p>Теоретические и&nbsp;эмпирические гипотезы не&nbsp;касаются напрямую статистического анализа, так как мы в рамках него заняты тестированием <em>статистических</em> гипотез. Однако поскольку статистические гипотезы должны быть согласованы с&nbsp;эмпирическими, которые, в&nbsp;свою очередь, должны быть согласованы с&nbsp;теоретическими, мы прописали эти весьма незамысловатые гипотезы. Теперь&nbsp;же сформулируем статистические.</p>
+<section id="формулировка-гипотезы" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="формулировка-гипотезы"><span class="header-section-number">7.3.1</span> Формулировка гипотезы</h3>
+<p>Для&nbsp;обозначенной эмпирической гипотезы подойдут следующие статистические:</p>
+<p><span class="math display">\[
+\begin{aligned}
+H_0&amp;: \mu = 50 \\
+H_1&amp;: \mu \neq 50
+\end{aligned}
+\]</span></p>
+<p>В&nbsp;формулировке гипотезы фигурирует <span class="math inline">\(\mu\)</span> — так обозначается среднее генеральной совокупности. Действительно, как мы отмечали в&nbsp;начале главы, статистические гипотезы формулируются в&nbsp;терминах параметров генеральной совокупности. И действительно, как мы говорили в&nbsp;первой главе, мы хотели&nbsp;бы изучать всех студентов того или иного факультета, но&nbsp;в&nbsp;силу ограниченности ресурсов работаем с&nbsp;выборкой. Может показаться, что&nbsp;проверяя гипотезу «балл по шкале “Открытость к&nbsp;опыту” отличается от&nbsp;среднего значения по&nbsp;данной шкале», мы должны сравнивать балл каждого респондента со&nbsp;средним, но&nbsp;это, конечно же, не&nbsp;так, поскольку нас интересует, отличается&nbsp;ли <em>в&nbsp;среднем</em> балл респондентов от&nbsp;среднего по&nbsp;шкале — в&nbsp;данном случае 50. Балл каждого отдельного респондента отличаться от&nbsp;50, безусловно, будет<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> ввиду неопределенности и&nbsp;вариативности данных.</p>
+</section>
+<section id="выбор-статистического-критерия" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="выбор-статистического-критерия"><span class="header-section-number">7.3.2</span> Выбор статистического критерия</h3>
+<p><span class="math display">\[
+z = \frac{\overline X - \mu_0}{\text{se}_X}
+= \frac{\overline X - \mu_0}{\dfrac{\sigma_X}{\sqrt{n}}}
+\]</span></p>
+</section>
+<section id="выбор-уровня-значимости" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="выбор-уровня-значимости"><span class="header-section-number">7.3.3</span> Выбор уровня значимости</h3>
+<p><span class="math inline">\(\alpha\)</span> = 0.05</p>
+</section>
+<section id="расчёт-выборочной-статистики" class="level3" data-number="7.3.4">
+<h3 data-number="7.3.4" class="anchored" data-anchor-id="расчёт-выборочной-статистики"><span class="header-section-number">7.3.4</span> Расчёт выборочной статистики</h3>
+<p>Вспомним таблицу <a href="#tbl-z-means" class="quarto-xref"><span>7.3</span></a></p>
+<p><span class="math display">\[
+\begin{aligned}
+z_A = \frac{51 - 50}{10/\sqrt{50}} \approx 0.707 \\
+z_B = \frac{53 - 50}{10/\sqrt{50}} \approx 2.121 \\
+z_C = \frac{47 - 50}{10/\sqrt{50}} \approx -2.121 \\
+z_D = \frac{47 - 50}{10/\sqrt{30}} \approx -1.643 \\
+\end{aligned}
+\]</span></p>
+</section>
+<section id="распределение-статистики" class="level3" data-number="7.3.5">
+<h3 data-number="7.3.5" class="anchored" data-anchor-id="распределение-статистики"><span class="header-section-number">7.3.5</span> Распределение статистики</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="infer-stattesting_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="критическая-область-vs-p-value" class="level3" data-number="7.3.6">
+<h3 data-number="7.3.6" class="anchored" data-anchor-id="критическая-область-vs-p-value"><span class="header-section-number">7.3.6</span> Критическая область vs p-value</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="infer-stattesting_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="infer-stattesting_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="infer-stattesting_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="infer-stattesting_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="infer-stattesting_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="статистический-вывод" class="level3" data-number="7.3.7">
+<h3 data-number="7.3.7" class="anchored" data-anchor-id="статистический-вывод"><span class="header-section-number">7.3.7</span> Статистический вывод</h3>
+<!---
+Почему второй вариант более гибкий? Представим, что мы захотели понизить уровень значимости с $0.05$ до $0.01$ --- такие уровни значимости всречаются, например, в медицине. Если мы идем по первому сценарию, то нам надо заново пересчитать критические значения и вновь проанализировать, попадает ли наблюдаемое значение в критическую область. Если мы адепты второго сценария, то нам надо только выполнить одно новое сравнение нашего p-value с новым уровнем значимости.
+--->
 
 
+</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn1"><p>Здесь использовано обозначение условной вероятности <span class="math inline">\(\mathbb P (A|B)\)</span>, то&nbsp;есть это вероятность того, что&nbsp;случилось событие <span class="math inline">\(A\)</span> при&nbsp;условии, что&nbsp;случилось событие <span class="math inline">\(B\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>T-шкала (T-score) — одна из&nbsp;стандартных шкал, для&nbsp;которой среднее равно 50, а&nbsp;стандартное отклонение — 10.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Совпадение в&nbsp;данном случае всё&nbsp;же возможно ввиду того, что&nbsp;T-шкала дискретная, однако даже это совпадение может быть случайным, так как в&nbsp;тестовый балл входит также ошибка измерения, что&nbsp;подробнее обсуждается в&nbsp;курсе психометрики.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
