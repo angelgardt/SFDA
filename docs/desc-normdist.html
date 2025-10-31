@@ -42,6 +42,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-bd1857aa17bea7e4e4b424b4ddf2d210.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -215,12 +218,6 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Тестирование статистических гипотез</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./infer-correlation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -306,7 +303,7 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e ^{- \frac{(x-\mu)^2}{2 \sigma^2}}, \quad x
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="desc-normdist_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="desc-normdist_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Рисунок&nbsp;5.1: Общий вид нормального распределения"><img src="desc-normdist_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -351,7 +348,7 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e ^{- \frac{(x-\mu)^2}{2 \sigma^2}}, \quad x
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="desc-normdist_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="desc-normdist_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Рисунок&nbsp;5.2: Вид функции плотности нормального распределения при&nbsp;различных параметрах"><img src="desc-normdist_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -373,7 +370,7 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e ^{- \frac{(x-\mu)^2}{2 \sigma^2}}, \quad x
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="desc-normdist_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="desc-normdist_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Рисунок&nbsp;5.3: Нормальное распределение и&nbsp;вероятности"><img src="desc-normdist_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -431,7 +428,7 @@ z \thicksim \mathcal{N}(0, 1)
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="desc-normdist_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="desc-normdist_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Рисунок&nbsp;5.4: Вид стандартного нормального распределения"><img src="desc-normdist_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -457,7 +454,7 @@ z \thicksim \mathcal{N}(0, 1)
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="desc-normdist_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="desc-normdist_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Рисунок&nbsp;5.5: Распределения баллов по&nbsp;шкалам опросников. BFI2_NEU&nbsp;— шкала Нейротизм опросника BFI-2, SD3_NAR&nbsp;— шкала Нарциссизм опросника SD3."><img src="desc-normdist_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -533,7 +530,7 @@ z_i = \frac{x_i - \overline X}{s_X},
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="desc-normdist_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="desc-normdist_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Рисунок&nbsp;5.6: Стандартизация, центрирование, нормирование. Пунктирная линия&nbsp;— стандартное нормальное распределение, точечная линия&nbsp;— исходное распределение."><img src="desc-normdist_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -565,7 +562,7 @@ z_i = \frac{x_i - \overline X}{s_X},
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="desc-normdist_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="desc-normdist_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Рисунок&nbsp;5.7: Стандартизация асимметричного распределения"><img src="desc-normdist_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -584,7 +581,7 @@ z_i = \frac{x_i - \overline X}{s_X},
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="desc-normdist_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="desc-normdist_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Рисунок&nbsp;5.8: Стандартизация бимодального распределения"><img src="desc-normdist_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -1054,6 +1051,38 @@ z_\mathrm{SD3.NAR} = \frac{31 - 29.94}{6.95} \approx 0.58
   </div>
 </nav>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
