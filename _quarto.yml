@@ -55,11 +55,12 @@ bibliography: references.bib
 
 format:
   html:
+    lightbox: true
     theme:
      - cosmo
      - custom.scss
-  pdf:
-    documentclass: scrreprt
+  # pdf:
+  #   documentclass: scrreprt
 
 
 

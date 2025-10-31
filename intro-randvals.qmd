@@ -757,7 +757,6 @@ ggplot(NULL) +
   #               xlim = c(qnorm(1 - 0.05), 4),
   #               alpha = .5, fill = "red") +
   stat_function(fun = dnorm) +
-  
   scale_x_continuous(
     limits = c(-4, 4), 
     minor_breaks = NULL) +

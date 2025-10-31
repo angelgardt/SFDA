@@ -42,6 +42,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-bd1857aa17bea7e4e4b424b4ddf2d210.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -294,13 +297,13 @@ window.Quarto = {
 </ul>
 <p>Статистические гипотезы бывают <em>простыми</em> и&nbsp;<em>сложными</em>.</p>
 <ul>
-<li><strong>Простая гипотеза</strong>&nbsp;— это такое предположение, которое включает в&nbsp;себя какое-либо однозначно определяемое утверждение.</li>
+<li><strong>Простая гипотеза (simple hypothesis)</strong>&nbsp;— это такое предположение, которое включает в&nbsp;себя какое-либо однозначно определяемое утверждение.</li>
 </ul>
 <p>Например, истинная величина параметра соответствует некоторому строго заданному значению: <span class="math inline">\(H: \theta = \theta_0\)</span>. Другой вариант&nbsp;— две генеральные совокупности имеют одно и&nbsp;то&nbsp;же значение одной и&nbsp;той&nbsp;же характеристики: <span class="math inline">\(H: \theta_1 = \theta_2\)</span>.</p>
 <ul>
-<li><strong>Сложная гипотеза</strong> предполагает множественность вариантов для&nbsp;параметра, которые укладываются в&nbsp;рамки проверяемого предположения. Например, <span class="math inline">\(H: \theta &gt; \theta_0\)</span> или <span class="math inline">\(H: \theta_1 \neq \theta_2\)</span>.</li>
+<li><strong>Сложная гипотеза (composite hypothesis)</strong> предполагает множественность вариантов для&nbsp;параметра, которые укладываются в&nbsp;рамки проверяемого предположения. Например, <span class="math inline">\(H: \theta &gt; \theta_0\)</span> или <span class="math inline">\(H: \theta_1 \neq \theta_2\)</span>.</li>
 </ul>
-<p>В&nbsp;рамках самого хода тестирования гипотез существует <strong>проверяемая (нулевая) гипотеза</strong> (<span class="math inline">\(H_0\)</span>). Её обычно стараются предельно упростить, поэтому она чаще всего формулируется как простая гипотеза. В&nbsp;противовес ей выдвигается <strong>альтернативная гипотеза</strong> (<span class="math inline">\(H_1\)</span>), которая будет иметь, как следствие, вид сложной гипотезы.</p>
+<p>В&nbsp;рамках самого хода тестирования гипотез существует <strong>проверяемая (нулевая) гипотеза (null hypothesis)</strong> (<span class="math inline">\(H_0\)</span>). Её обычно стараются предельно упростить, поэтому она чаще всего формулируется как простая гипотеза. В&nbsp;противовес ей выдвигается <strong>альтернативная гипотеза (alternative hypothesis)</strong> (<span class="math inline">\(H_1\)</span>), которая будет иметь, как следствие, вид сложной гипотезы.</p>
 <!---
 Для проверки гипотезы нужны три вещи:
 
@@ -523,13 +526,13 @@ H
 <section id="stattesting-algorithm" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="stattesting-algorithm"><span class="header-section-number">7.3</span> Алгоритм тестирования статистических гипотез</h2>
 <p>Для тестирования гипотез есть два сценария: первый и тот, которым мы будем пользоваться. Первый вариант чуть более классический, второй&nbsp;— более гибкий.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div id="nte-nhst1" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Сценарий номер раз
+Заметка&nbsp;7.1: Сценарий номер раз
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -544,13 +547,13 @@ H
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div id="nte-nhst2" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Сценарий номер два
+Заметка&nbsp;7.2: Сценарий номер два
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -672,10 +675,10 @@ z = \frac{\overline X - \mu_0}{\text{se}_X}
 <p>Теперь обратимся к&nbsp;имеющимся у&nbsp;нас данным (<a href="#tbl-z-means" class="quarto-xref">Таблица&nbsp;<span>7.3</span></a>) и&nbsp;рассчитаем наблюдаемое значение z-статистики для&nbsp;каждой из&nbsp;выборок, используя формулу <a href="#eq-z-test" class="quarto-xref"><span>7.1</span></a>.</p>
 <p><span class="math display">\[
 \begin{aligned}
-z_A = \frac{51 - 50}{10/\sqrt{50}} \approx 0.707 \\
-z_B = \frac{53 - 50}{10/\sqrt{50}} \approx 2.121 \\
-z_C = \frac{47 - 50}{10/\sqrt{50}} \approx -2.121 \\
-z_D = \frac{47 - 50}{10/\sqrt{30}} \approx -1.643 \\
+z_\text{A} = \frac{51 - 50}{10/\sqrt{50}} \approx 0.707 \\
+z_\text{B} = \frac{53 - 50}{10/\sqrt{50}} \approx 2.121 \\
+z_\text{C} = \frac{47 - 50}{10/\sqrt{50}} \approx -2.121 \\
+z_\text{D} = \frac{47 - 50}{10/\sqrt{30}} \approx -1.643 \\
 \end{aligned}
 \]</span></p>
 <p>Итак, мы получили четыре z-значения для&nbsp;факультетов A, B, C и&nbsp;D. Здесь возникает вполне закономерный вопрос&nbsp;— и&nbsp;чо?</p>
@@ -684,11 +687,12 @@ z_D = \frac{47 - 50}{10/\sqrt{30}} \approx -1.643 \\
 <h3 data-number="7.3.5" class="anchored" data-anchor-id="stattesting-stat-distribution"><span class="header-section-number">7.3.5</span> Распределение статистики</h3>
 <p>Нам необходимо сделать вывод об&nbsp;отсутствии или&nbsp;наличии закономерности&nbsp;— такова была изначальная задача. Мы получили наблюдаемые значения z-статистики&nbsp;— видимо, нам необходимо сделать вывод на&nbsp;их основе.</p>
 <p>Ясно, что <strong>z-статистика&nbsp;— это случайная величина</strong>. Если посмотреть на&nbsp;формулу её расчёта (<a href="#eq-z-test" class="quarto-xref"><span>7.1</span></a>), то&nbsp;можно заметить, что&nbsp;её значение зависит от&nbsp;выборочного среднего. Выборочное среднее&nbsp;же само является случайной величиной, так как зависит от&nbsp;того, какие значения попадут в&nbsp;выборку, а&nbsp;формирование выборки случайно.</p>
-<p>Если z-статистика есть случайная величина, то&nbsp;у&nbsp;неё должно быть какое-то распределение, как и&nbsp;у&nbsp;любой случайной величины. И&nbsp;действительно, z-статистика при&nbsp;справедливости нулевой гипотезы подчиняется стандартному нормальному распределению (<a href="#fig-z-h0" class="quarto-xref">Рисунок&nbsp;<span>7.1</span></a>):</p>
+<p>Если z-статистика есть случайная величина, то&nbsp;у&nbsp;неё должно быть какое-то распределение, как и&nbsp;у&nbsp;любой случайной величины. И&nbsp;действительно, <strong>z-статистика при&nbsp;справедливости нулевой гипотезы подчиняется стандартному нормальному распределению</strong>:</p>
 <p><span class="math display">\[
-z \overset{H_0}{\thicksim } \mathcal{N}(0, 1)
+z \overset{H_0}{\thicksim} \mathcal{N}(0, 1)
 \]</span></p>
-<p>Собственно, именно поэтому она и&nbsp;является z-статистикой, так как с&nbsp;помощью буквы <span class="math inline">\(z\)</span> в статистике обычно обозначается стандартно нормально распределённая случайная величина.</p>
+<p>Собственно, именно поэтому она и&nbsp;является z-статистикой, так&nbsp;как с&nbsp;помощью буквы <span class="math inline">\(z\)</span> в&nbsp;статистике обычно обозначается стандартно нормально распределённая случайная величина.</p>
+<p>Поскольку z-статистика есть непрерывная случайная величина, то&nbsp;её распределение задается плотностью вероятности (<a href="#fig-z-h0" class="quarto-xref">Рисунок&nbsp;<span>7.1</span></a>). <a href="intro-randvals.html#randvals-density">Как мы помним</a>, подобный график показывает нам, что&nbsp;значения из&nbsp;«середины» распределения встречаются часто, а&nbsp;значения из&nbsp;хвостов&nbsp;— реже.</p>
 <div id="fig-z-h0" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-z-h0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -696,7 +700,7 @@ z \overset{H_0}{\thicksim } \mathcal{N}(0, 1)
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="infer-stattesting_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="infer-stattesting_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Рисунок&nbsp;7.1: Распределение z-статистики при&nbsp;справедливости нулевой гипотезы"><img src="infer-stattesting_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -707,57 +711,209 @@ z \overset{H_0}{\thicksim } \mathcal{N}(0, 1)
 </figcaption>
 </figure>
 </div>
+<p>Чем нам это поможет в&nbsp;статистическом выводе? Обратим внимание на&nbsp;одну из&nbsp;ключевых вещей&nbsp;— мы строим распределение статистики критерия <strong>при условии, что&nbsp;нулевая гипотеза верна</strong>.</p>
+<ul>
+<li>Во-первых, потому&nbsp;что ситуация справедливости нулевой гипотезы&nbsp;— это единственный возможный случай, когда <span class="math inline">\(\mu = 50\)</span>. Если верна альтернативная&nbsp;— <span class="math inline">\(\mu \neq 50\)</span>&nbsp;— то&nbsp;возможно великое множества вариантов. В&nbsp;частности, поэтому нулевая гипотеза чаще всего формулируется в&nbsp;виде простой гипотезы.</li>
+<li>Во-вторых, <strong>имея распределение статистики при&nbsp;справедливости нулевой гипотезы, мы можем сказать, насколько типично то или&nbsp;иное значение, когда верна нулевая гипотеза.</strong></li>
+</ul>
 </section>
 <section id="stattesting-pval" class="level3" data-number="7.3.6">
 <h3 data-number="7.3.6" class="anchored" data-anchor-id="stattesting-pval"><span class="header-section-number">7.3.6</span> Критическая область vs p-value</h3>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>До этого шага оба сценария тестирования статистических гипотез совпадали (<a href="#nte-nhst1" class="quarto-xref"><span>7.1</span></a> и <a href="#nte-nhst2" class="quarto-xref"><span>7.2</span></a>). Сейчас мы пронаблюдаем небольшое расхождение сценариев.</p>
+</div>
+</div>
+</div>
+<p>Что&nbsp;ж, у&nbsp;нас есть идея, как оценить типичность того или&nbsp;иного z-значения для&nbsp;случая, когда верна нулевая гипотеза об отсутствии различий. Осталось определиться с&nbsp;тем, какие именно значения будут считаться нетипичными&nbsp;— необходимо выбрать <em>диапазон нетипичных значений</em>.</p>
+<p>Здесь нам на&nbsp;помощь приходит <strong>уровень значимости</strong> <span class="math inline">\(\alpha\)</span>&nbsp;— именно он определяет, какие значения статистики мы будем считать нетипичными. Выберем такие диапазоны из&nbsp;хвостов распределения, чтобы&nbsp;вероятность попадания значений в&nbsp;них была равна <span class="math inline">\(\alpha\)</span>, то&nbsp;есть <span class="math inline">\(0.05\)</span>. Эти диапазоны называются <strong>критической область (сritical region)</strong>, а&nbsp;зная, как устроена плотность распределения, мы можем рассчитать <strong>критическое значение (critical value)</strong> <span class="math inline">\(z_\text{cr}\)</span>, которое будет являться границей критической области (<a href="#fig-z-crit" class="quarto-xref">Рисунок&nbsp;<span>7.2</span></a>).</p>
+<div id="fig-z-crit" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-z-crit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="infer-stattesting_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="infer-stattesting_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Рисунок&nbsp;7.2: Критическая область и&nbsp;критические значения z-распределения для&nbsp;\alpha = 0.05"><img src="infer-stattesting_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-z-crit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;7.2: Критическая область и&nbsp;критические значения z-распределения для&nbsp;<span class="math inline">\(\alpha = 0.05\)</span>
+</figcaption>
+</figure>
+</div>
+<p>Первый сценарий (<a href="#nte-nhst1" class="quarto-xref"><span>7.1</span></a>) учит нас, что&nbsp;после того, как была определена критическая область, необходимо узнать, попадает или&nbsp;нет наблюдаемое значение статистики в&nbsp;критическую область. Давайте проверим это для&nbsp;имеющихся у нас значений (<a href="#fig-zobs-crit" class="quarto-xref">Рисунок&nbsp;<span>7.3</span></a>).</p>
+<div id="fig-zobs-crit" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-zobs-crit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="infer-stattesting_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="infer-stattesting_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Рисунок&nbsp;7.3: Наблюдаемые значения z-статистики на&nbsp;распределении при&nbsp;справедливости нулевой гипотезы и&nbsp;\alpha = 0.05."><img src="infer-stattesting_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zobs-crit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;7.3: Наблюдаемые значения z-статистики на&nbsp;распределении при&nbsp;справедливости нулевой гипотезы и&nbsp;<span class="math inline">\(\alpha = 0.05\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Видно, что</p>
+<ul>
+<li><span class="math inline">\(z_\text{A}\)</span> и&nbsp;<span class="math inline">\(z_\text{D}\)</span> не&nbsp;попадают в&nbsp;критическую область,</li>
+<li>а&nbsp;<span class="math inline">\(z_\text{B}\)</span> и&nbsp;<span class="math inline">\(z_\text{C}\)</span> — попадают.</li>
+</ul>
+<p>Тогда мы можем заключить, что</p>
+<ul>
+<li>так как <span class="math inline">\(-z_\text{cr} &lt; z_\text{A} &lt; z_\text{cr}\)</span> и&nbsp; <span class="math inline">\(-z_\text{cr} &lt; z_\text{D} &lt; z_\text{cr}\)</span>, то&nbsp;для факультетов A и&nbsp;D мы получили значение статистики критерия <strong>типичное</strong> для&nbsp;случая, когда нулевая гипотеза верна;</li>
+<li>так как <span class="math inline">\(z_\text{B} &gt; z_\text{cr}\)</span> и&nbsp; <span class="math inline">\(z_\text{С} &lt; -z_\text{cr}\)</span>, то&nbsp;для&nbsp;факультетов B и&nbsp;C мы получили значение статистики критерия <strong>нетипичное</strong> для&nbsp;случая, когда верна нулевая гипотеза.</li>
+</ul>
+<p>На&nbsp;основании этого мы далее сделаем <a href="#stattesting-statinf">статистический вывод</a>.</p>
+<p>Однако перед этим посмотрим на&nbsp;иной способ определения типичности наблюдаемых значений. Во&nbsp;втором сценарии вместо критической области требуется расчёт некоего p-значения. Что это такое и&nbsp;зачем оно нам может быть нужно?</p>
+<p>Посмотрим сначала на&nbsp;картинки для&nbsp;наших случаев. Закрашенная область под&nbsp;графиками&nbsp;— это p-значения для&nbsp;соответствующих z-статистик (<a href="#fig-pvals" class="quarto-xref">Рисунок&nbsp;<span>7.4</span></a>).</p>
+<div id="fig-pvals" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pvals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell quarto-layout-panel" data-layout="[[50,50],[50,50]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="infer-stattesting_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="infer-stattesting_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Факультет A"><img src="infer-stattesting_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
+<figcaption>Факультет A</figcaption>
 </figure>
 </div>
 </div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="infer-stattesting_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="infer-stattesting_files/figure-html/unnamed-chunk-7-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Факультет B"><img src="infer-stattesting_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></a></p>
+<figcaption>Факультет B</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="infer-stattesting_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><a href="infer-stattesting_files/figure-html/unnamed-chunk-7-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Факультет C"><img src="infer-stattesting_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid figure-img" width="672"></a></p>
+<figcaption>Факультет C</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="infer-stattesting_files/figure-html/unnamed-chunk-7-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Факультет D"><img src="infer-stattesting_files/figure-html/unnamed-chunk-7-4.png" class="img-fluid figure-img" width="672"></a></p>
+<figcaption>Факультет D</figcaption>
 </figure>
 </div>
 </div>
 </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pvals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;7.4: Определение p-значений для&nbsp;наблюдаемых значений z-критерия
+</figcaption>
+</figure>
+</div>
+<p>Исходя из&nbsp;визуализаций можно дать p-значению такое определение:</p>
+<div id="def-pval" class="theorem definition">
+<p><span class="theorem-title"><strong>Определение 7.2</strong></span> <strong>p-значение (p-value)</strong>&nbsp;— вероятность получить такое или более экстремальное значение статистики критерия при&nbsp;условии, что&nbsp;нулевая гипотеза верна.</p>
+</div>
+<p>Экстремальное в&nbsp;данном контексте означает «ещё больше отклоняющееся от нуля, чем&nbsp;наблюдаемое». Это всё, конечно, хорошо, но&nbsp;нам&nbsp;бы определить типичность наблюдаемого значения z-статистики. Можно&nbsp;ли это сделать с&nbsp;помощью p-значения?</p>
+<p>Да, и&nbsp;на&nbsp;практике ровно так и поступают. Давайте сопоставим p-значение с&nbsp;уровнем значимости. Сначала вновь сделаем это визуально (<a href="#fig-pvals-siglvl" class="quarto-xref">Рисунок&nbsp;<span>7.5</span></a>).</p>
+<div id="fig-pvals-siglvl" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pvals-siglvl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell quarto-layout-panel" data-layout="[[50,50],[50,50]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="infer-stattesting_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Факультет A"><img src="infer-stattesting_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
+<figcaption>Факультет A</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="infer-stattesting_files/figure-html/unnamed-chunk-8-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Факультет B"><img src="infer-stattesting_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></a></p>
+<figcaption>Факультет B</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="infer-stattesting_files/figure-html/unnamed-chunk-8-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Факультет C"><img src="infer-stattesting_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid figure-img" width="672"></a></p>
+<figcaption>Факультет C</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="infer-stattesting_files/figure-html/unnamed-chunk-8-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Факультет D"><img src="infer-stattesting_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid figure-img" width="672"></a></p>
+<figcaption>Факультет D</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pvals-siglvl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;7.5: Сопоставление p-значений и&nbsp;уровня значимости для&nbsp;наблюдаемых значений z-критерия
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>так как для факультетов A и&nbsp;D <span class="math inline">\(\mathsf p &gt; \alpha\)</span>, то&nbsp;мы получили значение статистики критерия <strong>типичное</strong> для&nbsp;случая, когда нулевая гипотеза верна;</li>
+<li>так как для&nbsp;факультетов B и&nbsp;C <span class="math inline">\(\mathsf p &lt; \alpha\)</span>, то&nbsp;мы получили значение статистики критерия <strong>нетипичное</strong> для&nbsp;случая, когда верна нулевая гипотеза.</li>
+</ul>
+<p>Как не&nbsp;трудно видеть, сценарий два, в&nbsp;котором рассчитывается p-value, оказывается несколько проще, чем&nbsp;сценарий с&nbsp;критической областью, однако по&nbsp;смыслу они равносильны друг другу, ведь</p>
+<ul>
+<li>если значение попало в&nbsp;критическую область, то&nbsp;<span class="math inline">\(\mathsf p &lt; \alpha\)</span>,</li>
+<li>если значение не&nbsp;попало в&nbsp;критическую область, то&nbsp;<span class="math inline">\(\mathsf p &gt; \alpha\)</span>.</li>
+</ul>
 </section>
 <section id="stattesting-statinf" class="level3" data-number="7.3.7">
 <h3 data-number="7.3.7" class="anchored" data-anchor-id="stattesting-statinf"><span class="header-section-number">7.3.7</span> Статистический вывод</h3>
+<p>Итого, мы получили в&nbsp;итоге по обоим сценариям оценку типичности значения z-статистики. Пришло время сделать статистический вывод. В&nbsp;двух обозначенных сценариях он будет делать немного по-разному, однако сами выводы будут равносильны в&nbsp;обоих случаях,</p>
+<p>Итак, для&nbsp;первого сценария (<a href="#nte-nhst1" class="quarto-xref"><span>7.1</span></a>) было рассчитано <span class="math inline">\(z_\text{cr}\)</span> и&nbsp;наблюдаемые z-значения сравнивались с ними. Алгоритм статистического вывода в&nbsp;данном случае будет таков:</p>
+<ul>
+<li>если <span class="math inline">\(|z| &lt; |z_\text{cr}|\)</span>, то&nbsp;мы имеем значение статистики критерия, <strong>типичное</strong> для&nbsp;случая, когда нулевая гипотеза верна, следовательно, у&nbsp;нас <strong>нет оснований отклонять нулевую гипотезу</strong></li>
+<li>если <span class="math inline">\(|z| &gt; |z_\text{cr}|\)</span>, то&nbsp;мы имеем значение статистики критерия, <strong>нетипичное</strong> для&nbsp;случая, когда нулевая гипотеза верна, следовательно, у&nbsp;нас есть основания отклонить нулевую гипотезу и&nbsp;<strong>принять альтернативную</strong></li>
+</ul>
+<p>Таким образом,</p>
+<ul>
+<li>для&nbsp;факультетов A и&nbsp;D ввиду того, что&nbsp;в&nbsp;обоих случаях наблюдаемое значение z-статистики по&nbsp;модулю <strong>меньше критического</strong>, то&nbsp;мы не&nbsp;можем отклонить нулевую гипотезу о&nbsp;том, что&nbsp;<strong>средний балл по&nbsp;шкале «Открытость к опыту» не&nbsp;отличается от&nbsp;50</strong>.</li>
+<li>для&nbsp;факультетов B и&nbsp;C ввиду того, что&nbsp;в&nbsp;обоих случаях наблюдаемое значение z-статистики по&nbsp;модулю <strong>больше критического</strong>, то&nbsp;мы можем отклонить нулевую гипотезу о&nbsp;том, что&nbsp;средний балл по&nbsp;шкале «Открытость к&nbsp;опыту» не&nbsp;отличается от&nbsp;50&nbsp;— в&nbsp;этом случае мы заключаем, что, согласно имеющимся данным, <strong>средний балл по&nbsp;шкале «Открытость к&nbsp;опыту» на&nbsp;факультете B больше 50</strong>, а&nbsp;на <strong>факультете C — меньше 50</strong>.</li>
+</ul>
+<p>Для&nbsp;второго сценария (<a href="#nte-nhst2" class="quarto-xref"><span>7.2</span></a>) было рассчитано p-значение, которое необходимо сравнить с&nbsp;уровнем значимости <span class="math inline">\(\alpha\)</span>. Алгоритм статистического вывода будет в&nbsp;этом случае таков:</p>
+<ul>
+<li>если <span class="math inline">\(\mathsf p &gt; \alpha\)</span>, то&nbsp;мы имеем значение статистики критерия, <strong>типичное</strong> для&nbsp;случая, когда нулевая гипотеза верна, следовательно, у&nbsp;нас <strong>нет оснований отклонять нулевую гипотезу</strong></li>
+<li>если <span class="math inline">\(\mathsf p &lt; \alpha\)</span>, то&nbsp;мы имеем значение критерия, <strong>нетипичное</strong> для&nbsp;случая, когда нулевая гипотеза верна, следовательно, у&nbsp;нас есть основания отклонить нулевую гипотезу и&nbsp;<strong>принять альтернативную</strong></li>
+</ul>
+<p>Таким образом,</p>
+<ul>
+<li>для&nbsp;факультетов A и&nbsp;D ввиду того, что&nbsp;в&nbsp;обоих случаях <span class="math inline">\(\mathsf p &gt; \alpha\)</span>, то&nbsp;мы не&nbsp;можем отклонить нулевую гипотезу о&nbsp;том, что&nbsp;<strong>средний балл по&nbsp;шкале «Открытость к опыту» не&nbsp;отличается от&nbsp;50</strong>.</li>
+<li>для&nbsp;факультетов B и&nbsp;C ввиду того, что&nbsp;в&nbsp;обоих случаях <span class="math inline">\(\mathsf p &lt; \alpha\)</span>, то&nbsp;мы можем отклонить нулевую гипотезу о&nbsp;том, что&nbsp;средний балл по&nbsp;шкале «Открытость к&nbsp;опыту» не&nbsp;отличается от&nbsp;50&nbsp;— в&nbsp;этом случае мы заключаем, что, согласно имеющимся данным, <strong>средний балл по&nbsp;шкале «Открытость к&nbsp;опыту» на&nbsp;факультете B больше 50</strong>, а&nbsp;на <strong>факультете C — меньше 50</strong>.</li>
+</ul>
 <!---
 Почему второй вариант более гибкий? Представим, что мы захотели понизить уровень значимости с $0.05$ до $0.01$ --- такие уровни значимости всречаются, например, в медицине. Если мы идем по первому сценарию, то нам надо заново пересчитать критические значения и вновь проанализировать, попадает ли наблюдаемое значение в критическую область. Если мы адепты второго сценария, то нам надо только выполнить одно новое сравнение нашего p-value с новым уровнем значимости.
 --->
@@ -1187,6 +1343,38 @@ z \overset{H_0}{\thicksim } \mathcal{N}(0, 1)
   </div>
 </nav>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
