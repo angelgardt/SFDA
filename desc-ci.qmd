@@ -1,4 +1,4 @@
-# Доверительные интервалы
+# Доверительные интервалы {#desc-ci}
 
 ```{r opts, echo=FALSE, eval=TRUE}
 knitr::opts_chunk$set(echo = FALSE, eval = TRUE, warning = FALSE, message = FALSE, error = FALSE)

@@ -1,4 +1,4 @@
-# Шкалы и случайные величины
+# Шкалы и случайные величины {#intro-randvals}
 
 ```{r opts, echo=FALSE, eval=TRUE}
 knitr::opts_chunk$set(echo = FALSE, eval = TRUE, warning = FALSE, message = FALSE, error = FALSE)

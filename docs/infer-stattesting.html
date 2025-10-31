@@ -233,17 +233,17 @@ window.Quarto = {
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#базовые-понятия" id="toc-базовые-понятия" class="nav-link active" data-scroll-target="#базовые-понятия"><span class="header-section-number">7.1</span> Базовые понятия</a></li>
-  <li><a href="#возможные-результаты-проверки-гипотез" id="toc-возможные-результаты-проверки-гипотез" class="nav-link" data-scroll-target="#возможные-результаты-проверки-гипотез"><span class="header-section-number">7.2</span> Возможные результаты проверки гипотез</a></li>
-  <li><a href="#алгоритм-тестирования-статистических-гипотез" id="toc-алгоритм-тестирования-статистических-гипотез" class="nav-link" data-scroll-target="#алгоритм-тестирования-статистических-гипотез"><span class="header-section-number">7.3</span> Алгоритм тестирования статистических гипотез</a>
+  <li><a href="#stattesting-basics" id="toc-stattesting-basics" class="nav-link active" data-scroll-target="#stattesting-basics"><span class="header-section-number">7.1</span> Базовые понятия</a></li>
+  <li><a href="#stattesting-results" id="toc-stattesting-results" class="nav-link" data-scroll-target="#stattesting-results"><span class="header-section-number">7.2</span> Возможные результаты проверки гипотез</a></li>
+  <li><a href="#stattesting-algorithm" id="toc-stattesting-algorithm" class="nav-link" data-scroll-target="#stattesting-algorithm"><span class="header-section-number">7.3</span> Алгоритм тестирования статистических гипотез</a>
   <ul class="collapse">
-  <li><a href="#формулировка-гипотезы" id="toc-формулировка-гипотезы" class="nav-link" data-scroll-target="#формулировка-гипотезы"><span class="header-section-number">7.3.1</span> Формулировка гипотезы</a></li>
-  <li><a href="#выбор-статистического-критерия" id="toc-выбор-статистического-критерия" class="nav-link" data-scroll-target="#выбор-статистического-критерия"><span class="header-section-number">7.3.2</span> Выбор статистического критерия</a></li>
-  <li><a href="#выбор-уровня-значимости" id="toc-выбор-уровня-значимости" class="nav-link" data-scroll-target="#выбор-уровня-значимости"><span class="header-section-number">7.3.3</span> Выбор уровня значимости</a></li>
-  <li><a href="#расчёт-выборочной-статистики" id="toc-расчёт-выборочной-статистики" class="nav-link" data-scroll-target="#расчёт-выборочной-статистики"><span class="header-section-number">7.3.4</span> Расчёт выборочной статистики</a></li>
-  <li><a href="#распределение-статистики" id="toc-распределение-статистики" class="nav-link" data-scroll-target="#распределение-статистики"><span class="header-section-number">7.3.5</span> Распределение статистики</a></li>
-  <li><a href="#критическая-область-vs-p-value" id="toc-критическая-область-vs-p-value" class="nav-link" data-scroll-target="#критическая-область-vs-p-value"><span class="header-section-number">7.3.6</span> Критическая область vs p-value</a></li>
-  <li><a href="#статистический-вывод" id="toc-статистический-вывод" class="nav-link" data-scroll-target="#статистический-вывод"><span class="header-section-number">7.3.7</span> Статистический вывод</a></li>
+  <li><a href="#stattesting-hyp-formulation" id="toc-stattesting-hyp-formulation" class="nav-link" data-scroll-target="#stattesting-hyp-formulation"><span class="header-section-number">7.3.1</span> Формулировка гипотезы</a></li>
+  <li><a href="#stattesting-method-choice" id="toc-stattesting-method-choice" class="nav-link" data-scroll-target="#stattesting-method-choice"><span class="header-section-number">7.3.2</span> Выбор статистического критерия</a></li>
+  <li><a href="#stattesting-siglevel-choice" id="toc-stattesting-siglevel-choice" class="nav-link" data-scroll-target="#stattesting-siglevel-choice"><span class="header-section-number">7.3.3</span> Выбор уровня значимости</a></li>
+  <li><a href="#stattesting-stat-observe" id="toc-stattesting-stat-observe" class="nav-link" data-scroll-target="#stattesting-stat-observe"><span class="header-section-number">7.3.4</span> Расчёт выборочной статистики</a></li>
+  <li><a href="#stattesting-stat-distribution" id="toc-stattesting-stat-distribution" class="nav-link" data-scroll-target="#stattesting-stat-distribution"><span class="header-section-number">7.3.5</span> Распределение статистики</a></li>
+  <li><a href="#stattesting-pval" id="toc-stattesting-pval" class="nav-link" data-scroll-target="#stattesting-pval"><span class="header-section-number">7.3.6</span> Критическая область vs p-value</a></li>
+  <li><a href="#stattesting-statinf" id="toc-stattesting-statinf" class="nav-link" data-scroll-target="#stattesting-statinf"><span class="header-section-number">7.3.7</span> Статистический вывод</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -253,7 +253,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./infer-stattesting.html">Статистика вывода</a></li><li class="breadcrumb-item"><a href="./infer-stattesting.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Тестирование статистических гипотез</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Тестирование статистических гипотез</span></h1>
+<h1 class="title"><span id="infer-stattesting" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Тестирование статистических гипотез</span></span></h1>
 </div>
 
 
@@ -277,8 +277,8 @@ window.Quarto = {
 <li>Хороша&nbsp;ли та модель, которую мы построили? → Отличается&nbsp;ли она от&nbsp;нулевой модели?</li>
 </ul>
 <p>И&nbsp;так далее. Так или иначе, всё сводится к&nbsp;тому, что&nbsp;мы ищем какие-то различия. Но&nbsp;силу того, что у&nbsp;нас неопределённость и&nbsp;вариативность в&nbsp;данных, мы просто так «в&nbsp;лоб» сказать о&nbsp;различиях по&nbsp;оценкам параметров не&nbsp;можем. Приходится тестировать статистические гипотезы.</p>
-<section id="базовые-понятия" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="базовые-понятия"><span class="header-section-number">7.1</span> Базовые понятия</h2>
+<section id="stattesting-basics" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="stattesting-basics"><span class="header-section-number">7.1</span> Базовые понятия</h2>
 <div id="def-hepothesis" class="theorem definition">
 <p><span class="theorem-title"><strong>Определение 7.1</strong></span> <strong>Гипотеза</strong> (<span class="math inline">\(H\)</span>)&nbsp;— это предположение, которое подлежит проверке на&nbsp;основе результатов наблюдений.</p>
 </div>
@@ -316,8 +316,8 @@ window.Quarto = {
 --->
 <p>Что&nbsp;же может случиться в&nbsp;ходе проверки статистической гипотезы?</p>
 </section>
-<section id="возможные-результаты-проверки-гипотез" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="возможные-результаты-проверки-гипотез"><span class="header-section-number">7.2</span> Возможные результаты проверки гипотез</h2>
+<section id="stattesting-results" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="stattesting-results"><span class="header-section-number">7.2</span> Возможные результаты проверки гипотез</h2>
 <p>Мы изучаем в&nbsp;исследовании какую-либо закономерность, которая в&nbsp;реальном мире <em>может существовать</em>, а&nbsp;может и&nbsp;не&nbsp;существовать. В&nbsp;силу неопределённости и&nbsp;вариативности наших данных мы может либо <em>обнаружить интересующую нас закономерность</em>, либо <em>не&nbsp;обнаружить её</em>.</p>
 <p>В&nbsp;качестве нулевой гипотезы мы выдвигаем предположение о&nbsp;том, что&nbsp;закономерность отсутствует&nbsp;— так мы упрощаем нашу нулевую гипотезу. Пусть <span class="math inline">\(H_0\)</span> обозначает, что&nbsp;предположение об&nbsp;отсутствии закономерности, которое мы проверяем справедливо, а&nbsp;<span class="math inline">\(H_1\)</span>&nbsp;— не справедливо. На&nbsp;основании данных мы можем либо не&nbsp;отклонить наше предположение (<span class="math inline">\(\hat H_0\)</span>), либо&nbsp;отклонить (<span class="math inline">\(\hat H_1\)</span>).</p>
 <p>Тогда имеем следующую ситуацию (<a href="#tbl-stattesting-results" class="quarto-xref">Таблица&nbsp;<span>7.1</span></a>).</p>
@@ -520,8 +520,8 @@ H
 Посмотреть, как все эти штуки друг с другом соотносятся можно тут.
 --->
 </section>
-<section id="алгоритм-тестирования-статистических-гипотез" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="алгоритм-тестирования-статистических-гипотез"><span class="header-section-number">7.3</span> Алгоритм тестирования статистических гипотез</h2>
+<section id="stattesting-algorithm" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="stattesting-algorithm"><span class="header-section-number">7.3</span> Алгоритм тестирования статистических гипотез</h2>
 <p>Для тестирования гипотез есть два сценария: первый и тот, которым мы будем пользоваться. Первый вариант чуть более классический, второй&nbsp;— более гибкий.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -619,8 +619,8 @@ H
 <li><strong>Эмпирическая</strong>: балл по шкале «Открытость к&nbsp;опыту» отличается от&nbsp;среднего значения по&nbsp;данной шкале.</li>
 </ul>
 <p>Теоретические и&nbsp;эмпирические гипотезы не&nbsp;касаются напрямую статистического анализа, так как мы в рамках него заняты тестированием <em>статистических</em> гипотез. Однако поскольку статистические гипотезы должны быть согласованы с&nbsp;эмпирическими, которые, в&nbsp;свою очередь, должны быть согласованы с&nbsp;теоретическими, мы прописали эти весьма незамысловатые гипотезы. Теперь&nbsp;же сформулируем статистические.</p>
-<section id="формулировка-гипотезы" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="формулировка-гипотезы"><span class="header-section-number">7.3.1</span> Формулировка гипотезы</h3>
+<section id="stattesting-hyp-formulation" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="stattesting-hyp-formulation"><span class="header-section-number">7.3.1</span> Формулировка гипотезы</h3>
 <p>Для&nbsp;обозначенной эмпирической гипотезы подойдут следующие статистические:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -630,21 +630,46 @@ H_1&amp;: \mu \neq 50
 \]</span></p>
 <p>В&nbsp;формулировке гипотезы фигурирует <span class="math inline">\(\mu\)</span> — так обозначается среднее генеральной совокупности. Действительно, как мы отмечали в&nbsp;начале главы, статистические гипотезы формулируются в&nbsp;терминах параметров генеральной совокупности. И действительно, как мы говорили в&nbsp;первой главе, мы хотели&nbsp;бы изучать всех студентов того или иного факультета, но&nbsp;в&nbsp;силу ограниченности ресурсов работаем с&nbsp;выборкой. Может показаться, что&nbsp;проверяя гипотезу «балл по шкале “Открытость к&nbsp;опыту” отличается от&nbsp;среднего значения по&nbsp;данной шкале», мы должны сравнивать балл каждого респондента со&nbsp;средним, но&nbsp;это, конечно же, не&nbsp;так, поскольку нас интересует, отличается&nbsp;ли <em>в&nbsp;среднем</em> балл респондентов от&nbsp;среднего по&nbsp;шкале — в&nbsp;данном случае 50. Балл каждого отдельного респондента отличаться от&nbsp;50, безусловно, будет<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> ввиду неопределенности и&nbsp;вариативности данных.</p>
 </section>
-<section id="выбор-статистического-критерия" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="выбор-статистического-критерия"><span class="header-section-number">7.3.2</span> Выбор статистического критерия</h3>
-<p>Теперь необходимо подобраться статистический критерий для&nbsp;проверки заявленных статистических гипотез.</p>
-<p><span class="math display">\[
+<section id="stattesting-method-choice" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="stattesting-method-choice"><span class="header-section-number">7.3.2</span> Выбор статистического критерия</h3>
+<p>Теперь необходимо подобраться статистический критерий для&nbsp;проверки заявленных статистических гипотез. Здесь может возникнуть вопрос&nbsp;— зачем нам в&nbsp;принципе какой-то статистический критерий? Ведь у&nbsp;нас есть выборочные средние (см.&nbsp;табл. <a href="#tbl-z-means" class="quarto-xref"><span>7.3</span></a>) и&nbsp;число, с&nbsp;которым нам необходимо эти средние сравнить&nbsp;— в&nbsp;данном случае <span class="math inline">\(50\)</span>. Скажем, для&nbsp;факультета <span class="math inline">\(A\)</span> мы имеем средний балл <span class="math inline">\(51\)</span>, а&nbsp;для&nbsp;факультета <span class="math inline">\(B\)</span> — <span class="math inline">\(53\)</span>: ясно&nbsp;же, что <span class="math inline">\(51 \neq 50\)</span> и&nbsp;<span class="math inline">\(53 \neq 50\)</span>. Почему мы не&nbsp;можем вывод просто вот так?</p>
+<p>Вновь нам необходимо вспомнить, что&nbsp;ввиду неопределенности и&nbsp;вариативности статистических данных мы могли <em>случайно</em> получить наблюдаемые абсолютные различия между средним и&nbsp;заданным значением. Вполне возможно, что&nbsp;в&nbsp;генеральной совокупности среднее на&nbsp;самом деле <span class="math inline">\(50\)</span>, однако из-за случайных ошибок в&nbsp;ходе измерения или&nbsp;формирования выборки, полученное <span class="math inline">\(51\)</span> не&nbsp;будет статистически отличаться от&nbsp;<span class="math inline">\(50\)</span>. Для&nbsp;того, чтобы проверить, насколько имеющиеся отклонения <em>неслучайны</em> и&nbsp;необходим статистический критерий.</p>
+<p>Для&nbsp;проверки разных статистических гипотез будут использоваться разные статистические критерии, с&nbsp;которым мы будем постепенно знакомиться далее. Для&nbsp;проверки нашей гипотезы о&nbsp;равенстве среднего некоторому заданному значению подойдет <strong>z-тест</strong>.</p>
+<p>Любой статистический критерий, по&nbsp;сути, является собой некоторую формулу, которая позволяет получить <strong>значение статистики критерия</strong>. В&nbsp;случае z-теста это будет формула для получения z-значения.</p>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Это <strong>не&nbsp;то&nbsp;же</strong> z-значение, которое мы получали в&nbsp;результате <a href="desc-normdist.html#normdist-stand">стандартизации</a> случайной величины. Оно считается иначе.</p>
+</div>
+</div>
+</div>
+<p>Формула расчёта статистики z-теста такова:</p>
+<p><span id="eq-z-test"><span class="math display">\[
 z = \frac{\overline X - \mu_0}{\text{se}_X}
-= \frac{\overline X - \mu_0}{\dfrac{\sigma_X}{\sqrt{n}}}
-\]</span></p>
+= \frac{\overline X - \mu_0}{\dfrac{\sigma_X}{\sqrt{n}}},
+\tag{7.1}\]</span></span></p>
+<p>где <span class="math inline">\(\overline X\)</span> — выборочное среднее (оценка среднего генеральной совокупности), <span class="math inline">\(\mu_0\)</span> — некоторое заданное значение, с&nbsp;которым необходимо сравнить среднее, <span class="math inline">\(\text{se}_X\)</span> — стандартная ошибка случайной величины <span class="math inline">\(X\)</span> (см. <a href="desc-ci.html#ci-se">соответствующий раздел</a>), <span class="math inline">\(\sigma_X\)</span> — дисперсия случайной величины <span class="math inline">\(X\)</span>, <span class="math inline">\(n\)</span> — количество наблюдений в&nbsp;выборке.</p>
 </section>
-<section id="выбор-уровня-значимости" class="level3" data-number="7.3.3">
-<h3 data-number="7.3.3" class="anchored" data-anchor-id="выбор-уровня-значимости"><span class="header-section-number">7.3.3</span> Выбор уровня значимости</h3>
-<p>Здесь мы воспользуемся конвенциональным значением: <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<section id="stattesting-siglevel-choice" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="stattesting-siglevel-choice"><span class="header-section-number">7.3.3</span> Выбор уровня значимости</h3>
+<p>Здесь мы воспользуемся конвенциональным значением: <span class="math inline">\(\alpha = 0.05\)</span>. Вообще вы можете выбрать и&nbsp;более низкое значение в&nbsp;рамках собственного исследования.</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Все вышепройденные шаги алгоритма тестирования гипотез в&nbsp;ситуации реального исследования должны быть выполнены до&nbsp;начала сбора данных при&nbsp;планировании исследования.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="расчёт-выборочной-статистики" class="level3" data-number="7.3.4">
-<h3 data-number="7.3.4" class="anchored" data-anchor-id="расчёт-выборочной-статистики"><span class="header-section-number">7.3.4</span> Расчёт выборочной статистики</h3>
-<p>Вспомним таблицу <a href="#tbl-z-means" class="quarto-xref"><span>7.3</span></a></p>
+<section id="stattesting-stat-observe" class="level3" data-number="7.3.4">
+<h3 data-number="7.3.4" class="anchored" data-anchor-id="stattesting-stat-observe"><span class="header-section-number">7.3.4</span> Расчёт выборочной статистики</h3>
+<p>Теперь обратимся к&nbsp;имеющимся у&nbsp;нас данным (<a href="#tbl-z-means" class="quarto-xref">Таблица&nbsp;<span>7.3</span></a>) и&nbsp;рассчитаем наблюдаемое значение z-статистики для&nbsp;каждой из&nbsp;выборок, используя формулу <a href="#eq-z-test" class="quarto-xref"><span>7.1</span></a>.</p>
 <p><span class="math display">\[
 \begin{aligned}
 z_A = \frac{51 - 50}{10/\sqrt{50}} \approx 0.707 \\
@@ -653,9 +678,20 @@ z_C = \frac{47 - 50}{10/\sqrt{50}} \approx -2.121 \\
 z_D = \frac{47 - 50}{10/\sqrt{30}} \approx -1.643 \\
 \end{aligned}
 \]</span></p>
+<p>Итак, мы получили четыре z-значения для&nbsp;факультетов A, B, C и&nbsp;D. Здесь возникает вполне закономерный вопрос&nbsp;— и&nbsp;чо?</p>
 </section>
-<section id="распределение-статистики" class="level3" data-number="7.3.5">
-<h3 data-number="7.3.5" class="anchored" data-anchor-id="распределение-статистики"><span class="header-section-number">7.3.5</span> Распределение статистики</h3>
+<section id="stattesting-stat-distribution" class="level3" data-number="7.3.5">
+<h3 data-number="7.3.5" class="anchored" data-anchor-id="stattesting-stat-distribution"><span class="header-section-number">7.3.5</span> Распределение статистики</h3>
+<p>Нам необходимо сделать вывод об&nbsp;отсутствии или&nbsp;наличии закономерности&nbsp;— такова была изначальная задача. Мы получили наблюдаемые значения z-статистики&nbsp;— видимо, нам необходимо сделать вывод на&nbsp;их основе.</p>
+<p>Ясно, что <strong>z-статистика&nbsp;— это случайная величина</strong>. Если посмотреть на&nbsp;формулу её расчёта (<a href="#eq-z-test" class="quarto-xref"><span>7.1</span></a>), то&nbsp;можно заметить, что&nbsp;её значение зависит от&nbsp;выборочного среднего. Выборочное среднее&nbsp;же само является случайной величиной, так как зависит от&nbsp;того, какие значения попадут в&nbsp;выборку, а&nbsp;формирование выборки случайно.</p>
+<p>Если z-статистика есть случайная величина, то&nbsp;у&nbsp;неё должно быть какое-то распределение, как и&nbsp;у&nbsp;любой случайной величины. И&nbsp;действительно, z-статистика при&nbsp;справедливости нулевой гипотезы подчиняется стандартному нормальному распределению (<a href="#fig-z-h0" class="quarto-xref">Рисунок&nbsp;<span>7.1</span></a>):</p>
+<p><span class="math display">\[
+z \overset{H_0}{\thicksim } \mathcal{N}(0, 1)
+\]</span></p>
+<p>Собственно, именно поэтому она и&nbsp;является z-статистикой, так как с&nbsp;помощью буквы <span class="math inline">\(z\)</span> в статистике обычно обозначается стандартно нормально распределённая случайная величина.</p>
+<div id="fig-z-h0" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-z-h0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -665,9 +701,15 @@ z_D = \frac{47 - 50}{10/\sqrt{30}} \approx -1.643 \\
 </div>
 </div>
 </div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-z-h0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;7.1: Распределение z-статистики при&nbsp;справедливости нулевой гипотезы
+</figcaption>
+</figure>
+</div>
 </section>
-<section id="критическая-область-vs-p-value" class="level3" data-number="7.3.6">
-<h3 data-number="7.3.6" class="anchored" data-anchor-id="критическая-область-vs-p-value"><span class="header-section-number">7.3.6</span> Критическая область vs p-value</h3>
+<section id="stattesting-pval" class="level3" data-number="7.3.6">
+<h3 data-number="7.3.6" class="anchored" data-anchor-id="stattesting-pval"><span class="header-section-number">7.3.6</span> Критическая область vs p-value</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -714,8 +756,8 @@ z_D = \frac{47 - 50}{10/\sqrt{30}} \approx -1.643 \\
 </div>
 </div>
 </section>
-<section id="статистический-вывод" class="level3" data-number="7.3.7">
-<h3 data-number="7.3.7" class="anchored" data-anchor-id="статистический-вывод"><span class="header-section-number">7.3.7</span> Статистический вывод</h3>
+<section id="stattesting-statinf" class="level3" data-number="7.3.7">
+<h3 data-number="7.3.7" class="anchored" data-anchor-id="stattesting-statinf"><span class="header-section-number">7.3.7</span> Статистический вывод</h3>
 <!---
 Почему второй вариант более гибкий? Представим, что мы захотели понизить уровень значимости с $0.05$ до $0.01$ --- такие уровни значимости всречаются, например, в медицине. Если мы идем по первому сценарию, то нам надо заново пересчитать критические значения и вновь проанализировать, попадает ли наблюдаемое значение в критическую область. Если мы адепты второго сценария, то нам надо только выполнить одно новое сравнение нашего p-value с новым уровнем значимости.
 --->
