@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>9&nbsp; Однофакторный дисперсионный анализ – SFDA | PSY HSE</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./infer-correlation.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-bd1857aa17bea7e4e4b424b4ddf2d210.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Ничего не найдено",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Очистить",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Отмена",
+    "search-submit-button-title": "Отправить",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./infer-stattesting.html">Статистика вывода</a></li><li class="breadcrumb-item"><a href="./infer-anovaI.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">SFDA | PSY HSE</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Начало</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Введение в&nbsp;статистику</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Основания статистики</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-randvals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Шкалы и&nbsp;случайные величины</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Описательная статистика</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-centraltend.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Меры центральной тенденции</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-variation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Меры разброса</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-normdist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Нормальное распределение</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-ci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Доверительные интервалы</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Статистика вывода</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./infer-stattesting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Тестирование статистических гипотез</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./infer-correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./infer-anovaI.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#эксперимент" id="toc-эксперимент" class="nav-link active" data-scroll-target="#эксперимент"><span class="header-section-number">9.1</span> Эксперимент</a></li>
+  <li><a href="#структура-изменчивости-данных" id="toc-структура-изменчивости-данных" class="nav-link" data-scroll-target="#структура-изменчивости-данных"><span class="header-section-number">9.2</span> Структура изменчивости данных</a></li>
+  <li><a href="#зачем-нужен-дисперсионный-анализ" id="toc-зачем-нужен-дисперсионный-анализ" class="nav-link" data-scroll-target="#зачем-нужен-дисперсионный-анализ"><span class="header-section-number">9.3</span> Зачем нужен дисперсионный анализ?</a></li>
+  <li><a href="#тестирование-значимости-фактора" id="toc-тестирование-значимости-фактора" class="nav-link" data-scroll-target="#тестирование-значимости-фактора"><span class="header-section-number">9.4</span> Тестирование значимости фактора</a>
+  <ul class="collapse">
+  <li><a href="#распределение-фишера" id="toc-распределение-фишера" class="nav-link" data-scroll-target="#распределение-фишера"><span class="header-section-number">9.4.1</span> Распределение Фишера</a></li>
+  </ul></li>
+  <li><a href="#размер-эффекта-в-дисперсионном-анализе" id="toc-размер-эффекта-в-дисперсионном-анализе" class="nav-link" data-scroll-target="#размер-эффекта-в-дисперсионном-анализе"><span class="header-section-number">9.5</span> Размер эффекта в дисперсионном анализе</a></li>
+  <li><a href="#визуализация-результатов-дисперсионного-анализа" id="toc-визуализация-результатов-дисперсионного-анализа" class="nav-link" data-scroll-target="#визуализация-результатов-дисперсионного-анализа"><span class="header-section-number">9.6</span> Визуализация результатов дисперсионного анализа</a></li>
+  <li><a href="#условия-применения-дисперсионного-анализа" id="toc-условия-применения-дисперсионного-анализа" class="nav-link" data-scroll-target="#условия-применения-дисперсионного-анализа"><span class="header-section-number">9.7</span> Условия применения дисперсионного анализа</a>
+  <ul class="collapse">
+  <li><a href="#гомогенность-дисперсий" id="toc-гомогенность-дисперсий" class="nav-link" data-scroll-target="#гомогенность-дисперсий"><span class="header-section-number">9.7.1</span> Гомогенность дисперсий</a></li>
+  </ul></li>
+  <li><a href="#виды-эффектов-в-дисперсионном-анализе" id="toc-виды-эффектов-в-дисперсионном-анализе" class="nav-link" data-scroll-target="#виды-эффектов-в-дисперсионном-анализе"><span class="header-section-number">9.8</span> Виды эффектов в дисперсионном анализе</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./infer-stattesting.html">Статистика вывода</a></li><li class="breadcrumb-item"><a href="./infer-anovaI.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="infer-anovaI" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Со связями между категориальными переменными мы познакомились. Со связями между количественными мы тоже — хотя и не до конца — но познакомились. А что делать, если у нас одна количественная переменная, а другая категориальная?</p>
+<section id="эксперимент" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="эксперимент"><span class="header-section-number">9.1</span> Эксперимент</h2>
+<p>Допустим мы изучаем что-то про эмоции. Нам интересно сравнить скорость распознавания нейтральных и эмоционально окрашенных слов. Мы решили предложить испытуемому задачу лексического решения — предъявляем ему слова и не-слова, а испытуемому необходимо ответить, является ли представленный набор символов словом. Пусть ответ даётся нажатием на клавиши «←», если набор символов является словом, и «→», если таковым не является.</p>
+<p>Сколько нам нужно экспериментальных условий? Кажется, что три — нейтральные стимулы, стимулы с положительной валентностью, стимулы с отрицательной валентностью. И пусть у нас три группы испытуемых — каждая группа проходит одно экспериментальное условие. Не-слова будем считать филлерами и не будем анализировать пробы с ними.</p>
+<p>Итого,</p>
+<p>ЗП — время реакции НП — тип стимула (валентность): три уровня — нейтральные, негативные, позитивные. Ну, вот быстренько в 2,5 словах описали дизаин. Предположим, что мы все это безобразие корректно провели и собрали некоторые данные. Посмотрим, что в них будет происходить.</p>
+</section>
+<section id="структура-изменчивости-данных" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="структура-изменчивости-данных"><span class="header-section-number">9.2</span> Структура изменчивости данных</h2>
+<p>Мы говорили, что основные характеристики статистических данных — неопределённость и вариативность. И эта вариативность (изменчивость) имеет определенную структуру.</p>
+<p>Мы также говорили, что основная мера вариативности — это дисперсия. Это верно, однако сейчас чуть замедлимся, и сначала поговорим о суммах квадратов. Ну, то же самое, что дисперсия, только на степени пока не делим.</p>
+<p>Итак, наши данные выглядят как-то так:</p>
+<p>По оси<br>
+x наша независимая экспериментальная переменная — категориальная, как можно наблюдать. Видно, что у нас три экспериментальные группы. По оси<br>
+y наша зависимая экспериментальная переменная — количественная, как можно наблюдать. Видно, что в каждой группе наблюдений есть какой-то разброс.</p>
+<p>Прежде всего, есть общая изменчивость, или общая сумма квадратов (total sum of squares, TSS) которая складывается из [сумм квадратов] отклонений от общего среднего:</p>
+<p><span class="math display">\[
+\text{TSS} = \sum_{i=1}^n (\overline y - y_i)^2, \quad
+\text{df}_\text{TSS} = n-1
+\]</span></p>
+<p>Есть факторная (объясненная) изменчивость (explained sum of squares, ESS) — это отклонения внутригрупповых средних от общего среднего:</p>
+<p><span class="math display">\[
+\text{ESS} = \sum_{j=1}^p n_j \cdot (\overline y - \overline y_j)^2, \quad
+\text{df}_\text{ESS} = p-1
+\]</span></p>
+<p>Факторная она, потому что то, что мы называем в эксперименте независимой переменной, в дисперсионном анализе называется фактором. Объясненная, потому что она объясняется действием фактора (независимой переменной).</p>
+<p>И есть какая-то изменчивость, которая остается необъясненной — случайная (остаточная) изменчивость (residual sum of squares, RSS):</p>
+<p><span class="math display">\[
+\text{RSS} = \sum_{j=1}^p \sum_{i=1}^{n_j} (\overline y_j - y_{ji})^2, \quad
+\text{df}_\text{RSS} = n-p
+\]</span></p>
+<p>Очевидно, что</p>
+<p><span class="math display">\[
+\text{TSS} = \text{ESS} + \text{RSS}
+\]</span></p>
+</section>
+<section id="зачем-нужен-дисперсионный-анализ" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="зачем-нужен-дисперсионный-анализ"><span class="header-section-number">9.3</span> Зачем нужен дисперсионный анализ?</h2>
+<p>А че мы выяснить-то хотим, собсна? Вернемся к задумке эксперимента — мы хотим узнать, связана1 скорость опознания слова с его эмоциональной окраской. Как эта связь будет выглядеть в данных?</p>
+<p>Если связь существует, то это будет выглядеть как-то так:</p>
+<p>Обратите внимание, что основной вклад в вариативность данных вносит факторная изменчивость — средние по группам сильно отстают от общего среднего, в то время как наблюдения от своих групповых средних лежат в целом достаточно близко.</p>
+<p>Если связи нет, то это будет выглядеть как-то так:</p>
+<p>Обратите внимание, что вклад факторной изменчивости в вариативность данных крайне мал — средние по группам очень близки к общему среднего, в то время как отклонения наблюдений от своих групповых средних составляют бо́льшую часть вариативности данных.</p>
+<p>То есть, для того, чтобы сделать вывод о том, есть ли связь между фактором и зависимой переменной, нам нужно сопоставить факторную изменчивость и остаточную изменчивость.</p>
+<p>Теперь у нас есть все, чтобы поговорить о тестирования статистической значимости фактора. Именно этим и занимается дисперсионный анализ (analysis of variance, ANOVA).</p>
+</section>
+<section id="тестирование-значимости-фактора" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="тестирование-значимости-фактора"><span class="header-section-number">9.4</span> Тестирование значимости фактора</h2>
+<p>Поскольку у нас может быть разное количество наблюдений в группах и различное количество групп, лучше сравнивать не саму изменчивость — суммы квадратов — а среднюю изменчивость — средние квадраты. Они вычисляются так:</p>
+<p><span class="math display">\[
+\text{MS}_\text{t} = \frac{\text{TSS}}{\text{df}_\text{TSS}} =
+\frac{\sum_{i=1}^n (\overline y - y_i)^2}{n-1}
+\]</span></p>
+<p><span class="math display">\[
+\text{MS}_\text{e} = \frac{\text{ESS}}{\text{df}_\text{ESS}} =
+\frac{\sum_{j=1}^p n_j \cdot (\overline y - \overline y_i)^2}{p-1}
+\]</span></p>
+<p><span class="math display">\[
+\text{MS}_\text{r} = \frac{\text{RSS}}{\text{df}_\text{RSS}} =
+\frac{\sum_{j=1}^p \sum_{i=1}^{n_j} (\overline y_j - y_{ij})^2}{n-p}
+\]</span></p>
+<p>Ну, первое все узнали — это literally дисперсия, второе и третье тоже на неё похожи, но их принято называть средними квадратами. Ну, ок.</p>
+<p>MS e и<br>
+MS r помогают протестировать значимость фактора.</p>
+<p>Если зависимость между фактором и целевой переменной есть, то<br>
+MS e &gt; MS r . Если искомой зависимости нет, то<br>
+MS e ≈ MS r или даже<br>
+MS e &lt; MS r . В терминах статистических гипотез это будет выглядеть так:</p>
+<p>H 0 : μ 1 = μ 2 = ⋯ = μ p H 1 : ∃ i , j : μ i ≠ μ j</p>
+<p>Для тестирования этой гипотезы придумали вот такую статистику:</p>
+<p><span class="math display">\[
+F = \frac{\text{MS}_\text{e}}{\text{MS}_\text{r}} \overset{H_0}{\thicksim} F
+(
+\text{df}_\text{ESS}, \text{df}_\text{RSS}
+)
+\]</span></p>
+<section id="распределение-фишера" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="распределение-фишера"><span class="header-section-number">9.4.1</span> Распределение Фишера</h3>
+<p>Значение F-статистики подчиняется F-распределению (распределению Фишера). Его форма зависит от двух значений степеней свободы —<br>
+df e , df r .</p>
+<div id="fig-F-dist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-F-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell quarto-layout-panel" data-layout="[[50,50]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="infer-anovaI_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Рисунок&nbsp;9.1: Распределение Фишера при&nbsp;различных значениях его параметров"><img src="infer-anovaI_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="infer-anovaI_files/figure-html/unnamed-chunk-2-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Рисунок&nbsp;9.1: Распределение Фишера при&nbsp;различных значениях его параметров"><img src="infer-anovaI_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></a></p>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-F-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;9.1: Распределение Фишера при&nbsp;различных значениях его параметров
+</figcaption>
+</figure>
+</div>
+<p>Как можно заметить, форма достаточно сильно меняется при увелчении первого числа степеней свободы, и не очень сильно, но все же меняется, с увеличением второго числа степеней свободы.</p>
+<p>Не трудно предположить, что для значения F-статистики будет вычисляться p-value, на основании которого будет осуществляться статистический вывод:</p>
+<p>Если p-value &lt; α, то мы получаем значение F-статистики, не характерное для случая, когда нулевая гипотеза верна, что даёт нам основания отклонить нулевую гипотезу об отсутствии различий между группами и принять альтернативную, о том, что хотя бы между двумя какими-либо группами есть различия. Если p-value &gt; α, то мы получаем значение F-статистики, характерное для случая, когда нулевая гипотеза верна, что не даёт нам оснований отклонить нулевую гипотезу об отсутствии различий между группами. 11.4.2 Представление результатов дисперсионного анализа Результаты дисперсионного анализа обычно представляются в виде таблицы:</p>
+<p>Источник изменчивости SS df MS<br>
+F</p>
+<p>p</p>
+<p>Фактор (объяснённая)<br>
+ESS</p>
+<p>df e</p>
+<p>MS e</p>
+<p>F ( df e , df r ) p-value Случайная (остаточная)<br>
+RSS</p>
+<p>df r</p>
+<p>MS r</p>
+<p>В реальной жизни оно как-то так работает:</p>
+<p>ANOVA Effect DFn DFd F p p&lt;.05 ges 1 name 2 177 15.63676 5.578527e-07 * 0.150156</p>
+<p><code>Levene's Test for Homogeneity of Variance</code> DFn DFd SSn SSd F p p&lt;.05 1 2 177 1647.479 76502.58 1.905843 0.1517362</p>
+<p>Тут еще нам автоматом выдали результаты теста Levene на равномерность (гомогенность) дисперсий. Это одно из условий применения дисперсионного анализа.</p>
+</section>
+</section>
+<section id="размер-эффекта-в-дисперсионном-анализе" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="размер-эффекта-в-дисперсионном-анализе"><span class="header-section-number">9.5</span> Размер эффекта в дисперсионном анализе</h2>
+<p>Итак, с ошибкой первого рода мы, как обычно, быстро и легко поборолись. Теперь боремся с ошибкой второго рода. Принципиально ничего не меняется — нам нужно понять, как считается размер эффекта, и рассчитать требуемую выборку.</p>
+<p>В случае дисперсионного анализа размер эффекта — это доля объясненной фактором дисперсии от всей дисперсии данных. Обозначается эта метрика<br>
+<span class="math inline">\(\eta^2\)</span>:</p>
+<p><span class="math display">\[
+\eta^2 = \frac{\text{ESS}}{\text{TSS}}
+\]</span></p>
+<p>Значения для интерпретации размера эффекта предлагаются такие:</p>
+<p>Значение<br>
+η 2 Размер эффекта 0.01 Малый (small) 0.06 Средний (medium) 0.14 Большой (large) Собственно, эти значения вбиваем в специально обученное ПО — и кайфуем!</p>
+</section>
+<section id="визуализация-результатов-дисперсионного-анализа" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="визуализация-результатов-дисперсионного-анализа"><span class="header-section-number">9.6</span> Визуализация результатов дисперсионного анализа</h2>
+<p>Визуализация результатов в дисперсионном анализе, с одной стороны, достаточно проста. Нам нужно отобразить точечные и интервальные оценки средних в группах, то есть нарисовать errorbar. В качестве интервальной оценки обычно отображается 95% доверительный интервал.</p>
+<p>График будет выглядеть примерно так:</p>
+<p>Интерпретировать подобные картинки мы уже с вами умеем — если забыли, напоминаю.</p>
+<p>Другим вариантом визуализации для дисперсионного анализа, который очень любят за рубежом, являются боксплоты. Вот как-то так:</p>
+<p>Я искренне не понимаю, почему они их там так любят, ведь они не отображают ровно ничего, связанного с дисперсионным анализом — вспомните основные элеметы боксплота. Но их любят, их рисуют — ну, ладно. Кто мы такие, чтобы это запрещать.</p>
+<p>Конечно, этот график хорош тем, что можно сделать что-то такое — иногда это может быть полезно:</p>
+<p>Но можно изобразить комбо! Оно называется violin plot:</p>
+<p>С одной стороны, он нам отобразит распределения зависимой переменной по группам, с другой стороны, мы можем дополнительно отобразить средние с доверительными интервалами, как сделано на графике выше. Ну, просто невероятно!</p>
+</section>
+<section id="условия-применения-дисперсионного-анализа" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="условия-применения-дисперсионного-анализа"><span class="header-section-number">9.7</span> Условия применения дисперсионного анализа</h2>
+<p>Как вы уже могли догадаться, дисперсионный анализ относится к группе параметрических статистических методов, поэтому выдвигается ряд требований к данным, на которых проводится такой анализ.</p>
+<p>Количественная непрерывная зависимая переменная Независимые между собой выборки А если зависимые, то надо это учесть в модели ановы Нормальное распределение признака в генеральных совокупностях, из которых извлечены выборки Равенство (гомогенность) дисперсий изучаемого признака в генеральных совокупностях из которых извлечены выборки Проверяется с помощью теста Левина Независимые наблюдения в каждой из выборок</p>
+<section id="гомогенность-дисперсий" class="level3" data-number="9.7.1">
+<h3 data-number="9.7.1" class="anchored" data-anchor-id="гомогенность-дисперсий"><span class="header-section-number">9.7.1</span> Гомогенность дисперсий</h3>
+<p>Гомогенность дисперсии — важно допущение. Поясним за него.</p>
+<p>Как уже отмечено выше, модель дисперсионного анализа предполагает, что в генеральный совокупностях, из которых мы извлекли наши выборки, дисперсии изучаемого признака равны. Однако в силу неопределенности и вариативности это может быть и не так, поэтому нужно протестировать гипотезу о равенстве дисперсий в группах. Алгоритм статистического вывода нам изместен, а в детали этого попутного теста мы, пожалуй, погружаться не будем. Гипотеза о равенстве дисперсия проверяется с помощью теста Левина (Левена / Левиня / и др., Leven’s test, см. выше.</p>
+<p>Соответственно, мы хотим, чтобы его результаты не были статистически значимы, так как в этом случае мы не можем отклонить гипотезу о том, что дисперсии гомогенны. Если же результаты теста статистически значимы, то использование дисперсионного анализа не то чтобы хорошо на имеющихся данных.</p>
+</section>
+</section>
+<section id="виды-эффектов-в-дисперсионном-анализе" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="виды-эффектов-в-дисперсионном-анализе"><span class="header-section-number">9.8</span> Виды эффектов в дисперсионном анализе</h2>
+<p>Тот вид дисперсионного анализа, который мы рассмотрели — это такой стандартный базовый дисперсионный анализ. Однако давайте пристально посмотрим на один момент: «пусть у нас три группы испытуемых — каждая группа проходит одно экспериментальное условие». То есть каждой из экспериментальных групп у нас уникальные испытуемые. Такой эффект фактора в дисперсионном анализе называется between-subject effect, а в терминах эксперименталки это будут независимые выборки.</p>
+<p>Но в жизни, как мы знаем, такой экспериментальный дизайн вряд ли адекватен. Скорее, мы бы сделали так, что один испытуемый проходит все три условия — и нейтральное, и негативной, и позитивное. Да еще и в случайном порядке. У нас получится, что от каждого испытуемого мы получаем три измерения — с нейтрального, негативного и позитивного условия. Такой эффект фактора в дисперсионном анализе называется within-subject effect, сама ANOVA будет дисперсионным анализом с повторными измерениями, а выборки наблюдений буду зависимыми.</p>
+<p>Вообще-то так как у нас эксперимент, мы можем здесь говорить и о влиянии, которое мы контролируем с помощью экспериментального дизайна. Но будем осторожны и продолжим говорить о связи.↩︎</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопировано!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопировано!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./infer-correlation.html" class="pagination-link" aria-label="Корреляционный анализ">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
