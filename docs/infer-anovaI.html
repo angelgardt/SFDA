@@ -293,6 +293,16 @@ window.Quarto = {
 <p>Мы говорили, что основные характеристики статистических данных — неопределённость и вариативность. И эта вариативность (изменчивость) имеет определенную структуру.</p>
 <p>Мы также говорили, что основная мера вариативности — это дисперсия. Это верно, однако сейчас чуть замедлимся, и сначала поговорим о суммах квадратов. Ну, то же самое, что дисперсия, только на степени пока не делим.</p>
 <p>Итак, наши данные выглядят как-то так:</p>
+<div id="fig-anova-scheme-data" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anova-scheme-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="img/infer/ow-anova-scheme-data.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Рисунок&nbsp;9.1: Схема визуализации данных"><img src="img/infer/ow-anova-scheme-data.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anova-scheme-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;9.1: Схема визуализации данных
+</figcaption>
+</figure>
+</div>
 <p>По оси<br>
 x наша независимая экспериментальная переменная — категориальная, как можно наблюдать. Видно, что у нас три экспериментальные группы. По оси<br>
 y наша зависимая экспериментальная переменная — количественная, как можно наблюдать. Видно, что в каждой группе наблюдений есть какой-то разброс.</p>
@@ -301,17 +311,47 @@ y наша зависимая экспериментальная перемен�
 \text{TSS} = \sum_{i=1}^n (\overline y - y_i)^2, \quad
 \text{df}_\text{TSS} = n-1
 \]</span></p>
+<div id="fig-anova-scheme-tss" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anova-scheme-tss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="img/infer/ow-anova-scheme-tss.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Рисунок&nbsp;9.2: Общая сумма квадратов (TSS)"><img src="img/infer/ow-anova-scheme-tss.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anova-scheme-tss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;9.2: Общая сумма квадратов (TSS)
+</figcaption>
+</figure>
+</div>
 <p>Есть факторная (объясненная) изменчивость (explained sum of squares, ESS) — это отклонения внутригрупповых средних от общего среднего:</p>
 <p><span class="math display">\[
 \text{ESS} = \sum_{j=1}^p n_j \cdot (\overline y - \overline y_j)^2, \quad
 \text{df}_\text{ESS} = p-1
 \]</span></p>
+<div id="fig-anova-scheme-ess" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anova-scheme-ess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="img/infer/ow-anova-scheme-ess.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Рисунок&nbsp;9.3: Объясненная сумма квадратов (ESS)"><img src="img/infer/ow-anova-scheme-ess.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anova-scheme-ess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;9.3: Объясненная сумма квадратов (ESS)
+</figcaption>
+</figure>
+</div>
 <p>Факторная она, потому что то, что мы называем в эксперименте независимой переменной, в дисперсионном анализе называется фактором. Объясненная, потому что она объясняется действием фактора (независимой переменной).</p>
 <p>И есть какая-то изменчивость, которая остается необъясненной — случайная (остаточная) изменчивость (residual sum of squares, RSS):</p>
 <p><span class="math display">\[
 \text{RSS} = \sum_{j=1}^p \sum_{i=1}^{n_j} (\overline y_j - y_{ji})^2, \quad
 \text{df}_\text{RSS} = n-p
 \]</span></p>
+<div id="fig-anova-scheme-rss" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anova-scheme-rss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="img/infer/ow-anova-scheme-rss.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Рисунок&nbsp;9.4: Остаточная сумма квадратов (RSS)"><img src="img/infer/ow-anova-scheme-rss.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anova-scheme-rss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;9.4: Остаточная сумма квадратов (RSS)
+</figcaption>
+</figure>
+</div>
 <p>Очевидно, что</p>
 <p><span class="math display">\[
 \text{TSS} = \text{ESS} + \text{RSS}
@@ -323,6 +363,41 @@ y наша зависимая экспериментальная перемен�
 <p>Если связь существует, то это будет выглядеть как-то так:</p>
 <p>Обратите внимание, что основной вклад в вариативность данных вносит факторная изменчивость — средние по группам сильно отстают от общего среднего, в то время как наблюдения от своих групповых средних лежат в целом достаточно близко.</p>
 <p>Если связи нет, то это будет выглядеть как-то так:</p>
+<div id="fig-anova-mseffect" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anova-mseffect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-anova-mseffect" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-anova-mseffect-yes" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-anova-mseffect-yes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="img/infer/ow-anova-scheme-var.jpg" class="lightbox" data-gallery="fig-anova-mseffect" title="Рисунок&nbsp;9.5&nbsp;(a): Наличие эффекта фактора"><img src="img/infer/ow-anova-scheme-var.jpg" class="img-fluid figure-img" data-ref-parent="fig-anova-mseffect"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-anova-mseffect-yes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Наличие эффекта фактора
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-anova-mseffect" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-anova-mseffect-no" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-anova-mseffect-no-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="img/infer/ow-anova-scheme-novar.jpg" class="lightbox" data-gallery="fig-anova-mseffect" title="Рисунок&nbsp;9.5&nbsp;(b): Отсутствие эффекта фактора"><img src="img/infer/ow-anova-scheme-novar.jpg" class="img-fluid figure-img" data-ref-parent="fig-anova-mseffect"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-anova-mseffect-no-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Отсутствие эффекта фактора
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anova-mseffect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;9.5: Структура изменчивости в&nbsp;ситуациях отсутствия и наличия эффекта группирующего фактора
+</figcaption>
+</figure>
+</div>
 <p>Обратите внимание, что вклад факторной изменчивости в вариативность данных крайне мал — средние по группам очень близки к общему среднего, в то время как отклонения наблюдений от своих групповых средних составляют бо́льшую часть вариативности данных.</p>
 <p>То есть, для того, чтобы сделать вывод о том, есть ли связь между фактором и зависимой переменной, нам нужно сопоставить факторную изменчивость и остаточную изменчивость.</p>
 <p>Теперь у нас есть все, чтобы поговорить о тестирования статистической значимости фактора. Именно этим и занимается дисперсионный анализ (analysis of variance, ANOVA).</p>
@@ -343,13 +418,16 @@ y наша зависимая экспериментальная перемен�
 \frac{\sum_{j=1}^p \sum_{i=1}^{n_j} (\overline y_j - y_{ij})^2}{n-p}
 \]</span></p>
 <p>Ну, первое все узнали — это literally дисперсия, второе и третье тоже на неё похожи, но их принято называть средними квадратами. Ну, ок.</p>
-<p>MS e и<br>
-MS r помогают протестировать значимость фактора.</p>
+<p>MSe и MSr помогают протестировать значимость фактора.</p>
 <p>Если зависимость между фактором и целевой переменной есть, то<br>
-MS e &gt; MS r . Если искомой зависимости нет, то<br>
-MS e ≈ MS r или даже<br>
-MS e &lt; MS r . В терминах статистических гипотез это будет выглядеть так:</p>
-<p>H 0 : μ 1 = μ 2 = ⋯ = μ p H 1 : ∃ i , j : μ i ≠ μ j</p>
+MSe &gt; MSr. Если искомой зависимости нет, то MSe ≈ MSr или даже MSe &lt; MSr.</p>
+<p>В терминах статистических гипотез это будет выглядеть так:</p>
+<p><span class="math display">\[
+\begin{aligned}
+H_0&amp;: \mu_1 = \mu_2 = \ldots = \mu_p \\
+H_1&amp;: \exists i, j : \mu_i \neq \mu_j
+\end{aligned}
+\]</span></p>
 <p>Для тестирования этой гипотезы придумали вот такую статистику:</p>
 <p><span class="math display">\[
 F = \frac{\text{MS}_\text{e}}{\text{MS}_\text{r}} \overset{H_0}{\thicksim} F
@@ -367,16 +445,16 @@ df e , df r .</p>
 <div class="cell quarto-layout-panel" data-layout="[[50,50]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="infer-anovaI_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Рисунок&nbsp;9.1: Распределение Фишера при&nbsp;различных значениях его параметров"><img src="infer-anovaI_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="infer-anovaI_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Рисунок&nbsp;9.6: Распределение Фишера при&nbsp;различных значениях его параметров"><img src="infer-anovaI_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="infer-anovaI_files/figure-html/unnamed-chunk-2-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Рисунок&nbsp;9.1: Распределение Фишера при&nbsp;различных значениях его параметров"><img src="infer-anovaI_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="infer-anovaI_files/figure-html/unnamed-chunk-2-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Рисунок&nbsp;9.6: Распределение Фишера при&nbsp;различных значениях его параметров"><img src="infer-anovaI_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></a></p>
 </div>
 </div>
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-F-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рисунок&nbsp;9.1: Распределение Фишера при&nbsp;различных значениях его параметров
+Рисунок&nbsp;9.6: Распределение Фишера при&nbsp;различных значениях его параметров
 </figcaption>
 </figure>
 </div>
