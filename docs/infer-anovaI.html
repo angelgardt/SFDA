@@ -243,10 +243,7 @@ window.Quarto = {
   <li><a href="#распределение-фишера" id="toc-распределение-фишера" class="nav-link" data-scroll-target="#распределение-фишера"><span class="header-section-number">8.4.1</span> Распределение Фишера</a></li>
   <li><a href="#anovaI-results" id="toc-anovaI-results" class="nav-link" data-scroll-target="#anovaI-results"><span class="header-section-number">8.4.2</span> Представление результатов дисперсионного анализа</a></li>
   </ul></li>
-  <li><a href="#anovaI-etasq" id="toc-anovaI-etasq" class="nav-link" data-scroll-target="#anovaI-etasq"><span class="header-section-number">8.5</span> Размер эффекта в дисперсионном анализе</a>
-  <ul class="collapse">
-  <li><a href="#eta2-vs-f2" id="toc-eta2-vs-f2" class="nav-link" data-scroll-target="#eta2-vs-f2"><span class="header-section-number">8.5.1</span> <span class="math inline">\(\eta^2\)</span> vs <span class="math inline">\(f^2\)</span></a></li>
-  </ul></li>
+  <li><a href="#anovaI-etasq" id="toc-anovaI-etasq" class="nav-link" data-scroll-target="#anovaI-etasq"><span class="header-section-number">8.5</span> Размер эффекта в дисперсионном анализе</a></li>
   <li><a href="#anovaI-vis" id="toc-anovaI-vis" class="nav-link" data-scroll-target="#anovaI-vis"><span class="header-section-number">8.6</span> Визуализация результатов дисперсионного анализа</a></li>
   <li><a href="#anovaI-cond" id="toc-anovaI-cond" class="nav-link" data-scroll-target="#anovaI-cond"><span class="header-section-number">8.7</span> Условия применения дисперсионного анализа</a>
   <ul class="collapse">
@@ -550,14 +547,21 @@ F = \frac{\text{MS}_\text{e}}{\text{MS}_\text{r}} \overset{H_0}{\thicksim} F
 </tbody>
 </table>
 <p>Собственно, эти значения вбиваем в&nbsp;специально обученное ПО&nbsp;— и&nbsp;кайфуем!</p>
-<div id="tip-fsq">
-<section id="eta2-vs-f2" class="level3" data-number="8.5.1">
-<h3 data-number="8.5.1" class="anchored" data-anchor-id="eta2-vs-f2"><span class="header-section-number">8.5.1</span> <span class="math inline">\(\eta^2\)</span> vs <span class="math inline">\(f^2\)</span></h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="math inline">\(\eta^2\)</span> vs <span class="math inline">\(f^2\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Иногда в&nbsp;ПО для&nbsp;анализа мощности исследования можно встретить другую метрику размера эффекта для&nbsp;дисперсионного анализа&nbsp;— <span class="math inline">\(f^2\)</span>. Она может быть рассчитана на&nbsp;основе <span class="math inline">\(\eta^2\)</span>, если внутри программы не&nbsp;предусмотрен пересчёт:</p>
 <p><span class="math display">\[
 f^2 = \frac{\eta^2}{1 - \eta^2}
 \]</span></p>
-</section>
+</div>
 </div>
 </section>
 <section id="anovaI-vis" class="level2" data-number="8.6">
@@ -573,7 +577,7 @@ f^2 = \frac{\eta^2}{1 - \eta^2}
 <p><a href="img/infer/anova_boxplot2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="img/infer/anova_boxplot2-1.png" class="img-fluid"></a></p>
 <p>Но можно изобразить комбо! Оно называется violin plot:</p>
 <p><a href="img/infer/violinplot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="img/infer/violinplot-1.png" class="img-fluid"></a></p>
-<p>С одной стороны, он нам отобразит распределения зависимой переменной по группам, с другой стороны, мы можем дополнительно отобразить средние с доверительными интервалами, как сделано на графике выше. Ну, просто невероятно!</p>
+<p>С&nbsp;одной стороны, он нам отобразит распределения зависимой переменной по&nbsp;группам, с другой стороны, мы можем дополнительно отобразить средние с&nbsp;доверительными интервалами, как сделано на графике выше. Ну, просто невероятно!</p>
 </section>
 <section id="anovaI-cond" class="level2" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="anovaI-cond"><span class="header-section-number">8.7</span> Условия применения дисперсионного анализа</h2>
