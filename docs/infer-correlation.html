@@ -249,7 +249,8 @@ window.Quarto = {
   <li><a href="#correlation-stattest" id="toc-correlation-stattest" class="nav-link" data-scroll-target="#correlation-stattest"><span class="header-section-number">8.3.1</span> Тестирование статистической значимости коэффициента корреляции</a></li>
   <li><a href="#correlation-ci" id="toc-correlation-ci" class="nav-link" data-scroll-target="#correlation-ci"><span class="header-section-number">8.3.2</span> Доверительный интервал для коэффициента корреляции</a></li>
   <li><a href="#correlation-effsize" id="toc-correlation-effsize" class="nav-link" data-scroll-target="#correlation-effsize"><span class="header-section-number">8.3.3</span> Размер эффекта для коэффициента корреляции</a></li>
-  <li><a href="#correlation-vis" id="toc-correlation-vis" class="nav-link" data-scroll-target="#correlation-vis"><span class="header-section-number">8.3.4</span> Визуализация корреляции</a></li>
+  <li><a href="#расчет-объема-выборки-для-корреляционного-анализа" id="toc-расчет-объема-выборки-для-корреляционного-анализа" class="nav-link" data-scroll-target="#расчет-объема-выборки-для-корреляционного-анализа"><span class="header-section-number">8.3.4</span> Расчет объема выборки для корреляционного анализа</a></li>
+  <li><a href="#correlation-vis" id="toc-correlation-vis" class="nav-link" data-scroll-target="#correlation-vis"><span class="header-section-number">8.3.5</span> Визуализация корреляции</a></li>
   </ul></li>
   <li><a href="#correlation-corscales" id="toc-correlation-corscales" class="nav-link" data-scroll-target="#correlation-corscales"><span class="header-section-number">8.4</span> Коэффициенты корреляции для разных шкал</a>
   <ul class="collapse">
@@ -259,16 +260,9 @@ window.Quarto = {
   <li><a href="#correlation-other" id="toc-correlation-other" class="nav-link" data-scroll-target="#correlation-other"><span class="header-section-number">8.5</span> Другие корреляции</a>
   <ul class="collapse">
   <li><a href="#correlation-phi" id="toc-correlation-phi" class="nav-link" data-scroll-target="#correlation-phi"><span class="header-section-number">8.5.1</span> <span class="math inline">\(\varphi\)</span>-коэффициент</a></li>
+  <li><a href="#correlation-biser" id="toc-correlation-biser" class="nav-link" data-scroll-target="#correlation-biser"><span class="header-section-number">8.5.2</span> Бисериальный коэффициент корреляции</a></li>
+  <li><a href="#correlation-rankbiser" id="toc-correlation-rankbiser" class="nav-link" data-scroll-target="#correlation-rankbiser"><span class="header-section-number">8.5.3</span> Рангово-бисериальный коэффициент корреляции</a></li>
   </ul></li>
-  <li><a href="#ϕ" id="toc-ϕ" class="nav-link" data-scroll-target="#ϕ"><span class="header-section-number">9</span> ϕ</a>
-  <ul class="collapse">
-  <li><a href="#correlation-biser" id="toc-correlation-biser" class="nav-link" data-scroll-target="#correlation-biser"><span class="header-section-number">9.0.1</span> Бисериальный коэффициент корреляции</a></li>
-  </ul></li>
-  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r"><span class="header-section-number">10</span> r</a>
-  <ul class="collapse">
-  <li><a href="#correlation-rankbiser" id="toc-correlation-rankbiser" class="nav-link" data-scroll-target="#correlation-rankbiser"><span class="header-section-number">10.0.1</span> Рангово-бисериальный коэффициент корреляции</a></li>
-  </ul></li>
-  <li><a href="#r-1" id="toc-r-1" class="nav-link" data-scroll-target="#r-1"><span class="header-section-number">11</span> r</a></li>
   </ul>
 </nav>
     </div>
@@ -579,15 +573,15 @@ r_{X_1, X_2} = \frac{\sum_{i=1}^n (\overline x_1 - x_{1i}) (\overline x_2 - x_{2
 <h3 data-number="8.3.1" class="anchored" data-anchor-id="correlation-stattest"><span class="header-section-number">8.3.1</span> Тестирование статистической значимости коэффициента корреляции</h3>
 <p>Итак, мы, как обычно, хотим ответить на&nbsp;вопрос, есть&nbsp;ли в&nbsp;генеральной совокупности связь между двумя изучаемыми переменными. Если в&nbsp;генеральной совокупности связь между признаками отсутствует, то&nbsp;есть <span class="math inline">\(\rho_{X_1,X_2} = 0\)</span>, будет&nbsp;ли равен нулю <span class="math inline">\(r_{X_1, X_2}\)</span>? Можно с&nbsp;уверенностью сказать, что&nbsp;не&nbsp;будет, так как выборочный коэффициент корреляции является случайной величиной. А&nbsp;мы помним, что вероятность принятия случайной величиной своего конкретного значения равна нулю.</p>
 <p>Тогда необходимо протестировать статистическую гипотезу:</p>
-<p><span class="math display">\[
+<p><span id="eq-rho-twosided"><span class="math display">\[
 \begin{aligned}
 H_0&amp;: \rho_{X_1, X_2} = 0 \\
 H_1&amp;: \rho_{X_1, X_2} \neq 0
 \end{aligned}
-\]</span></p>
+\tag{8.1}\]</span></span></p>
 <p>Нулевая гипотеза гласит, что между признаками нет линейной взаимосвязи, альтернативная говорит&nbsp;— что есть. Обычно мы не&nbsp;закладываем в&nbsp;гипотезу направление связи, потому что чаще всего и&nbsp;положительная, и отрицательная нас устроит&nbsp;— это мы будем потом уже содержательно интерпретировать.</p>
 <p>Однако в&nbsp;принципе нам никто не&nbsp;запрещает задать направленную альтернативную гипотезу:</p>
-<p><span class="math display">\[
+<p><span id="eq-rho-onesided"><span class="math display">\[
 \begin{aligned}
 H_0&amp;: \rho_{X_1, X_2} \geq 0 \\
 H_1&amp;: \rho_{X_1, X_2} &lt; 0
@@ -597,7 +591,7 @@ H_1&amp;: \rho_{X_1, X_2} &lt; 0
 H_0&amp;: \rho_{X_1, X_2} \leq 0 \\
 H_1&amp;: \rho_{X_1, X_2} &gt; 0
 \end{aligned}
-\]</span></p>
+\tag{8.2}\]</span></span></p>
 <p>Далее мы посмотрим, как это повлияет на&nbsp;ход тестирования гипотезы.</p>
 <p>Гипотезу сформулировали, теперь надо подобрать статистический критерий. Он вот:</p>
 <p><span class="math display">\[
@@ -626,116 +620,298 @@ t = \frac{r_{X_1,X_2} - \rho}{\sqrt{\dfrac{1 - r^2_{X_1,X_2}}{n-2}}}
 </div>
 <p>Может показаться, что&nbsp;оно похоже на&nbsp;нормальное распределение&nbsp;— и&nbsp;это правда, но&nbsp;только с&nbsp;30+ степеней свободы. А&nbsp;до этого можно наблюдать высокие хвосты.</p>
 <p>Собственно, далее согласно уже знакомому нам алгоритму тестирования статистических гипотез мы рассчитываем статистику критерия, p-value для&nbsp;неё и&nbsp;делаем статистический вывод. Все так же, как и&nbsp;в&nbsp;случае с&nbsp;z-тестом.</p>
+<p>Для&nbsp;двусторонней альтернативной гипотезы (<a href="#eq-rho-twosided" class="quarto-xref"><span>8.1</span></a>) критическая область будет задана с&nbsp;двух сторон (<a href="#fig-ttest-twosided" class="quarto-xref">Рисунок&nbsp;<span>8.13</span></a>). Для&nbsp;односторонней (<a href="#eq-rho-onesided" class="quarto-xref"><span>8.2</span></a>)&nbsp;— соответственно, с&nbsp;одной стороны (<a href="#fig-ttest-onesided" class="quarto-xref">Рисунок&nbsp;<span>8.14</span></a>): для&nbsp;<span class="math inline">\(\rho_{X_1,X_2}&gt;0\)</span>&nbsp;— справа, для&nbsp;<span class="math inline">\(\rho_{X_1,X_2}&lt;0\)</span>&nbsp;— слева.</p>
+<div id="fig-ttest-twosided" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ttest-twosided-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="infer-correlation_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Рисунок&nbsp;8.13: Критическая область при&nbsp;двусторонней альтернативной гипотезе"><img src="infer-correlation_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ttest-twosided-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;8.13: Критическая область при&nbsp;двусторонней альтернативной гипотезе
+</figcaption>
+</figure>
+</div>
+<div id="fig-ttest-onesided" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ttest-onesided-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell quarto-layout-panel" data-layout="[[50,50]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="infer-correlation_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Рисунок&nbsp;8.14: Критическая область при&nbsp;односторонней альтернативной гипотезе"><img src="infer-correlation_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="infer-correlation_files/figure-html/unnamed-chunk-4-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Рисунок&nbsp;8.14: Критическая область при&nbsp;односторонней альтернативной гипотезе"><img src="infer-correlation_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></a></p>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ttest-onesided-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;8.14: Критическая область при&nbsp;односторонней альтернативной гипотезе
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="correlation-ci" class="level3" data-number="8.3.2">
 <h3 data-number="8.3.2" class="anchored" data-anchor-id="correlation-ci"><span class="header-section-number">8.3.2</span> Доверительный интервал для коэффициента корреляции</h3>
-<p>Помимо того, что мы обязаны оценить статистическую значимость коэффициента корреляции, обычно мы еще строим доверительный интервал для него. С построением интервальной оценки возникают некоторые сложности. Мы не можем использовать рассмотренное выше распределение Стьюдента, так как оно строится для случая, когда верна нулевая гипотеза об отсутствии связи. Если же мы строим интервальную оценку, нас интересует случай наличия связи.</p>
-<p>Статистики долго думали и придумали</p>
-<p>вот это безобразие Впрочем, не очень важно, что именно они там придумали, потому что всё равно мы доверим построить доверительный интервал машине. Нам важно понять, как интерпретировать получившийся результат.</p>
-<p>Если в доверительный интервал коэффициента корреляции попадает<br>
-0 , значит коэффициент статистически равен нулю, то есть между изучаемыми переменными взаимосвязи нет. Если в доверительный интервал коэффициента корреляции не попадает<br>
-0 , значит коэффициент статистически отличен от нуля, то есть между изучаемыми переменными взаимосвязь есть.</p>
+<p>Помимо того, что&nbsp;мы обязаны оценить статистическую значимость коэффициента корреляции, обычно мы еще строим доверительный интервал для&nbsp;него. С&nbsp;построением интервальной оценки возникают некоторые сложности. Мы не&nbsp;можем использовать рассмотренное выше распределение Стьюдента, так&nbsp;как оно строится для&nbsp;случая, когда верна нулевая гипотеза об&nbsp;отсутствии связи. Если&nbsp;же мы строим интервальную оценку, нас интересует случай наличия связи.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Статистики долго думали и&nbsp;придумали
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>как с&nbsp;этой ситуацией обойтись. Для&nbsp;построения доверительного интервала используется <strong>z-преобразование Фишера</strong>:</p>
+<p><span class="math display">\[
+\bar z_{X_1,X_2} = z(r_{X_1,X_2}) = \frac{1}{2} \ln \left(
+\frac{ 1 + r_{X_1,X_2} }{ 1 - r_{X_1,X_2} }
+\right)
+\thicksim \mathcal N(\bar z_{X_1,X_2}, \tfrac{1}{n-3}),
+\]</span></p>
+<p>где <span class="math inline">\(n\)</span>&nbsp;— объём выборки, а <span class="math inline">\(r_{X_1,X_2}\)</span>&nbsp;— выборочный коэффициент корреляции.</p>
+<p>Интервальную оценку для&nbsp;величины <span class="math inline">\(\bar z_{X_1,X_2}\)</span> уже можно построить, используя нормальное распределение. Далее путём обратного преобразования получаются значения границ интервала <span class="math inline">\((r_{X_1,X_2}^{\min}, \; r_{X_1,X_2}^{\max})\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Впрочем, не&nbsp;очень важно, как именно будет вычисляться доверительный интервал, потому&nbsp;что всё равно мы доверим построить доверительный интервал машине. Нам важно понять, как интерпретировать получившийся результат.</p>
+<ul>
+<li>Если в&nbsp;доверительный интервал коэффициента корреляции <strong>попадает</strong> <span class="math inline">\(0\)</span>, значит коэффициент статистически <strong>равен нулю</strong>, то&nbsp;есть между изучаемыми переменными взаимосвязи нет. Если в&nbsp;доверительный интервал коэффициента корреляции <strong>не&nbsp;попадает</strong> <span class="math inline">\(0\)</span>, значит коэффициент статистически <strong>отличен от&nbsp;нуля</strong>, то&nbsp;есть между изучаемыми переменными взаимосвязь есть.</li>
+</ul>
 </section>
 <section id="correlation-effsize" class="level3" data-number="8.3.3">
 <h3 data-number="8.3.3" class="anchored" data-anchor-id="correlation-effsize"><span class="header-section-number">8.3.3</span> Размер эффекта для коэффициента корреляции</h3>
-<p>Еще одна статистика, которая нам необходима — это размер эффекта. На этот моменте мы начинаем беседовать об ошибке второго рода. До этого мы говорили только об ошибке первого рода и начились её контролировать с помощью уровня значимости. Теперь вот повогорим об ошибке второго рода.</p>
-<p>В целом, размер эффекта — это численное выражение силы взаимосвязи между переменными в генеральной совокупности.</p>
-<p>Здесь нам необходимо призадуматься, и осознать, что вообще-то корреляция сама по себе выражает силу взаимосвязи между переменными. И, да, это правда — размером эффекта для коэффициента корреляции является сам коэффициент корреляции. Удобненько.</p>
-<p>Так, к сожалению, будет не всегда, но вот с корреляцией это так. Ну, и хорошо.</p>
-<p>Рекомендации по интерпретация [абсолютного значения] коэффициента корреляции с точки зрения размера эффекта для социальных наук такие:</p>
-<p>Значение коэффициента Размер эффекта 0.1 Малый (small) 0.3 Средний (medium) 0.7 Большой (large) 10.3.4 Расчет объема выборки для корреляционного анализа Размер эффекта нам требуется для расчета объема выборки, необходимой для корректного корреляционного анализа. В чем идея?</p>
-<p>Мы говорили, что ошибку второго рода мы контролирует в помощью статистической мощности, которая равна<br>
-1 − β , где<br>
-β — вероятность ошибки второго рода. Конвенционально достаточным уровнем статистической мощности считается<br>
-80 % , то есть нам надо предпринять все усилия, чтобы достичь такого уровня статистической мощности. А что мы можем предпринять? Да, в общем-то только собрать достаточное количество наблюдений. Значит, надо рассчитать, сколько нам надо наблюдений, чтобы зафиксировать эффект, если он есть.</p>
-<p>Собственно, статистическая мощность, размер эффекта и объем выборки связаны вот как:</p>
-<p>↑ объем выборки → ↑ статистическая мощность ↑ размер эффекта → ↓ требуемый объем выборки</p>
-<p>Итого, если у нас есть ожидаемый размер эффекта и требуемый уровень статистической мощности, то мы можем рассчитать необходимый объем выборки. Формул не будет — мы рассчитываем объем выборки в специально обученном ПО.</p>
-<p>Что надо запомнить?</p>
-<p>Уровень статистической мощности (power) по умолчанию выбираем<br>
-80 %</p>
-<p>Размер эффекта можем взять из предыдущих исследований, на основе которых планируем текущее — это лучше — либо из рекомендаций по интерпретации размеров эффекта Например, в психологии большие корреляции — это вообще большая редкость, поэтому берем значения для малого или среднего размеров эффекта. Вгоняем это в программу, и оно там все само магически считается.</p>
+<p>Еще одна статистика, которая нам необходима&nbsp;— это размер эффекта. На&nbsp;этом моменте мы начинаем беседовать об&nbsp;ошибке второго рода. До&nbsp;этого мы говорили только об&nbsp;ошибке первого рода и&nbsp;научились её контролировать с&nbsp;помощью уровня значимости.</p>
+<p>В&nbsp;целом, <strong>размер эффекта</strong>&nbsp;— это численное выражение силы взаимосвязи между переменными в&nbsp;генеральной совокупности.</p>
+<p>Здесь нам необходимо призадуматься, и&nbsp;осознать, что&nbsp;вообще-то корреляция сама по&nbsp;себе выражает силу взаимосвязи между переменными. И, да, это&nbsp;правда&nbsp;— <strong>размером эффекта для&nbsp;коэффициента корреляции является сам коэффициент корреляции</strong>. Удобненько.</p>
+<p>Так, к&nbsp;сожалению, будет не&nbsp;всегда, но&nbsp;вот с&nbsp;корреляцией нам повезло.</p>
+<p>Рекомендации по&nbsp;интерпретация [абсолютного значения] коэффициента корреляции с&nbsp;точки зрения размера эффекта для&nbsp;социальных наук такие:</p>
+<div id="tbl-cor-effect-size" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cor-effect-size-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Таблица&nbsp;8.2: Интерпретация значений корреляции с&nbsp;точки зрения размера эффекта
+</figcaption>
+<div aria-describedby="tbl-cor-effect-size-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Значение коэффициента</th>
+<th style="text-align: center;">Размер эффекта</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(0.1\)</span></td>
+<td style="text-align: center;">Малый (small)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(0.3\)</span></td>
+<td style="text-align: center;">Средний (medium)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(0.7\)</span></td>
+<td style="text-align: center;">Большой (large)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
 </section>
-<section id="correlation-vis" class="level3" data-number="8.3.4">
-<h3 data-number="8.3.4" class="anchored" data-anchor-id="correlation-vis"><span class="header-section-number">8.3.4</span> Визуализация корреляции</h3>
-<p>Как можно отображать взаимосвязи между переменными? Один пример графика мы уже видели в самом начале — это была диаграмма рассеяния (scatterplot). Это достаточно простой и понятный график: по осям идут две количественные переменные, точки отображают наблюдения. В итоге получается облако точек. Чем более они вытянуты в линию, тем больше значение корреляции, чем более облако точек «круглое», тем значение кореляции меньше. Дополнительно обычно на таком графике отображают ещё линию тренда, чтобы более наглядно визуализировать линейный компонент взаимосвязи переменных. Построение такой линии отдельная довольно интересная задача — мы вскоре ею займемся и назовем это регрессионный анализ.</p>
-<p>Ниже примеры диаграмм рассения. Это визуализация результатов валидизации психометрической методики: на первом графике корреляция между итоговыми баллами двух опросников, а на втором — баллов по отдельным шкалам валидизируемого опросника и общим баллом другого опросника.</p>
-<p>Можно потренироваться визуально определять корреляцию по скаттерплотам.</p>
-<p>Бывает, что нас интересует связь не между двумя какими-либо отдельными переменными, а много попарных корреляций между несколькими переменными. Для этого есть визуализация, называемая корреляционная матрица (corrplot). По «осям» идут переменные, а на пересечении цветом отображается корреляция между переменными. Обычно холодные оттенки используются для положительных значений, а теплые — для отрицательных. Чем интенсивнее оттенок, тем больше значение корреляции. В данном случае на графике отображены корреляции между пунктами отдельной шкалы опросника.</p>
+<section id="расчет-объема-выборки-для-корреляционного-анализа" class="level3" data-number="8.3.4">
+<h3 data-number="8.3.4" class="anchored" data-anchor-id="расчет-объема-выборки-для-корреляционного-анализа"><span class="header-section-number">8.3.4</span> Расчет объема выборки для корреляционного анализа</h3>
+<p>Размер эффекта нам требуется для расчета объема выборки, необходимой для&nbsp;корректного корреляционного анализа. В чем идея?</p>
+<p>Мы говорили, что&nbsp;ошибку второго рода мы&nbsp;контролирует c&nbsp;помощью статистической мощности, которая равна <span class="math inline">\(1-\beta\)</span>, где <span class="math inline">\(\beta\)</span>&nbsp;— вероятность ошибки второго рода. Конвенционально достаточным уровнем статистической мощности считается <span class="math inline">\(80\%\)</span>, то&nbsp;есть нам надо предпринять все усилия, чтобы достичь такого уровня статистической мощности.</p>
+<p>А&nbsp;что мы можем предпринять? Да, в общем-то только собрать достаточное количество наблюдений. Значит, надо рассчитать, сколько нам надо наблюдений, чтобы зафиксировать эффект, если он есть.</p>
+<p>Собственно, статистическая мощность, размер эффекта и&nbsp;объем выборки связаны вот как:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\uparrow \text{объем выборки} &amp;\Rightarrow \uparrow \text{статистическая мощность} \\
+\uparrow \text{размер эффекта} &amp;\Rightarrow \downarrow \text{требуемый объем выборки}
+\end{aligned}
+\]</span></p>
+<p>Итого, если у&nbsp;нас есть ожидаемый размер эффекта и&nbsp;требуемый уровень статистической мощности, то&nbsp;мы можем рассчитать необходимый объем выборки.</p>
+<p>Формул не&nbsp;будет&nbsp;— мы рассчитываем объем выборки в&nbsp;специально обученном ПО.</p>
+<ul>
+<li>Уровень статистической мощности (power) можно выбрать и&nbsp;более 80%&nbsp;— это будет даже лучше.</li>
+<li>Размер эффекта можем взять из&nbsp;предыдущих исследований, на&nbsp;основе которых планируем текущее&nbsp;— это лучше&nbsp;— либо из&nbsp;рекомендаций по&nbsp;интерпретации размеров эффекта.
+<ul>
+<li>Так, в&nbsp;психологии большие корреляции&nbsp;— это вообще большая редкость, поэтому берем значения для&nbsp;малого или&nbsp;среднего размеров эффекта.</li>
+</ul></li>
+</ul>
+</section>
+<section id="correlation-vis" class="level3" data-number="8.3.5">
+<h3 data-number="8.3.5" class="anchored" data-anchor-id="correlation-vis"><span class="header-section-number">8.3.5</span> Визуализация корреляции</h3>
+<p>Как можно отображать взаимосвязи между переменными? Один пример графика мы уже видели в самом начале&nbsp;— это была <strong>диаграмма рассеяния (scatterplot)</strong>. Это достаточно простой и&nbsp;понятный график: по&nbsp;осям идут две количественные переменные, точки отображают наблюдения. В&nbsp;итоге получается облако точек. Чем более они вытянуты в линию, тем больше значение корреляции, чем более облако точек «круглое», тем значение кореляции меньше. Дополнительно обычно на таком графике отображают ещё линию тренда, чтобы более наглядно визуализировать линейный компонент взаимосвязи переменных. Построение такой линии отдельная довольно интересная задача&nbsp;— мы вскоре ею займемся и назовем это регрессионный анализ.</p>
+<p>Ниже примеры диаграмм рассения. Это визуализация результатов валидизации психометрической методики: на&nbsp;первом графике корреляция между итоговыми баллами двух опросников, а&nbsp;на втором&nbsp;— баллов по&nbsp;отдельным шкалам валидизируемого опросника и&nbsp;общим баллом другого опросника.</p>
+<div id="fig-scatterplots" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatterplots-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="img/infer/cor-scatterplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Рисунок&nbsp;8.15: Примеры диаграмм рассеяния"><img src="img/infer/cor-scatterplot.png" class="img-fluid figure-img"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="img/infer/cor-scatterplots.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Рисунок&nbsp;8.15: Примеры диаграмм рассеяния"><img src="img/infer/cor-scatterplots.png" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatterplots-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;8.15: Примеры диаграмм рассеяния
+</figcaption>
+</figure>
+</div>
+<p><a href="http://guessthecorrelation.com/">Можно потренироваться</a> визуально определять корреляцию по&nbsp;скаттерплотам.</p>
+<p>Бывает, что&nbsp;нас интересует связь не&nbsp;между двумя какими-либо отдельными переменными, а&nbsp;много попарных корреляций между несколькими переменными. Для&nbsp;этого есть визуализация, называемая <strong>корреляционная матрица (corrplot)</strong>. По «осям» идут переменные, а&nbsp;на&nbsp;пересечении цветом отображается корреляция между переменными. Обычно холодные оттенки используются для&nbsp;положительных значений, а&nbsp;теплые&nbsp;— для отрицательных. Чем интенсивнее оттенок, тем&nbsp;больше значение корреляции. В&nbsp;данном случае на&nbsp;графике отображены корреляции между пунктами отдельной шкалы опросника.</p>
+<div id="fig-corrplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-corrplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="img/infer/cor-corrplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Рисунок&nbsp;8.16: Примеры корреляционной матрицы"><img src="img/infer/cor-corrplot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-corrplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;8.16: Примеры корреляционной матрицы
+</figcaption>
+</figure>
+</div>
 </section>
 </section>
 <section id="correlation-corscales" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="correlation-corscales"><span class="header-section-number">8.4</span> Коэффициенты корреляции для разных шкал</h2>
-<p>Выше мы подробно обсудили корреляцию Пирсона и отметили, что этот коэффициент применяется для метрических шкал да ещё и нормально распределенных величин. А что же делать, если в наших данных не так?</p>
+<p>Выше мы подробно обсудили корреляцию Пирсона и&nbsp;отметили, что&nbsp;этот коэффициент применяется для&nbsp;метрических шкал да&nbsp;ещё&nbsp;и&nbsp;нормально распределенных величин. А&nbsp;что&nbsp;же делать, если в&nbsp;наших данных не&nbsp;так?</p>
 <section id="correlation-param" class="level3" data-number="8.4.1">
 <h3 data-number="8.4.1" class="anchored" data-anchor-id="correlation-param"><span class="header-section-number">8.4.1</span> Параметрические и непараметрические критерии</h3>
-<p>Все статистические методы деляться на два типа: параметрические и непараметрические.</p>
-<p>Параметрические методы работают с непосредственно с параметрами распределения исследуемых переменных. Так, для вычисления корреляции Пирсона мы используем среднее и стандартное отклонение. Как следствие, одно из условий применимести таких методов — нормальное распределение изучаемых переменных. Если это требование не выполнено, мы не можем быть достаточно уверены в том, что статистический метод дает надежные результаты — как минимум, потому что сами среднее и стандартное отклонение в случае скошенных распределения не особо хорошо описывают данные. Непараметрические методы не используют в вычислениях собственных статистик параметры распределений. Например, изученный нам хи-квадрат относится к непараметрическим критериям. Они работают либо с частотами, либо в рангами — в зависимости от того, какие переменные мы анализируем. Поэтому если требования нормальности распределения не выполнено, используют методы этой группы. Практически каждый параметрический критерий имеет своего непараметрического собрата. Отметим, что сам статистический вывод в случае непараметрических критериев осуществляется точно так же, как и в случае параметрических.</p>
+<p>Все статистические методы делятся на&nbsp;два типа: параметрические и&nbsp;непараметрические.</p>
+<ul>
+<li><strong>Параметрические методы</strong> работают непосредственно с&nbsp;параметрами распределения исследуемых переменных.
+<ul>
+<li>Так, для&nbsp;вычисления корреляции Пирсона мы используем среднее и&nbsp;стандартное отклонение.</li>
+<li>Как следствие, одно из&nbsp;условий<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> применимости таких методов&nbsp;— нормальное распределение изучаемых переменных.
+<ul>
+<li>Если это требование не&nbsp;выполнено, мы не&nbsp;можем быть достаточно уверены в&nbsp;том, что&nbsp;статистический метод дает надежные результаты&nbsp;— как минимум, потому что сами среднее и&nbsp;стандартное отклонение в&nbsp;случае скошенных распределения не&nbsp;особо хорошо описывают данные.</li>
+</ul></li>
+</ul></li>
+<li><strong>Непараметрические методы</strong> не&nbsp;используют в&nbsp;вычислениях собственных статистик параметры распределений.
+<ul>
+<li>Они работают либо с&nbsp;частотами, либо c&nbsp;рангами&nbsp;— в&nbsp;зависимости от&nbsp;того, какие переменные мы анализируем.</li>
+<li>Поэтому если требования нормальности распределения не&nbsp;выполнено, используют методы этой группы.</li>
+</ul></li>
+</ul>
+<p>Практически каждый параметрический критерий имеет своего непараметрического собрата. Отметим, что&nbsp;сам статистический вывод в&nbsp;случае непараметрических критериев осуществляется точно так&nbsp;же, как и&nbsp;в&nbsp;случае параметрических.</p>
 </section>
 <section id="correlation-nonparam" class="level3" data-number="8.4.2">
 <h3 data-number="8.4.2" class="anchored" data-anchor-id="correlation-nonparam"><span class="header-section-number">8.4.2</span> Непараметрические коэффициенты корреляции</h3>
 <p>Для разных шкал разработаны разные коэффициенты корреляции. Оценки коэффициентов будут рассчитываться по-разному, но логика тестирования статистических гипотез остаётся одинаковой.</p>
-<p>Переменная<br>
-X Переменная<br>
-Y Мера связи Интервальная или отношений Интервальная или отношений Корреляция Пирсона Ранговая, интервальная или отношений Ранговая, интервальная или отношений Корреляция Спирмена Ранговая Ранговая Корреляция Кенделла У непараметрических критериев формулы несколько зубодробительны, поэтому оставим их покоиться с миром. В статистическом ПО нужно будет просто выбрать подходящий критерий из предложенных.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Переменная <span class="math inline">\(X\)</span></th>
+<th style="text-align: center;">Переменная <span class="math inline">\(Y\)</span></th>
+<th style="text-align: center;">Мера связи</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Интервальная или отношений</td>
+<td style="text-align: center;">Интервальная или отношений</td>
+<td style="text-align: center;">Корреляция Пирсона</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Ранговая, интервальная или отношений</td>
+<td style="text-align: center;">Ранговая, интервальная или отношений</td>
+<td style="text-align: center;">Корреляция Спирмена</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Ранговая</td>
+<td style="text-align: center;">Ранговая</td>
+<td style="text-align: center;">Корреляция Кенделла</td>
+</tr>
+</tbody>
+</table>
+<p>У&nbsp;непараметрических критериев формулы несколько зубодробительны, поэтому оставим их покоиться с&nbsp;миром. В&nbsp;статистическом ПО нужно будет просто выбрать подходящий критерий из&nbsp;предложенных.</p>
 </section>
 </section>
 <section id="correlation-other" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="correlation-other"><span class="header-section-number">8.5</span> Другие корреляции</h2>
-<p>Этот раздел для отчаянных. Вас никто об это ни на экзамене, ни, возможно, в жизни не спросит.</p>
-<p>Можно коррелировать не только количественные и ранговые шкалы между собой, но и качественные тоже:</p>
-<p>Переменная<br>
-X Переменная<br>
-Y Мера связи Дихотомическая Дихотомическая<br>
-ϕ -коэффициент Дихотомическая Ранговая Рангово-бисериальный коэффициент Дихотомическая Интервальная или отношений Бисериальный коэффициент</p>
+<blockquote class="blockquote">
+<p>Этот раздел для&nbsp;отчаянных. Вас никто об&nbsp;этом ни&nbsp;на&nbsp;экзамене, ни, возможно, в&nbsp;жизни не&nbsp;спросит.</p>
+</blockquote>
+<p>Можно коррелировать не&nbsp;только количественные и&nbsp;ранговые шкалы между собой, но&nbsp;и&nbsp;категориальные тоже:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Переменная <span class="math inline">\(X\)</span></th>
+<th style="text-align: center;">Переменная <span class="math inline">\(Y\)</span></th>
+<th style="text-align: center;">Мера связи</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Дихотомическая</td>
+<td style="text-align: center;">Дихотомическая</td>
+<td style="text-align: center;"><span class="math inline">\(\varphi\)</span>-коэффициент</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Дихотомическая</td>
+<td style="text-align: center;">Ранговая</td>
+<td style="text-align: center;">Рангово-бисериальный коэффициент</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Дихотомическая</td>
+<td style="text-align: center;">Интервальная или отношений</td>
+<td style="text-align: center;">Бисериальный коэффициент</td>
+</tr>
+</tbody>
+</table>
 <section id="correlation-phi" class="level3" data-number="8.5.1">
 <h3 data-number="8.5.1" class="anchored" data-anchor-id="correlation-phi"><span class="header-section-number">8.5.1</span> <span class="math inline">\(\varphi\)</span>-коэффициент</h3>
-<p>Этот коэффициент позволяет рассчитать корреляцию между двумы дихотомическими шкалами. Он основан на расчёте статистики<br>
-χ 2 . По двум дихотомическим переменным строится, как мы знаем, таблицу сопряженности и рассчитывается<br>
-χ 2 . Далее он нормируется следующим образом, чтобы получить значения от 0 до 1, которые можно интерпретироват аналогично коэффициенту корреляции:</p>
+<p>Этот коэффициент позволяет рассчитать корреляцию между двумя дихотомическими шкалами. Он основан на расчёте статистики <span class="math inline">\(\chi^2\)</span>. По&nbsp;двум дихотомическим переменным строится, <a href="#infer-categorical">как мы узнаем</a>, таблица сопряженности и&nbsp;рассчитывается <span class="math inline">\(\chi^2\)</span>. Далее он нормируется следующим образом, чтобы получить значения от&nbsp;0 до&nbsp;1, которые можно интерпретироват аналогично коэффициенту корреляции:</p>
+<p><span class="math display">\[
+\varphi = \sqrt{\frac{\chi^2}{N}},
+\]</span></p>
+<p>где <span class="math inline">\(N\)</span>&nbsp;— общее количество наблюдений.</p>
 </section>
+<section id="correlation-biser" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="correlation-biser"><span class="header-section-number">8.5.2</span> Бисериальный коэффициент корреляции</h3>
+<p>Этот коэффициент используется для вычисления корреляции между количественной (<span class="math inline">\(Y\)</span>) и&nbsp;категориальной (<span class="math inline">\(X\)</span>) шкалой и&nbsp;рассчитывается следующим образом:</p>
+<p><span class="math display">\[
+r = \frac{\overline y_{x_1} - \overline y_{x_2}}{s_Y} \sqrt{\frac{n_1 n_2}{N}},
+\]</span></p>
+<p>где <span class="math inline">\(\overline y_{x_1}\)</span>&nbsp;— среднее по&nbsp;переменной <span class="math inline">\(Y\)</span> по&nbsp;элементам группы <span class="math inline">\(x_1\)</span>, <span class="math inline">\(\overline y_{x_2}\)</span>&nbsp;— среднее по&nbsp;переменной <span class="math inline">\(Y\)</span> по&nbsp;элементам группы <span class="math inline">\(x_2\)</span>, <span class="math inline">\(n_1\)</span>&nbsp;— число элементов в&nbsp;группе <span class="math inline">\(x_1\)</span>, <span class="math inline">\(n_2\)</span>&nbsp;— число элементов в&nbsp;группе <span class="math inline">\(x_2\)</span>, <span class="math inline">\(N\)</span>&nbsp;— общее число элементов.</p>
+<p>Важно отметить, что&nbsp;несмотря на&nbsp;то, что&nbsp;значение коэффициента может быть как положительным, так и&nbsp;отрицательным, это не&nbsp;влияет на&nbsp;интерпретацию. Это одно из&nbsp;исключений из&nbsp;общего правила.</p>
 </section>
-<section id="ϕ" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> ϕ</h1>
-<p>√ χ 2 N ,</p>
-<p>N — общее количество наблюдений.</p>
-<section id="correlation-biser" class="level3" data-number="9.0.1">
-<h3 data-number="9.0.1" class="anchored" data-anchor-id="correlation-biser"><span class="header-section-number">9.0.1</span> Бисериальный коэффициент корреляции</h3>
-<p>Этот коэффициент используется для вычисления корреляции между количественной ( y ) и категориальной ( x ) шкалой и рассчитывается следующим образом:</p>
-</section>
-</section>
-<section id="r" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> r</h1>
-<p>¯ y x 1 − ¯ y x 2 s y √ n 1 n 2 N ( N − 1 ) ,</p>
-<p>где<br>
-¯ y x 1 — среднее по переменной<br>
-y по элементам группы<br>
-x 1 ,<br>
-¯ y x 2 — среднее по переменной<br>
-y по элементам группы<br>
-x 2 ,<br>
-n 1 — число элементов в группе<br>
-x 1 ,<br>
-n 2 — число элементов в группе<br>
-x 2 ,<br>
-N — общее число элементов.</p>
-<p>Важно отметить, что несмотря на то, что значение коэффициента может быть как положительным, так и отрицательным, это не влияет на интерпретацию. Это одно из исключений из общего правила.</p>
-<section id="correlation-rankbiser" class="level3" data-number="10.0.1">
-<h3 data-number="10.0.1" class="anchored" data-anchor-id="correlation-rankbiser"><span class="header-section-number">10.0.1</span> Рангово-бисериальный коэффициент корреляции</h3>
-<p>Если у нас не количественная, а ранговая шкала, то применяется рангово-бисериальный коэффициент:</p>
-</section>
-</section>
-<section id="r-1" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> r</h1>
-<p>2 ( ¯ x 1 − ¯ x 2 ) N ,</p>
-<p>где<br>
-¯ x 1 — средний ранг в группе<br>
-x 1 ,<br>
-¯ x 2 — средний ранг в группе<br>
-x 2 ,<br>
-N — общее количество наблюдений.</p>
+<section id="correlation-rankbiser" class="level3" data-number="8.5.3">
+<h3 data-number="8.5.3" class="anchored" data-anchor-id="correlation-rankbiser"><span class="header-section-number">8.5.3</span> Рангово-бисериальный коэффициент корреляции</h3>
+<p>Если у&nbsp;нас не&nbsp;количественная, а&nbsp;ранговая шкала, то&nbsp;применяется рангово-бисериальный коэффициент:</p>
+<p><span class="math display">\[
+r = \frac{2(\overline x_1 - \overline x_2)}{N},
+\]</span></p>
+<p>где <span class="math inline">\(\overline x_1\)</span>&nbsp;— средний ранг в&nbsp;группе <span class="math inline">\(x_1\)</span>, <span class="math inline">\(\overline x_2\)</span>&nbsp;— средний ранг в&nbsp;группе <span class="math inline">\(x_2\)</span>, <span class="math inline">\(N\)</span>&nbsp;— общее количество наблюдений.</p>
 
 
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Хотя в&nbsp;ряде случаев даже параметрические статистические методы бывают довольно устойчивы к&nbsp;отклонению распределений от&nbsp;нормального.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
