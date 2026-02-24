@@ -249,7 +249,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#ci-interp" id="toc-ci-interp" class="nav-link" data-scroll-target="#ci-interp"><span class="header-section-number">6.4.1</span> Интерпретация границ доверительного интервала</a></li>
   <li><a href="#ci-meancomp" id="toc-ci-meancomp" class="nav-link" data-scroll-target="#ci-meancomp"><span class="header-section-number">6.4.2</span> Доверительный интервал и сравнение средних</a></li>
-  <li><a href="#ci-sd-n" id="toc-ci-sd-n" class="nav-link" data-scroll-target="#ci-sd-n"><span class="header-section-number">6.4.3</span> Связь доверительного интервала с&nbsp;разбросом иобъемом выборки</a></li>
+  <li><a href="#ci-sd-n" id="toc-ci-sd-n" class="nav-link" data-scroll-target="#ci-sd-n"><span class="header-section-number">6.4.3</span> Связь доверительного интервала с&nbsp;разбросом и&nbsp;объемом выборки</a></li>
+  <li><a href="#ci-sign" id="toc-ci-sign" class="nav-link" data-scroll-target="#ci-sign"><span class="header-section-number">6.4.4</span> Статистическая и&nbsp;практическая значимость</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -891,7 +892,7 @@ x_i = z_i \cdot s_x + \overline X,
 <p>Исходя из&nbsp;рассуждений выше, можно отметить, что&nbsp;если хотя&nbsp;бы одно среднее попало в&nbsp;доверительный интервал другого&nbsp;— случаи A и&nbsp;B&nbsp;— то различий между группами нет. А&nbsp;вот если средние не&nbsp;попадают в&nbsp;доверительные интервалы друг друга&nbsp;— случаи C и&nbsp;D&nbsp;— то&nbsp;различия между группами есть.</p>
 </section>
 <section id="ci-sd-n" class="level3" data-number="6.4.3">
-<h3 data-number="6.4.3" class="anchored" data-anchor-id="ci-sd-n"><span class="header-section-number">6.4.3</span> Связь доверительного интервала с&nbsp;разбросом иобъемом выборки</h3>
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="ci-sd-n"><span class="header-section-number">6.4.3</span> Связь доверительного интервала с&nbsp;разбросом и&nbsp;объемом выборки</h3>
 <p>Так&nbsp;как доверительный интервал рассчитывается на&nbsp;основе стандартной ошибки (<a href="#eq-ci" class="quarto-xref">Уравнение&nbsp;<span>6.2</span></a>), которая в&nbsp;свою очередь рассчитывается на&nbsp;основе стандартного отклонения и&nbsp;числа наблюдений (<a href="#eq-se" class="quarto-xref">Уравнение&nbsp;<span>6.1</span></a>), нетрудно заметить, что:</p>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
@@ -905,6 +906,30 @@ x_i = z_i \cdot s_x + \overline X,
 </ul>
 </div>
 </div>
+</div>
+</section>
+<section id="ci-sign" class="level3" data-number="6.4.4">
+<h3 data-number="6.4.4" class="anchored" data-anchor-id="ci-sign"><span class="header-section-number">6.4.4</span> Статистическая и&nbsp;практическая значимость</h3>
+<p>Итак, мы обсудили, как сравнивать средние значения в&nbsp;двух группах между собой с&nbsp;помощь доверительных интервалов. Однако это не&nbsp;всё, что&nbsp;можно с&nbsp;их помощью делать. Помимо <em>статистически значимых различий</em> нас могут интересовать и&nbsp;<em>практически значимые различия</em>, то&nbsp;есть различия или&nbsp;эффекты, значимые с&nbsp;точки зрения практической деятельности.</p>
+<p>Что такое практическая значимость и&nbsp;откуда её взять? Как ни&nbsp;странно&nbsp;— из&nbsp;практики. Например, пусть из&nbsp;клинической практики известно, что&nbsp;снижение суммарного балла по&nbsp;шкале депрессии Бэка на&nbsp;5 единиц приводит к&nbsp;улучшению качества жизни пациента. Это может считаться практически значимым эффектом. Или&nbsp;же из&nbsp;предшествующих исследований UX-отдела некоторой IT-компании известно, что&nbsp;если время, проведенное на&nbsp;странице регистрации превышает 2&nbsp;минуты, то&nbsp;конверсия в&nbsp;постоянных пользователей существенно снижается. Это также может быть практически значимым эффектом. Таким образом, что считать практически значимым эффектом будет различаться в&nbsp;зависимости от&nbsp;области, в&nbsp;которой мы работаем. Тем&nbsp;не&nbsp;менее, для&nbsp;статистики практически значимый эффект&nbsp;— это некоторое число или&nbsp;диапазон значений какой-либо переменной. Следовательно, мы можем сравнить измеренное нами в&nbsp;исследовании значение этой переменной со&nbsp;значением, соответствующим практической значимости эффекта с&nbsp;помощью доверительного интервала.</p>
+<p>Принципиально возможны следующие случаи (<a href="#fig-ci-prac" class="quarto-xref">Рисунок&nbsp;<span>6.10</span></a>).</p>
+<div id="fig-ci-prac" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ci-prac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="desc-ci_files/figure-html/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Рисунок&nbsp;6.10: Возможные результаты с&nbsp;точки зрения статистической и&nbsp;практической значимости эффекта. Цветом обозначена область практической значимости эффекта."><img src="desc-ci_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ci-prac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;6.10: Возможные результаты с&nbsp;точки зрения статистической и&nbsp;практической значимости эффекта. Цветом обозначена область практической значимости эффекта.
+</figcaption>
+</figure>
 </div>
 
 

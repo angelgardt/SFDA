@@ -29,7 +29,7 @@ book:
         - infer-anovaI.qmd
     #     - infer-anovaII.qmd
     #     - infer-posthoc.qmd
-    #     - infer-categorical.qmd
+        # - infer-categorical.qmd
     #     - infer-simplelinear.qmd
     #     - infer-multiplelinear.qmd
     #     - infer-ancova.qmd
