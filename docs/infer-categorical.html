@@ -41,6 +41,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -247,26 +250,11 @@ window.Quarto = {
   <li><a href="#categorical-crosstab" id="toc-categorical-crosstab" class="nav-link active" data-scroll-target="#categorical-crosstab"><span class="header-section-number">8.1</span> Анализ таблиц сопряженности</a>
   <ul class="collapse">
   <li><a href="#categorical-crosstab-theor" id="toc-categorical-crosstab-theor" class="nav-link" data-scroll-target="#categorical-crosstab-theor"><span class="header-section-number">8.1.1</span> Теоретические частоты</a></li>
+  <li><a href="#categorical-crosstab-indpearson" id="toc-categorical-crosstab-indpearson" class="nav-link" data-scroll-target="#categorical-crosstab-indpearson"><span class="header-section-number">8.1.2</span> Критерий независимости Пирсона</a></li>
+  <li><a href="#categorical-crosstab-chisqdist" id="toc-categorical-crosstab-chisqdist" class="nav-link" data-scroll-target="#categorical-crosstab-chisqdist"><span class="header-section-number">8.1.3</span> Распределение <span class="math inline">\(\chi^2\)</span></a></li>
+  <li><a href="#categorical-crosstab-effectsize" id="toc-categorical-crosstab-effectsize" class="nav-link" data-scroll-target="#categorical-crosstab-effectsize"><span class="header-section-number">8.1.4</span> Размер эффекта для&nbsp;критерия независимости Пирсона</a></li>
   </ul></li>
-  <li><a href="#расчёт-теоретических-частот" id="toc-расчёт-теоретических-частот" class="nav-link" data-scroll-target="#расчёт-теоретических-частот"><span class="header-section-number">8.2</span> Расчёт теоретических частот</a></li>
-  <li><a href="#критерий-независимости-пирсона" id="toc-критерий-независимости-пирсона" class="nav-link" data-scroll-target="#критерий-независимости-пирсона"><span class="header-section-number">8.3</span> Критерий независимости Пирсона</a>
-  <ul class="collapse">
-  <li><a href="#распределение-chi2" id="toc-распределение-chi2" class="nav-link" data-scroll-target="#распределение-chi2"><span class="header-section-number">8.3.1</span> Распределение <span class="math inline">\(\chi^2\)</span></a></li>
-  </ul></li>
-  <li><a href="#df" id="toc-df" class="nav-link" data-scroll-target="#df"><span class="header-section-number">9</span> df</a>
-  <ul class="collapse">
-  <li><a href="#критерий-согласия-пирсона" id="toc-критерий-согласия-пирсона" class="nav-link" data-scroll-target="#критерий-согласия-пирсона"><span class="header-section-number">9.1</span> Критерий согласия Пирсона</a></li>
-  <li><a href="#f-m" id="toc-f-m" class="nav-link" data-scroll-target="#f-m"><span class="header-section-number">9.2</span> f m</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">9.3</span> 233 262</a></li>
-  </ul></li>
-  <li><a href="#df-1" id="toc-df-1" class="nav-link" data-scroll-target="#df-1"><span class="header-section-number">10</span> df</a>
-  <ul class="collapse">
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">10.1</span> </a></li>
-  <li><a href="#chi-squared-test-for-given-probabilities" id="toc-chi-squared-test-for-given-probabilities" class="nav-link" data-scroll-target="#chi-squared-test-for-given-probabilities"><span class="header-section-number">10.2</span> Chi-squared test for given probabilities</a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">10.3</span> </a></li>
-  <li><a href="#data-d_gender" id="toc-data-d_gender" class="nav-link" data-scroll-target="#data-d_gender"><span class="header-section-number">10.4</span> data: d_gender</a></li>
-  <li><a href="#x-squared-9.5682-df-1-p-value-0.00198" id="toc-x-squared-9.5682-df-1-p-value-0.00198" class="nav-link" data-scroll-target="#x-squared-9.5682-df-1-p-value-0.00198"><span class="header-section-number">10.5</span> X-squared = 9.5682, df = 1, p-value = 0.00198</a></li>
-  </ul></li>
+  <li><a href="#categorical-other" id="toc-categorical-other" class="nav-link" data-scroll-target="#categorical-other"><span class="header-section-number">8.2</span> Критерий согласия Пирсона</a></li>
   </ul>
 </nav>
     </div>
@@ -551,13 +539,13 @@ n^{(\mathrm t)}_{ij} = \frac{n_{i \bullet} \cdot n_{\bullet j}}{n_{\bullet \bull
 <li>исходя из&nbsp;того, что&nbsp;между переменными нет взаимосвязи</li>
 <li>на&nbsp;основе известных (любых) маргинальных вероятностей.</li>
 </ul>
-<p>Рассчитаем для&nbsp;примера таблицу теоретических частот, соответствующую данным из&nbsp;таблицы <span class="quarto-unresolved-ref">?tbl-crosstab-long</span>:</p>
-<div id="tbl-crosstabl-long-theor" class="quarto-float anchored">
+<p>Рассчитаем для&nbsp;примера таблицу теоретических частот, соответствующую данным из&nbsp;таблицы <a href="#tbl-crosstablong-theor" class="quarto-xref"><span>8.5</span></a>:</p>
+<div id="tbl-crosstablong-theor" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-crosstabl-long-theor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Таблица&nbsp;8.5: Таблица теоретических частот, соответствующая эмпирическим частотам таблицы <span class="quarto-unresolved-ref">?tbl-crosstab-long</span>
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-crosstablong-theor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Таблица&nbsp;8.5: Таблица теоретических частот, соответствующая эмпирическим частотам таблицы <a href="#tbl-crosstablong" class="quarto-xref"><span>8.2</span></a>
 </figcaption>
-<div aria-describedby="tbl-crosstabl-long-theor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="tbl-crosstablong-theor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
 <colgroup>
 <col style="width: 25%">
@@ -606,162 +594,242 @@ n^{(\mathrm t)}_{ij} = \frac{n_{i \bullet} \cdot n_{\bullet j}}{n_{\bullet \bull
 &amp; H_1: \exists (i, j): \pi_{ij} \neq \pi_{i \bullet} \cdot \pi_{\bullet j}
 \end{aligned}
 \]</span></p>
-<p>X и<br>
-Y — подготовка к экзамену и успешность сдачи — то все частоты в таблице должны быть равны. То есть</p>
-<p>H 0 : a = b = c = d</p>
-<p>Альтернативная гипотеза в этом случае будет гласить, что хотя бы между двумя какими-либо ячейчас отсутствует статистическое равенство. Это сложно записать математически — можно, но будет длинно. Воспользуется логическим отрицанием — неверно, что все частоты равны между собой:</p>
-<p>H 1 : ¬ ( a = b = c = d )</p>
-<p>Окей, формулировка гипотезы — ✓ done!</p>
-<p>Теперь надо понять, как нам эту гипотезу протестировать. Мы бы, конечно, могли просто взять и сравнить наши частоты, но мы так делать не можем, ибо всё ещё вариативность и неопределенность статистических данных. Надо придумать другой ход.</p>
-<p>Мы можем взять теоретическую ситуацию, когда между нашими переменными нет связи — а значит нет различия между частотами — и сравнить с тем, что у нас есть в таблице. Так и поступают. Поэтому сначала нам нужно рассчитать теоретические частоты.</p>
+<p>Что&nbsp;ж, о, ура! Гипотеза наконец сформулирована. Время переходить к&nbsp;выбору статистического критерия.</p>
+</section>
+<section id="categorical-crosstab-indpearson" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="categorical-crosstab-indpearson"><span class="header-section-number">8.1.2</span> Критерий независимости Пирсона</h3>
+<p>Для&nbsp;тестирование заявленной гипотезы подходит <strong>критерий независимости Пирсона (Pearson’s Chi-squared test)</strong>. Как у&nbsp;любого статистического критерия, у&nbsp;него есть <em>статистика критерия</em>, которая вычисляется следующим образом:</p>
+<p><span class="math display">\[
+\chi^2 = \sum_{i=1}^k \sum_{j=1}^l \frac{(n_{ij} - n_{ij}^{(\text{t})}) ^2 }{n_{ij}^{(t)}} \overset{H_0}{\thicksim} \chi^2 (\text{df}), \,\, \text{df} = (r-1)(c-1)
+\]</span> где <span class="math inline">\(\chi^2\)</span>&nbsp;— значение статистики критерия, <span class="math inline">\(n_{ij}\)</span>&nbsp;— эмпирическая совместная частота, <span class="math inline">\(n_{ij}^{(\text{t})}\)</span>&nbsp;— теоретическая совместная частота, <span class="math inline">\(\chi^2(\text{df})\)</span>&nbsp;— распределение <span class="math inline">\(\chi^2\)</span> с&nbsp;параметром <span class="math inline">\(\text{df}\)</span> (степени свободы), <span class="math inline">\(r\)</span>&nbsp;— число строк в&nbsp;таблице сопряженности, <span class="math inline">\(c\)</span>&nbsp;— число столбцов в&nbsp;таблице сопряженности.</p>
+<p>По&nbsp;сути формула нам позволяет сравнить, насколько эмпирические частоты отклоняются от&nbsp;теоретических&nbsp;— рассчитанных для&nbsp;случая, когда между переменными нет взаимосвязи. Чем сильнее эти отклонения, тем больше будет наблюдаемое значение статистики критерия.</p>
+<p>Это общая формула для&nbsp;таблиц сопряженности любого размера. В&nbsp;рассматриваемом нами случае <span class="math inline">\(k=l=2\)</span>, так как таблица сопряженности имеет размер 2×2. Следовательно, число степеней свобооды в&nbsp;нашем случае будет равно <span class="math inline">\(\text{df} = (2 - 1)(2-1) = 1\)</span>.</p>
+<p>В&nbsp;частности, для&nbsp;нашего случая (<a href="#tbl-crosstablong-theor" class="quarto-xref">Таблица&nbsp;<span>8.5</span></a> и&nbsp;<a href="#tbl-crosstablong" class="quarto-xref">Таблица&nbsp;<span>8.2</span></a>):</p>
+<p><span class="math display">\[
+\begin{aligned}
+\chi^2 &amp;= \frac{(83-67.37)^2}{67.37} +
+  \frac{(3-18.63)^2)}{18.63} + \\
+  &amp; + \frac{(11-26.63)^2}{26.63} +
+  \frac{(23-7.37)^2}{7.37} \approx 59.06
+\end{aligned}
+\]</span> Ура! Мы рассчитали наблюдаемое значение статистики критерия. Далее по&nbsp;алгоритму необходимо выбрать уровень значимости&nbsp;— не&nbsp;будем сильно изощряться и&nbsp;выберем <span class="math inline">\(0.05\)</span>.</p>
+<p>Теперь&nbsp;же рассмотрим, распределение статистики критерия при&nbsp;условии, что&nbsp;нулевая гипотеза верна.</p>
+</section>
+<section id="categorical-crosstab-chisqdist" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="categorical-crosstab-chisqdist"><span class="header-section-number">8.1.3</span> Распределение <span class="math inline">\(\chi^2\)</span></h3>
+<p>Почему вообще критерий называется «хи-квадрат»? Потому&nbsp;что распределение статистики критерия независимости Пирсона подчиняется распределению <span class="math inline">\(\chi^2\)</span> при&nbsp;справедливости нулевой гипотезы. Выглядит это распределение так (<a href="#fig-chisqdist" class="quarto-xref">Рисунок&nbsp;<span>8.1</span></a>).</p>
+<div id="fig-chisqdist" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-chisqdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="infer-categorical_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="infer-categorical_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chisqdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;8.1: Распределение <span class="math inline">\(\chi^2\)</span> при&nbsp;различном числе степеней свободы.
+</figcaption>
+</figure>
+</div>
+<p>Поскольку мы работаем с&nbsp;таблицей сопряженности 2&nbsp;×&nbsp;2 и&nbsp;количество степеней свободы у&nbsp;нас равно 1, то&nbsp;нас будет прицельно интересовать вот это распределение (<a href="#fig-chisqdist-df1" class="quarto-xref">Рисунок&nbsp;<span>8.2</span></a>).</p>
+<div id="fig-chisqdist-df1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-chisqdist-df1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="infer-categorical_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2"><img src="infer-categorical_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chisqdist-df1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;8.2: Распределение <span class="math inline">\(\chi^2(1)\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Как мы помним из&nbsp;темы про&nbsp;случайные величины, чем&nbsp;выше график плотности вероятности, тем&nbsp;чаще встречаются значения переменной. В&nbsp;данном случае мы видим, что&nbsp;при&nbsp;справедливости нулевой гипотезы малые значения <span class="math inline">\(\chi^2\)</span> встречаются очень часто&nbsp;— то&nbsp;есть являются типичными. Большие&nbsp;же значения встречаются редко. Это согласуется с&nbsp;тем, что собственно показывает значение статистики <span class="math inline">\(\chi^2\)</span>:</p>
+<ul>
+<li>малые значения <span class="math inline">\(\chi^2\)</span> соответствуют малым отклонениям эмпирических частот от&nbsp;теоретических, то&nbsp;есть типичны для&nbsp;случая, когда между переменными нет связи;</li>
+<li>большие значения <span class="math inline">\(\chi^2\)</span> соответствуют больши́м отклонениям эмпирических частот от&nbsp;теоретических, поэтому нетипичны для&nbsp;случая, когда между переменным нет связи.</li>
+</ul>
+<p>Отобразим выбранный уровень значимости (красная область в&nbsp;хвосте графика <a href="#fig-chisqdist-df1-alpha" class="quarto-xref"><span>8.3</span></a>)</p>
+<div id="fig-chisqdist-df1-alpha" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-chisqdist-df1-alpha-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="infer-categorical_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3"><img src="infer-categorical_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chisqdist-df1-alpha-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;8.3: Критическая область для&nbsp;уровня значимости 0.05 на&nbsp;распределении <span class="math inline">\(\chi^2(1)\)</span>
+</figcaption>
+</figure>
+</div>
+<p>Мы немного ограничили ось <span class="math inline">\(y\)</span> в&nbsp;пределах от&nbsp;0 до&nbsp;0.3, чтобы лучше видеть, что&nbsp;происходит&nbsp;— это связано с&nbsp;сильно асимметричной формой распределения. Красная область под&nbsp;графиком&nbsp;— это то, что&nbsp;мы назвали <strong>критическая область</strong>, или&nbsp;область <strong>отклонения нулевой гипотезы</strong>, она&nbsp;же <strong>область статистического вывода</strong>.</p>
+<p>Итак, принципиально возможны две ситуации:</p>
+<ul>
+<li>рассчитанное значение <span class="math inline">\(\chi^2\)</span> попало в&nbsp;критическую область (<a href="#fig-chisqdist-df1-pval-1" class="quarto-xref">Рисунок&nbsp;<span>8.4 (a)</span></a>)
+<ul>
+<li>в&nbsp;этом случае <span class="math inline">\(\mathsf{p} &lt; \alpha\)</span>
+<ul>
+<li>следовательно, мы получили значение статистики критерия, <strong>нехарактерное</strong> для&nbsp;случая, когда верна нулевая гипотеза
+<ul>
+<li>значит, у&nbsp;нас <strong>есть основания отклонить</strong> нулевую гипотезу и&nbsp;принять альтернативную;</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>рассчитанное значение <span class="math inline">\(\chi^2\)</span> не&nbsp;попало в&nbsp;критическую область (<a href="#fig-chisqdist-df1-pval-2" class="quarto-xref">Рисунок&nbsp;<span>8.4 (b)</span></a>)
+<ul>
+<li>в&nbsp;этом случае <span class="math inline">\(\mathsf{p} &gt; \alpha\)</span>
+<ul>
+<li>следовательно, мы получили значение статистики критерия, <strong>характерное</strong> для&nbsp;случая, когда верна нулевая гипотеза
+<ul>
+<li>значит, у&nbsp;нас <strong>нет оснований отклонить</strong> нулевую гипотезу.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="fig-chisqdist-df1-pval" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-chisqdist-df1-pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-chisqdist-df1-pval" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-chisqdist-df1-pval-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-chisqdist-df1-pval-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="infer-categorical_files/figure-html/fig-chisqdist-df1-pval-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="fig-chisqdist-df1-pval"><img src="infer-categorical_files/figure-html/fig-chisqdist-df1-pval-1.png" class="img-fluid figure-img" data-ref-parent="fig-chisqdist-df1-pval" width="672"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-chisqdist-df1-pval-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) p &lt; α
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-chisqdist-df1-pval" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-chisqdist-df1-pval-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-chisqdist-df1-pval-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="infer-categorical_files/figure-html/fig-chisqdist-df1-pval-2.png" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="fig-chisqdist-df1-pval"><img src="infer-categorical_files/figure-html/fig-chisqdist-df1-pval-2.png" class="img-fluid figure-img" data-ref-parent="fig-chisqdist-df1-pval" width="672"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-chisqdist-df1-pval-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) p &gt; α
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chisqdist-df1-pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;8.4: p-value для&nbsp;<span class="math inline">\(\chi^2\)</span> в&nbsp;случае попадания и&nbsp;не&nbsp;попадания значения в&nbsp;критическую область.
+</figcaption>
+</figure>
+</div>
+<p>Глядя на&nbsp;значение статистики критерия, рассчитанное для&nbsp;нашего случая&nbsp;— напомню, мы насчитали выше <span class="math inline">\(\chi^2 \approx 59.06\)</span>&nbsp;— и&nbsp;сопоставив его с&nbsp;картиной <a href="#fig-chisqdist-df1-alpha" class="quarto-xref"><span>8.3</span></a>, можно прикинуть, что&nbsp;<span class="math inline">\(\mathsf{p} &lt; .001\)</span>, следовательно, отклоняя нулевую гипотезу, мы можем сказать, что&nbsp;в&nbsp;<em>данном исследовании</em> обнаружено, что&nbsp;подготовка к&nbsp;экзамену связана с&nbsp;успешностью его сдачи. Вот&nbsp;это новость никогда&nbsp;бы не&nbsp;подумали…</p>
+</section>
+<section id="categorical-crosstab-effectsize" class="level3" data-number="8.1.4">
+<h3 data-number="8.1.4" class="anchored" data-anchor-id="categorical-crosstab-effectsize"><span class="header-section-number">8.1.4</span> Размер эффекта для&nbsp;критерия независимости Пирсона</h3>
+<p>То, что&nbsp;мы обнаружили различия или&nbsp;взаимосвязь&nbsp;— это хорошо. Но&nbsp;какова <em>сила</em> этой связи? Иначе говоря, какова величина <strong>размера эффекта</strong>?</p>
+<div id="def-effectsize" class="theorem definition">
+<p><span class="theorem-title"><strong>Определение 8.1</strong></span> <strong>Размер эффекта</strong>&nbsp;— численное выражение силы взаимосвязи между переменными (или различий между группами).</p>
+</div>
+<p>Ну, пусть так. У&nbsp;нас ведь уже посчитана статистика <span class="math inline">\(\chi^2\)</span>, и&nbsp;как мы говорили выше, она оценивает величину отклонений эмпирических частот от&nbsp;теоретических, что&nbsp;в&nbsp;общем-то и&nbsp;показывает величину различий. Да? Да&nbsp;же?</p>
+<p>Отчасти да, но&nbsp;нет. Значение статистики критерия&nbsp;— любого, и&nbsp;критерий согласия Пирсона здесь не&nbsp;исключение&nbsp;— зависит от&nbsp;числа наблюдений. Так, мы может получить большое значение <span class="math inline">\(\chi^2\)</span> даже при&nbsp;малых различиях в&nbsp;частотах, если объём выборки достаточно велик. Следовательно, сама статистика критерия не&nbsp;подходит для&nbsp;оценки размера эффекта.</p>
+<p>Метрик размера эффекта для&nbsp;критерия независимости Пирсона существует несколько, из&nbsp;всех мы ограничимся упоминанием <span class="math inline">\(\varphi\)</span>-коэффициента и&nbsp;<span class="math inline">\(V\)</span> Крамера.</p>
+<section id="categorical-crosstab-effectsize-phi" class="level4" data-number="8.1.4.1">
+<h4 data-number="8.1.4.1" class="anchored" data-anchor-id="categorical-crosstab-effectsize-phi"><span class="header-section-number">8.1.4.1</span> <span class="math inline">\(\varphi\)</span>-коэффициент</h4>
+<p>Эта метрика размера эффекта считается на&nbsp;основе значения статистики <span class="math inline">\(\chi^2\)</span>, «убирая» из&nbsp;неё влияние количества наблюдений:</p>
+<p><span class="math display">\[
+\varphi = \sqrt{\frac{\chi^2}{N}}
+\]</span></p>
+<p>Данная метрика применяется для&nbsp;таблица сопряженности 2×2, которые наиболее часто встречаются в&nbsp;практике. Значение <span class="math inline">\(\varphi\)</span>-коэффициента изменяются в&nbsp;пределах от&nbsp;0 до&nbsp;1, а&nbsp;для&nbsp;интерпретации предлагаются следующие пороговые значения:</p>
+<ul>
+<li><span class="math inline">\(0.10\)</span>&nbsp;— малый эффект</li>
+<li><span class="math inline">\(0.30\)</span>&nbsp;— средний эффект</li>
+<li><span class="math inline">\(0.50\)</span>&nbsp;— большой эффект</li>
+</ul>
+</section>
+<section id="categorical-crosstab-effectsize-v" class="level4" data-number="8.1.4.2">
+<h4 data-number="8.1.4.2" class="anchored" data-anchor-id="categorical-crosstab-effectsize-v"><span class="header-section-number">8.1.4.2</span> <span class="math inline">\(V\)</span> Крамера</h4>
+<p>Для&nbsp;таблиц сопряженности любого размера подходит метрика <span class="math inline">\(V\)</span> Крамера, считающаяся несколько похоже на&nbsp;<span class="math inline">\(\varphi\)</span>-коэффициент:</p>
+<p><span class="math display">\[
+V = \sqrt{\frac{\chi^2}{N \cdot \min(r-1, c-1)}},
+\]</span></p>
+<p>где <span class="math inline">\(r\)</span> и&nbsp;<span class="math inline">\(c\)</span>&nbsp;— количество строк и&nbsp;столбцов в&nbsp;таблице сопряженности соответственно.</p>
+<p>Интерпретация значения <span class="math inline">\(V\)</span> Крамера зависит от&nbsp;числа степеней свободы, которое для&nbsp;этой статистиски считается как <span class="math inline">\(df = \min(r-1, c-1)\)</span>:</p>
+<ul>
+<li><span class="math inline">\(\text{df} = 1\)</span> — совпадает с&nbsp;<span class="math inline">\(\varphi\)</span>-коэффициентом:
+<ul>
+<li><span class="math inline">\(0.10\)</span>&nbsp;— малый эффект</li>
+<li><span class="math inline">\(0.30\)</span>&nbsp;— средний эффект</li>
+<li><span class="math inline">\(0.50\)</span>&nbsp;— большой эффект</li>
+</ul></li>
+<li><span class="math inline">\(\text{df} = 2\)</span>:
+<ul>
+<li><span class="math inline">\(0.07\)</span>&nbsp;— малый эффект</li>
+<li><span class="math inline">\(0.21\)</span>&nbsp;— средний эффект</li>
+<li><span class="math inline">\(0.35\)</span>&nbsp;— большой эффект</li>
+</ul></li>
+<li><span class="math inline">\(\text{df} = 3\)</span>:
+<ul>
+<li><span class="math inline">\(0.06\)</span>&nbsp;— малый эффект</li>
+<li><span class="math inline">\(0.17\)</span>&nbsp;— средний эффект</li>
+<li><span class="math inline">\(0.29\)</span>&nbsp;— большой эффект</li>
+</ul></li>
+</ul>
+<!---
+## Другие критерии для анализа частотных данных {#categorical-other}
+
+Упомянем ещё два критерия, которые могут встретиться --- хотя, вероятно, значительн реже, чем критерий независимосни Пирсона --- в исследовательской практике. Не будем погружаться в детали вычисления, ограничимся рассмотрением их практического применения.
+--->
 </section>
 </section>
-<section id="расчёт-теоретических-частот" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="расчёт-теоретических-частот"><span class="header-section-number">8.2</span> Расчёт теоретических частот</h2>
-<p>Чтобы построить таблицу теоретического распределения частот, нам нужно понять, как были бы распределены наши данные в случае, если между нашими переменными не было бы связи. Это делается так:</p>
-<p>X ∗ 1</p>
-<p>X ∗ 2</p>
-<p>Y ∗ 1</p>
-<p>( a + b ) ⋅ ( a + c ) N</p>
-<p>( a + b ) ⋅ ( b + d ) N</p>
-<p>Y ∗ 2</p>
-<p>( c + d ) ⋅ ( a + c ) N</p>
-<p>( c + d ) ⋅ ( a + c ) N</p>
-<p>То есть для расчета теоретической частоты в конкретной ячейке мы перемножаем соответствующие маргинальные вероятности и делим на число наблюдений. Рассчитаем теоретические частоты для нашего примера:</p>
-<p>Сдали экзамен Не сдали экзамен Готовились<br>
-86 ⋅ 94 120 = 67.37</p>
-<p>86 ⋅ 26 120 = 18.63</p>
-<p>Отмечали понедельник<br>
-34 ⋅ 94 120 = 26.63</p>
-<p>34 ⋅ 26 120 = 7.37</p>
-<p>Чтобы понять, какое содержание стоит за расчетом теоретических частот, надо разложить расчет на два действия. Первое — вычисление долей сдавших и не сдавших экзамен:</p>
-<p>p готовились = 86 120 ≈ 0.72 p отмечали = 34 120 ≈ 0.28</p>
-<p>Второе — находим части, равные рассчитанным долям, от количества сдавших и не сдавших экзамен:</p>
-<p>n готовились и сдали = 0.72 ⋅ 94 = 67.68 n готовились и не сдали = 0.72 ⋅ 26 = 18.72 n отмечали и сдали = 0.28 ⋅ 94 = 26.32 n отмечали и не сдали = 0.28 ⋅ 26 = 7.28</p>
-<p>Ну, вот мы то же самое и получили [с точностью до промежуточного округления].</p>
-<p>Итак, у нас есть всё, что нужно, чтобы перейти к тестированию гипотезы.</p>
 </section>
-<section id="критерий-независимости-пирсона" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="критерий-независимости-пирсона"><span class="header-section-number">8.3</span> Критерий независимости Пирсона</h2>
-<p>Переходим ко второму пункту алгоритма — выбор статистического критерия. Для поиска взаимосвязей между категориальными переменными разработан критерий независимости Пирсона ( χ 2 Пирсона). Это первый статистический критерий, с которым мы с вами знакомимся. У каждого статистического критерия есть статистика критерия, которая рассчитывается определенным образом. Для критерия<br>
-χ 2 она рассчитывается так:</p>
-<p>χ 2 = ∑ i</p>
-<p>( O i − E i ) 2 E i ,</p>
-<p>где<br>
-O i — эмпирические (наблюдаемые, observed) частоты, а<br>
-E i — теоретические (ожидаемые, expected) частоты.</p>
-<p>Внимательно присмотревшись в формуле, можно увидеть, что чем больше отклонения эмпирических частот от теоретических, тем больше числитель дроби, тем больше статистистика критерия. Несложно рассчитать значения статистического критерия для нашего примера:</p>
-<p>χ 2 = ( 83 − 67.37 ) 2 67.37 + ( 3 − 18.63 ) 2 18.63 + ( 11 − 26.63 ) 2 26.63 + ( 23 − 7.37 ) 2 7.37 ≈ 59.06</p>
-<p>Дальше мы можем рассчитать критическое значения критерия<br>
-χ 2 — договоримся, что если не оговорено иное, мы берем в качестве уровня значимости конвенциональный 0.05 — и сравнить его с полученным, но в прошлой главе мы договорились, что так делать не будем. Мы будем рассчитывать p-value, или достигнутый уровень значимости. Руками это делать трудно — надо в интегралы уметь и формулы для распределенрий знать — поэтому мы доверим это специально обученному программному обеспечению:</p>
-<p>Pearson’s Chi-squared test with Yates’ continuity correction</p>
-<p>data: d X-squared = 55.378, df = 1, p-value = 9.946e-14</p>
-<p>Получилось другое значение<br>
-χ 2 , что связано со сделанными нами округлениями в ходе расчета теоретических частот. Но принципиально это ничего не меняет — мы видим p-value много меньше 0.05.</p>
-<p>Как мы говорили в прошлой главе, если p-value меньше выбранного уровня значимости, у нас есть оcнования отклонить нулевую гипотезу об отсутствии различий, и принять альтернативную гипотезу. Итого, связь между подготовкой к экзамену и успешностью его сдачи есть. Ну, ничего себе какой полезный вывод — а мы то и не в курсе были…</p>
-<p>Ладно, это всё хорошо — и даже достаточно для эвристического понимания того, как работает хи-вадрат, однако давайте все же посмотрим чуть глубже в то, что осталось под капотом.</p>
-<section id="распределение-chi2" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="распределение-chi2"><span class="header-section-number">8.3.1</span> Распределение <span class="math inline">\(\chi^2\)</span></h3>
-<p>Почему вообще критерий называется хи-квадрат? Откуда берется p-value? И куда делось «построение закона распределения статистики критерия при условии, что нулевая гипотеза верна»?</p>
-<p>Обо всём по порядку. Еще раз вернемся к алгоритму:</p>
-<p>Формулировка гипотезы Выбор статистического критерия Выбор уровня значимости<br>
-α</p>
-<p>Построение закона распределения статистики критерия при условии, что нулевая гипотеза верна Расчёт выборочной статистики Расчёт достигнутого уровня значимости p-value Сопоставление<br>
-α и p-value и вынесение решения Первые три пункта вычеркнуты — их мы обсудили. Гипотезу сформулировали, статистический критерий выбрали, уровень значимости оставили конвенциональным. Что дальше?</p>
-<p>Статистика критерия — любого, не только<br>
-χ 2 — это непрерывная случайная величина. И она подчинается некоторому распределению. В частности, статистика рассматриваемого нами критерия подчинается распределению<br>
-χ 2 , которое выглядит вот так:</p>
-<p>Важно: так выглядит распределение статистики<br>
-χ 2 при условии, что нулевая гипотеза верна! Именно его мы и строим. Ну, как строим: оно уже построено за нас. Нам надо только понять, какое из возможных использовать. Мы видим, что форма распределения зависит от количества степеней свободы. Значит нам надо научиться рассчитывать количество степеней свободы для конкретного случая. Это делается так:</p>
-</section>
-</section>
-<section id="df" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> df</h1>
-<p>( c − 1 ) ( r − 1 ) ,</p>
-<p>где<br>
-c — количество столбцов в таблице сопряженности,<br>
-r — количество строк в таблице сопряженности. В случае двух бинарных (дихотомических) переменных в таблице сопряженности два столбца и две строки — значит количество степеней свободы равно<br>
-1 .</p>
-<p>Итак, интересующее нас распределение — вот это:</p>
-<p>Как мы помним из темы про случайные величины, чем выше график плотности вероятности, тем чаще встречаются значения переменной. В данном случае мы видим, что при справедливости нулевой гипотезы малые значения<br>
-χ 2 встречаются очень часто — то есть являются типичными. Большие же значения встречаются редко.</p>
-<p>Отобразим выбранный уровень значимости (красная область в хвосте графика):</p>
-<p>Мы немного ограничили ось<br>
-y в пределах от 0 до 0.3, чтобы лучше видеть, что происходит — это связано с сильно асимметричной формой распределения. Красная область под графиком — это то, что называется критическая область, или область отклонения нулевой гипотезы.</p>
-<p>Принципиально возможны две ситуации:</p>
-<p>рассчитанное значения<br>
-χ 2 попало в критическую область рассчитанное значение<br>
-χ 2 не попало в критическую область Если случился первый вариант, то это выглядит так:</p>
-<p>Геометрически p-value — это площадь под графиком распределения статистики при справедливости нулевой гипотезы правее от рассчитанного значения статистики. В терминах вероятности — это вероятность получить такие или более сильные отклонения при справедливости нулевой гипотезы. То есть, если p-value меньше<br>
-α , то рассчитанное значение статистики попало в критическую область.</p>
-<p>Если случился второй вариант, то это выглядит так:</p>
-<p>То есть, если p-value больше<br>
-α , то рассчитанное значение статистики не попало в критическую область.</p>
-<p>В этом смысле второй и первый сценарии тестирования статистической гипотезы, описанные в предыдущей главе, на самом деле две стороны одного и тогоже положения дел.</p>
-<p>Итак,</p>
-<p>если мы получили p-value<br>
-&lt; α , то мы говорим, что мы получили значение статистики, не характерное для ситуации справедливости нулевой гипотезы, значит у нас есть основания отклонить нулевую гипотезу и принять альтернативную с надежностью вывода<br>
-α , а точнее p-value. если мы получили p-value<br>
-&gt; α , то мы говорим, что мы получили значение статистики, характерное для ситуации справедливости нулевой гипотезы, значит у нас нет оснований отклонить нулевую гипотезу, надежность вывода в этом случае неизвестна. Таким образом, в нашем случае p-value<br>
-= 9.946 ⋅ 10 − 14 , что много меньше<br>
-0.05 , что дает нам весовые основания отклонить нулевую гипотезу об отсутствии связи между подготовкой к экзамену и успешностью его сдачи и принять альтернативную гипотезу о том, что такая связь есть.</p>
-<p>Вот мы и сделали статистический вывод. На практике. И даже на содержательный вопрос ответили. Ну, как же мы хороши!</p>
-<section id="критерий-согласия-пирсона" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="критерий-согласия-пирсона"><span class="header-section-number">9.1</span> Критерий согласия Пирсона</h2>
-<p>Кроме критерия независимости Пирсона, существует еще критерий согласия Пирсона. По сути, это некоторая вариации того, что мы изучили выше — и он даже проще, так как мы сравниваем эмпирические частоты с некоторыми заранее известными теоретическими. Собственно, поэтому он называется критерием согласия — согласовано ли наше эмпирическое распределение с некоторым заранее известным теоретическим.</p>
-<p>Откуда мы знаем теоретические частоты? Ну, в общем случае — ниоткуда. Ведь это частоты генеральной совокупности, а о ней, как известно, ничего достоверно неизвестно. По этой причине любые критерии согласия в целом используются в исследовательской практике весьма редко. Обычно они являются частью какого-либо другого статистического метода — это мы увидим в следующей главе.</p>
-<p>И все же исследовательскую задач для критерия согласия Пирсона придумать можно. Скажем, вы аппробируете психометрический опросник, и вам надо показать, что ваша выборка аппробации репрезентативна относительно генеральной совокупности в отношении распределения респондентов по полу. Генеральная совокупность — Российскаф Федерация. Где взять теоретические частоты — ведь мы не можем исходить из предположения, что доли мужчин и женщин в России одинаковы? Хвала небесам, у нас есть Росстат — он же Федеральная служба государственной статистики — который нам рассказал, что мужчин в РФ 46%, а женщин по несложным подсчетам — 54%.</p>
-<p>Пусть мы собрали выборку в 495 человек, из которых 262 — мужчины, а 233 — женщины. Наша таблица эмпирических частот будет такой:</p>
-</section>
-<section id="f-m" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="f-m"><span class="header-section-number">9.2</span> f m</h2>
-</section>
-<section id="section" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="section"><span class="header-section-number">9.3</span> 233 262</h2>
-<p>Теоретические частоты будут таковы — рассчитываются по формуле<br>
-p ⋅ N , где<br>
-p — теоретическая доля,<br>
-N — количество наблюдений:</p>
-<p>female male 0.54 ⋅ 495 = 267.3</p>
-<p>0.46 ⋅ 495 = 227.7</p>
-<p>Формула для расчета статистики критерия вот:</p>
-<p>χ 2 = ∑ i</p>
-<p>( O i − E i ) 2 E i ,</p>
-<p>где<br>
-O i — эмпирические (наблюдаемые, observed) частоты, а<br>
-E i — теоретические (ожидаемые, expected) частоты.</p>
-<p>На что-то очень похоже, да?</p>
-<p>Степени свободы, так как строчка в таблице только одна, рассчитываются следующим образом:</p>
-</section>
-</section>
-<section id="df-1" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> df</h1>
-<p>c − 1 ,</p>
-<p>где<br>
-c — число колонок в таблице.</p>
-<p>Нулевая гипотеза тут будет такая: эмпирические частоты равны теоретическим. Альтернативная гипотеза — эмпирические частоты отличаются от теоретических. Статистический вывод абсолютно идентичен критерию независимости Пирсона.</p>
-<p>Итого,</p>
-<section id="section-1" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="section-1"><span class="header-section-number">10.1</span> </h2>
-</section>
-<section id="chi-squared-test-for-given-probabilities" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="chi-squared-test-for-given-probabilities"><span class="header-section-number">10.2</span> Chi-squared test for given probabilities</h2>
-</section>
-<section id="section-2" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">10.3</span> </h2>
-</section>
-<section id="data-d_gender" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="data-d_gender"><span class="header-section-number">10.4</span> data: d_gender</h2>
-</section>
-<section id="x-squared-9.5682-df-1-p-value-0.00198" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="x-squared-9.5682-df-1-p-value-0.00198"><span class="header-section-number">10.5</span> X-squared = 9.5682, df = 1, p-value = 0.00198</h2>
-<p>Снова видим p-value<br>
-&lt; α , значит мы получили значение статистики, не характерное для ситуации справедливости нулевой гипотезы, и у нас есть основания отклонить нулевую гипотезу и принять альтернативную о том, что эмпирические частоты отличаются от теоретических.</p>
-<p>Получается, что наша выборка не особо репрезентативна. Грустно… :(</p>
-<p>Напоследок отметим, что если мы используем специально обученное ПО, мы вообще-то мало что делаем руками — только строчку кода пишем. Остальное же — формулирование гипотезы, построение распределения, подсчет статистики и p-value — за нас делает машина. Нам остается включить мозг, когда мы делаем статистический вывод.</p>
+<section id="categorical-other" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="categorical-other"><span class="header-section-number">8.2</span> Критерий согласия Пирсона</h2>
+<p>Кроме критерия независимости Пирсона, существует ещё критерий согласия Пирсона. По&nbsp;сути, это некоторая вариации того, что мы изучили выше&nbsp;— и&nbsp;он даже проще, так как мы сравниваем эмпирические частоты с&nbsp;некоторыми заранее известными теоретическими. Собственно, поэтому он называется критерием согласия&nbsp;— согласовано ли&nbsp;наше эмпирическое распределение с&nbsp;некоторым заранее известным теоретическим.</p>
+<p>Откуда мы знаем теоретические частоты? Ну, в&nbsp;общем случае&nbsp;— ниоткуда. Ведь это частоты генеральной совокупности, а о ней, как известно, ничего достоверно неизвестно. По&nbsp;этой причине любые критерии согласия в&nbsp;целом используются в&nbsp;исследовательской практике весьма редко. Обычно они являются частью какого-либо другого статистического метода.</p>
+<p>И&nbsp;все&nbsp;же исследовательскую задач для&nbsp;критерия согласия Пирсона придумать можно. Скажем, вы аппробируете психометрический опросник, и&nbsp;вам надо показать, что&nbsp;ваша выборка аппробации репрезентативна относительно генеральной совокупности в&nbsp;отношении распределения респондентов по&nbsp;полу. Генеральная совокупность&nbsp;— Российская Федерация. Где взять теоретические частоты&nbsp;— ведь мы не&nbsp;можем исходить из&nbsp;предположения, что&nbsp;доли мужчин и&nbsp;женщин в&nbsp;России одинаковы? Хвала небесам, у&nbsp;нас есть Росстат&nbsp;— он&nbsp;же Федеральная служба государственной статистики&nbsp;— который нам рассказал, что&nbsp;мужчин в&nbsp;РФ 46%, а&nbsp;женщин по&nbsp;несложным подсчетам&nbsp;— 54%.</p>
+<p>Пусть мы собрали выборку в&nbsp;495 человек, из&nbsp;которых 262&nbsp;— мужчины, а 233&nbsp;— женщины. Таковы наши эмпирические частоты. Теоретические частоты будут рассчитываться по&nbsp;формуле <span class="math inline">\(n_i^{(\text{t})} = p_i \cdot N\)</span>, где <span class="math inline">\(p_i\)</span>&nbsp;— теоретическая доля, <span class="math inline">\(N\)</span>&nbsp;— количество наблюдений в&nbsp;выборке. Итого, для&nbsp;мужчин <span class="math inline">\(0.46 \cdot 495 = 227.7\)</span>, а&nbsp;для&nbsp;женщин <span class="math inline">\(0.54 \cdot 495 = 267.3\)</span>.</p>
+<ul>
+<li>Формула для&nbsp;расчета <strong>статистики критерия</strong> вот:</li>
+</ul>
+<p><span class="math display">\[
+\chi^2 = \sum_{i} \frac{(n_i - n_i^{(\text{t})})^2}{n_i^{(\text{t})}} \overset{H_0}{\thicksim} \chi^2(c-1),
+\]</span> где <span class="math inline">\(c\)</span>&nbsp;— количество колонок в&nbsp;таблице частот.</p>
+<ul>
+<li><strong>Нулевая гипотеза</strong> (ограничимся нестрогой словесной формулировкой): эмпирические частоты не&nbsp;отличаются от&nbsp;теоретических.</li>
+<li><strong>Статистический вывод</strong> выполняется по&nbsp;стандартному алгоритму.</li>
+</ul>
+<p>Для&nbsp;нашего случая имеем:</p>
+<p><span class="math display">\[
+\chi^2 = \frac{(262 - 227.7)^2}{227.7} + \frac{(233 - 267.3)^2}{267.3} \approx 9.56
+\overset{\chi^2(1)}{\Rightarrow} \mathsf{p} \approx .002
+\]</span></p>
+<p>Снова видим <span class="math inline">\(\mathsf{p} &lt; \alpha\)</span> (приняв <span class="math inline">\(\alpha = 0.05\)</span>), значит мы получили значение статистики, не&nbsp;характерное для&nbsp;ситуации справедливости нулевой гипотезы, и&nbsp;у&nbsp;нас есть основания отклонить нулевую гипотезу и&nbsp;принять альтернативную о&nbsp;том, что&nbsp;эмпирические частоты отличаются от&nbsp;теоретических.</p>
+<p>Получается, что наша выборка не особо репрезентативна. Грустно…</p>
 
 
-</section>
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Рисунок&nbsp;8.1: Распределение <span class="math inline">\(\chi^2\)</span> при&nbsp;различном числе степеней свободы.</span>
+<span class="glightbox-desc lightbox-desc-2">Рисунок&nbsp;8.2: Распределение <span class="math inline">\(\chi^2(1)\)</span>.</span>
+<span class="glightbox-desc lightbox-desc-3">Рисунок&nbsp;8.3: Критическая область для&nbsp;уровня значимости 0.05 на&nbsp;распределении <span class="math inline">\(\chi^2(1)\)</span></span>
+<span class="glightbox-desc lightbox-desc-4">Рисунок&nbsp;8.4&nbsp;(a): p &lt; α</span>
+<span class="glightbox-desc lightbox-desc-5">Рисунок&nbsp;8.4&nbsp;(b): p &gt; α</span>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -1187,6 +1255,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 

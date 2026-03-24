@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>SFDA | PSY HSE - 9&nbsp; Однофакторный дисперсионный анализ</title>
+<title>SFDA | PSY HSE - 10&nbsp; Однофакторный дисперсионный анализ</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -112,7 +112,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./infer-stattesting.html">Статистика вывода</a></li><li class="breadcrumb-item"><a href="./infer-anovaI.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./infer-stattesting.html">Статистика вывода</a></li><li class="breadcrumb-item"><a href="./infer-anovaI.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -218,14 +218,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./infer-categorical.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Анализ категориальных данных</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./infer-correlation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./infer-anovaI.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></span></a>
   </div>
 </li>
       </ul>
@@ -240,30 +246,30 @@ window.Quarto = {
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#anovaI-exp" id="toc-anovaI-exp" class="nav-link active" data-scroll-target="#anovaI-exp"><span class="header-section-number">9.1</span> Эксперимент</a></li>
-  <li><a href="#anovaI-varstruct" id="toc-anovaI-varstruct" class="nav-link" data-scroll-target="#anovaI-varstruct"><span class="header-section-number">9.2</span> Структура изменчивости данных</a></li>
-  <li><a href="#anovaI-why" id="toc-anovaI-why" class="nav-link" data-scroll-target="#anovaI-why"><span class="header-section-number">9.3</span> Зачем нужен дисперсионный анализ?</a></li>
-  <li><a href="#anovaI-ftest" id="toc-anovaI-ftest" class="nav-link" data-scroll-target="#anovaI-ftest"><span class="header-section-number">9.4</span> Тестирование значимости фактора</a>
+  <li><a href="#anovaI-exp" id="toc-anovaI-exp" class="nav-link active" data-scroll-target="#anovaI-exp"><span class="header-section-number">10.1</span> Эксперимент</a></li>
+  <li><a href="#anovaI-varstruct" id="toc-anovaI-varstruct" class="nav-link" data-scroll-target="#anovaI-varstruct"><span class="header-section-number">10.2</span> Структура изменчивости данных</a></li>
+  <li><a href="#anovaI-why" id="toc-anovaI-why" class="nav-link" data-scroll-target="#anovaI-why"><span class="header-section-number">10.3</span> Зачем нужен дисперсионный анализ?</a></li>
+  <li><a href="#anovaI-ftest" id="toc-anovaI-ftest" class="nav-link" data-scroll-target="#anovaI-ftest"><span class="header-section-number">10.4</span> Тестирование значимости фактора</a>
   <ul class="collapse">
-  <li><a href="#распределение-фишера" id="toc-распределение-фишера" class="nav-link" data-scroll-target="#распределение-фишера"><span class="header-section-number">9.4.1</span> Распределение Фишера</a></li>
-  <li><a href="#anovaI-results" id="toc-anovaI-results" class="nav-link" data-scroll-target="#anovaI-results"><span class="header-section-number">9.4.2</span> Представление результатов дисперсионного анализа</a></li>
+  <li><a href="#распределение-фишера" id="toc-распределение-фишера" class="nav-link" data-scroll-target="#распределение-фишера"><span class="header-section-number">10.4.1</span> Распределение Фишера</a></li>
+  <li><a href="#anovaI-results" id="toc-anovaI-results" class="nav-link" data-scroll-target="#anovaI-results"><span class="header-section-number">10.4.2</span> Представление результатов дисперсионного анализа</a></li>
   </ul></li>
-  <li><a href="#anovaI-etasq" id="toc-anovaI-etasq" class="nav-link" data-scroll-target="#anovaI-etasq"><span class="header-section-number">9.5</span> Размер эффекта в дисперсионном анализе</a></li>
-  <li><a href="#anovaI-vis" id="toc-anovaI-vis" class="nav-link" data-scroll-target="#anovaI-vis"><span class="header-section-number">9.6</span> Визуализация результатов дисперсионного анализа</a></li>
-  <li><a href="#anovaI-cond" id="toc-anovaI-cond" class="nav-link" data-scroll-target="#anovaI-cond"><span class="header-section-number">9.7</span> Условия применения дисперсионного анализа</a>
+  <li><a href="#anovaI-etasq" id="toc-anovaI-etasq" class="nav-link" data-scroll-target="#anovaI-etasq"><span class="header-section-number">10.5</span> Размер эффекта в дисперсионном анализе</a></li>
+  <li><a href="#anovaI-vis" id="toc-anovaI-vis" class="nav-link" data-scroll-target="#anovaI-vis"><span class="header-section-number">10.6</span> Визуализация результатов дисперсионного анализа</a></li>
+  <li><a href="#anovaI-cond" id="toc-anovaI-cond" class="nav-link" data-scroll-target="#anovaI-cond"><span class="header-section-number">10.7</span> Условия применения дисперсионного анализа</a>
   <ul class="collapse">
-  <li><a href="#anovaI-homogen" id="toc-anovaI-homogen" class="nav-link" data-scroll-target="#anovaI-homogen"><span class="header-section-number">9.7.1</span> Гомогенность дисперсий</a></li>
+  <li><a href="#anovaI-homogen" id="toc-anovaI-homogen" class="nav-link" data-scroll-target="#anovaI-homogen"><span class="header-section-number">10.7.1</span> Гомогенность дисперсий</a></li>
   </ul></li>
-  <li><a href="#anovaI-effect" id="toc-anovaI-effect" class="nav-link" data-scroll-target="#anovaI-effect"><span class="header-section-number">9.8</span> Виды эффектов в дисперсионном анализе</a></li>
+  <li><a href="#anovaI-effect" id="toc-anovaI-effect" class="nav-link" data-scroll-target="#anovaI-effect"><span class="header-section-number">10.8</span> Виды эффектов в дисперсионном анализе</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./infer-stattesting.html">Статистика вывода</a></li><li class="breadcrumb-item"><a href="./infer-anovaI.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./infer-stattesting.html">Статистика вывода</a></li><li class="breadcrumb-item"><a href="./infer-anovaI.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="infer-anovaI" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></span></h1>
+<h1 class="title"><span id="infer-anovaI" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></span></h1>
 </div>
 
 
@@ -281,8 +287,8 @@ window.Quarto = {
 
 
 <p>Мы разобрались&nbsp;— по&nbsp;крайне мере, в&nbsp;первом приближении&nbsp;— как анализировать связи между количественными переменными. Что&nbsp;же делать, если у&nbsp;нас одна из&nbsp;переменных категориальная?</p>
-<section id="anovaI-exp" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="anovaI-exp"><span class="header-section-number">9.1</span> Эксперимент</h2>
+<section id="anovaI-exp" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="anovaI-exp"><span class="header-section-number">10.1</span> Эксперимент</h2>
 <p>Одна категориальная и&nbsp;одна количественная переменная&nbsp;— это типичнейшая ситуация для&nbsp;эксперимента. Допустим мы изучаем эмоциональные штуки. Нам интересно сравнить скорость распознавания нейтральных и&nbsp;эмоционально окрашенных слов. Мы решили предложить испытуемому задачу лексического решения&nbsp;— предъявляем ему слова и&nbsp;не-слова. Испытуемому необходимо ответить, является&nbsp;ли представленный набор символов словом. Пусть ответ даётся нажатием на&nbsp;клавишу «→», если набор символов является словом, и&nbsp;«←», если таковым не&nbsp;является.</p>
 <p>Сколько нам нужно экспериментальных условий? Кажется, что&nbsp;три&nbsp;— нейтральные стимулы, стимулы с&nbsp;положительной валентностью и&nbsp;стимулы с&nbsp;отрицательной валентностью. И&nbsp;пусть у&nbsp;нас три группы испытуемых&nbsp;— каждая группа проходит одно экспериментальное условие. Не-слова будем считать филлерами и&nbsp;не&nbsp;будем анализировать пробы с&nbsp;ними.</p>
 <p>Итого,</p>
@@ -292,8 +298,8 @@ window.Quarto = {
 </ul>
 <p>Ну, дизайн кратко описан. Предположим, что мы корректно сформировали выборку и&nbsp;собрали некоторые данные. Посмотрим, что&nbsp;в&nbsp;них будет происходить.</p>
 </section>
-<section id="anovaI-varstruct" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="anovaI-varstruct"><span class="header-section-number">9.2</span> Структура изменчивости данных</h2>
+<section id="anovaI-varstruct" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="anovaI-varstruct"><span class="header-section-number">10.2</span> Структура изменчивости данных</h2>
 <p>Мы говорили, что&nbsp;основные характеристики статистических данных&nbsp;— неопределённость и&nbsp;вариативность. И&nbsp;эта вариативность (изменчивость) имеет определенную структуру.</p>
 <p>Мы также говорили, что&nbsp;основная мера вариативности&nbsp;— это дисперсия. Это верно, однако сейчас чуть замедлимся, и&nbsp;сначала поговорим о&nbsp;суммах квадратов. Ну, то же самое, что дисперсия, только на&nbsp;степени свободы пока не&nbsp;делим.</p>
 <p>Итак, наши данные выглядят как-то так:</p>
@@ -303,7 +309,7 @@ window.Quarto = {
 <a href="img/infer/ow-anova-scheme-data.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="img/infer/ow-anova-scheme-data.jpg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anova-scheme-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рисунок&nbsp;9.1: Схема визуализации данных
+Рисунок&nbsp;10.1: Схема визуализации данных
 </figcaption>
 </figure>
 </div>
@@ -319,7 +325,7 @@ window.Quarto = {
 <a href="img/infer/ow-anova-scheme-tss.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="img/infer/ow-anova-scheme-tss.jpg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anova-scheme-tss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рисунок&nbsp;9.2: Общая сумма квадратов (TSS)
+Рисунок&nbsp;10.2: Общая сумма квадратов (TSS)
 </figcaption>
 </figure>
 </div>
@@ -334,7 +340,7 @@ window.Quarto = {
 <a href="img/infer/ow-anova-scheme-ess.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3"><img src="img/infer/ow-anova-scheme-ess.jpg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anova-scheme-ess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рисунок&nbsp;9.3: Объясненная сумма квадратов (ESS)
+Рисунок&nbsp;10.3: Объясненная сумма квадратов (ESS)
 </figcaption>
 </figure>
 </div>
@@ -350,7 +356,7 @@ window.Quarto = {
 <a href="img/infer/ow-anova-scheme-rss.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4"><img src="img/infer/ow-anova-scheme-rss.jpg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anova-scheme-rss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рисунок&nbsp;9.4: Остаточная сумма квадратов (RSS)
+Рисунок&nbsp;10.4: Остаточная сумма квадратов (RSS)
 </figcaption>
 </figure>
 </div>
@@ -359,17 +365,17 @@ window.Quarto = {
 \text{TSS} = \text{ESS} + \text{RSS}
 \]</span></p>
 </section>
-<section id="anovaI-why" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="anovaI-why"><span class="header-section-number">9.3</span> Зачем нужен дисперсионный анализ?</h2>
+<section id="anovaI-why" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="anovaI-why"><span class="header-section-number">10.3</span> Зачем нужен дисперсионный анализ?</h2>
 <p>Что мы, собственно, выясняем? Вернемся к&nbsp;задумке эксперимента&nbsp;— мы хотим узнать, связана скорость опознания слова с&nbsp;его эмоциональной окраской. Как эта связь будет выглядеть в&nbsp;данных?</p>
 <ul>
 <li>Если связь существует, то&nbsp;объяснённая изменчивость (ESS) будет больше, чем&nbsp;случайная изменчивость (RSS).
 <ul>
-<li>Обратите внимание на&nbsp;рисунок <a href="#fig-anova-mseffect-yes" class="quarto-xref"><span>9.5 (a)</span></a>. Основной вклад в&nbsp;вариативность данных вносит факторная изменчивость&nbsp;— средние по группам сильно отстают от общего среднего, в&nbsp;то время как наблюдения от&nbsp;своих групповых средних лежат в&nbsp;целом достаточно близко.</li>
+<li>Обратите внимание на&nbsp;рисунок <a href="#fig-anova-mseffect-yes" class="quarto-xref"><span>10.5 (a)</span></a>. Основной вклад в&nbsp;вариативность данных вносит факторная изменчивость&nbsp;— средние по группам сильно отстают от общего среднего, в&nbsp;то время как наблюдения от&nbsp;своих групповых средних лежат в&nbsp;целом достаточно близко.</li>
 </ul></li>
 <li>Если связь существует, то&nbsp;объяснённая изменчивость (ESS) будет меньше, чем&nbsp;случайная изменчивость (RSS), или&nbsp;же равна её.
 <ul>
-<li>Обратите внимание на&nbsp;рисунок <a href="#fig-anova-mseffect-no" class="quarto-xref"><span>9.5 (b)</span></a>. Вклад факторной изменчивости в&nbsp;вариативность данных крайне мал&nbsp;— средние по&nbsp;группам очень близки к&nbsp;общему среднему, в&nbsp;то время как отклонения наблюдений от&nbsp;своих групповых средних составляют бо́льшую часть вариативности данных.</li>
+<li>Обратите внимание на&nbsp;рисунок <a href="#fig-anova-mseffect-no" class="quarto-xref"><span>10.5 (b)</span></a>. Вклад факторной изменчивости в&nbsp;вариативность данных крайне мал&nbsp;— средние по&nbsp;группам очень близки к&nbsp;общему среднему, в&nbsp;то время как отклонения наблюдений от&nbsp;своих групповых средних составляют бо́льшую часть вариативности данных.</li>
 </ul></li>
 </ul>
 <div id="fig-anova-mseffect" class="quarto-layout-panel">
@@ -403,15 +409,15 @@ window.Quarto = {
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anova-mseffect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рисунок&nbsp;9.5: Структура изменчивости в&nbsp;ситуациях отсутствия и наличия эффекта группирующего фактора
+Рисунок&nbsp;10.5: Структура изменчивости в&nbsp;ситуациях отсутствия и наличия эффекта группирующего фактора
 </figcaption>
 </figure>
 </div>
 <p>То&nbsp;есть, для&nbsp;того, чтобы сделать вывод о&nbsp;том, есть&nbsp;ли связь между фактором и&nbsp;зависимой переменной, нам нужно сопоставить факторную изменчивость и&nbsp;остаточную изменчивость.</p>
 <p>Теперь у&nbsp;нас есть все, чтобы поговорить о&nbsp;тестирования статистической значимости фактора. Именно этим и&nbsp;занимается <strong>дисперсионный анализ</strong> (<strong>an</strong>alysis <strong>o</strong>f&nbsp;<strong>va</strong>riance, <strong>ANOVA</strong>).</p>
 </section>
-<section id="anovaI-ftest" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="anovaI-ftest"><span class="header-section-number">9.4</span> Тестирование значимости фактора</h2>
+<section id="anovaI-ftest" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="anovaI-ftest"><span class="header-section-number">10.4</span> Тестирование значимости фактора</h2>
 <p>Поскольку у&nbsp;нас может быть разное количество наблюдений в&nbsp;группах и&nbsp;различное количество групп, лучше сравнивать не&nbsp;саму изменчивость&nbsp;— суммы квадратов&nbsp;— а&nbsp;среднюю изменчивость&nbsp;— средние квадраты. Они вычисляются так:</p>
 <p><span class="math display">\[
 \text{MS}_\text{t} = \frac{\text{TSS}}{\text{df}_\text{TSS}} =
@@ -445,8 +451,8 @@ F = \frac{\text{MS}_\text{e}}{\text{MS}_\text{r}} \overset{H_0}{\thicksim} F
 \text{df}_\text{ESS}, \text{df}_\text{RSS}
 )
 \]</span></p>
-<section id="распределение-фишера" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="распределение-фишера"><span class="header-section-number">9.4.1</span> Распределение Фишера</h3>
+<section id="распределение-фишера" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="распределение-фишера"><span class="header-section-number">10.4.1</span> Распределение Фишера</h3>
 <p>Значение F-статистики подчиняется F-распределению (распределению Фишера). Его форма зависит от&nbsp;двух значений степеней свободы&nbsp;— <span class="math inline">\(\text{df}_\text{ESS}\)</span> (<span class="math inline">\({df}_\text{e}\)</span>)&nbsp;и&nbsp;<span class="math inline">\(\text{df}_\text{RSS}\)</span> (<span class="math inline">\(\text{df}_\text{r}\)</span>).</p>
 <div id="fig-F-dist" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -466,7 +472,7 @@ F = \frac{\text{MS}_\text{e}}{\text{MS}_\text{r}} \overset{H_0}{\thicksim} F
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-F-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рисунок&nbsp;9.6: Распределение Фишера при&nbsp;различных значениях его параметров
+Рисунок&nbsp;10.6: Распределение Фишера при&nbsp;различных значениях его параметров
 </figcaption>
 </figure>
 </div>
@@ -477,8 +483,8 @@ F = \frac{\text{MS}_\text{e}}{\text{MS}_\text{r}} \overset{H_0}{\thicksim} F
 <li>Если <span class="math inline">\(\mathsf p &gt; \alpha\)</span>, то&nbsp;мы получаем значение F-статистики, характерное для&nbsp;случая, когда нулевая гипотеза верна, что&nbsp;не&nbsp;даёт нам&nbsp;оснований отклонить нулевую гипотезу об&nbsp;отсутствии различий между группами.</li>
 </ul>
 </section>
-<section id="anovaI-results" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="anovaI-results"><span class="header-section-number">9.4.2</span> Представление результатов дисперсионного анализа</h3>
+<section id="anovaI-results" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="anovaI-results"><span class="header-section-number">10.4.2</span> Представление результатов дисперсионного анализа</h3>
 <p>Результаты дисперсионного анализа обычно представляются в&nbsp;виде таблицы:</p>
 <table class="table">
 <colgroup>
@@ -524,8 +530,8 @@ F = \frac{\text{MS}_\text{e}}{\text{MS}_\text{r}} \overset{H_0}{\thicksim} F
 </blockquote>
 </section>
 </section>
-<section id="anovaI-etasq" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="anovaI-etasq"><span class="header-section-number">9.5</span> Размер эффекта в дисперсионном анализе</h2>
+<section id="anovaI-etasq" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="anovaI-etasq"><span class="header-section-number">10.5</span> Размер эффекта в дисперсионном анализе</h2>
 <p>Итак, с&nbsp;ошибкой первого рода мы, как обычно, быстро и&nbsp;легко поборолись. Теперь боремся с&nbsp;ошибкой второго рода. Принципиально ничего не&nbsp;меняется&nbsp;— нам нужно понять, как&nbsp;считается размер эффекта, и&nbsp;рассчитать требуемую выборку.</p>
 <p>В&nbsp;случае дисперсионного анализа размер эффекта&nbsp;— это доля объясненной фактором дисперсии от&nbsp;всей дисперсии данных. Обозначается эта метрика <span class="math inline">\(\eta^2\)</span>:</p>
 <p><span class="math display">\[
@@ -572,8 +578,8 @@ f^2 = \frac{\eta^2}{1 - \eta^2}
 </div>
 </div>
 </section>
-<section id="anovaI-vis" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="anovaI-vis"><span class="header-section-number">9.6</span> Визуализация результатов дисперсионного анализа</h2>
+<section id="anovaI-vis" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="anovaI-vis"><span class="header-section-number">10.6</span> Визуализация результатов дисперсионного анализа</h2>
 <p>Визуализация результатов в&nbsp;дисперсионном анализе, с&nbsp;одной стороны, достаточно проста. Нам нужно отобразить точечные и&nbsp;интервальные оценки средних в&nbsp;группах, то есть нарисовать errorbar. В&nbsp;качестве интервальной оценки обычно отображается 95% доверительный интервал.</p>
 <p>График будет выглядеть примерно так:</p>
 <p><a href="img/infer/anova_errorbar-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="img/infer/anova_errorbar-1.png" class="img-fluid"></a></p>
@@ -587,8 +593,8 @@ f^2 = \frac{\eta^2}{1 - \eta^2}
 <p><a href="img/infer/anova-violinplot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="img/infer/anova-violinplot-1.png" class="img-fluid"></a></p>
 <p>С&nbsp;одной стороны, он нам отобразит распределения зависимой переменной по&nbsp;группам, с другой стороны, мы можем дополнительно отобразить средние с&nbsp;доверительными интервалами, как сделано на графике выше. Ну, просто невероятно!</p>
 </section>
-<section id="anovaI-cond" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="anovaI-cond"><span class="header-section-number">9.7</span> Условия применения дисперсионного анализа</h2>
+<section id="anovaI-cond" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="anovaI-cond"><span class="header-section-number">10.7</span> Условия применения дисперсионного анализа</h2>
 <p>Как вы уже могли догадаться, дисперсионный анализ относится к&nbsp;группе параметрических статистических методов, поэтому выдвигается ряд требований к&nbsp;данным, на которых проводится такой анализ.</p>
 <ul>
 <li>Количественная непрерывная зависимая переменная</li>
@@ -604,16 +610,16 @@ f^2 = \frac{\eta^2}{1 - \eta^2}
 <li>Симметричное распределение выборочных данных</li>
 <li>Независимые наблюдения в&nbsp;каждой из&nbsp;выборок</li>
 </ul>
-<section id="anovaI-homogen" class="level3" data-number="9.7.1">
-<h3 data-number="9.7.1" class="anchored" data-anchor-id="anovaI-homogen"><span class="header-section-number">9.7.1</span> Гомогенность дисперсий</h3>
+<section id="anovaI-homogen" class="level3" data-number="10.7.1">
+<h3 data-number="10.7.1" class="anchored" data-anchor-id="anovaI-homogen"><span class="header-section-number">10.7.1</span> Гомогенность дисперсий</h3>
 <p>Гомогенность дисперсии&nbsp;— важное допущение. Поясним за&nbsp;него.</p>
 <p>Как уже отмечено выше, модель дисперсионного анализа предполагает, что в&nbsp;генеральных совокупностях, из&nbsp;которых мы извлекли наши выборки, дисперсии изучаемого признака равны. Однако в&nbsp;силу неопределенности и&nbsp;вариативности это может быть и&nbsp;не так, поэтому нужно протестировать гипотезу о&nbsp;равенстве дисперсий в&nbsp;группах. Алгоритм статистического вывода нам известен, а&nbsp;в&nbsp;детали этого попутного теста мы, пожалуй, погружаться не будем.</p>
 <p>Существует нескольок способов сравнить дисперсии в&nbsp;группах, наиболее популярными из&nbsp;которых являются тесты Левена (Leven’s test) и&nbsp;Флигнера-Килина (Fligner–Killeen test).</p>
 <p>Соответственно, мы хотим, чтобы его результаты не&nbsp;были статистически значимы, так как в&nbsp;этом случае мы не&nbsp;можем отклонить гипотезу о&nbsp;том, что&nbsp;дисперсии гомогенны. Если&nbsp;же результаты теста статистически значимы, то&nbsp;использование дисперсионного анализа может привести к&nbsp;искаженным результатам.</p>
 </section>
 </section>
-<section id="anovaI-effect" class="level2" data-number="9.8">
-<h2 data-number="9.8" class="anchored" data-anchor-id="anovaI-effect"><span class="header-section-number">9.8</span> Виды эффектов в дисперсионном анализе</h2>
+<section id="anovaI-effect" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="anovaI-effect"><span class="header-section-number">10.8</span> Виды эффектов в дисперсионном анализе</h2>
 <p>Тот вид дисперсионного анализа, который мы рассмотрели&nbsp;— это такой стандартный базовый дисперсионный анализ. Однако давайте пристально посмотрим на&nbsp;один момент:</p>
 <blockquote class="blockquote">
 <p>«пусть у нас три группы испытуемых — каждая группа проходит одно экспериментальное условие».</p>
@@ -623,14 +629,14 @@ f^2 = \frac{\eta^2}{1 - \eta^2}
 
 
 <div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Рисунок&nbsp;9.1: Схема визуализации данных</span>
-<span class="glightbox-desc lightbox-desc-2">Рисунок&nbsp;9.2: Общая сумма квадратов (TSS)</span>
-<span class="glightbox-desc lightbox-desc-3">Рисунок&nbsp;9.3: Объясненная сумма квадратов (ESS)</span>
-<span class="glightbox-desc lightbox-desc-4">Рисунок&nbsp;9.4: Остаточная сумма квадратов (RSS)</span>
-<span class="glightbox-desc lightbox-desc-5">Рисунок&nbsp;9.5&nbsp;(a): Наличие эффекта фактора</span>
-<span class="glightbox-desc lightbox-desc-6">Рисунок&nbsp;9.5&nbsp;(b): Отсутствие эффекта фактора</span>
-<span class="glightbox-desc lightbox-desc-7">Рисунок&nbsp;9.6: Распределение Фишера при&nbsp;различных значениях его параметров</span>
-<span class="glightbox-desc lightbox-desc-8">Рисунок&nbsp;9.6: Распределение Фишера при&nbsp;различных значениях его параметров</span>
+<span class="glightbox-desc lightbox-desc-1">Рисунок&nbsp;10.1: Схема визуализации данных</span>
+<span class="glightbox-desc lightbox-desc-2">Рисунок&nbsp;10.2: Общая сумма квадратов (TSS)</span>
+<span class="glightbox-desc lightbox-desc-3">Рисунок&nbsp;10.3: Объясненная сумма квадратов (ESS)</span>
+<span class="glightbox-desc lightbox-desc-4">Рисунок&nbsp;10.4: Остаточная сумма квадратов (RSS)</span>
+<span class="glightbox-desc lightbox-desc-5">Рисунок&nbsp;10.5&nbsp;(a): Наличие эффекта фактора</span>
+<span class="glightbox-desc lightbox-desc-6">Рисунок&nbsp;10.5&nbsp;(b): Отсутствие эффекта фактора</span>
+<span class="glightbox-desc lightbox-desc-7">Рисунок&nbsp;10.6: Распределение Фишера при&nbsp;различных значениях его параметров</span>
+<span class="glightbox-desc lightbox-desc-8">Рисунок&nbsp;10.6: Распределение Фишера при&nbsp;различных значениях его параметров</span>
 </div>
 </section>
 
@@ -1047,14 +1053,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./infer-correlation.html" class="pagination-link" aria-label="Корреляционный анализ">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
   </div>
 </nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
