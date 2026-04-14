@@ -81,7 +81,8 @@ clt_smpls %>%
   ggplot(aes(value)) +
   geom_histogram(aes(y = after_stat(density)), binwidth = .05) +
   geom_function(fun = dbeta, args = list(shape1 = 2, shape2 = 3),
-                linewidth = 1)
+                linewidth = 1) +
+  labs(x = "Значение", y = "Относительная частота / Плотность")
 ```
 
 Распределение случайной величины в генеральной совокупности

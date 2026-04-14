@@ -25,11 +25,11 @@ book:
     - part: "Статистика вывода"
       chapters:
         - infer-stattesting.qmd
+        - infer-categorical.qmd
         - infer-correlation.qmd
         - infer-anovaI.qmd
     #     - infer-anovaII.qmd
     #     - infer-posthoc.qmd
-        # - infer-categorical.qmd
     #     - infer-simplelinear.qmd
     #     - infer-multiplelinear.qmd
     #     - infer-ancova.qmd
