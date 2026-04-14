@@ -263,8 +263,12 @@ window.Quarto = {
   </ul></li>
   <li><a href="#ttest-twosample" id="toc-ttest-twosample" class="nav-link" data-scroll-target="#ttest-twosample"><span class="header-section-number">9.4</span> Двухвыборочный t-тест</a>
   <ul class="collapse">
-  <li><a href="#ttest-twosample-independent" id="toc-ttest-twosample-independent" class="nav-link" data-scroll-target="#ttest-twosample-independent"><span class="header-section-number">9.4.1</span> Для независимых выборок</a></li>
-  <li><a href="#ttest-twosample-paired" id="toc-ttest-twosample-paired" class="nav-link" data-scroll-target="#ttest-twosample-paired"><span class="header-section-number">9.4.2</span> Для связанных выборок</a></li>
+  <li><a href="#ttest-twosample-independent" id="toc-ttest-twosample-independent" class="nav-link" data-scroll-target="#ttest-twosample-independent"><span class="header-section-number">9.4.1</span> Независимые выборки</a></li>
+  <li><a href="#ttest-twosample-effectsize" id="toc-ttest-twosample-effectsize" class="nav-link" data-scroll-target="#ttest-twosample-effectsize"><span class="header-section-number">9.4.2</span> Размер эффекта для&nbsp;двухвыборочного t-теста</a></li>
+  </ul></li>
+  <li><a href="#ttest-result-report" id="toc-ttest-result-report" class="nav-link" data-scroll-target="#ttest-result-report"><span class="header-section-number">9.5</span> Как описать результаты?</a>
+  <ul class="collapse">
+  <li><a href="#ttest-twosample-paired" id="toc-ttest-twosample-paired" class="nav-link" data-scroll-target="#ttest-twosample-paired"><span class="header-section-number">9.5.1</span> Для связанных выборок</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -394,7 +398,7 @@ H_1: \mu &gt; 60
 \end{split}
 \]</span></p>
 <p>Уровень значимости оставим конвенциональным <span class="math inline">\(\alpha = 0.05\)</span>.</p>
-<p>Для&nbsp;тестирования такой гипотезы подойдет <strong>t-критерий Стьюдента</strong>, предложенный в&nbsp;1908 году У. Госсетом. Расчёт статистики критерия выглядит так:</p>
+<p>Для&nbsp;тестирования такой гипотезы подойдет <strong>одновыборочный t-критерий Стьюдента (one-sample t-test)</strong>, предложенный в&nbsp;1908 году У. Госсетом. Расчёт статистики критерия выглядит так:</p>
 <p><span id="eq-onesample"><span class="math display">\[
 t = \frac{\overline x - \mu_0}{s / \sqrt{n}} = \frac{\overline x - \mu_0}{\text{se}_X} \overset{H_0}\thicksim t(n-1)
 \tag{9.1}\]</span></span></p>
@@ -513,16 +517,31 @@ d = \frac{\overline x - \mu_0}{s_X}
 </section>
 <section id="ttest-twosample" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="ttest-twosample"><span class="header-section-number">9.4</span> Двухвыборочный t-тест</h2>
+<p>Окей, мы вспомнили как устроено тестирование статистических гипотез, и&nbsp;проверили вполне осмысленную гипотезу с&nbsp;помощью одновыборочного t-теста. Однако более частой задачей, как отмечалось выше, является сравнение двух групп друг с&nbsp;другом. Для&nbsp;этого существует <strong>двухвыборочный t-тест (two-sample t-test)</strong>, причём в&nbsp;нескольких вариантах. Мы рассмотрим два, поскольку они обладают наиболее критическими отличиями.</p>
 <section id="ttest-twosample-independent" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="ttest-twosample-independent"><span class="header-section-number">9.4.1</span> Для независимых выборок</h3>
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="ttest-twosample-independent"><span class="header-section-number">9.4.1</span> Независимые выборки</h3>
+<p>Работая с&nbsp;теми&nbsp;же данными (<a href="#tbl-onesample-data" class="quarto-xref">Таблица&nbsp;<span>9.1</span></a>), мы можем задать к&nbsp;ним другой вопрос: <strong>различаются&nbsp;ли по&nbsp;уровню выгорания группы маркетологов и&nbsp;разработчиков между собой</strong>?</p>
+<p>Переформулировывая этот вопрос на&nbsp;язык статистических гипотез, получим следующее:</p>
 <p><span class="math display">\[
+\begin{split}
+H_0: \mu_1 = \mu_2 \\
+H_1: \mu_1 \neq \mu_2
+\end{split}
+\]</span></p>
+<p>Здесь <span class="math inline">\(\mu_1\)</span> и&nbsp;<span class="math inline">\(\mu_2\)</span>&nbsp;— средние генеральных совокупностей маркетологов и разработчиков компании. Нулевая гипотеза, как её и&nbsp;положено, предполагает, что&nbsp;между средними разных групп по&nbsp;уровню выгорания разницы нет, альтернативная&nbsp;— что разница есть.</p>
+<p>Чтобы протестировать такую гипотезу, нам необходимо несколько изменить вычисление t-статистики, но&nbsp;общая её суть сохранится (<a href="#eq-twosample" class="quarto-xref">Уравнение&nbsp;<span>9.2</span></a>)&nbsp;— числитель сравнивает два числа, а&nbsp;знаменатель учитывает вариативность в обеих группах.</p>
+<p><span id="eq-twosample"><span class="math display">\[
 t = \frac{
   \overline x_1 - \overline x_2
   }{
   \sqrt{
     \dfrac{s^2_1}{n_1} + \dfrac{s^2_2}{n_2}
 }} \overset{H_0}{\thicksim} t(\text{df})
-\]</span></p>
+\tag{9.2}\]</span></span></p>
+<blockquote class="blockquote">
+<p>Мы рассматриваем двухвыборочный t-тест <em>в&nbsp;модификации Уэлча (Welch t)</em>, так как он является обобщением t-теста для&nbsp; многих случаев. Существуют двухвыборочные t-тесты для&nbsp;случаев одинаковых или&nbsp;разных объемов выборок, одинаковых или&nbsp;разных дисперсий, однако в&nbsp;большинстве случаев можно применять t-тест <em>в&nbsp;модификации Уэлча (Welch t)</em>.</p>
+</blockquote>
+<p>Распределение статистики критерия при&nbsp;справедливости нулевой гипотезы будет также соответствовать t-распределению, однако число степеней свободы будет рассчитываться по&nbsp;какой-то страшной формуле.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="Какая-то страшная формула">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -551,11 +570,56 @@ t = \frac{
 </div>
 </div>
 </div>
+<p>С&nbsp;практической стороны дела это принципиально ничего не&nbsp;меняет, разве что <em>число степеней свободы может быть&nbsp;— и, скорее всего, будет&nbsp;— в&nbsp;этом случае дробным</em>.</p>
+<p>Посмотрим сразу на&nbsp;результаты сравнения двух групп с&nbsp;помощью t-теста (<a href="#fig-twosample" class="quarto-xref">Рисунок&nbsp;<span>9.4</span></a>).</p>
+<div id="fig-twosample" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-twosample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="infer-ttest_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Рисунок&nbsp;9.4: Результаты сравнения уровня выгорания у&nbsp;маркетологов и&nbsp;разработчиков"><img src="infer-ttest_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-twosample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;9.4: Результаты сравнения уровня выгорания у&nbsp;маркетологов и&nbsp;разработчиков
+</figcaption>
+</figure>
+</div>
+<p>Как мы видим, <span class="math inline">\(\mathsf{p} &gt; \alpha\)</span>, следовательно, мы получил <em>типичное</em> значение критерия для&nbsp;случая, кода верна нулевая гипотеза, поэтому у&nbsp;нас <em>нет оснований</em> отклонять нулевую гипотезу о&nbsp;равенстве средних генеральных совокупностей.</p>
 </section>
-<section id="ttest-twosample-paired" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="ttest-twosample-paired"><span class="header-section-number">9.4.2</span> Для связанных выборок</h3>
+<section id="ttest-twosample-effectsize" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="ttest-twosample-effectsize"><span class="header-section-number">9.4.2</span> Размер эффекта для&nbsp;двухвыборочного t-теста</h3>
+<p>Увы, мы не&nbsp;обнаружили эффекта. Согласно взглядам ряда исследователей, в&nbsp;этом случае и&nbsp;размер эффекта считать бессмысленно. В&nbsp;общем-то да, но&nbsp;давайте всё&nbsp;же убедимся, что&nbsp;в&nbsp;случае отсутствия статистически значимых результатов размер эффекта будет невелик.</p>
+<p>Для&nbsp;двухвыборочного t-теста в&nbsp;качестве меры размера эффекта также используется <strong>Cohen’s d</strong> и&nbsp;пороговые значения для&nbsp;интерпретации остаются теми&nbsp;же (<a href="#tbl-cohensd" class="quarto-xref">Таблица&nbsp;<span>9.2</span></a>), однако меняется способ расчета. По&nbsp;сути, размер эффекта в&nbsp;этом случае является собой не&nbsp;что иное, как стандартизированную разницу между средними.</p>
+<p><span class="math display">\[
+d = \frac{\overline x_1 - \overline x_2}{s_p},
+\]</span></p>
+<p>где <span class="math inline">\(s_p = \sqrt{\dfrac{(n-1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}\)</span>.</p>
+<p>В&nbsp;нашем случае <span class="math inline">\(d = 0.28\)</span>. Подождите, это&nbsp;же немало. Да, это малый размер эффекта, но&nbsp;всё&nbsp;же он не&nbsp;близок к&nbsp;нулю.</p>
+<p>Безусловно, однако если мы вычислим доверительный интервал для&nbsp;размера эффекта&nbsp;— математические детали вычисления делегируем статистическому ПО&nbsp;— мы обнаружим, что&nbsp;его границы таковы: <span class="math inline">\(\text{95%CI [-0.23, 0.78]}\)</span>. Мы видим, что&nbsp;доверительный интервал содержит в&nbsp;себе ноль, следовательно, статистически его значение не&nbsp;отличимо от&nbsp;нуля, что&nbsp;является свидетельством в&nbsp;пользу того, что&nbsp;эффекта нет.</p>
+</section>
+</section>
+<section id="ttest-result-report" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="ttest-result-report"><span class="header-section-number">9.5</span> Как описать результаты?</h2>
+<p>Ниже приведены два примера описания результатов статистического тестирования с&nbsp;помощью двухвыборочного t-теста в&nbsp;случае отсутствия и&nbsp;наличия статистически значимого результата.</p>
+<blockquote class="blockquote">
+<p>Статистический анализ проводился с&nbsp;использованием t-критерия Стьюдента для&nbsp;независимых выборок в&nbsp;модификации Уэлча, поскольку количество респондентов в&nbsp;группах, а&nbsp;также дисперсии внутри групп, различались, при&nbsp;этом объемы выборок и&nbsp;близкие к&nbsp;симметричной формы распределения переменной позволяют применять параметрический критерий. Анализ не&nbsp;выявил статистически значимых различий, t(57.82) = 1.12, p = .264, 95% ДИ [−1.90, 6.79]. Границы доверительного интервала не&nbsp;превышают стандартного отклонения исходной шкалы исследуемой переменной. В&nbsp;рамках исследования не&nbsp;получено свидетельств различий между группами, ни&nbsp;со&nbsp;стороны статистического тестивроания гипотез, ни&nbsp;со&nbsp;стороны доверительных интервалов.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Статистический анализ проводился с&nbsp;использованием t-критерия Стьюдента для&nbsp;независимых выборок в&nbsp;модификации Уэлча, поскольку количество респондентов в&nbsp;группах, а&nbsp;также дисперсии внутри групп, различались, при&nbsp;этом объемы выборок и&nbsp;близкие к&nbsp;симметричной формы распределения переменной позволяют применять параметрический критерий. Анализ выявил статистически значимое различие, t(57.82) = 2.87, p = .006, 95% ДИ [2.90, 6.79], d = 0.74 [95% ДИ 0.21; 1.26]. Сотрудники, работающие в офисе, продемонстрировали более высокий уровень профессиональной идентичности (M = 38.2, SD = 5.5), чем сотрудники на удаленном формате (M = 34.1, SD = 6.2). Размер эффекта соответствует среднему значению по классификации Коэна, что указывает на практическую значимость наблюдаемых различий.</p>
+</blockquote>
+<section id="ttest-twosample-paired" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="ttest-twosample-paired"><span class="header-section-number">9.5.1</span> Для связанных выборок</h3>
 <p><span class="math display">\[
 t = \frac{\overline X_D - \mu_0}{s_D / \sqrt{n}} \overset{H_0}{\thicksim} t(n-1)
+\]</span></p>
+<p><span class="math display">\[
+d_z = \frac{\overline X_D}{s_D}
 \]</span></p>
 
 
