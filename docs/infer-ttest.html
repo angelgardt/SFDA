@@ -257,7 +257,10 @@ window.Quarto = {
   <ul>
   <li><a href="#ttest-hyps" id="toc-ttest-hyps" class="nav-link active" data-scroll-target="#ttest-hyps"><span class="header-section-number">9.1</span> Гипотезы «о&nbsp;различиях» и&nbsp;«гипотезы о&nbsp;связях»</a></li>
   <li><a href="#ttest-groupmeans" id="toc-ttest-groupmeans" class="nav-link" data-scroll-target="#ttest-groupmeans"><span class="header-section-number">9.2</span> «Сравнение групп» vs «сравнение средних»</a></li>
-  <li><a href="#ttest-onesample" id="toc-ttest-onesample" class="nav-link" data-scroll-target="#ttest-onesample"><span class="header-section-number">9.3</span> Одновыборочный t-тест</a></li>
+  <li><a href="#ttest-onesample" id="toc-ttest-onesample" class="nav-link" data-scroll-target="#ttest-onesample"><span class="header-section-number">9.3</span> Одновыборочный t-тест</a>
+  <ul class="collapse">
+  <li><a href="#ttest-onesample-effectsize" id="toc-ttest-onesample-effectsize" class="nav-link" data-scroll-target="#ttest-onesample-effectsize"><span class="header-section-number">9.3.1</span> Размер эффекта для&nbsp;одновыборочного t-теста</a></li>
+  </ul></li>
   <li><a href="#ttest-twosample" id="toc-ttest-twosample" class="nav-link" data-scroll-target="#ttest-twosample"><span class="header-section-number">9.4</span> Двухвыборочный t-тест</a>
   <ul class="collapse">
   <li><a href="#ttest-twosample-independent" id="toc-ttest-twosample-independent" class="nav-link" data-scroll-target="#ttest-twosample-independent"><span class="header-section-number">9.4.1</span> Для независимых выборок</a></li>
@@ -467,6 +470,46 @@ t = \frac{\overline x - \mu_0}{s / \sqrt{n}} = \frac{\overline x - \mu_0}{\text{
 <li>для&nbsp;отдела маркетинга (<a href="#fig-onesample-res-1" class="quarto-xref">Рисунок&nbsp;<span>9.3 (a)</span></a>) имеем <span class="math inline">\(\mathsf{p} &gt; \alpha\)</span>, следовательно, мы получил <em>типичное</em> значение критерия для&nbsp;случая, кода верна нулевая гипотеза, поэтому у&nbsp;нас <em>нет оснований</em> отклонять нулевую гипотезу <span class="math inline">\(\mu = 60\)</span>.</li>
 <li>для&nbsp;отдела разработки (<a href="#fig-onesample-res-2" class="quarto-xref">Рисунок&nbsp;<span>9.3 (b)</span></a>) имеем <span class="math inline">\(\mathsf{p} &lt; \alpha\)</span>, следовательно, мы получил <em>нетипичное</em> значение критерия для&nbsp;случая, кода верна нулевая гипотеза, поэтому у&nbsp;нас <em>есть основания</em> отклонить нулевую гипотезу в&nbsp;пользу альтернативной, заключив, что&nbsp;мы получили свидетельство того, что&nbsp;в&nbsp;среднем уровень выгорания команды разработки превышает «нормальный» (допустимый).</li>
 </ul>
+<section id="ttest-onesample-effectsize" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="ttest-onesample-effectsize"><span class="header-section-number">9.3.1</span> Размер эффекта для&nbsp;одновыборочного t-теста</h3>
+<p>Итак, для&nbsp;группы разработки мы обнаружили эффект&nbsp;— получили статистически значимые результат. Хотелось&nbsp;бы узнать, насколько этот эффект велик, ведь по&nbsp;абсолютным значениями выборочное среднее (62.56) превышает 60 всего на&nbsp;пару баллов. Для&nbsp;этого необходимо рассчитать меру размер эффекта, которой для&nbsp;t-теста является <strong>d Коэна (Cohen’s d)</strong>.</p>
+<p><span class="math display">\[
+d = \frac{\overline x - \mu_0}{s_X}
+\]</span></p>
+<p>В&nbsp;нашем случае для&nbsp;разработчиков <span class="math inline">\(d = \dfrac{62.56 - 60}{6.86} \approx 0.37\)</span>. Это много или мало?</p>
+<p>Сам Д.&nbsp;Коэн предложил такие пороги для&nbsp;интерпретации (<a href="#tbl-cohensd" class="quarto-xref">Таблица&nbsp;<span>9.2</span></a>). Таким образом, можно сказать, что&nbsp;мы обнаружили эффект, близкий к&nbsp;среднему.</p>
+<div id="tbl-cohensd" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cohensd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Таблица&nbsp;9.2: Интерпретация размера эффекта Cohen’s d
+</figcaption>
+<div aria-describedby="tbl-cohensd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Величина</th>
+<th style="text-align: right;">Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Малый</td>
+<td style="text-align: right;">0.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Средний</td>
+<td style="text-align: right;">0.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Большой</td>
+<td style="text-align: right;">0.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
 </section>
 <section id="ttest-twosample" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="ttest-twosample"><span class="header-section-number">9.4</span> Двухвыборочный t-тест</h2>
