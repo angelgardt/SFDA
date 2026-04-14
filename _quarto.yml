@@ -26,6 +26,7 @@ book:
       chapters:
         - infer-stattesting.qmd
         - infer-categorical.qmd
+        - infer-ttest.qmd
         - infer-correlation.qmd
         - infer-anovaI.qmd
     #     - infer-anovaII.qmd

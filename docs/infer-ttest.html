@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>9&nbsp; Сравнение средних – SFDA | PSY HSE</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./infer-correlation.html" rel="next">
+<link href="./infer-categorical.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a1dcb3089b73ddc1ce9b2aa57fc13a3e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Ничего не найдено",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Очистить",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Отмена",
+    "search-submit-button-title": "Отправить",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./infer-stattesting.html">Статистика вывода</a></li><li class="breadcrumb-item"><a href="./infer-ttest.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Сравнение средних</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">SFDA | PSY HSE</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Начало</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Введение в&nbsp;статистику</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Основания статистики</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-randvals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Шкалы и&nbsp;случайные величины</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Описательная статистика</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-centraltend.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Меры центральной тенденции</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-variation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Меры разброса</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-normdist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Нормальное распределение</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desc-ci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Доверительные интервалы</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Статистика вывода</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./infer-stattesting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Тестирование статистических гипотез</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./infer-categorical.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Анализ категориальных данных</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./infer-ttest.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Сравнение средних</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./infer-correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./infer-anovaI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Однофакторный дисперсионный анализ</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#ttest-hyps" id="toc-ttest-hyps" class="nav-link active" data-scroll-target="#ttest-hyps"><span class="header-section-number">9.1</span> Гипотезы «о&nbsp;различиях» и&nbsp;«гипотезы о&nbsp;связях»</a></li>
+  <li><a href="#ttest-groupmeans" id="toc-ttest-groupmeans" class="nav-link" data-scroll-target="#ttest-groupmeans"><span class="header-section-number">9.2</span> «Сравнение групп» vs «сравнение средних»</a></li>
+  <li><a href="#ttest-onesample" id="toc-ttest-onesample" class="nav-link" data-scroll-target="#ttest-onesample"><span class="header-section-number">9.3</span> Одновыборочный t-тест</a></li>
+  <li><a href="#ttest-twosample" id="toc-ttest-twosample" class="nav-link" data-scroll-target="#ttest-twosample"><span class="header-section-number">9.4</span> Двухвыборочный t-тест</a>
+  <ul class="collapse">
+  <li><a href="#ttest-twosample-independent" id="toc-ttest-twosample-independent" class="nav-link" data-scroll-target="#ttest-twosample-independent"><span class="header-section-number">9.4.1</span> Для независимых выборок</a></li>
+  <li><a href="#ttest-twosample-paired" id="toc-ttest-twosample-paired" class="nav-link" data-scroll-target="#ttest-twosample-paired"><span class="header-section-number">9.4.2</span> Для связанных выборок</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./infer-stattesting.html">Статистика вывода</a></li><li class="breadcrumb-item"><a href="./infer-ttest.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Сравнение средних</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="infer-ttest" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Сравнение средних</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>В&nbsp;предыдущей главе мы рассмотрели статистические методы, позволяющие выяснить, есть&nbsp;ли взаимосвязь между двумя категориальными переменными. Однако более частой задачей является изучение взаимосвязи между <em>категориальной</em> и&nbsp;<em>количественной</em> переменной. В&nbsp;частности, в&nbsp;рамках эксперимента у&nbsp;нас, как&nbsp;правило, есть как&nbsp;минимум экспериментальная и&nbsp;контрольная группы&nbsp;— категориальная переменная <code>группа</code>&nbsp;— и&nbsp;мы хотим выяснить, различаются&nbsp;ли значения количественной зависимой переменной между этими группами&nbsp;— иначе, связана&nbsp;принадлежность к&nbsp;экспериментальной или&nbsp;контрольной группе с&nbsp;тем, какие значения принимает зависимая переменная. Другая ситуация&nbsp;— неэкспериментальное исследование, когда группы формируются по&nbsp;какому-либо признаку&nbsp;— год обучения, специальность образования, уровень дохода, профессиональная сфера и&nbsp;др. При&nbsp;этом не&nbsp;столь принципиально, как именно сформированы группы&nbsp;— нас всё равно могут интересовать различия между группами. Займёмся изучением подходящих под&nbsp;изучение этого дела статистических методов.</p>
+<section id="ttest-hyps" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="ttest-hyps"><span class="header-section-number">9.1</span> Гипотезы «о&nbsp;различиях» и&nbsp;«гипотезы о&nbsp;связях»</h2>
+<p>Часто при&nbsp;обучении статистике, да&nbsp;и&nbsp;в&nbsp;практике, любят разделять гипотезы «о&nbsp;различия [между группами]» и&nbsp;гипотезы «о&nbsp;связях [между переменными]». Отчасти это верно, так как в&nbsp;одних исследованиях мы технически сравниваем группы друг с&nbsp;другом (экспериментальная и&nbsp;контрольная, бакалавры и&nbsp;магистранты, линейные сотрудники и&nbsp;руководители), а&nbsp;в&nbsp;других ищем взаимосвязи между переменными (личностные черты и&nbsp;удовлетворенность жизнью, опыт работы и&nbsp;приверженность компании, социальные верования и&nbsp;доверие к&nbsp;политическим институтам).</p>
+<p>Однако по&nbsp;факту мы можем свести все гипотезы к&nbsp;гипотезам о&nbsp;связях&nbsp;— разница лишь в&nbsp;том, связи между какими переменными (по&nbsp;типу) мы ищем. Если это связи между <em>количественными</em> переменными, то&nbsp;это будут «классические» гипотезы о&nbsp;связях, если&nbsp;же это связи между <em>количественными и&nbsp;категориальными</em> переменными, то&nbsp;они будут эквивалентны гипотезам о&nbsp;различиях между группами по&nbsp;категориальной переменной.</p>
+<blockquote class="blockquote">
+<p>Возможно, сейчас не&nbsp;вполне понятная ценность такого обобщения, но&nbsp;она нам пригодится, когда мы будем рассматривать <em>линейные модели</em> как класс статистических методов.</p>
+</blockquote>
+</section>
+<section id="ttest-groupmeans" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="ttest-groupmeans"><span class="header-section-number">9.2</span> «Сравнение групп» vs «сравнение средних»</h2>
+<p>Итак, мы отважились сравнивать группы друг с&nbsp;другом&nbsp;— но&nbsp;как это сделать? Есть много статистик, которые описывают группы&nbsp;— среднее, медиана, мода, дисперсия, стандартное отклонение, асимметрия, эксцесс… Тем&nbsp;не&nbsp;менее, чаще всего сравнение групп осуществляют через <em>сравнение средних</em> этих групп.</p>
+<p>Хотя это и&nbsp;не&nbsp;обязательно&nbsp;— можно, в&nbsp;принципе, сравнить группы, используя медианы&nbsp;— среднее имеет несколько преимуществ:</p>
+<ul>
+<li><em>статистическое преимущество</em>: не&nbsp;вдаваясь в&nbsp;математические детали, отметим, что&nbsp;выборочное среднее является хорошей<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> генерального среднего, гипотезы относительно которого мы и&nbsp;формулируем.</li>
+<li><em>прикладное преимущество</em>: статистические модели для&nbsp;сравнения средних достаточно просты и&nbsp;их результаты довольно легко интерпретируемы в&nbsp;рамках прикладных исследований.</li>
+<li><em>практическое преимущество</em>: среднее имеет естественную интерпретацию для&nbsp;многих практических задыч и&nbsp;измерений, а&nbsp;сравнение средних логично отвечает на&nbsp;многие исследовательские вопросы.</li>
+</ul>
+<p>Ключевые общие вещи обсудили, пора уже приступить к&nbsp;сути дела.</p>
+</section>
+<section id="ttest-onesample" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="ttest-onesample"><span class="header-section-number">9.3</span> Одновыборочный t-тест</h2>
+<p>Первым тестом, с&nbsp;которым мы познакомимся в&nbsp;рамках сравнения средних, станет одновыборочный t-тест. Это может вызвать некоторое замешательство, поскольку выше мы говорили о&nbsp;сравнение средних в&nbsp;двух выборках. Спокойно&nbsp;— до&nbsp;этого тоже дойдем. Хоть одновыборочный t-тест и&nbsp;не&nbsp;так часто встречается как самостоятельный статистический тест, он является частью статистических методов, которые мы будем изучать далее, а&nbsp;также позволит нам ещё раз напомнить себе, как вообще устроено статистическое тестирование гипотез.</p>
+<p><strong>Какую исследовательскую задачу мы будем решать?</strong> Пусть мы HR некоторой компании и&nbsp;занимаемся мониторингом выгорания сотрудников. Нынче конце квартала, и&nbsp;вчера вечером нам от&nbsp;руководства упала задача на&nbsp;изучение выгорания сотрудников двух ключевых отделов&nbsp;— маркетинг и&nbsp;разработка. Опустим сейчас детали планирования исследования и&nbsp;подбора психометрических методик, и&nbsp;обозначим, что&nbsp;мы провели скрининговый замер уровня выгорания сотрудников с&nbsp;помощью опросника на&nbsp;профессиональное выгорание. Данных за&nbsp;предыдущие недели/месяцы у&nbsp;нас нет&nbsp;— придется выкручиваться.</p>
+<p>Мы хотим выяснить, <strong>превышает&nbsp;ли в&nbsp;среднем уровень выгорания</strong> сотрудников обоих отделов <strong>«нормальный» уровень выгорания</strong>. Под «нормальным» уровнем выгорания мы будем иметь в&nbsp;виду статистические нормы по&nbsp;опроснику. Для&nbsp;определенности скажем, что&nbsp;результаты переводились в&nbsp;стандартную 100-балльную шкалу (<span class="math inline">\(\mathcal N(50, 100)\)</span>), следовательно, верхней границей «нормального» уровня выгорания (<span class="math inline">\(\mu + \sigma\)</span>) будет <span class="math inline">\(60\)</span>.</p>
+<p>Имеем следующие данные&nbsp;— аггрегированные показатели (<a href="#tbl-onesample-data" class="quarto-xref">Таблица&nbsp;<span>9.1</span></a>). Дополнительно визуализируем распределения переменных (<a href="#fig-onesample-data" class="quarto-xref">Рисунок&nbsp;<span>9.1</span></a>).</p>
+<div id="tbl-onesample-data" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-onesample-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Таблица&nbsp;9.1: Аггрегированные данные об&nbsp;уровне профессионального выгорания сотрудников
+</figcaption>
+<div aria-describedby="tbl-onesample-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Отдел</th>
+<th style="text-align: right;">Количество респондентов</th>
+<th style="text-align: right;">Среднее</th>
+<th style="text-align: right;">Срандартное отклонение</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Разработка</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">62.56</td>
+<td style="text-align: right;">6.86</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Маркетинг</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">60.12</td>
+<td style="text-align: right;">10.05</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</figure>
+</div>
+<div id="fig-onesample-data" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-onesample-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="infer-ttest_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Рисунок&nbsp;9.1: Распределение баллов по&nbsp;опроснику профессионального выгорания у&nbsp;сотрудников двух отделов"><img src="infer-ttest_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-onesample-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;9.1: Распределение баллов по&nbsp;опроснику профессионального выгорания у&nbsp;сотрудников двух отделов
+</figcaption>
+</figure>
+</div>
+<p>Ситуация неоднозначная&nbsp;— нужно тестировать.</p>
+<p>Как завещано (<a href="infer-stattesting.html#nte-nhst2" class="quarto-xref">Заметка&nbsp;<span>7.2</span></a>), первоначально <em>формулируем гипотезы</em>. В&nbsp;общем виде интересующую нас гипотезу можно сформулировать так:</p>
+<p><span class="math display">\[
+\begin{split}
+H_0: \mu = \mu_0 \\
+H_1: \mu \neq \mu_0
+\end{split}
+\]</span></p>
+<p>То&nbsp;есть, словесное оформление нулевой гипотезы&nbsp;— <em>среднее генеральной совокупности равно некоторому заданному значению</em>. Альтернативной, соответственно&nbsp;— <em>среднее генеральной совокупности не равно некоторому заданному значению</em>.</p>
+<p>Так как нам известен допустиный уровень выгорания (<span class="math inline">\(\mu_0 = 60\)</span> в&nbsp;нашем случае) и&nbsp;поскольку нас интересует превышение этого уровня, сформулируем сразу <em>направленные</em> гипотезы:</p>
+<p><span class="math display">\[
+\begin{split}
+H_0: \mu \leq \mu_0 \\
+H_1: \mu &gt; \mu_0
+\end{split} \quad
+\text{или} \quad
+\begin{split}
+H_0: \mu \leq 60 \\
+H_1: \mu &gt; 60
+\end{split}
+\]</span></p>
+<p>Уровень значимости оставим конвенциональным <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<p>Для&nbsp;тестирования такой гипотезы подойдет <strong>t-критерий Стьюдента</strong>, предложенный в&nbsp;1908 году У. Госсетом. Расчёт статистики критерия выглядит так:</p>
+<p><span id="eq-onesample"><span class="math display">\[
+t = \frac{\overline x - \mu_0}{s / \sqrt{n}} = \frac{\overline x - \mu_0}{\text{se}_X} \overset{H_0}\thicksim t(n-1)
+\tag{9.1}\]</span></span></p>
+<p>Разберемся сначала со&nbsp;смыслом его расчета:</p>
+<ul>
+<li>в&nbsp;числителе стоит разница между выборочным средним и&nbsp;заданным значением&nbsp;— это и&nbsp;есть сравнение двух чисел;</li>
+<li>в&nbsp;знаменателей стоит стандартная ошибка среднего&nbsp;— это учёт вариативности данных.</li>
+</ul>
+<p>Мы можем рассчитать наблюдаемые значения t-статистик для&nbsp;наших групп:</p>
+<ul>
+<li>для&nbsp;маркетинга: <span class="math inline">\(t_{\text{obs}} = \dfrac{60.12 - 60}{10.05 / \sqrt{34}} \approx 0.068\)</span></li>
+<li>для&nbsp;разработки: <span class="math inline">\(t_{\text{obs}} = \dfrac{62.56 - 60}{6.86 / \sqrt{27}} \approx 1.941\)</span></li>
+</ul>
+<p>Чудненько. Теперь необходимо оценить, насколько эти значения типичны для&nbsp;случая, когда верна нулевая гипотеза. Следовательно, необходимо распределения статистики критерия, справедливое для&nbsp;случая, когда верна нулевая гипотеза. Как написано выше (<a href="#eq-onesample" class="quarto-xref">Уравнение&nbsp;<span>9.1</span></a>), статистика t-критерия при&nbsp;справедливости нулевой гипотезы подчиняется t-распределению (распределению Стьюдента), с&nbsp;параметром <span class="math inline">\(n-1\)</span>. Выглядит оно так (<a href="#fig-tdist" class="quarto-xref">Рисунок&nbsp;<span>9.2</span></a>). Параметр <span class="math inline">\(n-1\)</span>&nbsp;— это степени свободы, определяющие форму распределения.</p>
+<div id="fig-tdist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="infer-ttest_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Рисунок&nbsp;9.2: Распределению Стьюдента при&nbsp;различном количестве степеней свободы"><img src="infer-ttest_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;9.2: Распределению Стьюдента при&nbsp;различном количестве степеней свободы
+</figcaption>
+</figure>
+</div>
+<p>В&nbsp;нашем случае мы будем работать с&nbsp;двумя конкретными распределениями, имея следующие ситуации (<a href="#fig-onesample-res" class="quarto-xref">Рисунок&nbsp;<span>9.3</span></a>).</p>
+<div id="fig-onesample-res" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-onesample-res-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-onesample-res-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-onesample-res-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="infer-ttest_files/figure-html/fig-onesample-res-1.png" class="lightbox" data-gallery="fig-onesample-res" title="Рисунок&nbsp;9.3&nbsp;(a): Отдел маркетинга"><img src="infer-ttest_files/figure-html/fig-onesample-res-1.png" class="img-fluid figure-img" data-ref-parent="fig-onesample-res" width="672"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-onesample-res-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Отдел маркетинга
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-onesample-res-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-onesample-res-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="infer-ttest_files/figure-html/fig-onesample-res-2.png" class="lightbox" data-gallery="fig-onesample-res" title="Рисунок&nbsp;9.3&nbsp;(b): Отдел разработки"><img src="infer-ttest_files/figure-html/fig-onesample-res-2.png" class="img-fluid figure-img" data-ref-parent="fig-onesample-res" width="672"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-onesample-res-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Отдел разработки
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-onesample-res-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рисунок&nbsp;9.3: Результаты тестирования статистических гипотез для&nbsp;обеих выборок (<a href="#tbl-onesample-data" class="quarto-xref">Таблица&nbsp;<span>9.1</span></a>)
+</figcaption>
+</figure>
+</div>
+<p>Согласно алгоритму статистического вывода:</p>
+<ul>
+<li>для&nbsp;отдела маркетинга (<a href="#fig-onesample-res-1" class="quarto-xref">Рисунок&nbsp;<span>9.3 (a)</span></a>) имеем <span class="math inline">\(\mathsf{p} &gt; \alpha\)</span>, следовательно, мы получил <em>типичное</em> значение критерия для&nbsp;случая, кода верна нулевая гипотеза, поэтому у&nbsp;нас <em>нет оснований</em> отклонять нулевую гипотезу <span class="math inline">\(\mu = 60\)</span>.</li>
+<li>для&nbsp;отдела разработки (<a href="#fig-onesample-res-2" class="quarto-xref">Рисунок&nbsp;<span>9.3 (b)</span></a>) имеем <span class="math inline">\(\mathsf{p} &lt; \alpha\)</span>, следовательно, мы получил <em>нетипичное</em> значение критерия для&nbsp;случая, кода верна нулевая гипотеза, поэтому у&nbsp;нас <em>есть основания</em> отклонить нулевую гипотезу в&nbsp;пользу альтернативной, заключив, что&nbsp;мы получили свидетельство того, что&nbsp;в&nbsp;среднем уровень выгорания команды разработки превышает «нормальный» (допустимый).</li>
+</ul>
+</section>
+<section id="ttest-twosample" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="ttest-twosample"><span class="header-section-number">9.4</span> Двухвыборочный t-тест</h2>
+<section id="ttest-twosample-independent" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="ttest-twosample-independent"><span class="header-section-number">9.4.1</span> Для независимых выборок</h3>
+<p><span class="math display">\[
+t = \frac{
+  \overline x_1 - \overline x_2
+  }{
+  \sqrt{
+    \dfrac{s^2_1}{n_1} + \dfrac{s^2_2}{n_2}
+}} \overset{H_0}{\thicksim} t(\text{df})
+\]</span></p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="Какая-то страшная формула">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Заметка</span>Какая-то страшная формула
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\text{df} = \frac{
+  \left( \dfrac{s_1^2}{n_1} + \dfrac{s_2^2}{n_2} \right)^2
+}{
+  \dfrac{
+    \left( \dfrac{s_1^2}{n_1} \right)^2
+  }{(n_1-1)}
+  +
+  \dfrac{
+    \left( \dfrac{s_2^2}{n_2} \right)^2
+  }{(n_2-1)}
+}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="ttest-twosample-paired" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="ttest-twosample-paired"><span class="header-section-number">9.4.2</span> Для связанных выборок</h3>
+<p><span class="math display">\[
+t = \frac{\overline X_D - \mu_0}{s_D / \sqrt{n}} \overset{H_0}{\thicksim} t(n-1)
+\]</span></p>
+
+
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>На&nbsp;статистическом&nbsp;— несмещенной, состоятельной и&nbsp;эффективной.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопировано!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопировано!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./infer-categorical.html" class="pagination-link" aria-label="Анализ категориальных данных">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Анализ категориальных данных</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./infer-correlation.html" class="pagination-link" aria-label="Корреляционный анализ">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Корреляционный анализ</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
