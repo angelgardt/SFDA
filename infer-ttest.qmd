@@ -67,7 +67,7 @@ tibble(
   "Отдел" = c("Разработка", "Маркетинг"),
   "Количество респондентов" = c(length(dev), length(market)),
   "Среднее" = c(mean(dev), mean(market)),
-  "Срандартное отклонение" = c(sd(dev), sd(market))
+  "Стандартное отклонение" = c(sd(dev), sd(market))
 ) %>% knitr::kable(digits = 2)
 ```
 
