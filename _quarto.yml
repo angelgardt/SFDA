@@ -31,7 +31,7 @@ book:
         - infer-anovaI.qmd
     #     - infer-anovaII.qmd
     #     - infer-posthoc.qmd
-    #     - infer-simplelinear.qmd
+        - infer-simplelinear.qmd
     #     - infer-multiplelinear.qmd
     #     - infer-ancova.qmd
     #     - infer-logreg.qmd
